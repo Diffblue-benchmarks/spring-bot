@@ -1,0 +1,82 @@
+package org.finos.springbot.tests.controller;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+class TestObjectsDiffblueTest {
+  /**
+   * Test getters and setters.
+   * <p>
+   * Methods under test:
+   * <ul>
+   *   <li>{@link TestObjects#TestObjects()}
+   *   <li>{@link TestObjects#setItems(List)}
+   *   <li>{@link TestObjects#toString()}
+   *   <li>{@link TestObjects#getItems()}
+   * </ul>
+   */
+  @Test
+  @DisplayName("Test getters and setters")
+  @Tag("MaintainedByDiffblue")
+  @MethodsUnderTest({"void org.finos.springbot.tests.controller.TestObjects.<init>()",
+      "void org.finos.springbot.tests.controller.TestObjects.<init>(java.util.List)",
+      "java.util.List org.finos.springbot.tests.controller.TestObjects.getItems()",
+      "void org.finos.springbot.tests.controller.TestObjects.setItems(java.util.List)",
+      "java.lang.String org.finos.springbot.tests.controller.TestObjects.toString()"})
+  void testGettersAndSetters() {
+    // Arrange and Act
+    TestObjects actualTestObjects = new TestObjects();
+    ArrayList<TestObject> items = new ArrayList<>();
+    actualTestObjects.setItems(items);
+    String actualToStringResult = actualTestObjects.toString();
+    List<TestObject> actualItems = actualTestObjects.getItems();
+
+    // Assert
+    assertEquals("TestObjects [items=[]]", actualToStringResult);
+    assertTrue(actualItems.isEmpty());
+    assertSame(items, actualItems);
+  }
+
+  /**
+   * Test getters and setters.
+   * <ul>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   * </ul>
+   * <p>
+   * Methods under test:
+   * <ul>
+   *   <li>{@link TestObjects#TestObjects(List)}
+   *   <li>{@link TestObjects#setItems(List)}
+   *   <li>{@link TestObjects#toString()}
+   *   <li>{@link TestObjects#getItems()}
+   * </ul>
+   */
+  @Test
+  @DisplayName("Test getters and setters; when ArrayList()")
+  @Tag("MaintainedByDiffblue")
+  @MethodsUnderTest({"void org.finos.springbot.tests.controller.TestObjects.<init>()",
+      "void org.finos.springbot.tests.controller.TestObjects.<init>(java.util.List)",
+      "java.util.List org.finos.springbot.tests.controller.TestObjects.getItems()",
+      "void org.finos.springbot.tests.controller.TestObjects.setItems(java.util.List)",
+      "java.lang.String org.finos.springbot.tests.controller.TestObjects.toString()"})
+  void testGettersAndSetters_whenArrayList() {
+    // Arrange and Act
+    TestObjects actualTestObjects = new TestObjects(new ArrayList<>());
+    ArrayList<TestObject> items = new ArrayList<>();
+    actualTestObjects.setItems(items);
+    String actualToStringResult = actualTestObjects.toString();
+    List<TestObject> actualItems = actualTestObjects.getItems();
+
+    // Assert
+    assertEquals("TestObjects [items=[]]", actualToStringResult);
+    assertTrue(actualItems.isEmpty());
+    assertSame(items, actualItems);
+  }
+}
