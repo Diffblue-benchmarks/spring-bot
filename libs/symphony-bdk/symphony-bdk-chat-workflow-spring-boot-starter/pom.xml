@@ -10,7 +10,7 @@
 		<groupId>org.finos.springbot</groupId>
 		<artifactId>spring-bot</artifactId>
 		<version>10.0.2-SNAPSHOT</version>
-		<relativePath>../../..</relativePath>
+		<relativePath>../../../pom.xml</relativePath>
 	</parent>
 
 	<properties>
@@ -53,4 +53,12 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>

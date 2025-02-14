@@ -42,9 +42,10 @@
 		<module>demos/custom-help-bot</module>
 		<module>demos/todo-bot</module>
 		<module>demos/claim-bot</module>
-		<module>demos/rooms-bot</module>
+			<!-- <module>demos/rooms-bot</module> -->
 		
 		<module>libs/chat-workflow-coverage</module>
+		<module>mutation-aggregation-module</module>	
 	</modules>
 
 	<properties>
@@ -122,8 +123,9 @@
 	</scm>
 
 	<build>
+		<pluginManagement>
 		<plugins>
-			<plugin>
+		<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.1.1</version>
@@ -152,7 +154,40 @@
 					<excludedScopes>provided,system</excludedScopes>
 				</configuration>
 			</plugin>
-		</plugins>
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.17.1</version>
+				<configuration>
+					<failWhenNoMutations>false</failWhenNoMutations>
+					<targetTests>
+						<param>**DiffblueTest*</param>
+					</targetTests>
+					<exportLineCoverage>true</exportLineCoverage>
+					<outputFormats>
+						<value>XML</value>
+						<value>HTML</value>
+					</outputFormats>
+					<timestampedReports>false</timestampedReports>
+				</configuration>
+				<executions>
+					<execution>
+						<id>run-mutation-tests</id>
+						<goals>
+							<goal>mutationCoverage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.pitest</groupId>
+						<artifactId>pitest-junit5-plugin</artifactId>
+						<version>1.2.1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 	<profiles>
