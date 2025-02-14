@@ -161,7 +161,7 @@
 				<configuration>
 					<failWhenNoMutations>false</failWhenNoMutations>
 					<targetTests>
-						<param>**DiffblueTest*</param>
+						<param>**Test*</param>
 					</targetTests>
 					<exportLineCoverage>true</exportLineCoverage>
 					<outputFormats>
