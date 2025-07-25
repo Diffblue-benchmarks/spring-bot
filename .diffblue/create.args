@@ -1,0 +1,3 @@
+dcover create --preflight
+dcover fix-build
+dcover create --preflight --exclude-modules=org.finos.springbot:chat-workflow-coverage
