@@ -3,6 +3,7 @@ package org.finos.springbot.workflow.actions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.workflow.actions.MemberAction.Type;
 import org.finos.springbot.workflow.content.Chat;
@@ -14,8 +15,9 @@ import org.junit.jupiter.api.Test;
 class MemberActionDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link MemberAction#MemberAction(Chat, User, Type, Object)}
    *   <li>{@link MemberAction#getData()}
@@ -25,12 +27,14 @@ class MemberActionDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.workflow.actions.MemberAction.<init>(org.finos.springbot.workflow.content.Chat, org.finos.springbot.workflow.content.User, org.finos.springbot.workflow.actions.MemberAction$Type, java.lang.Object)",
-      "java.lang.Object org.finos.springbot.workflow.actions.MemberAction.getData()",
-      "org.finos.springbot.workflow.actions.MemberAction$Type org.finos.springbot.workflow.actions.MemberAction.getType()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.workflow.actions.MemberAction.getUser()"})
+    "void MemberAction.<init>(Chat, User, Type, Object)",
+    "Object MemberAction.getData()",
+    "Type MemberAction.getType()",
+    "User MemberAction.getUser()"
+  })
   void testGettersAndSetters() {
     // Arrange
     Chat a = mock(Chat.class);

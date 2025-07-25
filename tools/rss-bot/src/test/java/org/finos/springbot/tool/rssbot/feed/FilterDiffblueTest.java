@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.tool.rssbot.feed.Filter.Type;
 import org.junit.jupiter.api.DisplayName;
@@ -13,8 +14,9 @@ import org.junit.jupiter.api.Test;
 class FilterDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Filter#setToMatch(String)}
    *   <li>{@link Filter#setUsage(Type)}
@@ -24,11 +26,14 @@ class FilterDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.tool.rssbot.feed.Filter.getToMatch()",
-      "org.finos.springbot.tool.rssbot.feed.Filter$Type org.finos.springbot.tool.rssbot.feed.Filter.getUsage()",
-      "void org.finos.springbot.tool.rssbot.feed.Filter.setToMatch(java.lang.String)",
-      "void org.finos.springbot.tool.rssbot.feed.Filter.setUsage(org.finos.springbot.tool.rssbot.feed.Filter$Type)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "String Filter.getToMatch()",
+    "Type Filter.getUsage()",
+    "void Filter.setToMatch(String)",
+    "void Filter.setUsage(Type)"
+  })
   void testGettersAndSetters() {
     // Arrange
     Filter filter = new Filter();
@@ -45,17 +50,20 @@ class FilterDiffblueTest {
 
   /**
    * Test {@link Filter#test(String)} with {@code String}.
+   *
    * <ul>
-   *   <li>Given {@link Filter} (default constructor) ToMatch is empty string.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link Filter} (default constructor) ToMatch is empty string.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Filter#test(String)}
+   *
+   * <p>Method under test: {@link Filter#test(String)}
    */
   @Test
-  @DisplayName("Test test(String) with 'String'; given Filter (default constructor) ToMatch is empty string; then return 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.tool.rssbot.feed.Filter.test(java.lang.String)"})
+  @DisplayName(
+      "Test test(String) with 'String'; given Filter (default constructor) ToMatch is empty string; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Filter.test(String)"})
   void testTestWithString_givenFilterToMatchIsEmptyString_thenReturnFalse() {
     // Arrange
     Filter filter = new Filter();
@@ -67,17 +75,20 @@ class FilterDiffblueTest {
 
   /**
    * Test {@link Filter#test(String)} with {@code String}.
+   *
    * <ul>
-   *   <li>Given {@link Filter} (default constructor) ToMatch is {@code To Match}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Filter} (default constructor) ToMatch is {@code To Match}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link Filter#test(String)}
+   *
+   * <p>Method under test: {@link Filter#test(String)}
    */
   @Test
-  @DisplayName("Test test(String) with 'String'; given Filter (default constructor) ToMatch is 'To Match'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.tool.rssbot.feed.Filter.test(java.lang.String)"})
+  @DisplayName(
+      "Test test(String) with 'String'; given Filter (default constructor) ToMatch is 'To Match'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Filter.test(String)"})
   void testTestWithString_givenFilterToMatchIsToMatch_thenReturnTrue() {
     // Arrange
     Filter filter = new Filter();
@@ -89,17 +100,20 @@ class FilterDiffblueTest {
 
   /**
    * Test {@link Filter#test(String)} with {@code String}.
+   *
    * <ul>
-   *   <li>Given {@link Filter} (default constructor) Usage is {@code INCLUDE}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Filter} (default constructor) Usage is {@code INCLUDE}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link Filter#test(String)}
+   *
+   * <p>Method under test: {@link Filter#test(String)}
    */
   @Test
-  @DisplayName("Test test(String) with 'String'; given Filter (default constructor) Usage is 'INCLUDE'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.tool.rssbot.feed.Filter.test(java.lang.String)"})
+  @DisplayName(
+      "Test test(String) with 'String'; given Filter (default constructor) Usage is 'INCLUDE'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Filter.test(String)"})
   void testTestWithString_givenFilterUsageIsInclude_thenReturnTrue() {
     // Arrange
     Filter filter = new Filter();
@@ -112,13 +126,14 @@ class FilterDiffblueTest {
 
   /**
    * Test new {@link Filter} (default constructor).
-   * <p>
-   * Method under test: default or parameterless constructor of {@link Filter}
+   *
+   * <p>Method under test: default or parameterless constructor of {@link Filter}
    */
   @Test
   @DisplayName("Test new Filter (default constructor)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.rssbot.feed.Filter.<init>()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Filter.<init>()"})
   void testNewFilter() {
     // Arrange and Act
     Filter actualFilter = new Filter();

@@ -1,6 +1,7 @@
 package org.finos.springbot.tool.rssbot;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -9,8 +10,9 @@ import org.junit.jupiter.api.Test;
 class ProxyPropertiesDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link ProxyProperties}
    *   <li>{@link ProxyProperties#setHost(String)}
@@ -25,16 +27,19 @@ class ProxyPropertiesDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.rssbot.ProxyProperties.<init>()",
-      "java.lang.String org.finos.springbot.tool.rssbot.ProxyProperties.getHost()",
-      "java.lang.String org.finos.springbot.tool.rssbot.ProxyProperties.getPassword()",
-      "int org.finos.springbot.tool.rssbot.ProxyProperties.getPort()",
-      "java.lang.String org.finos.springbot.tool.rssbot.ProxyProperties.getUser()",
-      "void org.finos.springbot.tool.rssbot.ProxyProperties.setHost(java.lang.String)",
-      "void org.finos.springbot.tool.rssbot.ProxyProperties.setPassword(java.lang.String)",
-      "void org.finos.springbot.tool.rssbot.ProxyProperties.setPort(int)",
-      "void org.finos.springbot.tool.rssbot.ProxyProperties.setUser(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void ProxyProperties.<init>()",
+    "String ProxyProperties.getHost()",
+    "String ProxyProperties.getPassword()",
+    "int ProxyProperties.getPort()",
+    "String ProxyProperties.getUser()",
+    "void ProxyProperties.setHost(String)",
+    "void ProxyProperties.setPassword(String)",
+    "void ProxyProperties.setPort(int)",
+    "void ProxyProperties.setUser(String)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     ProxyProperties actualProxyProperties = new ProxyProperties();

@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
@@ -16,9 +17,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.aot.DisabledInAotMode;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.validation.BindException;
 import org.springframework.validation.DefaultMessageCodesResolver;
@@ -26,26 +27,24 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.MapBindingResult;
 import org.springframework.validation.Validator;
 
-@DisabledInAotMode
 @ContextConfiguration(classes = {ErrorHelp.class})
+@DisabledInAotMode
 @ExtendWith(SpringExtension.class)
 class ErrorHelpDiffblueTest {
-  @MockBean
-  private Validator validator;
+  @Autowired private ErrorHelp errorHelp;
 
-  @Autowired
-  private ErrorHelp errorHelp;
+  @MockitoBean private Validator validator;
 
   /**
    * Test {@link ErrorHelp#createErrorHolder()}.
-   * <p>
-   * Method under test: {@link ErrorHelp#createErrorHolder()}
+   *
+   * <p>Method under test: {@link ErrorHelp#createErrorHolder()}
    */
   @Test
   @DisplayName("Test createErrorHolder()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.springframework.validation.Errors org.finos.springbot.workflow.form.ErrorHelp.createErrorHolder()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Errors ErrorHelp.createErrorHolder()"})
   void testCreateErrorHolder() {
     // Arrange and Act
     Errors actualCreateErrorHolderResult = ErrorHelp.createErrorHolder();
@@ -53,8 +52,9 @@ class ErrorHelpDiffblueTest {
     // Assert
     Object target = ((MapBindingResult) actualCreateErrorHolderResult).getTarget();
     assertTrue(target instanceof Map);
-    assertTrue(((MapBindingResult) actualCreateErrorHolderResult)
-        .getMessageCodesResolver() instanceof DefaultMessageCodesResolver);
+    assertTrue(
+        ((MapBindingResult) actualCreateErrorHolderResult).getMessageCodesResolver()
+            instanceof DefaultMessageCodesResolver);
     assertTrue(actualCreateErrorHolderResult instanceof MapBindingResult);
     assertEquals("", actualCreateErrorHolderResult.getNestedPath());
     assertEquals("", actualCreateErrorHolderResult.getObjectName());
@@ -64,7 +64,8 @@ class ErrorHelpDiffblueTest {
     assertEquals(0, actualCreateErrorHolderResult.getErrorCount());
     assertEquals(0, actualCreateErrorHolderResult.getFieldErrorCount());
     assertEquals(0, actualCreateErrorHolderResult.getGlobalErrorCount());
-    assertEquals(0, ((MapBindingResult) actualCreateErrorHolderResult).getSuppressedFields().length);
+    assertEquals(
+        0, ((MapBindingResult) actualCreateErrorHolderResult).getSuppressedFields().length);
     Map<String, Object> model = ((MapBindingResult) actualCreateErrorHolderResult).getModel();
     assertEquals(2, model.size());
     assertFalse(actualCreateErrorHolderResult.hasErrors());
@@ -81,18 +82,21 @@ class ErrorHelpDiffblueTest {
 
   /**
    * Test {@link ErrorHelp#errors(Errors)}.
+   *
    * <ul>
-   *   <li>When {@link BindException#BindException(Object, String)} with {@code Target} and {@code Object Name}.</li>
-   *   <li>Then return empty string.</li>
+   *   <li>When {@link BindException#BindException(Object, String)} with {@code Target} and {@code
+   *       Object Name}.
+   *   <li>Then return empty string.
    * </ul>
-   * <p>
-   * Method under test: {@link ErrorHelp#errors(Errors)}
+   *
+   * <p>Method under test: {@link ErrorHelp#errors(Errors)}
    */
   @Test
-  @DisplayName("Test errors(Errors); when BindException(Object, String) with 'Target' and 'Object Name'; then return empty string")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.form.ErrorHelp.errors(org.springframework.validation.Errors)"})
+  @DisplayName(
+      "Test errors(Errors); when BindException(Object, String) with 'Target' and 'Object Name'; then return empty string")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String ErrorHelp.errors(Errors)"})
   void testErrors_whenBindExceptionWithTargetAndObjectName_thenReturnEmptyString() {
     // Arrange, Act and Assert
     assertEquals("", ErrorHelp.errors(new BindException("Target", "Object Name")));
@@ -100,18 +104,20 @@ class ErrorHelpDiffblueTest {
 
   /**
    * Test {@link ErrorHelp#performErrorHandling(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Validator} {@link Validator#validate(Object, Errors)} does nothing.</li>
-   *   <li>Then Target return {@link Map}.</li>
+   *   <li>Given {@link Validator} {@link Validator#validate(Object, Errors)} does nothing.
+   *   <li>Then Target return {@link Map}.
    * </ul>
-   * <p>
-   * Method under test: {@link ErrorHelp#performErrorHandling(Object)}
+   *
+   * <p>Method under test: {@link ErrorHelp#performErrorHandling(Object)}
    */
   @Test
-  @DisplayName("Test performErrorHandling(Object); given Validator validate(Object, Errors) does nothing; then Target return Map")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.springframework.validation.Errors org.finos.springbot.workflow.form.ErrorHelp.performErrorHandling(java.lang.Object)"})
+  @DisplayName(
+      "Test performErrorHandling(Object); given Validator validate(Object, Errors) does nothing; then Target return Map")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Errors ErrorHelp.performErrorHandling(Object)"})
   void testPerformErrorHandling_givenValidatorValidateDoesNothing_thenTargetReturnMap() {
     // Arrange
     doNothing().when(validator).validate(Mockito.<Object>any(), Mockito.<Errors>any());
@@ -123,8 +129,9 @@ class ErrorHelpDiffblueTest {
     verify(validator).validate(isA(Object.class), isA(Errors.class));
     Object target = ((MapBindingResult) actualPerformErrorHandlingResult).getTarget();
     assertTrue(target instanceof Map);
-    assertTrue(((MapBindingResult) actualPerformErrorHandlingResult)
-        .getMessageCodesResolver() instanceof DefaultMessageCodesResolver);
+    assertTrue(
+        ((MapBindingResult) actualPerformErrorHandlingResult).getMessageCodesResolver()
+            instanceof DefaultMessageCodesResolver);
     assertTrue(actualPerformErrorHandlingResult instanceof MapBindingResult);
     assertEquals("", actualPerformErrorHandlingResult.getNestedPath());
     assertEquals("", actualPerformErrorHandlingResult.getObjectName());
@@ -134,7 +141,8 @@ class ErrorHelpDiffblueTest {
     assertEquals(0, actualPerformErrorHandlingResult.getErrorCount());
     assertEquals(0, actualPerformErrorHandlingResult.getFieldErrorCount());
     assertEquals(0, actualPerformErrorHandlingResult.getGlobalErrorCount());
-    assertEquals(0, ((MapBindingResult) actualPerformErrorHandlingResult).getSuppressedFields().length);
+    assertEquals(
+        0, ((MapBindingResult) actualPerformErrorHandlingResult).getSuppressedFields().length);
     Map<String, Object> model = ((MapBindingResult) actualPerformErrorHandlingResult).getModel();
     assertEquals(2, model.size());
     assertFalse(actualPerformErrorHandlingResult.hasErrors());
@@ -151,19 +159,22 @@ class ErrorHelpDiffblueTest {
 
   /**
    * Test {@link ErrorHelp#performErrorHandling(Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link Validator}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link ErrorHelp#performErrorHandling(Object)}
+   *
+   * <p>Method under test: {@link ErrorHelp#performErrorHandling(Object)}
    */
   @Test
-  @DisplayName("Test performErrorHandling(Object); when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.springframework.validation.Errors org.finos.springbot.workflow.form.ErrorHelp.performErrorHandling(java.lang.Object)"})
-  void testPerformErrorHandling_whenNull_thenReturnNull() {
+  @DisplayName(
+      "Test performErrorHandling(Object); given Validator; when 'null'; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Errors ErrorHelp.performErrorHandling(Object)"})
+  void testPerformErrorHandling_givenValidator_whenNull_thenReturnNull() {
     // Arrange, Act and Assert
     assertNull(errorHelp.performErrorHandling(null));
   }

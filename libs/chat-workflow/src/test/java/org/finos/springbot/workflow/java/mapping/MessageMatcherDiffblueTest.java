@@ -7,6 +7,7 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,18 +28,19 @@ import org.mockito.Mockito;
 class MessageMatcherDiffblueTest {
   /**
    * Test {@link MessageMatcher#consume(Content, Map)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@link Content}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@link Content}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link MessageMatcher#consume(Content, Map)}
+   *
+   * <p>Method under test: {@link MessageMatcher#consume(Content, Map)}
    */
   @Test
   @DisplayName("Test consume(Content, Map); given ArrayList() add Content; then return 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.java.mapping.MessageMatcher.consume(org.finos.springbot.workflow.content.Content, java.util.Map)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean MessageMatcher.consume(Content, Map)"})
   void testConsume_givenArrayListAddContent_thenReturnFalse() {
     // Arrange
     ArrayList<Content> c = new ArrayList<>();
@@ -57,48 +59,21 @@ class MessageMatcherDiffblueTest {
 
   /**
    * Test {@link MessageMatcher#consume(Content, Map)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@link Content}.</li>
-   *   <li>When {@link Content} {@link Content#startsWith(Content)} return {@code true}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@link Message.MessageImpl#MessageImpl(List)}
+   *       with c is {@link ArrayList#ArrayList()}.
+   *   <li>When {@link Content}.
    * </ul>
-   * <p>
-   * Method under test: {@link MessageMatcher#consume(Content, Map)}
+   *
+   * <p>Method under test: {@link MessageMatcher#consume(Content, Map)}
    */
   @Test
-  @DisplayName("Test consume(Content, Map); given ArrayList() add Content; when Content startsWith(Content) return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.java.mapping.MessageMatcher.consume(org.finos.springbot.workflow.content.Content, java.util.Map)"})
-  void testConsume_givenArrayListAddContent_whenContentStartsWithReturnTrue() {
-    // Arrange
-    ArrayList<Content> c = new ArrayList<>();
-    c.add(mock(Content.class));
-    MessageMatcher messageMatcher = new MessageMatcher(new BlockQuoteImpl(c));
-    Content message = mock(Content.class);
-    when(message.startsWith(Mockito.<Content>any())).thenReturn(true);
-
-    // Act
-    boolean actualConsumeResult = messageMatcher.consume(message, new HashMap<>());
-
-    // Assert
-    verify(message).startsWith(isA(Content.class));
-    assertTrue(actualConsumeResult);
-  }
-
-  /**
-   * Test {@link MessageMatcher#consume(Content, Map)}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@link Message.MessageImpl#MessageImpl(List)} with c is {@link ArrayList#ArrayList()}.</li>
-   *   <li>When {@link Content}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link MessageMatcher#consume(Content, Map)}
-   */
-  @Test
-  @DisplayName("Test consume(Content, Map); given ArrayList() add MessageImpl(List) with c is ArrayList(); when Content")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.java.mapping.MessageMatcher.consume(org.finos.springbot.workflow.content.Content, java.util.Map)"})
+  @DisplayName(
+      "Test consume(Content, Map); given ArrayList() add MessageImpl(List) with c is ArrayList(); when Content")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean MessageMatcher.consume(Content, Map)"})
   void testConsume_givenArrayListAddMessageImplWithCIsArrayList_whenContent() {
     // Arrange
     ArrayList<Paragraph> c = new ArrayList<>();
@@ -112,19 +87,22 @@ class MessageMatcherDiffblueTest {
 
   /**
    * Test {@link MessageMatcher#consume(Content, Map)}.
+   *
    * <ul>
-   *   <li>Given {@link BlockQuoteImpl#BlockQuoteImpl(List)} with c is {@link ArrayList#ArrayList()}.</li>
-   *   <li>When {@link Content}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link BlockQuoteImpl#BlockQuoteImpl(List)} with c is {@link
+   *       ArrayList#ArrayList()}.
+   *   <li>When {@link Content}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link MessageMatcher#consume(Content, Map)}
+   *
+   * <p>Method under test: {@link MessageMatcher#consume(Content, Map)}
    */
   @Test
-  @DisplayName("Test consume(Content, Map); given BlockQuoteImpl(List) with c is ArrayList(); when Content; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.java.mapping.MessageMatcher.consume(org.finos.springbot.workflow.content.Content, java.util.Map)"})
+  @DisplayName(
+      "Test consume(Content, Map); given BlockQuoteImpl(List) with c is ArrayList(); when Content; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean MessageMatcher.consume(Content, Map)"})
   void testConsume_givenBlockQuoteImplWithCIsArrayList_whenContent_thenReturnTrue() {
     // Arrange
     MessageMatcher messageMatcher = new MessageMatcher(new BlockQuoteImpl(new ArrayList<>()));
@@ -136,45 +114,20 @@ class MessageMatcherDiffblueTest {
 
   /**
    * Test {@link MessageMatcher#consume(Content, Map)}.
+   *
    * <ul>
-   *   <li>Given {@link MessageMatcher#MessageMatcher(Content)} with pattern is {@link Content}.</li>
+   *   <li>Given {@link MessageMatcher#MessageMatcher(Content)} with pattern is {@link Content}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link MessageMatcher#consume(Content, Map)}
+   *
+   * <p>Method under test: {@link MessageMatcher#consume(Content, Map)}
    */
   @Test
-  @DisplayName("Test consume(Content, Map); given MessageMatcher(Content) with pattern is Content")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.java.mapping.MessageMatcher.consume(org.finos.springbot.workflow.content.Content, java.util.Map)"})
-  void testConsume_givenMessageMatcherWithPatternIsContent() {
-    // Arrange
-    MessageMatcher messageMatcher = new MessageMatcher(mock(Content.class));
-    Content message = mock(Content.class);
-    when(message.startsWith(Mockito.<Content>any())).thenReturn(true);
-
-    // Act
-    boolean actualConsumeResult = messageMatcher.consume(message, new HashMap<>());
-
-    // Assert
-    verify(message).startsWith(isA(Content.class));
-    assertTrue(actualConsumeResult);
-  }
-
-  /**
-   * Test {@link MessageMatcher#consume(Content, Map)}.
-   * <ul>
-   *   <li>Given {@link MessageMatcher#MessageMatcher(Content)} with pattern is {@link Content}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link MessageMatcher#consume(Content, Map)}
-   */
-  @Test
-  @DisplayName("Test consume(Content, Map); given MessageMatcher(Content) with pattern is Content; then return 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.java.mapping.MessageMatcher.consume(org.finos.springbot.workflow.content.Content, java.util.Map)"})
+  @DisplayName(
+      "Test consume(Content, Map); given MessageMatcher(Content) with pattern is Content; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean MessageMatcher.consume(Content, Map)"})
   void testConsume_givenMessageMatcherWithPatternIsContent_thenReturnFalse() {
     // Arrange
     MessageMatcher messageMatcher = new MessageMatcher(mock(Content.class));
@@ -191,19 +144,21 @@ class MessageMatcherDiffblueTest {
 
   /**
    * Test {@link MessageMatcher#consume(Content, Map)}.
+   *
    * <ul>
-   *   <li>Given {@link MessageMatcher#MessageMatcher(Content)} with pattern is {@code null}.</li>
-   *   <li>When {@link Content}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link MessageMatcher#MessageMatcher(Content)} with pattern is {@code null}.
+   *   <li>When {@link Content}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link MessageMatcher#consume(Content, Map)}
+   *
+   * <p>Method under test: {@link MessageMatcher#consume(Content, Map)}
    */
   @Test
-  @DisplayName("Test consume(Content, Map); given MessageMatcher(Content) with pattern is 'null'; when Content; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.java.mapping.MessageMatcher.consume(org.finos.springbot.workflow.content.Content, java.util.Map)"})
+  @DisplayName(
+      "Test consume(Content, Map); given MessageMatcher(Content) with pattern is 'null'; when Content; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean MessageMatcher.consume(Content, Map)"})
   void testConsume_givenMessageMatcherWithPatternIsNull_whenContent_thenReturnTrue() {
     // Arrange
     MessageMatcher messageMatcher = new MessageMatcher(null);
@@ -211,5 +166,36 @@ class MessageMatcherDiffblueTest {
 
     // Act and Assert
     assertTrue(messageMatcher.consume(message, new HashMap<>()));
+  }
+
+  /**
+   * Test {@link MessageMatcher#consume(Content, Map)}.
+   *
+   * <ul>
+   *   <li>Given {@code true}.
+   *   <li>When {@link Content} {@link Content#startsWith(Content)} return {@code true}.
+   *   <li>Then calls {@link Content#startsWith(Content)}.
+   * </ul>
+   *
+   * <p>Method under test: {@link MessageMatcher#consume(Content, Map)}
+   */
+  @Test
+  @DisplayName(
+      "Test consume(Content, Map); given 'true'; when Content startsWith(Content) return 'true'; then calls startsWith(Content)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean MessageMatcher.consume(Content, Map)"})
+  void testConsume_givenTrue_whenContentStartsWithReturnTrue_thenCallsStartsWith() {
+    // Arrange
+    MessageMatcher messageMatcher = new MessageMatcher(mock(Content.class));
+    Content message = mock(Content.class);
+    when(message.startsWith(Mockito.<Content>any())).thenReturn(true);
+
+    // Act
+    boolean actualConsumeResult = messageMatcher.consume(message, new HashMap<>());
+
+    // Assert
+    verify(message).startsWith(isA(Content.class));
+    assertTrue(actualConsumeResult);
   }
 }

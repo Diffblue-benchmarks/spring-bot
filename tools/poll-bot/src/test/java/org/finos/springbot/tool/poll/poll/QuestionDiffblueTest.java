@@ -3,6 +3,7 @@ package org.finos.springbot.tool.poll.poll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -18,8 +19,9 @@ import org.junit.jupiter.api.Test;
 class QuestionDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Question#Question()}
    *   <li>{@link Question#setEndTime(Instant)}
@@ -36,23 +38,27 @@ class QuestionDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.poll.poll.Question.<init>()",
-      "void org.finos.springbot.tool.poll.poll.Question.<init>(java.lang.String, java.util.List, java.lang.String, org.finos.springbot.workflow.content.User)",
-      "java.time.Instant org.finos.springbot.tool.poll.poll.Question.getEndTime()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.Question.getId()",
-      "java.util.List org.finos.springbot.tool.poll.poll.Question.getOptions()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.tool.poll.poll.Question.getPoller()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.Question.getQuestion()",
-      "void org.finos.springbot.tool.poll.poll.Question.setEndTime(java.time.Instant)",
-      "void org.finos.springbot.tool.poll.poll.Question.setId(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.Question.setOptions(java.util.List)",
-      "void org.finos.springbot.tool.poll.poll.Question.setPoller(org.finos.springbot.workflow.content.User)",
-      "void org.finos.springbot.tool.poll.poll.Question.setQuestion(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Question.<init>()",
+    "void Question.<init>(String, List, String, User)",
+    "Instant Question.getEndTime()",
+    "String Question.getId()",
+    "List Question.getOptions()",
+    "User Question.getPoller()",
+    "String Question.getQuestion()",
+    "void Question.setEndTime(Instant)",
+    "void Question.setId(String)",
+    "void Question.setOptions(List)",
+    "void Question.setPoller(User)",
+    "void Question.setQuestion(String)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     Question actualQuestion = new Question();
-    actualQuestion.setEndTime(LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    actualQuestion.setEndTime(
+        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
     actualQuestion.setId("42");
     ArrayList<String> options = new ArrayList<>();
     actualQuestion.setOptions(options);
@@ -75,11 +81,13 @@ class QuestionDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@code Question}.</li>
+   *   <li>When {@code Question}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Question#Question(String, List, String, User)}
    *   <li>{@link Question#setEndTime(Instant)}
@@ -96,26 +104,30 @@ class QuestionDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when 'Question'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.poll.poll.Question.<init>()",
-      "void org.finos.springbot.tool.poll.poll.Question.<init>(java.lang.String, java.util.List, java.lang.String, org.finos.springbot.workflow.content.User)",
-      "java.time.Instant org.finos.springbot.tool.poll.poll.Question.getEndTime()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.Question.getId()",
-      "java.util.List org.finos.springbot.tool.poll.poll.Question.getOptions()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.tool.poll.poll.Question.getPoller()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.Question.getQuestion()",
-      "void org.finos.springbot.tool.poll.poll.Question.setEndTime(java.time.Instant)",
-      "void org.finos.springbot.tool.poll.poll.Question.setId(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.Question.setOptions(java.util.List)",
-      "void org.finos.springbot.tool.poll.poll.Question.setPoller(org.finos.springbot.workflow.content.User)",
-      "void org.finos.springbot.tool.poll.poll.Question.setQuestion(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Question.<init>()",
+    "void Question.<init>(String, List, String, User)",
+    "Instant Question.getEndTime()",
+    "String Question.getId()",
+    "List Question.getOptions()",
+    "User Question.getPoller()",
+    "String Question.getQuestion()",
+    "void Question.setEndTime(Instant)",
+    "void Question.setId(String)",
+    "void Question.setOptions(List)",
+    "void Question.setPoller(User)",
+    "void Question.setQuestion(String)"
+  })
   void testGettersAndSetters_whenQuestion() {
     // Arrange
     ArrayList<String> options = new ArrayList<>();
 
     // Act
     Question actualQuestion = new Question("Question", options, "42", new SymphonyUser(1L));
-    actualQuestion.setEndTime(LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    actualQuestion.setEndTime(
+        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
     actualQuestion.setId("42");
     ArrayList<String> options2 = new ArrayList<>();
     actualQuestion.setOptions(options2);

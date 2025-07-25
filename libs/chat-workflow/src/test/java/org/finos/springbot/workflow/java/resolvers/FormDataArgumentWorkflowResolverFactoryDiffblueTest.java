@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import org.finos.springbot.workflow.actions.Action;
@@ -28,14 +29,17 @@ class FormDataArgumentWorkflowResolverFactoryDiffblueTest {
 
   /**
    * Test {@link FormDataArgumentWorkflowResolverFactory#createResolver(ChatHandlerExecutor)}.
-   * <p>
-   * Method under test: {@link FormDataArgumentWorkflowResolverFactory#createResolver(ChatHandlerExecutor)}
+   *
+   * <p>Method under test: {@link
+   * FormDataArgumentWorkflowResolverFactory#createResolver(ChatHandlerExecutor)}
    */
   @Test
   @DisplayName("Test createResolver(ChatHandlerExecutor)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.java.resolvers.WorkflowResolver org.finos.springbot.workflow.java.resolvers.FormDataArgumentWorkflowResolverFactory.createResolver(org.finos.springbot.workflow.java.mapping.ChatHandlerExecutor)"})
+    "WorkflowResolver FormDataArgumentWorkflowResolverFactory.createResolver(ChatHandlerExecutor)"
+  })
   void testCreateResolver() {
     // Arrange
     ChatHandlerExecutor che = mock(ChatHandlerExecutor.class);
@@ -52,14 +56,17 @@ class FormDataArgumentWorkflowResolverFactoryDiffblueTest {
 
   /**
    * Test {@link FormDataArgumentWorkflowResolverFactory#createResolver(ChatHandlerExecutor)}.
-   * <p>
-   * Method under test: {@link FormDataArgumentWorkflowResolverFactory#createResolver(ChatHandlerExecutor)}
+   *
+   * <p>Method under test: {@link
+   * FormDataArgumentWorkflowResolverFactory#createResolver(ChatHandlerExecutor)}
    */
   @Test
   @DisplayName("Test createResolver(ChatHandlerExecutor)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.java.resolvers.WorkflowResolver org.finos.springbot.workflow.java.resolvers.FormDataArgumentWorkflowResolverFactory.createResolver(org.finos.springbot.workflow.java.mapping.ChatHandlerExecutor)"})
+    "WorkflowResolver FormDataArgumentWorkflowResolverFactory.createResolver(ChatHandlerExecutor)"
+  })
   void testCreateResolver2() {
     // Arrange
     ChatHandlerExecutor che = mock(ChatHandlerExecutor.class);
@@ -68,7 +75,8 @@ class FormDataArgumentWorkflowResolverFactoryDiffblueTest {
     when(che.action()).thenReturn(new FormAction(a, u, null, "Action", new HashMap<>()));
 
     // Act
-    WorkflowResolver actualCreateResolverResult = formDataArgumentWorkflowResolverFactory.createResolver(che);
+    WorkflowResolver actualCreateResolverResult =
+        formDataArgumentWorkflowResolverFactory.createResolver(che);
 
     // Assert
     verify(che).action();
@@ -77,24 +85,29 @@ class FormDataArgumentWorkflowResolverFactoryDiffblueTest {
 
   /**
    * Test {@link FormDataArgumentWorkflowResolverFactory#createResolver(ChatHandlerExecutor)}.
+   *
    * <ul>
-   *   <li>Given {@link Action#NULL_ACTION}.</li>
+   *   <li>Given {@link Action#NULL_ACTION}.
    * </ul>
-   * <p>
-   * Method under test: {@link FormDataArgumentWorkflowResolverFactory#createResolver(ChatHandlerExecutor)}
+   *
+   * <p>Method under test: {@link
+   * FormDataArgumentWorkflowResolverFactory#createResolver(ChatHandlerExecutor)}
    */
   @Test
   @DisplayName("Test createResolver(ChatHandlerExecutor); given NULL_ACTION")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.java.resolvers.WorkflowResolver org.finos.springbot.workflow.java.resolvers.FormDataArgumentWorkflowResolverFactory.createResolver(org.finos.springbot.workflow.java.mapping.ChatHandlerExecutor)"})
+    "WorkflowResolver FormDataArgumentWorkflowResolverFactory.createResolver(ChatHandlerExecutor)"
+  })
   void testCreateResolver_givenNull_action() {
     // Arrange
     ChatHandlerExecutor che = mock(ChatHandlerExecutor.class);
     when(che.action()).thenReturn(Action.NULL_ACTION);
 
     // Act
-    WorkflowResolver actualCreateResolverResult = formDataArgumentWorkflowResolverFactory.createResolver(che);
+    WorkflowResolver actualCreateResolverResult =
+        formDataArgumentWorkflowResolverFactory.createResolver(che);
 
     // Assert
     verify(che).action();
@@ -103,16 +116,19 @@ class FormDataArgumentWorkflowResolverFactoryDiffblueTest {
 
   /**
    * Test new {@link FormDataArgumentWorkflowResolverFactory} (default constructor).
-   * <p>
-   * Method under test: default or parameterless constructor of {@link FormDataArgumentWorkflowResolverFactory}
+   *
+   * <p>Method under test: default or parameterless constructor of {@link
+   * FormDataArgumentWorkflowResolverFactory}
    */
   @Test
   @DisplayName("Test new FormDataArgumentWorkflowResolverFactory (default constructor)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.java.resolvers.FormDataArgumentWorkflowResolverFactory.<init>()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void FormDataArgumentWorkflowResolverFactory.<init>()"})
   void testNewFormDataArgumentWorkflowResolverFactory() {
     // Arrange, Act and Assert
-    assertEquals(WorkflowResolverFactory.NORMAL_PRIORITY, (new FormDataArgumentWorkflowResolverFactory()).getOrder());
+    assertEquals(
+        WorkflowResolverFactory.NORMAL_PRIORITY,
+        new FormDataArgumentWorkflowResolverFactory().getOrder());
   }
 }

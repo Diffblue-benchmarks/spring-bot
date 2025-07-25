@@ -3,6 +3,7 @@ package org.finos.springbot.tool.rssbot.feed;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +14,9 @@ import org.junit.jupiter.api.Test;
 class FeedListDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link FeedList}
    *   <li>{@link FeedList#setAdminOnly(boolean)}
@@ -31,18 +33,21 @@ class FeedListDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.rssbot.feed.FeedList.<init>()",
-      "java.util.List org.finos.springbot.tool.rssbot.feed.FeedList.getFeeds()",
-      "java.util.List org.finos.springbot.tool.rssbot.feed.FeedList.getFilters()",
-      "java.lang.Integer org.finos.springbot.tool.rssbot.feed.FeedList.getUpdateIntervalMinutes()",
-      "boolean org.finos.springbot.tool.rssbot.feed.FeedList.isAdminOnly()",
-      "boolean org.finos.springbot.tool.rssbot.feed.FeedList.isPaused()",
-      "void org.finos.springbot.tool.rssbot.feed.FeedList.setAdminOnly(boolean)",
-      "void org.finos.springbot.tool.rssbot.feed.FeedList.setFeeds(java.util.List)",
-      "void org.finos.springbot.tool.rssbot.feed.FeedList.setFilters(java.util.List)",
-      "void org.finos.springbot.tool.rssbot.feed.FeedList.setPaused(boolean)",
-      "void org.finos.springbot.tool.rssbot.feed.FeedList.setUpdateIntervalMinutes(java.lang.Integer)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void FeedList.<init>()",
+    "List FeedList.getFeeds()",
+    "List FeedList.getFilters()",
+    "Integer FeedList.getUpdateIntervalMinutes()",
+    "boolean FeedList.isAdminOnly()",
+    "boolean FeedList.isPaused()",
+    "void FeedList.setAdminOnly(boolean)",
+    "void FeedList.setFeeds(List)",
+    "void FeedList.setFilters(List)",
+    "void FeedList.setPaused(boolean)",
+    "void FeedList.setUpdateIntervalMinutes(Integer)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     FeedList actualFeedList = new FeedList();

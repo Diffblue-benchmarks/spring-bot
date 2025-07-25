@@ -2,9 +2,12 @@ package org.finos.springbot.symphony.templating;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.workflow.templating.TableConverter;
+import org.finos.springbot.workflow.templating.TableRendering;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -16,27 +19,28 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ContextConfiguration(classes = {FreemarkerTypeConverterConfig.class})
 @ExtendWith(SpringExtension.class)
 class FreemarkerTypeConverterConfigDiffblueTest {
-  @Autowired
-  private FreemarkerTypeConverterConfig freemarkerTypeConverterConfig;
+  @Autowired private FreemarkerTypeConverterConfig freemarkerTypeConverterConfig;
 
   /**
    * Test {@link FreemarkerTypeConverterConfig#symphonyFreeMarkerRendering()}.
-   * <p>
-   * Method under test: {@link FreemarkerTypeConverterConfig#symphonyFreeMarkerRendering()}
+   *
+   * <p>Method under test: {@link FreemarkerTypeConverterConfig#symphonyFreeMarkerRendering()}
    */
   @Test
   @DisplayName("Test symphonyFreeMarkerRendering()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.symphony.templating.FreemarkerRendering org.finos.springbot.symphony.templating.FreemarkerTypeConverterConfig.symphonyFreeMarkerRendering()"})
+    "FreemarkerRendering FreemarkerTypeConverterConfig.symphonyFreeMarkerRendering()"
+  })
   void testSymphonyFreeMarkerRendering() {
     //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
     //   Run dcover create --keep-partial-tests to gain insights into why
     //   a non-Spring test was created.
 
     // Arrange and Act
-    FreemarkerRendering actualSymphonyFreeMarkerRenderingResult = (new FreemarkerTypeConverterConfig())
-        .symphonyFreeMarkerRendering();
+    FreemarkerRendering actualSymphonyFreeMarkerRenderingResult =
+        new FreemarkerTypeConverterConfig().symphonyFreeMarkerRendering();
 
     // Assert
     assertEquals(".With", actualSymphonyFreeMarkerRenderingResult.extend("With"));
@@ -46,48 +50,132 @@ class FreemarkerTypeConverterConfigDiffblueTest {
 
   /**
    * Test {@link FreemarkerTypeConverterConfig#fmBeanConverter(FreemarkerRendering)}.
-   * <p>
-   * Method under test: {@link FreemarkerTypeConverterConfig#fmBeanConverter(FreemarkerRendering)}
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig}.
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmBeanConverter(FreemarkerRendering)}
    */
   @Test
-  @DisplayName("Test fmBeanConverter(FreemarkerRendering)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test fmBeanConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.templating.BeanConverter org.finos.springbot.symphony.templating.FreemarkerTypeConverterConfig.fmBeanConverter(org.finos.springbot.symphony.templating.FreemarkerRendering)"})
-  void testFmBeanConverter() {
+    "org.finos.springbot.workflow.templating.BeanConverter FreemarkerTypeConverterConfig.fmBeanConverter(FreemarkerRendering)"
+  })
+  void testFmBeanConverter_givenFreemarkerTypeConverterConfig() {
     // Arrange, Act and Assert
-    assertEquals(2000, freemarkerTypeConverterConfig.fmBeanConverter(new FreemarkerRendering()).getPriority());
+    assertEquals(
+        2000,
+        freemarkerTypeConverterConfig.fmBeanConverter(new FreemarkerRendering()).getPriority());
+  }
+
+  /**
+   * Test {@link FreemarkerTypeConverterConfig#fmBeanConverter(FreemarkerRendering)}.
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig} (default constructor).
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmBeanConverter(FreemarkerRendering)}
+   */
+  @Test
+  @DisplayName(
+      "Test fmBeanConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig (default constructor)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "org.finos.springbot.workflow.templating.BeanConverter FreemarkerTypeConverterConfig.fmBeanConverter(FreemarkerRendering)"
+  })
+  void testFmBeanConverter_givenFreemarkerTypeConverterConfig2() {
+    // Arrange
+    FreemarkerTypeConverterConfig freemarkerTypeConverterConfig =
+        new FreemarkerTypeConverterConfig();
+
+    // Act and Assert
+    assertEquals(
+        2000,
+        freemarkerTypeConverterConfig.fmBeanConverter(new FreemarkerRendering()).getPriority());
   }
 
   /**
    * Test {@link FreemarkerTypeConverterConfig#fmBooleanConverter(FreemarkerRendering)}.
-   * <p>
-   * Method under test: {@link FreemarkerTypeConverterConfig#fmBooleanConverter(FreemarkerRendering)}
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig}.
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmBooleanConverter(FreemarkerRendering)}
    */
   @Test
-  @DisplayName("Test fmBooleanConverter(FreemarkerRendering)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test fmBooleanConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.templating.BooleanConverter org.finos.springbot.symphony.templating.FreemarkerTypeConverterConfig.fmBooleanConverter(org.finos.springbot.symphony.templating.FreemarkerRendering)"})
-  void testFmBooleanConverter() {
+    "org.finos.springbot.workflow.templating.BooleanConverter FreemarkerTypeConverterConfig.fmBooleanConverter(FreemarkerRendering)"
+  })
+  void testFmBooleanConverter_givenFreemarkerTypeConverterConfig() {
     // Arrange, Act and Assert
-    assertEquals(50, freemarkerTypeConverterConfig.fmBooleanConverter(new FreemarkerRendering()).getPriority());
+    assertEquals(
+        50,
+        freemarkerTypeConverterConfig.fmBooleanConverter(new FreemarkerRendering()).getPriority());
+  }
+
+  /**
+   * Test {@link FreemarkerTypeConverterConfig#fmBooleanConverter(FreemarkerRendering)}.
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig} (default constructor).
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmBooleanConverter(FreemarkerRendering)}
+   */
+  @Test
+  @DisplayName(
+      "Test fmBooleanConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig (default constructor)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "org.finos.springbot.workflow.templating.BooleanConverter FreemarkerTypeConverterConfig.fmBooleanConverter(FreemarkerRendering)"
+  })
+  void testFmBooleanConverter_givenFreemarkerTypeConverterConfig2() {
+    // Arrange
+    FreemarkerTypeConverterConfig freemarkerTypeConverterConfig =
+        new FreemarkerTypeConverterConfig();
+
+    // Act and Assert
+    assertEquals(
+        50,
+        freemarkerTypeConverterConfig.fmBooleanConverter(new FreemarkerRendering()).getPriority());
   }
 
   /**
    * Test {@link FreemarkerTypeConverterConfig#fmCollectionConverter(FreemarkerRendering)}.
-   * <p>
-   * Method under test: {@link FreemarkerTypeConverterConfig#fmCollectionConverter(FreemarkerRendering)}
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig}.
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmCollectionConverter(FreemarkerRendering)}
    */
   @Test
-  @DisplayName("Test fmCollectionConverter(FreemarkerRendering)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test fmCollectionConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.templating.TableConverter org.finos.springbot.symphony.templating.FreemarkerTypeConverterConfig.fmCollectionConverter(org.finos.springbot.symphony.templating.FreemarkerRendering)"})
-  void testFmCollectionConverter() {
+    "TableConverter FreemarkerTypeConverterConfig.fmCollectionConverter(FreemarkerRendering)"
+  })
+  void testFmCollectionConverter_givenFreemarkerTypeConverterConfig() {
     // Arrange and Act
-    TableConverter<String> actualFmCollectionConverterResult = freemarkerTypeConverterConfig
-        .fmCollectionConverter(new FreemarkerRendering());
+    TableConverter<String> actualFmCollectionConverterResult =
+        freemarkerTypeConverterConfig.fmCollectionConverter(new FreemarkerRendering());
 
     // Assert
     assertTrue(actualFmCollectionConverterResult.getR() instanceof FreemarkerRendering);
@@ -95,108 +183,408 @@ class FreemarkerTypeConverterConfigDiffblueTest {
   }
 
   /**
-   * Test {@link FreemarkerTypeConverterConfig#fmEnumConverter(FreemarkerRendering)}.
-   * <p>
-   * Method under test: {@link FreemarkerTypeConverterConfig#fmEnumConverter(FreemarkerRendering)}
+   * Test {@link FreemarkerTypeConverterConfig#fmCollectionConverter(FreemarkerRendering)}.
+   *
+   * <ul>
+   *   <li>Then return R is {@link FreemarkerRendering} (default constructor).
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmCollectionConverter(FreemarkerRendering)}
    */
   @Test
-  @DisplayName("Test fmEnumConverter(FreemarkerRendering)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test fmCollectionConverter(FreemarkerRendering); then return R is FreemarkerRendering (default constructor)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.templating.EnumConverter org.finos.springbot.symphony.templating.FreemarkerTypeConverterConfig.fmEnumConverter(org.finos.springbot.symphony.templating.FreemarkerRendering)"})
-  void testFmEnumConverter() {
+    "TableConverter FreemarkerTypeConverterConfig.fmCollectionConverter(FreemarkerRendering)"
+  })
+  void testFmCollectionConverter_thenReturnRIsFreemarkerRendering() {
+    // Arrange
+    FreemarkerTypeConverterConfig freemarkerTypeConverterConfig =
+        new FreemarkerTypeConverterConfig();
+    FreemarkerRendering r = new FreemarkerRendering();
+
+    // Act
+    TableConverter<String> actualFmCollectionConverterResult =
+        freemarkerTypeConverterConfig.fmCollectionConverter(r);
+
+    // Assert
+    TableRendering<String> r2 = actualFmCollectionConverterResult.getR();
+    assertTrue(r2 instanceof FreemarkerRendering);
+    assertEquals(50, actualFmCollectionConverterResult.getPriority());
+    assertSame(r, r2);
+  }
+
+  /**
+   * Test {@link FreemarkerTypeConverterConfig#fmEnumConverter(FreemarkerRendering)}.
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig}.
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmEnumConverter(FreemarkerRendering)}
+   */
+  @Test
+  @DisplayName("Test fmEnumConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "org.finos.springbot.workflow.templating.EnumConverter FreemarkerTypeConverterConfig.fmEnumConverter(FreemarkerRendering)"
+  })
+  void testFmEnumConverter_givenFreemarkerTypeConverterConfig() {
     // Arrange, Act and Assert
-    assertEquals(50, freemarkerTypeConverterConfig.fmEnumConverter(new FreemarkerRendering()).getPriority());
+    assertEquals(
+        50, freemarkerTypeConverterConfig.fmEnumConverter(new FreemarkerRendering()).getPriority());
+  }
+
+  /**
+   * Test {@link FreemarkerTypeConverterConfig#fmEnumConverter(FreemarkerRendering)}.
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig} (default constructor).
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmEnumConverter(FreemarkerRendering)}
+   */
+  @Test
+  @DisplayName(
+      "Test fmEnumConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig (default constructor)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "org.finos.springbot.workflow.templating.EnumConverter FreemarkerTypeConverterConfig.fmEnumConverter(FreemarkerRendering)"
+  })
+  void testFmEnumConverter_givenFreemarkerTypeConverterConfig2() {
+    // Arrange
+    FreemarkerTypeConverterConfig freemarkerTypeConverterConfig =
+        new FreemarkerTypeConverterConfig();
+
+    // Act and Assert
+    assertEquals(
+        50, freemarkerTypeConverterConfig.fmEnumConverter(new FreemarkerRendering()).getPriority());
   }
 
   /**
    * Test {@link FreemarkerTypeConverterConfig#hashTagConverter(FreemarkerRendering)}.
-   * <p>
-   * Method under test: {@link FreemarkerTypeConverterConfig#hashTagConverter(FreemarkerRendering)}
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig}.
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#hashTagConverter(FreemarkerRendering)}
    */
   @Test
-  @DisplayName("Test hashTagConverter(FreemarkerRendering)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test hashTagConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.templating.UserConverter org.finos.springbot.symphony.templating.FreemarkerTypeConverterConfig.hashTagConverter(org.finos.springbot.symphony.templating.FreemarkerRendering)"})
-  void testHashTagConverter() {
+    "org.finos.springbot.workflow.templating.UserConverter FreemarkerTypeConverterConfig.hashTagConverter(FreemarkerRendering)"
+  })
+  void testHashTagConverter_givenFreemarkerTypeConverterConfig() {
     // Arrange, Act and Assert
-    assertEquals(50, freemarkerTypeConverterConfig.hashTagConverter(new FreemarkerRendering()).getPriority());
+    assertEquals(
+        50,
+        freemarkerTypeConverterConfig.hashTagConverter(new FreemarkerRendering()).getPriority());
+  }
+
+  /**
+   * Test {@link FreemarkerTypeConverterConfig#hashTagConverter(FreemarkerRendering)}.
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig} (default constructor).
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#hashTagConverter(FreemarkerRendering)}
+   */
+  @Test
+  @DisplayName(
+      "Test hashTagConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig (default constructor)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "org.finos.springbot.workflow.templating.UserConverter FreemarkerTypeConverterConfig.hashTagConverter(FreemarkerRendering)"
+  })
+  void testHashTagConverter_givenFreemarkerTypeConverterConfig2() {
+    // Arrange
+    FreemarkerTypeConverterConfig freemarkerTypeConverterConfig =
+        new FreemarkerTypeConverterConfig();
+
+    // Act and Assert
+    assertEquals(
+        50,
+        freemarkerTypeConverterConfig.hashTagConverter(new FreemarkerRendering()).getPriority());
   }
 
   /**
    * Test {@link FreemarkerTypeConverterConfig#timeConverter(FreemarkerRendering)}.
-   * <p>
-   * Method under test: {@link FreemarkerTypeConverterConfig#timeConverter(FreemarkerRendering)}
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig}.
+   * </ul>
+   *
+   * <p>Method under test: {@link FreemarkerTypeConverterConfig#timeConverter(FreemarkerRendering)}
    */
   @Test
-  @DisplayName("Test timeConverter(FreemarkerRendering)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test timeConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.templating.TimeConverter org.finos.springbot.symphony.templating.FreemarkerTypeConverterConfig.timeConverter(org.finos.springbot.symphony.templating.FreemarkerRendering)"})
-  void testTimeConverter() {
+    "org.finos.springbot.workflow.templating.TimeConverter FreemarkerTypeConverterConfig.timeConverter(FreemarkerRendering)"
+  })
+  void testTimeConverter_givenFreemarkerTypeConverterConfig() {
     // Arrange, Act and Assert
-    assertEquals(50, freemarkerTypeConverterConfig.timeConverter(new FreemarkerRendering()).getPriority());
+    assertEquals(
+        50, freemarkerTypeConverterConfig.timeConverter(new FreemarkerRendering()).getPriority());
+  }
+
+  /**
+   * Test {@link FreemarkerTypeConverterConfig#timeConverter(FreemarkerRendering)}.
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig} (default constructor).
+   * </ul>
+   *
+   * <p>Method under test: {@link FreemarkerTypeConverterConfig#timeConverter(FreemarkerRendering)}
+   */
+  @Test
+  @DisplayName(
+      "Test timeConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig (default constructor)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "org.finos.springbot.workflow.templating.TimeConverter FreemarkerTypeConverterConfig.timeConverter(FreemarkerRendering)"
+  })
+  void testTimeConverter_givenFreemarkerTypeConverterConfig2() {
+    // Arrange
+    FreemarkerTypeConverterConfig freemarkerTypeConverterConfig =
+        new FreemarkerTypeConverterConfig();
+
+    // Act and Assert
+    assertEquals(
+        50, freemarkerTypeConverterConfig.timeConverter(new FreemarkerRendering()).getPriority());
   }
 
   /**
    * Test {@link FreemarkerTypeConverterConfig#fmTextFieldConverter(FreemarkerRendering)}.
-   * <p>
-   * Method under test: {@link FreemarkerTypeConverterConfig#fmTextFieldConverter(FreemarkerRendering)}
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig}.
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmTextFieldConverter(FreemarkerRendering)}
    */
   @Test
-  @DisplayName("Test fmTextFieldConverter(FreemarkerRendering)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test fmTextFieldConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.templating.TextFieldConverter org.finos.springbot.symphony.templating.FreemarkerTypeConverterConfig.fmTextFieldConverter(org.finos.springbot.symphony.templating.FreemarkerRendering)"})
-  void testFmTextFieldConverter() {
+    "org.finos.springbot.workflow.templating.TextFieldConverter FreemarkerTypeConverterConfig.fmTextFieldConverter(FreemarkerRendering)"
+  })
+  void testFmTextFieldConverter_givenFreemarkerTypeConverterConfig() {
     // Arrange, Act and Assert
-    assertEquals(50, freemarkerTypeConverterConfig.fmTextFieldConverter(new FreemarkerRendering()).getPriority());
+    assertEquals(
+        50,
+        freemarkerTypeConverterConfig
+            .fmTextFieldConverter(new FreemarkerRendering())
+            .getPriority());
+  }
+
+  /**
+   * Test {@link FreemarkerTypeConverterConfig#fmTextFieldConverter(FreemarkerRendering)}.
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig} (default constructor).
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmTextFieldConverter(FreemarkerRendering)}
+   */
+  @Test
+  @DisplayName(
+      "Test fmTextFieldConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig (default constructor)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "org.finos.springbot.workflow.templating.TextFieldConverter FreemarkerTypeConverterConfig.fmTextFieldConverter(FreemarkerRendering)"
+  })
+  void testFmTextFieldConverter_givenFreemarkerTypeConverterConfig2() {
+    // Arrange
+    FreemarkerTypeConverterConfig freemarkerTypeConverterConfig =
+        new FreemarkerTypeConverterConfig();
+
+    // Act and Assert
+    assertEquals(
+        50,
+        freemarkerTypeConverterConfig
+            .fmTextFieldConverter(new FreemarkerRendering())
+            .getPriority());
   }
 
   /**
    * Test {@link FreemarkerTypeConverterConfig#fmRoomConverter(FreemarkerRendering)}.
-   * <p>
-   * Method under test: {@link FreemarkerTypeConverterConfig#fmRoomConverter(FreemarkerRendering)}
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig}.
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmRoomConverter(FreemarkerRendering)}
    */
   @Test
-  @DisplayName("Test fmRoomConverter(FreemarkerRendering)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test fmRoomConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.templating.ChatConverter org.finos.springbot.symphony.templating.FreemarkerTypeConverterConfig.fmRoomConverter(org.finos.springbot.symphony.templating.FreemarkerRendering)"})
-  void testFmRoomConverter() {
+    "org.finos.springbot.workflow.templating.ChatConverter FreemarkerTypeConverterConfig.fmRoomConverter(FreemarkerRendering)"
+  })
+  void testFmRoomConverter_givenFreemarkerTypeConverterConfig() {
     // Arrange, Act and Assert
-    assertEquals(50, freemarkerTypeConverterConfig.fmRoomConverter(new FreemarkerRendering()).getPriority());
+    assertEquals(
+        50, freemarkerTypeConverterConfig.fmRoomConverter(new FreemarkerRendering()).getPriority());
+  }
+
+  /**
+   * Test {@link FreemarkerTypeConverterConfig#fmRoomConverter(FreemarkerRendering)}.
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig} (default constructor).
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmRoomConverter(FreemarkerRendering)}
+   */
+  @Test
+  @DisplayName(
+      "Test fmRoomConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig (default constructor)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "org.finos.springbot.workflow.templating.ChatConverter FreemarkerTypeConverterConfig.fmRoomConverter(FreemarkerRendering)"
+  })
+  void testFmRoomConverter_givenFreemarkerTypeConverterConfig2() {
+    // Arrange
+    FreemarkerTypeConverterConfig freemarkerTypeConverterConfig =
+        new FreemarkerTypeConverterConfig();
+
+    // Act and Assert
+    assertEquals(
+        50, freemarkerTypeConverterConfig.fmRoomConverter(new FreemarkerRendering()).getPriority());
   }
 
   /**
    * Test {@link FreemarkerTypeConverterConfig#fmDropdownAnnotationConverter(FreemarkerRendering)}.
-   * <p>
-   * Method under test: {@link FreemarkerTypeConverterConfig#fmDropdownAnnotationConverter(FreemarkerRendering)}
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig}.
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmDropdownAnnotationConverter(FreemarkerRendering)}
    */
   @Test
-  @DisplayName("Test fmDropdownAnnotationConverter(FreemarkerRendering)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test fmDropdownAnnotationConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.templating.DropdownAnnotationConverter org.finos.springbot.symphony.templating.FreemarkerTypeConverterConfig.fmDropdownAnnotationConverter(org.finos.springbot.symphony.templating.FreemarkerRendering)"})
-  void testFmDropdownAnnotationConverter() {
+    "org.finos.springbot.workflow.templating.DropdownAnnotationConverter FreemarkerTypeConverterConfig.fmDropdownAnnotationConverter(FreemarkerRendering)"
+  })
+  void testFmDropdownAnnotationConverter_givenFreemarkerTypeConverterConfig() {
     // Arrange, Act and Assert
-    assertEquals(40,
-        freemarkerTypeConverterConfig.fmDropdownAnnotationConverter(new FreemarkerRendering()).getPriority());
+    assertEquals(
+        40,
+        freemarkerTypeConverterConfig
+            .fmDropdownAnnotationConverter(new FreemarkerRendering())
+            .getPriority());
+  }
+
+  /**
+   * Test {@link FreemarkerTypeConverterConfig#fmDropdownAnnotationConverter(FreemarkerRendering)}.
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig} (default constructor).
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#fmDropdownAnnotationConverter(FreemarkerRendering)}
+   */
+  @Test
+  @DisplayName(
+      "Test fmDropdownAnnotationConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig (default constructor)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "org.finos.springbot.workflow.templating.DropdownAnnotationConverter FreemarkerTypeConverterConfig.fmDropdownAnnotationConverter(FreemarkerRendering)"
+  })
+  void testFmDropdownAnnotationConverter_givenFreemarkerTypeConverterConfig2() {
+    // Arrange
+    FreemarkerTypeConverterConfig freemarkerTypeConverterConfig =
+        new FreemarkerTypeConverterConfig();
+
+    // Act and Assert
+    assertEquals(
+        40,
+        freemarkerTypeConverterConfig
+            .fmDropdownAnnotationConverter(new FreemarkerRendering())
+            .getPriority());
   }
 
   /**
    * Test {@link FreemarkerTypeConverterConfig#rmUserConverter(FreemarkerRendering)}.
-   * <p>
-   * Method under test: {@link FreemarkerTypeConverterConfig#rmUserConverter(FreemarkerRendering)}
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig}.
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#rmUserConverter(FreemarkerRendering)}
    */
   @Test
-  @DisplayName("Test rmUserConverter(FreemarkerRendering)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test rmUserConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.templating.UserConverter org.finos.springbot.symphony.templating.FreemarkerTypeConverterConfig.rmUserConverter(org.finos.springbot.symphony.templating.FreemarkerRendering)"})
-  void testRmUserConverter() {
+    "org.finos.springbot.workflow.templating.UserConverter FreemarkerTypeConverterConfig.rmUserConverter(FreemarkerRendering)"
+  })
+  void testRmUserConverter_givenFreemarkerTypeConverterConfig() {
     // Arrange, Act and Assert
-    assertEquals(50, freemarkerTypeConverterConfig.rmUserConverter(new FreemarkerRendering()).getPriority());
+    assertEquals(
+        50, freemarkerTypeConverterConfig.rmUserConverter(new FreemarkerRendering()).getPriority());
+  }
+
+  /**
+   * Test {@link FreemarkerTypeConverterConfig#rmUserConverter(FreemarkerRendering)}.
+   *
+   * <ul>
+   *   <li>Given {@link FreemarkerTypeConverterConfig} (default constructor).
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * FreemarkerTypeConverterConfig#rmUserConverter(FreemarkerRendering)}
+   */
+  @Test
+  @DisplayName(
+      "Test rmUserConverter(FreemarkerRendering); given FreemarkerTypeConverterConfig (default constructor)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "org.finos.springbot.workflow.templating.UserConverter FreemarkerTypeConverterConfig.rmUserConverter(FreemarkerRendering)"
+  })
+  void testRmUserConverter_givenFreemarkerTypeConverterConfig2() {
+    // Arrange
+    FreemarkerTypeConverterConfig freemarkerTypeConverterConfig =
+        new FreemarkerTypeConverterConfig();
+
+    // Act and Assert
+    assertEquals(
+        50, freemarkerTypeConverterConfig.rmUserConverter(new FreemarkerRendering()).getPriority());
   }
 }

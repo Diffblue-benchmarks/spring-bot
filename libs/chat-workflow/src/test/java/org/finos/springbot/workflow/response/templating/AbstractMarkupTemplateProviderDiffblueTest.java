@@ -1,14 +1,17 @@
 package org.finos.springbot.workflow.response.templating;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.function.BiFunction;
 import org.finos.springbot.workflow.content.Addressable;
 import org.finos.springbot.workflow.content.Content;
@@ -18,52 +21,71 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.io.ApplicationResourceLoader;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.ProtocolResolver;
+import org.springframework.core.io.ResourceLoader;
 
 class AbstractMarkupTemplateProviderDiffblueTest {
   /**
    * Test {@link AbstractMarkupTemplateProvider#deserializeTemplate(InputStream)}.
-   * <p>
-   * Method under test: {@link AbstractMarkupTemplateProvider#deserializeTemplate(InputStream)}
+   *
+   * <p>Method under test: {@link AbstractMarkupTemplateProvider#deserializeTemplate(InputStream)}
    */
   @Test
   @DisplayName("Test deserializeTemplate(InputStream)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.response.templating.Markup org.finos.springbot.workflow.response.templating.AbstractMarkupTemplateProvider.deserializeTemplate(java.io.InputStream)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Markup AbstractMarkupTemplateProvider.deserializeTemplate(InputStream)"})
   void testDeserializeTemplate() throws IOException {
     // Arrange
-    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider = new SimpleMarkupTemplateProvider("Template Prefix",
-        "Template Suffix", "Default Template Name", new ApplicationResourceLoader(), mock(BiFunction.class));
+    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider =
+        new SimpleMarkupTemplateProvider(
+            "Template Prefix",
+            "Template Suffix",
+            "Default Template Name",
+            new ApplicationResourceLoader(),
+            mock(BiFunction.class));
     ByteArrayInputStream is = new ByteArrayInputStream("AXAXAXAX".getBytes("UTF-8"));
 
     // Act and Assert
     assertEquals("AXAXAXAX", simpleMarkupTemplateProvider.deserializeTemplate(is).getContents());
-    assertEquals(-1, is.read(new byte[]{}));
+    assertEquals(-1, is.read(new byte[] {}));
   }
 
   /**
-   * Test {@link AbstractMarkupTemplateProvider#applyTemplate(Markup, MessageResponse)} with {@code Markup}, {@code MessageResponse}.
-   * <p>
-   * Method under test: {@link AbstractMarkupTemplateProvider#applyTemplate(Markup, MessageResponse)}
+   * Test {@link AbstractMarkupTemplateProvider#applyTemplate(Markup, MessageResponse)} with {@code
+   * Markup}, {@code MessageResponse}.
+   *
+   * <p>Method under test: {@link AbstractMarkupTemplateProvider#applyTemplate(Markup,
+   * MessageResponse)}
    */
   @Test
   @DisplayName("Test applyTemplate(Markup, MessageResponse) with 'Markup', 'MessageResponse'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.response.templating.Markup org.finos.springbot.workflow.response.templating.AbstractMarkupTemplateProvider.applyTemplate(org.finos.springbot.workflow.response.templating.Markup, org.finos.springbot.workflow.response.MessageResponse)"})
+    "Markup AbstractMarkupTemplateProvider.applyTemplate(Markup, MessageResponse)"
+  })
   void testApplyTemplateWithMarkupMessageResponse() {
     // Arrange
     BiFunction<Content, Markup, String> converter = mock(BiFunction.class);
     when(converter.apply(Mockito.<Content>any(), Mockito.<Markup>any())).thenReturn("Apply");
-    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider = new SimpleMarkupTemplateProvider("Template Prefix",
-        "Template Suffix", "Default Template Name", new ApplicationResourceLoader(), converter);
+    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider =
+        new SimpleMarkupTemplateProvider(
+            "Template Prefix",
+            "Template Suffix",
+            "Default Template Name",
+            new ApplicationResourceLoader(),
+            converter);
     Markup markup = mock(Markup.class);
     when(markup.getContents()).thenReturn("Not all who wander are lost");
 
     // Act
-    String actualContents = simpleMarkupTemplateProvider
-        .applyTemplate(markup, new MessageResponse(mock(Addressable.class), "Not all who wander are lost"))
-        .getContents();
+    String actualContents =
+        simpleMarkupTemplateProvider
+            .applyTemplate(
+                markup, new MessageResponse(mock(Addressable.class), "Not all who wander are lost"))
+            .getContents();
 
     // Assert
     verify(converter).apply(isA(Content.class), isA(Markup.class));
@@ -73,40 +95,108 @@ class AbstractMarkupTemplateProviderDiffblueTest {
 
   /**
    * Test {@link AbstractMarkupTemplateProvider#prepareMarkupForInsertion(String)}.
-   * <p>
-   * Method under test: {@link AbstractMarkupTemplateProvider#prepareMarkupForInsertion(String)}
+   *
+   * <p>Method under test: {@link AbstractMarkupTemplateProvider#prepareMarkupForInsertion(String)}
    */
   @Test
   @DisplayName("Test prepareMarkupForInsertion(String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.response.templating.AbstractMarkupTemplateProvider.prepareMarkupForInsertion(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String AbstractMarkupTemplateProvider.prepareMarkupForInsertion(String)"})
   void testPrepareMarkupForInsertion() {
     // Arrange, Act and Assert
-    assertEquals("Markup",
-        (new SimpleMarkupTemplateProvider("Template Prefix", "Template Suffix", "Default Template Name",
-            new ApplicationResourceLoader(), mock(BiFunction.class))).prepareMarkupForInsertion("Markup"));
+    assertEquals(
+        "Markup",
+        new SimpleMarkupTemplateProvider(
+                "Template Prefix",
+                "Template Suffix",
+                "Default Template Name",
+                new ApplicationResourceLoader(),
+                mock(BiFunction.class))
+            .prepareMarkupForInsertion("Markup"));
   }
 
   /**
-   * Test {@link AbstractMarkupTemplateProvider#getDefaultTemplate(MessageResponse)} with {@code MessageResponse}.
-   * <p>
-   * Method under test: {@link AbstractMarkupTemplateProvider#getDefaultTemplate(MessageResponse)}
+   * Test {@link AbstractMarkupTemplateProvider#getDefaultTemplate(MessageResponse)} with {@code
+   * MessageResponse}.
+   *
+   * <ul>
+   *   <li>Then return Contents is {@code AXAXAXAX}.
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * AbstractMarkupTemplateProvider#getDefaultTemplate(MessageResponse)}
    */
   @Test
-  @DisplayName("Test getDefaultTemplate(MessageResponse) with 'MessageResponse'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.response.templating.Markup org.finos.springbot.workflow.response.templating.AbstractMarkupTemplateProvider.getDefaultTemplate(org.finos.springbot.workflow.response.MessageResponse)"})
-  void testGetDefaultTemplateWithMessageResponse() {
+  @DisplayName(
+      "Test getDefaultTemplate(MessageResponse) with 'MessageResponse'; then return Contents is 'AXAXAXAX'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Markup AbstractMarkupTemplateProvider.getDefaultTemplate(MessageResponse)"})
+  void testGetDefaultTemplateWithMessageResponse_thenReturnContentsIsAxaxaxax()
+      throws UnsupportedEncodingException {
     // Arrange
-    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider = new SimpleMarkupTemplateProvider("Template Prefix",
-        "Template Suffix", "Default Template Name", new ApplicationResourceLoader(), mock(BiFunction.class));
+    ProtocolResolver resolver = mock(ProtocolResolver.class);
+    when(resolver.resolve(Mockito.<String>any(), Mockito.<ResourceLoader>any()))
+        .thenReturn(new ByteArrayResource("AXAXAXAX".getBytes("UTF-8")));
+
+    ApplicationResourceLoader rl = new ApplicationResourceLoader();
+    rl.addProtocolResolver(resolver);
+    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider =
+        new SimpleMarkupTemplateProvider(
+            "Template Prefix",
+            "Template Suffix",
+            "Default Template Name",
+            rl,
+            mock(BiFunction.class));
+
+    // Act
+    String actualContents =
+        simpleMarkupTemplateProvider
+            .getDefaultTemplate(
+                new MessageResponse(mock(Addressable.class), "Not all who wander are lost"))
+            .getContents();
+
+    // Assert
+    verify(resolver)
+        .resolve(
+            eq("Template PrefixDefault Template NameTemplate Suffix"), isA(ResourceLoader.class));
+    assertEquals("AXAXAXAX", actualContents);
+  }
+
+  /**
+   * Test {@link AbstractMarkupTemplateProvider#getDefaultTemplate(MessageResponse)} with {@code
+   * MessageResponse}.
+   *
+   * <ul>
+   *   <li>Then return Contents is {@link AbstractMarkupTemplateProvider#MESSAGE_AREA}.
+   * </ul>
+   *
+   * <p>Method under test: {@link
+   * AbstractMarkupTemplateProvider#getDefaultTemplate(MessageResponse)}
+   */
+  @Test
+  @DisplayName(
+      "Test getDefaultTemplate(MessageResponse) with 'MessageResponse'; then return Contents is MESSAGE_AREA")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Markup AbstractMarkupTemplateProvider.getDefaultTemplate(MessageResponse)"})
+  void testGetDefaultTemplateWithMessageResponse_thenReturnContentsIsMessage_area() {
+    // Arrange
+    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider =
+        new SimpleMarkupTemplateProvider(
+            "Template Prefix",
+            "Template Suffix",
+            "Default Template Name",
+            new ApplicationResourceLoader(),
+            mock(BiFunction.class));
 
     // Act and Assert
-    assertEquals(AbstractMarkupTemplateProvider.MESSAGE_AREA,
+    assertEquals(
+        AbstractMarkupTemplateProvider.MESSAGE_AREA,
         simpleMarkupTemplateProvider
-            .getDefaultTemplate(new MessageResponse(mock(Addressable.class), "Not all who wander are lost"))
+            .getDefaultTemplate(
+                new MessageResponse(mock(Addressable.class), "Not all who wander are lost"))
             .getContents());
   }
 }

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,8 +17,9 @@ import org.junit.jupiter.api.Test;
 class FormActionDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link FormAction#FormAction(Addressable, User, Object, String, Map)}
    *   <li>{@link FormAction#toString()}
@@ -29,14 +31,16 @@ class FormActionDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.workflow.actions.FormAction.<init>(org.finos.springbot.workflow.content.Addressable, org.finos.springbot.workflow.content.User, java.lang.Object, java.lang.String, java.util.Map)",
-      "java.lang.String org.finos.springbot.workflow.actions.FormAction.getAction()",
-      "org.finos.springbot.workflow.content.Addressable org.finos.springbot.workflow.actions.FormAction.getAddressable()",
-      "java.lang.Object org.finos.springbot.workflow.actions.FormAction.getFormData()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.workflow.actions.FormAction.getUser()",
-      "java.lang.String org.finos.springbot.workflow.actions.FormAction.toString()"})
+    "void FormAction.<init>(Addressable, User, Object, String, Map)",
+    "String FormAction.getAction()",
+    "Addressable FormAction.getAddressable()",
+    "Object FormAction.getFormData()",
+    "User FormAction.getUser()",
+    "String FormAction.toString()"
+  })
   void testGettersAndSetters() {
     // Arrange
     Addressable a = mock(Addressable.class);
@@ -54,29 +58,12 @@ class FormActionDiffblueTest {
     // Assert
     assertEquals("Action", actualAction);
     assertEquals("Form Data", actualFormData);
-    assertEquals("FormAction [formData=Form Data, action=Action, entityMap={}]", actualToStringResult);
+    assertEquals(
+        "FormAction [formData=Form Data, action=Action, entityMap={}]", actualToStringResult);
     Map<String, Object> data = actualFormAction.getData();
     assertTrue(data.isEmpty());
     assertSame(entityMap, data);
     assertSame(a, actualAddressable);
     assertSame(u, actualUser);
-  }
-
-  /**
-   * Test {@link FormAction#getData()}.
-   * <p>
-   * Method under test: {@link FormAction#getData()}
-   */
-  @Test
-  @DisplayName("Test getData()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.util.Map org.finos.springbot.workflow.actions.FormAction.getData()"})
-  void testGetData() {
-    // Arrange
-    Addressable a = mock(Addressable.class);
-    User u = mock(User.class);
-
-    // Act and Assert
-    assertTrue((new FormAction(a, u, "Form Data", "Action", new HashMap<>())).getData().isEmpty());
   }
 }

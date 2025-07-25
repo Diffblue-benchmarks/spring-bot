@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import jakarta.ws.rs.RuntimeType;
 import jakarta.ws.rs.client.WebTarget;
@@ -28,47 +29,57 @@ import org.junit.jupiter.api.Test;
 class JerseyApiBuilderDiffblueTest {
   /**
    * Test {@link JerseyApiBuilder#JerseyApiBuilder(String, KeyManager[])}.
+   *
    * <ul>
-   *   <li>Then return first element is {@code null}.</li>
+   *   <li>Then return first element is {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#JerseyApiBuilder(String, KeyManager[])}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#JerseyApiBuilder(String, KeyManager[])}
    */
   @Test
-  @DisplayName("Test new JerseyApiBuilder(String, KeyManager[]); then return first element is 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.<init>()",
-      "void org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.<init>(java.lang.String)",
-      "void org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.<init>(java.lang.String, javax.net.ssl.KeyManager[])"})
+  @DisplayName(
+      "Test new JerseyApiBuilder(String, KeyManager[]); then return first element is 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void JerseyApiBuilder.<init>()",
+    "void JerseyApiBuilder.<init>(String)",
+    "void JerseyApiBuilder.<init>(String, KeyManager[])"
+  })
   void testNewJerseyApiBuilder_thenReturnFirstElementIsNull() {
     // Arrange
-    KeyManager[] keyManagers = new KeyManager[]{null};
+    KeyManager[] keyManagers = new KeyManager[] {null};
 
     // Act
-    JerseyApiBuilder actualJerseyApiBuilder = new JerseyApiBuilder("https://example.org/example", keyManagers);
+    JerseyApiBuilder actualJerseyApiBuilder =
+        new JerseyApiBuilder("https://example.org/example", keyManagers);
 
     // Assert
-    assertNull(actualJerseyApiBuilder.getTrustManagers());
     KeyManager[] keyManagers2 = actualJerseyApiBuilder.getKeyManagers();
     assertNull(keyManagers2[0]);
+    assertNull(actualJerseyApiBuilder.getTrustManagers());
     assertEquals(1, keyManagers2.length);
     assertSame(keyManagers, keyManagers2);
   }
 
   /**
    * Test {@link JerseyApiBuilder#JerseyApiBuilder()}.
+   *
    * <ul>
-   *   <li>Then return KeyManagers is {@code null}.</li>
+   *   <li>Then return KeyManagers is {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#JerseyApiBuilder()}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#JerseyApiBuilder()}
    */
   @Test
   @DisplayName("Test new JerseyApiBuilder(); then return KeyManagers is 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.<init>()",
-      "void org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.<init>(java.lang.String)",
-      "void org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.<init>(java.lang.String, javax.net.ssl.KeyManager[])"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void JerseyApiBuilder.<init>()",
+    "void JerseyApiBuilder.<init>(String)",
+    "void JerseyApiBuilder.<init>(String, KeyManager[])"
+  })
   void testNewJerseyApiBuilder_thenReturnKeyManagersIsNull() {
     // Arrange and Act
     JerseyApiBuilder actualJerseyApiBuilder = new JerseyApiBuilder();
@@ -80,19 +91,24 @@ class JerseyApiBuilderDiffblueTest {
 
   /**
    * Test {@link JerseyApiBuilder#JerseyApiBuilder(String)}.
+   *
    * <ul>
-   *   <li>When {@code https://example.org/example}.</li>
-   *   <li>Then return KeyManagers is {@code null}.</li>
+   *   <li>When {@code https://example.org/example}.
+   *   <li>Then return KeyManagers is {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#JerseyApiBuilder(String)}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#JerseyApiBuilder(String)}
    */
   @Test
-  @DisplayName("Test new JerseyApiBuilder(String); when 'https://example.org/example'; then return KeyManagers is 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.<init>()",
-      "void org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.<init>(java.lang.String)",
-      "void org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.<init>(java.lang.String, javax.net.ssl.KeyManager[])"})
+  @DisplayName(
+      "Test new JerseyApiBuilder(String); when 'https://example.org/example'; then return KeyManagers is 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void JerseyApiBuilder.<init>()",
+    "void JerseyApiBuilder.<init>(String)",
+    "void JerseyApiBuilder.<init>(String, KeyManager[])"
+  })
   void testNewJerseyApiBuilder_whenHttpsExampleOrgExample_thenReturnKeyManagersIsNull() {
     // Arrange and Act
     JerseyApiBuilder actualJerseyApiBuilder = new JerseyApiBuilder("https://example.org/example");
@@ -104,21 +120,23 @@ class JerseyApiBuilderDiffblueTest {
 
   /**
    * Test {@link JerseyApiBuilder#newWebTarget()}.
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#newWebTarget()}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#newWebTarget()}
    */
   @Test
   @DisplayName("Test newWebTarget()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "jakarta.ws.rs.client.WebTarget org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.newWebTarget()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"WebTarget JerseyApiBuilder.newWebTarget()"})
   void testNewWebTarget() {
     // Arrange and Act
-    WebTarget actualNewWebTargetResult = (new JerseyApiBuilder("https://example.org/example")).newWebTarget();
+    WebTarget actualNewWebTargetResult =
+        new JerseyApiBuilder("https://example.org/example").newWebTarget();
 
     // Assert
     Configuration configuration = actualNewWebTargetResult.getConfiguration();
-    assertTrue(((ClientConfig) configuration).getConnectorProvider() instanceof HttpUrlConnectorProvider);
+    assertTrue(
+        ((ClientConfig) configuration).getConnectorProvider() instanceof HttpUrlConnectorProvider);
     assertTrue(actualNewWebTargetResult instanceof JerseyWebTarget);
     UriBuilder uriBuilder = actualNewWebTargetResult.getUriBuilder();
     assertTrue(uriBuilder instanceof JerseyUriBuilder);
@@ -135,22 +153,24 @@ class JerseyApiBuilderDiffblueTest {
 
   /**
    * Test {@link JerseyApiBuilder#newWebTarget(String)} with {@code String}.
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#newWebTarget(String)}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#newWebTarget(String)}
    */
   @Test
   @DisplayName("Test newWebTarget(String) with 'String'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "jakarta.ws.rs.client.WebTarget org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.newWebTarget(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"WebTarget JerseyApiBuilder.newWebTarget(String)"})
   void testNewWebTargetWithString() {
     // Arrange and Act
-    WebTarget actualNewWebTargetResult = (new JerseyApiBuilder("https://example.org/example"))
-        .newWebTarget("https://example.org/example");
+    WebTarget actualNewWebTargetResult =
+        new JerseyApiBuilder("https://example.org/example")
+            .newWebTarget("https://example.org/example");
 
     // Assert
     Configuration configuration = actualNewWebTargetResult.getConfiguration();
-    assertTrue(((ClientConfig) configuration).getConnectorProvider() instanceof HttpUrlConnectorProvider);
+    assertTrue(
+        ((ClientConfig) configuration).getConnectorProvider() instanceof HttpUrlConnectorProvider);
     assertTrue(actualNewWebTargetResult instanceof JerseyWebTarget);
     UriBuilder uriBuilder = actualNewWebTargetResult.getUriBuilder();
     assertTrue(uriBuilder instanceof JerseyUriBuilder);
@@ -167,24 +187,27 @@ class JerseyApiBuilderDiffblueTest {
 
   /**
    * Test {@link JerseyApiBuilder#newWebTarget(String)} with {@code String}.
+   *
    * <ul>
-   *   <li>Then return Configuration Properties size is one.</li>
+   *   <li>Then return Configuration Properties size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#newWebTarget(String)}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#newWebTarget(String)}
    */
   @Test
-  @DisplayName("Test newWebTarget(String) with 'String'; then return Configuration Properties size is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "jakarta.ws.rs.client.WebTarget org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.newWebTarget(java.lang.String)"})
+  @DisplayName(
+      "Test newWebTarget(String) with 'String'; then return Configuration Properties size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"WebTarget JerseyApiBuilder.newWebTarget(String)"})
   void testNewWebTargetWithString_thenReturnConfigurationPropertiesSizeIsOne() {
     // Arrange
     JerseyApiBuilder jerseyApiBuilder = new JerseyApiBuilder("https://example.org/example");
     jerseyApiBuilder.setConnectTimeout(1L);
 
     // Act
-    WebTarget actualNewWebTargetResult = jerseyApiBuilder.newWebTarget("https://example.org/example");
+    WebTarget actualNewWebTargetResult =
+        jerseyApiBuilder.newWebTarget("https://example.org/example");
 
     // Assert
     assertTrue(actualNewWebTargetResult instanceof JerseyWebTarget);
@@ -197,17 +220,18 @@ class JerseyApiBuilderDiffblueTest {
 
   /**
    * Test {@link JerseyApiBuilder#newWebTarget()}.
+   *
    * <ul>
-   *   <li>Then return Configuration Properties size is one.</li>
+   *   <li>Then return Configuration Properties size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#newWebTarget()}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#newWebTarget()}
    */
   @Test
   @DisplayName("Test newWebTarget(); then return Configuration Properties size is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "jakarta.ws.rs.client.WebTarget org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.newWebTarget()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"WebTarget JerseyApiBuilder.newWebTarget()"})
   void testNewWebTarget_thenReturnConfigurationPropertiesSizeIsOne() {
     // Arrange
     JerseyApiBuilder jerseyApiBuilder = new JerseyApiBuilder("https://example.org/example");
@@ -227,17 +251,19 @@ class JerseyApiBuilderDiffblueTest {
 
   /**
    * Test {@link JerseyApiBuilder#registerFeatures(JerseyClientBuilder)}.
+   *
    * <ul>
-   *   <li>Then {@link JerseyClientBuilder} (default constructor) Configuration Classes size is one.</li>
+   *   <li>Then {@link JerseyClientBuilder} (default constructor) Configuration Classes size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#registerFeatures(JerseyClientBuilder)}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#registerFeatures(JerseyClientBuilder)}
    */
   @Test
-  @DisplayName("Test registerFeatures(JerseyClientBuilder); then JerseyClientBuilder (default constructor) Configuration Classes size is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.registerFeatures(org.glassfish.jersey.client.JerseyClientBuilder)"})
+  @DisplayName(
+      "Test registerFeatures(JerseyClientBuilder); then JerseyClientBuilder (default constructor) Configuration Classes size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void JerseyApiBuilder.registerFeatures(JerseyClientBuilder)"})
   void testRegisterFeatures_thenJerseyClientBuilderConfigurationClassesSizeIsOne() {
     // Arrange
     JerseyApiBuilder jerseyApiBuilder = new JerseyApiBuilder("https://example.org/example");
@@ -252,17 +278,18 @@ class JerseyApiBuilderDiffblueTest {
 
   /**
    * Test {@link JerseyApiBuilder#createSSLContext()}.
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#createSSLContext()}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#createSSLContext()}
    */
   @Test
   @DisplayName("Test createSSLContext()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "javax.net.ssl.SSLContext org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.createSSLContext()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"SSLContext JerseyApiBuilder.createSSLContext()"})
   void testCreateSSLContext() throws KeyManagementException, NoSuchAlgorithmException {
     // Arrange and Act
-    SSLContext actualCreateSSLContextResult = (new JerseyApiBuilder("https://example.org/example")).createSSLContext();
+    SSLContext actualCreateSSLContextResult =
+        new JerseyApiBuilder("https://example.org/example").createSSLContext();
 
     // Assert
     assertEquals("TLSv1.2", actualCreateSSLContextResult.getProtocol());
@@ -278,20 +305,22 @@ class JerseyApiBuilderDiffblueTest {
 
   /**
    * Test {@link JerseyApiBuilder#createConfig()}.
+   *
    * <ul>
-   *   <li>Then ConnectorProvider return {@link HttpUrlConnectorProvider}.</li>
+   *   <li>Then ConnectorProvider return {@link HttpUrlConnectorProvider}.
    * </ul>
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#createConfig()}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#createConfig()}
    */
   @Test
   @DisplayName("Test createConfig(); then ConnectorProvider return HttpUrlConnectorProvider")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.glassfish.jersey.client.ClientConfig org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.createConfig()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"ClientConfig JerseyApiBuilder.createConfig()"})
   void testCreateConfig_thenConnectorProviderReturnHttpUrlConnectorProvider() {
     // Arrange and Act
-    ClientConfig actualCreateConfigResult = (new JerseyApiBuilder("https://example.org/example")).createConfig();
+    ClientConfig actualCreateConfigResult =
+        new JerseyApiBuilder("https://example.org/example").createConfig();
 
     // Assert
     assertTrue(actualCreateConfigResult.getConnectorProvider() instanceof HttpUrlConnectorProvider);
@@ -308,17 +337,18 @@ class JerseyApiBuilderDiffblueTest {
 
   /**
    * Test {@link JerseyApiBuilder#createConfig()}.
+   *
    * <ul>
-   *   <li>Then return Properties size is one.</li>
+   *   <li>Then return Properties size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#createConfig()}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#createConfig()}
    */
   @Test
   @DisplayName("Test createConfig(); then return Properties size is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.glassfish.jersey.client.ClientConfig org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.createConfig()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"ClientConfig JerseyApiBuilder.createConfig()"})
   void testCreateConfig_thenReturnPropertiesSizeIsOne() {
     // Arrange
     JerseyApiBuilder jerseyApiBuilder = new JerseyApiBuilder("https://example.org/example");
@@ -336,13 +366,14 @@ class JerseyApiBuilderDiffblueTest {
 
   /**
    * Test {@link JerseyApiBuilder#testConnection(String)}.
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#testConnection(String)}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#testConnection(String)}
    */
   @Test
   @DisplayName("Test testConnection(String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.testConnection(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean JerseyApiBuilder.testConnection(String)"})
   void testTestConnection() {
     // Arrange
     JerseyApiBuilder jerseyApiBuilder = new JerseyApiBuilder("https://example.org/example");
@@ -354,19 +385,23 @@ class JerseyApiBuilderDiffblueTest {
 
   /**
    * Test {@link JerseyApiBuilder#testConnection(String)}.
+   *
    * <ul>
-   *   <li>Given {@link JerseyApiBuilder#JerseyApiBuilder(String)} with url is {@code https://example.org/example}.</li>
-   *   <li>When {@code null}.</li>
+   *   <li>Given {@link JerseyApiBuilder#JerseyApiBuilder(String)} with url is {@code
+   *       https://example.org/example}.
+   *   <li>When {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link JerseyApiBuilder#testConnection(String)}
+   *
+   * <p>Method under test: {@link JerseyApiBuilder#testConnection(String)}
    */
   @Test
-  @DisplayName("Test testConnection(String); given JerseyApiBuilder(String) with url is 'https://example.org/example'; when 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.tool.rssbot.load.JerseyApiBuilder.testConnection(java.lang.String)"})
+  @DisplayName(
+      "Test testConnection(String); given JerseyApiBuilder(String) with url is 'https://example.org/example'; when 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean JerseyApiBuilder.testConnection(String)"})
   void testTestConnection_givenJerseyApiBuilderWithUrlIsHttpsExampleOrgExample_whenNull() {
     // Arrange, Act and Assert
-    assertFalse((new JerseyApiBuilder("https://example.org/example")).testConnection(null));
+    assertFalse(new JerseyApiBuilder("https://example.org/example").testConnection(null));
   }
 }

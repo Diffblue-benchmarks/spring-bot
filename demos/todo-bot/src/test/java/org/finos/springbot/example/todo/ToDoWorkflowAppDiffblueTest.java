@@ -4,8 +4,8 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import java.util.function.Consumer;
 import org.finos.springbot.symphony.content.SymphonyRoom;
 import org.finos.springbot.symphony.content.SymphonyUser;
 import org.finos.springbot.workflow.actions.MemberAction;
@@ -21,18 +21,20 @@ import org.mockito.Mockito;
 class ToDoWorkflowAppDiffblueTest {
   /**
    * Test {@link ToDoWorkflowApp#rwec(ResponseHandlers)}.
+   *
    * <ul>
-   *   <li>When {@link ResponseHandlers} {@link Consumer#accept(Object)} does nothing.</li>
-   *   <li>Then calls {@link Consumer#accept(Object)}.</li>
+   *   <li>When {@link ResponseHandlers} {@link ResponseHandlers#accept(Object)} does nothing.
+   *   <li>Then calls {@link ResponseHandlers#accept(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link ToDoWorkflowApp#rwec(ResponseHandlers)}
+   *
+   * <p>Method under test: {@link ToDoWorkflowApp#rwec(ResponseHandlers)}
    */
   @Test
-  @DisplayName("Test rwec(ResponseHandlers); when ResponseHandlers accept(Object) does nothing; then calls accept(Object)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.welcome.RoomWelcomeEventConsumer org.finos.springbot.example.todo.ToDoWorkflowApp.rwec(org.finos.springbot.workflow.response.handlers.ResponseHandlers)"})
+  @DisplayName(
+      "Test rwec(ResponseHandlers); when ResponseHandlers accept(Object) does nothing; then calls accept(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"RoomWelcomeEventConsumer ToDoWorkflowApp.rwec(ResponseHandlers)"})
   void testRwec_whenResponseHandlersAcceptDoesNothing_thenCallsAccept() {
     // Arrange
     ToDoWorkflowApp toDoWorkflowApp = new ToDoWorkflowApp();

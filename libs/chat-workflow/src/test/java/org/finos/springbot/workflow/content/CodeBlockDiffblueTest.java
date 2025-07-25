@@ -3,6 +3,7 @@ package org.finos.springbot.workflow.content;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.workflow.content.CodeBlock.CodeBlockImpl;
 import org.junit.jupiter.api.DisplayName;
@@ -12,22 +13,25 @@ import org.junit.jupiter.api.Test;
 class CodeBlockDiffblueTest {
   /**
    * Test CodeBlockImpl {@link CodeBlockImpl#equals(Object)}, and {@link CodeBlockImpl#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link CodeBlockImpl#equals(Object)}
    *   <li>{@link CodeBlockImpl#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName("Test CodeBlockImpl equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.hashCode()"})
+  @DisplayName(
+      "Test CodeBlockImpl equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean CodeBlockImpl.equals(Object)", "int CodeBlockImpl.hashCode()"})
   void testCodeBlockImplEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     CodeBlockImpl codeBlockImpl = new CodeBlockImpl("foo");
@@ -41,22 +45,25 @@ class CodeBlockDiffblueTest {
 
   /**
    * Test CodeBlockImpl {@link CodeBlockImpl#equals(Object)}, and {@link CodeBlockImpl#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link CodeBlockImpl#equals(Object)}
    *   <li>{@link CodeBlockImpl#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName("Test CodeBlockImpl equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.hashCode()"})
+  @DisplayName(
+      "Test CodeBlockImpl equals(Object), and hashCode(); when other is same; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean CodeBlockImpl.equals(Object)", "int CodeBlockImpl.hashCode()"})
   void testCodeBlockImplEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     CodeBlockImpl codeBlockImpl = new CodeBlockImpl("foo");
@@ -69,21 +76,23 @@ class CodeBlockDiffblueTest {
 
   /**
    * Test CodeBlockImpl {@link CodeBlockImpl#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link CodeBlockImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link CodeBlockImpl#equals(Object)}
    */
   @Test
   @DisplayName("Test CodeBlockImpl equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean CodeBlockImpl.equals(Object)", "int CodeBlockImpl.hashCode()"})
   void testCodeBlockImplEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
-    CodeBlockImpl codeBlockImpl = new CodeBlockImpl("org.finos.springbot.workflow.content.CodeBlock");
+    CodeBlockImpl codeBlockImpl =
+        new CodeBlockImpl("org.finos.springbot.workflow.content.CodeBlock");
 
     // Act and Assert
     assertNotEquals(codeBlockImpl, new CodeBlockImpl("foo"));
@@ -91,18 +100,19 @@ class CodeBlockDiffblueTest {
 
   /**
    * Test CodeBlockImpl {@link CodeBlockImpl#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link CodeBlockImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link CodeBlockImpl#equals(Object)}
    */
   @Test
   @DisplayName("Test CodeBlockImpl equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean CodeBlockImpl.equals(Object)", "int CodeBlockImpl.hashCode()"})
   void testCodeBlockImplEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange, Act and Assert
     assertNotEquals(new CodeBlockImpl("foo"), null);
@@ -110,18 +120,19 @@ class CodeBlockDiffblueTest {
 
   /**
    * Test CodeBlockImpl {@link CodeBlockImpl#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link CodeBlockImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link CodeBlockImpl#equals(Object)}
    */
   @Test
   @DisplayName("Test CodeBlockImpl equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean CodeBlockImpl.equals(Object)", "int CodeBlockImpl.hashCode()"})
   void testCodeBlockImplEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange, Act and Assert
     assertNotEquals(new CodeBlockImpl("foo"), "Different type to CodeBlockImpl");
@@ -129,8 +140,9 @@ class CodeBlockDiffblueTest {
 
   /**
    * Test CodeBlockImpl getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link CodeBlockImpl#CodeBlockImpl(String)}
    *   <li>{@link CodeBlockImpl#toString()}
@@ -139,10 +151,13 @@ class CodeBlockDiffblueTest {
    */
   @Test
   @DisplayName("Test CodeBlockImpl getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.<init>(java.lang.String)",
-      "java.lang.String org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.getText()",
-      "java.lang.String org.finos.springbot.workflow.content.CodeBlock$CodeBlockImpl.toString()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void CodeBlockImpl.<init>(String)",
+    "String CodeBlockImpl.getText()",
+    "String CodeBlockImpl.toString()"
+  })
   void testCodeBlockImplGettersAndSetters() {
     // Arrange and Act
     CodeBlockImpl actualCodeBlockImpl = new CodeBlockImpl("foo");
@@ -155,14 +170,14 @@ class CodeBlockDiffblueTest {
 
   /**
    * Test {@link CodeBlock#of(String)}.
-   * <p>
-   * Method under test: {@link CodeBlock#of(String)}
+   *
+   * <p>Method under test: {@link CodeBlock#of(String)}
    */
   @Test
   @DisplayName("Test of(String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.CodeBlock org.finos.springbot.workflow.content.CodeBlock.of(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"CodeBlock CodeBlock.of(String)"})
   void testOf() {
     // Arrange and Act
     CodeBlock actualOfResult = CodeBlock.of("foo");

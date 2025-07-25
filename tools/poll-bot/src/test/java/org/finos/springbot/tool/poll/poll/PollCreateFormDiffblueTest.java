@@ -3,6 +3,7 @@ package org.finos.springbot.tool.poll.poll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.time.temporal.ChronoUnit;
 import org.finos.springbot.tool.poll.poll.PollCreateForm.TimeUnit;
@@ -13,8 +14,9 @@ import org.junit.jupiter.api.Test;
 class PollCreateFormDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link PollCreateForm#setEndAutomatically(boolean)}
    *   <li>{@link PollCreateForm#setOption1(String)}
@@ -40,27 +42,30 @@ class PollCreateFormDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.tool.poll.poll.PollCreateForm.getOption1()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.PollCreateForm.getOption2()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.PollCreateForm.getOption3()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.PollCreateForm.getOption4()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.PollCreateForm.getOption5()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.PollCreateForm.getOption6()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.PollCreateForm.getQuestion()",
-      "java.lang.Integer org.finos.springbot.tool.poll.poll.PollCreateForm.getTime()",
-      "org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit org.finos.springbot.tool.poll.poll.PollCreateForm.getTimeUnit()",
-      "boolean org.finos.springbot.tool.poll.poll.PollCreateForm.isEndAutomatically()",
-      "void org.finos.springbot.tool.poll.poll.PollCreateForm.setEndAutomatically(boolean)",
-      "void org.finos.springbot.tool.poll.poll.PollCreateForm.setOption1(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.PollCreateForm.setOption2(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.PollCreateForm.setOption3(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.PollCreateForm.setOption4(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.PollCreateForm.setOption5(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.PollCreateForm.setOption6(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.PollCreateForm.setQuestion(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.PollCreateForm.setTime(java.lang.Integer)",
-      "void org.finos.springbot.tool.poll.poll.PollCreateForm.setTimeUnit(org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "String PollCreateForm.getOption1()",
+    "String PollCreateForm.getOption2()",
+    "String PollCreateForm.getOption3()",
+    "String PollCreateForm.getOption4()",
+    "String PollCreateForm.getOption5()",
+    "String PollCreateForm.getOption6()",
+    "String PollCreateForm.getQuestion()",
+    "Integer PollCreateForm.getTime()",
+    "TimeUnit PollCreateForm.getTimeUnit()",
+    "boolean PollCreateForm.isEndAutomatically()",
+    "void PollCreateForm.setEndAutomatically(boolean)",
+    "void PollCreateForm.setOption1(String)",
+    "void PollCreateForm.setOption2(String)",
+    "void PollCreateForm.setOption3(String)",
+    "void PollCreateForm.setOption4(String)",
+    "void PollCreateForm.setOption5(String)",
+    "void PollCreateForm.setOption6(String)",
+    "void PollCreateForm.setQuestion(String)",
+    "void PollCreateForm.setTime(Integer)",
+    "void PollCreateForm.setTimeUnit(TimeUnit)"
+  })
   void testGettersAndSetters() {
     // Arrange
     PollCreateForm pollCreateForm = new PollCreateForm();
@@ -102,13 +107,14 @@ class PollCreateFormDiffblueTest {
 
   /**
    * Test new {@link PollCreateForm} (default constructor).
-   * <p>
-   * Method under test: default or parameterless constructor of {@link PollCreateForm}
+   *
+   * <p>Method under test: default or parameterless constructor of {@link PollCreateForm}
    */
   @Test
   @DisplayName("Test new PollCreateForm (default constructor)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.poll.poll.PollCreateForm.<init>()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void PollCreateForm.<init>()"})
   void testNewPollCreateForm() {
     // Arrange and Act
     PollCreateForm actualPollCreateForm = new PollCreateForm();
@@ -128,18 +134,19 @@ class PollCreateFormDiffblueTest {
 
   /**
    * Test TimeUnit {@link TimeUnit#getChronoUnit()}.
+   *
    * <ul>
-   *   <li>Given {@code DAYS}.</li>
-   *   <li>Then return {@code DAYS}.</li>
+   *   <li>Given {@code DAYS}.
+   *   <li>Then return {@code DAYS}.
    * </ul>
-   * <p>
-   * Method under test: {@link TimeUnit#getChronoUnit()}
+   *
+   * <p>Method under test: {@link TimeUnit#getChronoUnit()}
    */
   @Test
   @DisplayName("Test TimeUnit getChronoUnit(); given 'DAYS'; then return 'DAYS'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.time.temporal.ChronoUnit org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit.getChronoUnit()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"ChronoUnit TimeUnit.getChronoUnit()"})
   void testTimeUnitGetChronoUnit_givenDays_thenReturnDays() {
     // Arrange, Act and Assert
     assertEquals(ChronoUnit.DAYS, TimeUnit.DAYS.getChronoUnit());
@@ -147,18 +154,19 @@ class PollCreateFormDiffblueTest {
 
   /**
    * Test TimeUnit {@link TimeUnit#getChronoUnit()}.
+   *
    * <ul>
-   *   <li>Given {@code HOURS}.</li>
-   *   <li>Then return {@code HOURS}.</li>
+   *   <li>Given {@code HOURS}.
+   *   <li>Then return {@code HOURS}.
    * </ul>
-   * <p>
-   * Method under test: {@link TimeUnit#getChronoUnit()}
+   *
+   * <p>Method under test: {@link TimeUnit#getChronoUnit()}
    */
   @Test
   @DisplayName("Test TimeUnit getChronoUnit(); given 'HOURS'; then return 'HOURS'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.time.temporal.ChronoUnit org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit.getChronoUnit()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"ChronoUnit TimeUnit.getChronoUnit()"})
   void testTimeUnitGetChronoUnit_givenHours_thenReturnHours() {
     // Arrange, Act and Assert
     assertEquals(ChronoUnit.HOURS, TimeUnit.HOURS.getChronoUnit());
@@ -166,18 +174,19 @@ class PollCreateFormDiffblueTest {
 
   /**
    * Test TimeUnit {@link TimeUnit#getChronoUnit()}.
+   *
    * <ul>
-   *   <li>Given {@code MINUTES}.</li>
-   *   <li>Then return {@code MINUTES}.</li>
+   *   <li>Given {@code MINUTES}.
+   *   <li>Then return {@code MINUTES}.
    * </ul>
-   * <p>
-   * Method under test: {@link TimeUnit#getChronoUnit()}
+   *
+   * <p>Method under test: {@link TimeUnit#getChronoUnit()}
    */
   @Test
   @DisplayName("Test TimeUnit getChronoUnit(); given 'MINUTES'; then return 'MINUTES'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.time.temporal.ChronoUnit org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit.getChronoUnit()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"ChronoUnit TimeUnit.getChronoUnit()"})
   void testTimeUnitGetChronoUnit_givenMinutes_thenReturnMinutes() {
     // Arrange, Act and Assert
     assertEquals(ChronoUnit.MINUTES, TimeUnit.MINUTES.getChronoUnit());
@@ -185,13 +194,14 @@ class PollCreateFormDiffblueTest {
 
   /**
    * Test TimeUnit {@link TimeUnit#toString()}.
-   * <p>
-   * Method under test: {@link TimeUnit#toString()}
+   *
+   * <p>Method under test: {@link TimeUnit#toString()}
    */
   @Test
   @DisplayName("Test TimeUnit toString()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit.toString()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String TimeUnit.toString()"})
   void testTimeUnitToString() {
     // Arrange, Act and Assert
     assertEquals("Minutes", TimeUnit.valueOf("MINUTES").toString());

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +17,9 @@ import org.junit.jupiter.api.Test;
 class ArticleDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Article#Article()}
    *   <li>{@link Article#setArticleHashTag(HashTag)}
@@ -40,24 +42,27 @@ class ArticleDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.rssbot.feed.Article.<init>()",
-      "org.finos.springbot.symphony.content.HashTag org.finos.springbot.tool.rssbot.feed.Article.getArticleHashTag()",
-      "java.lang.String org.finos.springbot.tool.rssbot.feed.Article.getAuthor()",
-      "org.finos.springbot.symphony.content.HashTag org.finos.springbot.tool.rssbot.feed.Article.getFeedHashTag()",
-      "java.lang.String org.finos.springbot.tool.rssbot.feed.Article.getFeedName()",
-      "java.util.List org.finos.springbot.tool.rssbot.feed.Article.getFeedUrls()",
-      "java.lang.String org.finos.springbot.tool.rssbot.feed.Article.getPubDate()",
-      "java.lang.String org.finos.springbot.tool.rssbot.feed.Article.getTitle()",
-      "java.lang.String org.finos.springbot.tool.rssbot.feed.Article.getUri()",
-      "void org.finos.springbot.tool.rssbot.feed.Article.setArticleHashTag(org.finos.springbot.symphony.content.HashTag)",
-      "void org.finos.springbot.tool.rssbot.feed.Article.setAuthor(java.lang.String)",
-      "void org.finos.springbot.tool.rssbot.feed.Article.setFeedHashTag(org.finos.springbot.symphony.content.HashTag)",
-      "void org.finos.springbot.tool.rssbot.feed.Article.setFeedName(java.lang.String)",
-      "void org.finos.springbot.tool.rssbot.feed.Article.setFeedUrls(java.util.List)",
-      "void org.finos.springbot.tool.rssbot.feed.Article.setPubDate(java.lang.String)",
-      "void org.finos.springbot.tool.rssbot.feed.Article.setTitle(java.lang.String)",
-      "void org.finos.springbot.tool.rssbot.feed.Article.setUri(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Article.<init>()",
+    "HashTag Article.getArticleHashTag()",
+    "String Article.getAuthor()",
+    "HashTag Article.getFeedHashTag()",
+    "String Article.getFeedName()",
+    "List Article.getFeedUrls()",
+    "String Article.getPubDate()",
+    "String Article.getTitle()",
+    "String Article.getUri()",
+    "void Article.setArticleHashTag(HashTag)",
+    "void Article.setAuthor(String)",
+    "void Article.setFeedHashTag(HashTag)",
+    "void Article.setFeedName(String)",
+    "void Article.setFeedUrls(List)",
+    "void Article.setPubDate(String)",
+    "void Article.setTitle(String)",
+    "void Article.setUri(String)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     Article actualArticle = new Article();
@@ -94,18 +99,23 @@ class ArticleDiffblueTest {
 
   /**
    * Test {@link Article#Article(String, String, String, String, FeedList, HashTag, HashTag)}.
+   *
    * <ul>
-   *   <li>Given {@link Feed} (default constructor) Description is {@code Description}.</li>
-   *   <li>Then return FeedUrls size is two.</li>
+   *   <li>Given {@link Feed} (default constructor) Description is {@code Description}.
+   *   <li>Then return FeedUrls size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Article#Article(String, String, String, String, FeedList, HashTag, HashTag)}
+   *
+   * <p>Method under test: {@link Article#Article(String, String, String, String, FeedList, HashTag,
+   * HashTag)}
    */
   @Test
-  @DisplayName("Test new Article(String, String, String, String, FeedList, HashTag, HashTag); given Feed (default constructor) Description is 'Description'; then return FeedUrls size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new Article(String, String, String, String, FeedList, HashTag, HashTag); given Feed (default constructor) Description is 'Description'; then return FeedUrls size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.tool.rssbot.feed.Article.<init>(java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.finos.springbot.tool.rssbot.feed.FeedList, org.finos.springbot.symphony.content.HashTag, org.finos.springbot.symphony.content.HashTag)"})
+    "void Article.<init>(String, String, String, String, FeedList, HashTag, HashTag)"
+  })
   void testNewArticle_givenFeedDescriptionIsDescription_thenReturnFeedUrlsSizeIsTwo() {
     // Arrange
     Feed feed = new Feed();
@@ -134,7 +144,8 @@ class ArticleDiffblueTest {
     HashTag articleHashTag = new HashTag("42");
 
     // Act
-    Article actualArticle = new Article("Dr", "JaneDoe", "Feed Name", "Uri", fl, feedHashTag, articleHashTag);
+    Article actualArticle =
+        new Article("Dr", "JaneDoe", "Feed Name", "Uri", fl, feedHashTag, articleHashTag);
 
     // Assert
     assertEquals("Dr", actualArticle.getTitle());
@@ -149,17 +160,22 @@ class ArticleDiffblueTest {
 
   /**
    * Test {@link Article#Article(String, String, String, String, FeedList, HashTag, HashTag)}.
+   *
    * <ul>
-   *   <li>Then return FeedUrls Empty.</li>
+   *   <li>Then return FeedUrls Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Article#Article(String, String, String, String, FeedList, HashTag, HashTag)}
+   *
+   * <p>Method under test: {@link Article#Article(String, String, String, String, FeedList, HashTag,
+   * HashTag)}
    */
   @Test
-  @DisplayName("Test new Article(String, String, String, String, FeedList, HashTag, HashTag); then return FeedUrls Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new Article(String, String, String, String, FeedList, HashTag, HashTag); then return FeedUrls Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.tool.rssbot.feed.Article.<init>(java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.finos.springbot.tool.rssbot.feed.FeedList, org.finos.springbot.symphony.content.HashTag, org.finos.springbot.symphony.content.HashTag)"})
+    "void Article.<init>(String, String, String, String, FeedList, HashTag, HashTag)"
+  })
   void testNewArticle_thenReturnFeedUrlsEmpty() {
     // Arrange
     FeedList fl = new FeedList();
@@ -172,7 +188,8 @@ class ArticleDiffblueTest {
     HashTag articleHashTag = new HashTag("42");
 
     // Act
-    Article actualArticle = new Article("Dr", "JaneDoe", "Feed Name", "Uri", fl, feedHashTag, articleHashTag);
+    Article actualArticle =
+        new Article("Dr", "JaneDoe", "Feed Name", "Uri", fl, feedHashTag, articleHashTag);
 
     // Assert
     assertEquals("Dr", actualArticle.getTitle());
@@ -187,17 +204,22 @@ class ArticleDiffblueTest {
 
   /**
    * Test {@link Article#Article(String, String, String, String, FeedList, HashTag, HashTag)}.
+   *
    * <ul>
-   *   <li>Then return FeedUrls size is one.</li>
+   *   <li>Then return FeedUrls size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Article#Article(String, String, String, String, FeedList, HashTag, HashTag)}
+   *
+   * <p>Method under test: {@link Article#Article(String, String, String, String, FeedList, HashTag,
+   * HashTag)}
    */
   @Test
-  @DisplayName("Test new Article(String, String, String, String, FeedList, HashTag, HashTag); then return FeedUrls size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new Article(String, String, String, String, FeedList, HashTag, HashTag); then return FeedUrls size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.tool.rssbot.feed.Article.<init>(java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.finos.springbot.tool.rssbot.feed.FeedList, org.finos.springbot.symphony.content.HashTag, org.finos.springbot.symphony.content.HashTag)"})
+    "void Article.<init>(String, String, String, String, FeedList, HashTag, HashTag)"
+  })
   void testNewArticle_thenReturnFeedUrlsSizeIsOne() {
     // Arrange
     Feed feed = new Feed();
@@ -219,7 +241,8 @@ class ArticleDiffblueTest {
     HashTag articleHashTag = new HashTag("42");
 
     // Act
-    Article actualArticle = new Article("Dr", "JaneDoe", "Feed Name", "Uri", fl, feedHashTag, articleHashTag);
+    Article actualArticle =
+        new Article("Dr", "JaneDoe", "Feed Name", "Uri", fl, feedHashTag, articleHashTag);
 
     // Assert
     assertEquals("Dr", actualArticle.getTitle());

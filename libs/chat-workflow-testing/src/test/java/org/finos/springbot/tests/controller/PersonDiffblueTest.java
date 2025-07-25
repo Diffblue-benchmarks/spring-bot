@@ -2,6 +2,7 @@ package org.finos.springbot.tests.controller;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,9 @@ import org.junit.jupiter.api.Test;
 class PersonDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Person#Person()}
    *   <li>{@link Person#setAddresses(List)}
@@ -24,14 +26,17 @@ class PersonDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tests.controller.Person.<init>()",
-      "void org.finos.springbot.tests.controller.Person.<init>(java.util.List)",
-      "void org.finos.springbot.tests.controller.Person.<init>(java.util.List, java.util.List)",
-      "java.util.List org.finos.springbot.tests.controller.Person.getAddresses()",
-      "java.util.List org.finos.springbot.tests.controller.Person.getNames()",
-      "void org.finos.springbot.tests.controller.Person.setAddresses(java.util.List)",
-      "void org.finos.springbot.tests.controller.Person.setNames(java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Person.<init>()",
+    "void Person.<init>(List)",
+    "void Person.<init>(List, List)",
+    "List Person.getAddresses()",
+    "List Person.getNames()",
+    "void Person.setAddresses(List)",
+    "void Person.setNames(List)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     Person actualPerson = new Person();
@@ -51,11 +56,13 @@ class PersonDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Person#Person(List)}
    *   <li>{@link Person#setAddresses(List)}
@@ -66,14 +73,17 @@ class PersonDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tests.controller.Person.<init>()",
-      "void org.finos.springbot.tests.controller.Person.<init>(java.util.List)",
-      "void org.finos.springbot.tests.controller.Person.<init>(java.util.List, java.util.List)",
-      "java.util.List org.finos.springbot.tests.controller.Person.getAddresses()",
-      "java.util.List org.finos.springbot.tests.controller.Person.getNames()",
-      "void org.finos.springbot.tests.controller.Person.setAddresses(java.util.List)",
-      "void org.finos.springbot.tests.controller.Person.setNames(java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Person.<init>()",
+    "void Person.<init>(List)",
+    "void Person.<init>(List, List)",
+    "List Person.getAddresses()",
+    "List Person.getNames()",
+    "void Person.setAddresses(List)",
+    "void Person.setNames(List)"
+  })
   void testGettersAndSetters_whenArrayList() {
     // Arrange and Act
     Person actualPerson = new Person(new ArrayList<>());
@@ -93,11 +103,13 @@ class PersonDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Person#Person(List, List)}
    *   <li>{@link Person#setAddresses(List)}
@@ -108,14 +120,17 @@ class PersonDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tests.controller.Person.<init>()",
-      "void org.finos.springbot.tests.controller.Person.<init>(java.util.List)",
-      "void org.finos.springbot.tests.controller.Person.<init>(java.util.List, java.util.List)",
-      "java.util.List org.finos.springbot.tests.controller.Person.getAddresses()",
-      "java.util.List org.finos.springbot.tests.controller.Person.getNames()",
-      "void org.finos.springbot.tests.controller.Person.setAddresses(java.util.List)",
-      "void org.finos.springbot.tests.controller.Person.setNames(java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Person.<init>()",
+    "void Person.<init>(List)",
+    "void Person.<init>(List, List)",
+    "List Person.getAddresses()",
+    "List Person.getNames()",
+    "void Person.setAddresses(List)",
+    "void Person.setNames(List)"
+  })
   void testGettersAndSetters_whenArrayList2() {
     // Arrange
     ArrayList<String> names = new ArrayList<>();

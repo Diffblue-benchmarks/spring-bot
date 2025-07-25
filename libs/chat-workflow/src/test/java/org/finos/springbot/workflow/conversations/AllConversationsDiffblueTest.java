@@ -1,8 +1,16 @@
 package org.finos.springbot.workflow.conversations;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isA;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,42 +22,132 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.CustomAutowireConfigurer;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {AllConversations.class})
-@ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
+@ExtendWith(SpringExtension.class)
 class AllConversationsDiffblueTest {
-  @Autowired
-  private AllConversations allConversations;
+  @Autowired private AllConversations allConversations;
 
   /**
    * Test {@link AllConversations#getDelegates()}.
-   * <p>
-   * Method under test: {@link AllConversations#getDelegates()}
+   *
+   * <ul>
+   *   <li>Given {@link AllConversations}.
+   *   <li>Then return Empty.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#getDelegates()}
    */
   @Test
-  @DisplayName("Test getDelegates()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.util.List org.finos.springbot.workflow.conversations.AllConversations.getDelegates()"})
-  void testGetDelegates() {
+  @DisplayName("Test getDelegates(); given AllConversations; then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List AllConversations.getDelegates()"})
+  void testGetDelegates_givenAllConversations_thenReturnEmpty() {
     // Arrange, Act and Assert
     assertTrue(allConversations.getDelegates().isEmpty());
   }
 
   /**
+   * Test {@link AllConversations#getDelegates()}.
+   *
+   * <ul>
+   *   <li>Then return size is one.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#getDelegates()}
+   */
+  @Test
+  @DisplayName("Test getDelegates(); then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List AllConversations.getDelegates()"})
+  void testGetDelegates_thenReturnSizeIsOne() throws BeansException {
+    // Arrange
+    ClassPathXmlApplicationContext applicationContext = mock(ClassPathXmlApplicationContext.class);
+    when(applicationContext.getBean(Mockito.<String>any())).thenReturn(null);
+    when(applicationContext.getBeanNamesForType(Mockito.<Class<?>>any()))
+        .thenReturn(new String[] {"Bean Names For Type"});
+    doNothing()
+        .when(applicationContext)
+        .addBeanFactoryPostProcessor(Mockito.<BeanFactoryPostProcessor>any());
+    applicationContext.addBeanFactoryPostProcessor(new CustomAutowireConfigurer());
+
+    AllConversations allConversations = new AllConversations();
+    allConversations.setApplicationContext(applicationContext);
+
+    // Act
+    List<PlatformConversations<Chat, User>> actualDelegates = allConversations.getDelegates();
+
+    // Assert
+    verify(applicationContext).addBeanFactoryPostProcessor(isA(BeanFactoryPostProcessor.class));
+    verify(applicationContext).getBean(eq("Bean Names For Type"));
+    verify(applicationContext).getBeanNamesForType(isA(Class.class));
+    assertEquals(1, actualDelegates.size());
+    assertNull(actualDelegates.get(0));
+  }
+
+  /**
+   * Test {@link AllConversations#getDelegates()}.
+   *
+   * <ul>
+   *   <li>Then return size is two.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#getDelegates()}
+   */
+  @Test
+  @DisplayName("Test getDelegates(); then return size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List AllConversations.getDelegates()"})
+  void testGetDelegates_thenReturnSizeIsTwo() throws BeansException {
+    // Arrange
+    ClassPathXmlApplicationContext applicationContext = mock(ClassPathXmlApplicationContext.class);
+    when(applicationContext.getBean(Mockito.<String>any())).thenReturn(null);
+    when(applicationContext.getBeanNamesForType(Mockito.<Class<?>>any()))
+        .thenReturn(new String[] {"foo", null});
+    doNothing()
+        .when(applicationContext)
+        .addBeanFactoryPostProcessor(Mockito.<BeanFactoryPostProcessor>any());
+    applicationContext.addBeanFactoryPostProcessor(new CustomAutowireConfigurer());
+
+    AllConversations allConversations = new AllConversations();
+    allConversations.setApplicationContext(applicationContext);
+
+    // Act
+    List<PlatformConversations<Chat, User>> actualDelegates = allConversations.getDelegates();
+
+    // Assert
+    verify(applicationContext).addBeanFactoryPostProcessor(isA(BeanFactoryPostProcessor.class));
+    verify(applicationContext, atLeast(1)).getBean(Mockito.<String>any());
+    verify(applicationContext).getBeanNamesForType(isA(Class.class));
+    assertEquals(2, actualDelegates.size());
+    assertNull(actualDelegates.get(0));
+    assertNull(actualDelegates.get(1));
+  }
+
+  /**
    * Test {@link AllConversations#getAllAddressables()}.
-   * <p>
-   * Method under test: {@link AllConversations#getAllAddressables()}
+   *
+   * <p>Method under test: {@link AllConversations#getAllAddressables()}
    */
   @Test
   @DisplayName("Test getAllAddressables()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.util.Set org.finos.springbot.workflow.conversations.AllConversations.getAllAddressables()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.util.Set AllConversations.getAllAddressables()"})
   void testGetAllAddressables() {
     // Arrange, Act and Assert
     assertTrue(allConversations.getAllAddressables().isEmpty());
@@ -57,13 +155,14 @@ class AllConversationsDiffblueTest {
 
   /**
    * Test {@link AllConversations#getAllChats()}.
-   * <p>
-   * Method under test: {@link AllConversations#getAllChats()}
+   *
+   * <p>Method under test: {@link AllConversations#getAllChats()}
    */
   @Test
   @DisplayName("Test getAllChats()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.util.Set org.finos.springbot.workflow.conversations.AllConversations.getAllChats()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.util.Set AllConversations.getAllChats()"})
   void testGetAllChats() {
     // Arrange, Act and Assert
     assertTrue(allConversations.getAllChats().isEmpty());
@@ -71,33 +170,57 @@ class AllConversationsDiffblueTest {
 
   /**
    * Test {@link AllConversations#getExistingChat(String)}.
-   * <p>
-   * Method under test: {@link AllConversations#getExistingChat(String)}
+   *
+   * <ul>
+   *   <li>When {@code Name}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#getExistingChat(String)}
    */
   @Test
-  @DisplayName("Test getExistingChat(String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.Chat org.finos.springbot.workflow.conversations.AllConversations.getExistingChat(java.lang.String)"})
-  void testGetExistingChat() {
+  @DisplayName("Test getExistingChat(String); when 'Name'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Chat AllConversations.getExistingChat(String)"})
+  void testGetExistingChat_whenName() {
     // Arrange, Act and Assert
     assertNull(allConversations.getExistingChat("Name"));
   }
 
   /**
-   * Test {@link AllConversations#ensureChat(Chat, List, Map)}.
+   * Test {@link AllConversations#getExistingChat(String)}.
+   *
    * <ul>
-   *   <li>Given {@link User}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link User}.</li>
+   *   <li>When {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link AllConversations#ensureChat(Chat, List, Map)}
+   *
+   * <p>Method under test: {@link AllConversations#getExistingChat(String)}
+   */
+  @Test
+  @DisplayName("Test getExistingChat(String); when 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Chat AllConversations.getExistingChat(String)"})
+  void testGetExistingChat_whenNull() {
+    // Arrange, Act and Assert
+    assertNull(allConversations.getExistingChat(null));
+  }
+
+  /**
+   * Test {@link AllConversations#ensureChat(Chat, List, Map)}.
+   *
+   * <ul>
+   *   <li>Given {@link User}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link User}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#ensureChat(Chat, List, Map)}
    */
   @Test
   @DisplayName("Test ensureChat(Chat, List, Map); given User; when ArrayList() add User")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.Chat org.finos.springbot.workflow.conversations.AllConversations.ensureChat(org.finos.springbot.workflow.content.Chat, java.util.List, java.util.Map)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Chat AllConversations.ensureChat(Chat, List, Map)"})
   void testEnsureChat_givenUser_whenArrayListAddUser() {
     // Arrange
     Chat r = mock(Chat.class);
@@ -111,18 +234,19 @@ class AllConversationsDiffblueTest {
 
   /**
    * Test {@link AllConversations#ensureChat(Chat, List, Map)}.
+   *
    * <ul>
-   *   <li>Given {@link User}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link User}.</li>
+   *   <li>Given {@link User}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link User}.
    * </ul>
-   * <p>
-   * Method under test: {@link AllConversations#ensureChat(Chat, List, Map)}
+   *
+   * <p>Method under test: {@link AllConversations#ensureChat(Chat, List, Map)}
    */
   @Test
   @DisplayName("Test ensureChat(Chat, List, Map); given User; when ArrayList() add User")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.Chat org.finos.springbot.workflow.conversations.AllConversations.ensureChat(org.finos.springbot.workflow.content.Chat, java.util.List, java.util.Map)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Chat AllConversations.ensureChat(Chat, List, Map)"})
   void testEnsureChat_givenUser_whenArrayListAddUser2() {
     // Arrange
     Chat r = mock(Chat.class);
@@ -137,17 +261,18 @@ class AllConversationsDiffblueTest {
 
   /**
    * Test {@link AllConversations#ensureChat(Chat, List, Map)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link AllConversations#ensureChat(Chat, List, Map)}
+   *
+   * <p>Method under test: {@link AllConversations#ensureChat(Chat, List, Map)}
    */
   @Test
   @DisplayName("Test ensureChat(Chat, List, Map); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.Chat org.finos.springbot.workflow.conversations.AllConversations.ensureChat(org.finos.springbot.workflow.content.Chat, java.util.List, java.util.Map)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Chat AllConversations.ensureChat(Chat, List, Map)"})
   void testEnsureChat_whenArrayList() {
     // Arrange
     Chat r = mock(Chat.class);
@@ -159,17 +284,18 @@ class AllConversationsDiffblueTest {
 
   /**
    * Test {@link AllConversations#ensureChat(Chat, List, Map)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
+   *   <li>When {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link AllConversations#ensureChat(Chat, List, Map)}
+   *
+   * <p>Method under test: {@link AllConversations#ensureChat(Chat, List, Map)}
    */
   @Test
   @DisplayName("Test ensureChat(Chat, List, Map); when 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.Chat org.finos.springbot.workflow.conversations.AllConversations.ensureChat(org.finos.springbot.workflow.content.Chat, java.util.List, java.util.Map)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Chat AllConversations.ensureChat(Chat, List, Map)"})
   void testEnsureChat_whenNull() {
     // Arrange
     ArrayList<User> users = new ArrayList<>();
@@ -180,61 +306,153 @@ class AllConversationsDiffblueTest {
 
   /**
    * Test {@link AllConversations#getChatMembers(Chat)}.
-   * <p>
-   * Method under test: {@link AllConversations#getChatMembers(Chat)}
+   *
+   * <ul>
+   *   <li>When {@link Chat}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#getChatMembers(Chat)}
    */
   @Test
-  @DisplayName("Test getChatMembers(Chat)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.conversations.AllConversations.getChatMembers(org.finos.springbot.workflow.content.Chat)"})
-  void testGetChatMembers() {
+  @DisplayName("Test getChatMembers(Chat); when Chat")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List AllConversations.getChatMembers(Chat)"})
+  void testGetChatMembers_whenChat() {
     // Arrange, Act and Assert
     assertTrue(allConversations.getChatMembers(mock(Chat.class)).isEmpty());
   }
 
   /**
-   * Test {@link AllConversations#getChatAdmins(Chat)}.
-   * <p>
-   * Method under test: {@link AllConversations#getChatAdmins(Chat)}
+   * Test {@link AllConversations#getChatMembers(Chat)}.
+   *
+   * <ul>
+   *   <li>When {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#getChatMembers(Chat)}
    */
   @Test
-  @DisplayName("Test getChatAdmins(Chat)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.conversations.AllConversations.getChatAdmins(org.finos.springbot.workflow.content.Chat)"})
-  void testGetChatAdmins() {
+  @DisplayName("Test getChatMembers(Chat); when 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List AllConversations.getChatMembers(Chat)"})
+  void testGetChatMembers_whenNull() {
+    // Arrange, Act and Assert
+    assertTrue(allConversations.getChatMembers(null).isEmpty());
+  }
+
+  /**
+   * Test {@link AllConversations#getChatAdmins(Chat)}.
+   *
+   * <ul>
+   *   <li>When {@link Chat}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#getChatAdmins(Chat)}
+   */
+  @Test
+  @DisplayName("Test getChatAdmins(Chat); when Chat")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List AllConversations.getChatAdmins(Chat)"})
+  void testGetChatAdmins_whenChat() {
     // Arrange, Act and Assert
     assertTrue(allConversations.getChatAdmins(mock(Chat.class)).isEmpty());
   }
 
   /**
-   * Test {@link AllConversations#getUserById(String)}.
-   * <p>
-   * Method under test: {@link AllConversations#getUserById(String)}
+   * Test {@link AllConversations#getChatAdmins(Chat)}.
+   *
+   * <ul>
+   *   <li>When {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#getChatAdmins(Chat)}
    */
   @Test
-  @DisplayName("Test getUserById(String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.User org.finos.springbot.workflow.conversations.AllConversations.getUserById(java.lang.String)"})
-  void testGetUserById() {
+  @DisplayName("Test getChatAdmins(Chat); when 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List AllConversations.getChatAdmins(Chat)"})
+  void testGetChatAdmins_whenNull() {
+    // Arrange, Act and Assert
+    assertTrue(allConversations.getChatAdmins(null).isEmpty());
+  }
+
+  /**
+   * Test {@link AllConversations#getUserById(String)}.
+   *
+   * <ul>
+   *   <li>When {@code 42}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#getUserById(String)}
+   */
+  @Test
+  @DisplayName("Test getUserById(String); when '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"User AllConversations.getUserById(String)"})
+  void testGetUserById_when42() {
     // Arrange, Act and Assert
     assertNull(allConversations.getUserById("42"));
   }
 
   /**
-   * Test {@link AllConversations#getChatById(String)}.
-   * <p>
-   * Method under test: {@link AllConversations#getChatById(String)}
+   * Test {@link AllConversations#getUserById(String)}.
+   *
+   * <ul>
+   *   <li>When {@code Id}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#getUserById(String)}
    */
   @Test
-  @DisplayName("Test getChatById(String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.Chat org.finos.springbot.workflow.conversations.AllConversations.getChatById(java.lang.String)"})
-  void testGetChatById() {
+  @DisplayName("Test getUserById(String); when 'Id'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"User AllConversations.getUserById(String)"})
+  void testGetUserById_whenId() {
+    // Arrange, Act and Assert
+    assertNull(allConversations.getUserById("Id"));
+  }
+
+  /**
+   * Test {@link AllConversations#getChatById(String)}.
+   *
+   * <ul>
+   *   <li>When {@code 42}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#getChatById(String)}
+   */
+  @Test
+  @DisplayName("Test getChatById(String); when '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Chat AllConversations.getChatById(String)"})
+  void testGetChatById_when42() {
     // Arrange, Act and Assert
     assertNull(allConversations.getChatById("42"));
+  }
+
+  /**
+   * Test {@link AllConversations#getChatById(String)}.
+   *
+   * <ul>
+   *   <li>When {@code Id}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AllConversations#getChatById(String)}
+   */
+  @Test
+  @DisplayName("Test getChatById(String); when 'Id'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Chat AllConversations.getChatById(String)"})
+  void testGetChatById_whenId() {
+    // Arrange, Act and Assert
+    assertNull(allConversations.getChatById("Id"));
   }
 }

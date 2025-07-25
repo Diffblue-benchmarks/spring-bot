@@ -2,6 +2,7 @@ package org.finos.springbot.example.todo;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,9 @@ import org.junit.jupiter.api.Test;
 class ToDoListDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link ToDoList#ToDoList()}
    *   <li>{@link ToDoList#setItems(List)}
@@ -22,11 +24,14 @@ class ToDoListDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.example.todo.ToDoList.<init>()",
-      "void org.finos.springbot.example.todo.ToDoList.<init>(java.util.List)",
-      "java.util.List org.finos.springbot.example.todo.ToDoList.getItems()",
-      "void org.finos.springbot.example.todo.ToDoList.setItems(java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void ToDoList.<init>()",
+    "void ToDoList.<init>(List)",
+    "List ToDoList.getItems()",
+    "void ToDoList.setItems(List)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     ToDoList actualToDoList = new ToDoList();
@@ -41,11 +46,13 @@ class ToDoListDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link ToDoList#ToDoList(List)}
    *   <li>{@link ToDoList#setItems(List)}
@@ -54,11 +61,14 @@ class ToDoListDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.example.todo.ToDoList.<init>()",
-      "void org.finos.springbot.example.todo.ToDoList.<init>(java.util.List)",
-      "java.util.List org.finos.springbot.example.todo.ToDoList.getItems()",
-      "void org.finos.springbot.example.todo.ToDoList.setItems(java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void ToDoList.<init>()",
+    "void ToDoList.<init>(List)",
+    "List ToDoList.getItems()",
+    "void ToDoList.setItems(List)"
+  })
   void testGettersAndSetters_whenArrayList() {
     // Arrange and Act
     ToDoList actualToDoList = new ToDoList(new ArrayList<>());

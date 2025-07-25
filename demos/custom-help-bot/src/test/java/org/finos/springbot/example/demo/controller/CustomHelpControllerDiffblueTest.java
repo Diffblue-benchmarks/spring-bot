@@ -2,6 +2,7 @@ package org.finos.springbot.example.demo.controller;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.symphony.content.SymphonyUser;
 import org.finos.springbot.workflow.content.Addressable;
@@ -17,25 +18,27 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {CustomHelpController.class})
-@ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
+@ExtendWith(SpringExtension.class)
 class CustomHelpControllerDiffblueTest {
-  @Autowired
-  private CustomHelpController customHelpController;
+  @Autowired private CustomHelpController customHelpController;
 
   /**
    * Test {@link CustomHelpController#handleHelp(Addressable, User)}.
+   *
    * <ul>
-   *   <li>When {@link SymphonyUser#SymphonyUser(long)} with userId is one.</li>
+   *   <li>When {@link SymphonyUser#SymphonyUser(long)} with userId is one.
    * </ul>
-   * <p>
-   * Method under test: {@link CustomHelpController#handleHelp(Addressable, User)}
+   *
+   * <p>Method under test: {@link CustomHelpController#handleHelp(Addressable, User)}
    */
   @Test
   @DisplayName("Test handleHelp(Addressable, User); when SymphonyUser(long) with userId is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.help.HelpPage org.finos.springbot.example.demo.controller.CustomHelpController.handleHelp(org.finos.springbot.workflow.content.Addressable, org.finos.springbot.workflow.content.User)"})
+    "org.finos.springbot.workflow.help.HelpPage CustomHelpController.handleHelp(Addressable, User)"
+  })
   void testHandleHelp_whenSymphonyUserWithUserIdIsOne() {
     // Arrange
     Addressable a = mock(Addressable.class);
@@ -46,17 +49,20 @@ class CustomHelpControllerDiffblueTest {
 
   /**
    * Test {@link CustomHelpController#handleHelp(Addressable, User)}.
+   *
    * <ul>
-   *   <li>When {@link SymphonyUser#SymphonyUser(long)} with userId is two.</li>
+   *   <li>When {@link SymphonyUser#SymphonyUser(long)} with userId is two.
    * </ul>
-   * <p>
-   * Method under test: {@link CustomHelpController#handleHelp(Addressable, User)}
+   *
+   * <p>Method under test: {@link CustomHelpController#handleHelp(Addressable, User)}
    */
   @Test
   @DisplayName("Test handleHelp(Addressable, User); when SymphonyUser(long) with userId is two")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.help.HelpPage org.finos.springbot.example.demo.controller.CustomHelpController.handleHelp(org.finos.springbot.workflow.content.Addressable, org.finos.springbot.workflow.content.User)"})
+    "org.finos.springbot.workflow.help.HelpPage CustomHelpController.handleHelp(Addressable, User)"
+  })
   void testHandleHelp_whenSymphonyUserWithUserIdIsTwo() {
     // Arrange
     Addressable a = mock(Addressable.class);

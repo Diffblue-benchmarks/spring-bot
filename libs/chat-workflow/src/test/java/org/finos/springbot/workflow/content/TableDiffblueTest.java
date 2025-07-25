@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,19 +19,21 @@ import org.junit.jupiter.api.Test;
 class TableDiffblueTest {
   /**
    * Test {@link Table#of(List, List)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Data is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()}.
+   *   <li>Then return Data is {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link Table#of(List, List)}
+   *
+   * <p>Method under test: {@link Table#of(List, List)}
    */
   @Test
-  @DisplayName("Test of(List, List); given ArrayList(); when ArrayList() add ArrayList(); then return Data is ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.Table org.finos.springbot.workflow.content.Table.of(java.util.List, java.util.List)"})
+  @DisplayName(
+      "Test of(List, List); given ArrayList(); when ArrayList() add ArrayList(); then return Data is ArrayList()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Table Table.of(List, List)"})
   void testOf_givenArrayList_whenArrayListAddArrayList_thenReturnDataIsArrayList() {
     // Arrange
     ArrayList<Content> headers = new ArrayList<>();
@@ -49,19 +52,21 @@ class TableDiffblueTest {
 
   /**
    * Test {@link Table#of(List, List)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Data size is one.</li>
+   *   <li>Given {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()}.
+   *   <li>Then return Data size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Table#of(List, List)}
+   *
+   * <p>Method under test: {@link Table#of(List, List)}
    */
   @Test
-  @DisplayName("Test of(List, List); given ArrayList(); when ArrayList() add ArrayList(); then return Data size is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.Table org.finos.springbot.workflow.content.Table.of(java.util.List, java.util.List)"})
+  @DisplayName(
+      "Test of(List, List); given ArrayList(); when ArrayList() add ArrayList(); then return Data size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Table Table.of(List, List)"})
   void testOf_givenArrayList_whenArrayListAddArrayList_thenReturnDataSizeIsOne() {
     // Arrange
     ArrayList<Content> headers = new ArrayList<>();
@@ -84,19 +89,21 @@ class TableDiffblueTest {
 
   /**
    * Test {@link Table#of(List, List)}.
+   *
    * <ul>
-   *   <li>Given {@link Content}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link Content}.</li>
-   *   <li>Then return Text is {@code null}.</li>
+   *   <li>Given {@link Content}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link Content}.
+   *   <li>Then return Text is {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link Table#of(List, List)}
+   *
+   * <p>Method under test: {@link Table#of(List, List)}
    */
   @Test
-  @DisplayName("Test of(List, List); given Content; when ArrayList() add Content; then return Text is 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.Table org.finos.springbot.workflow.content.Table.of(java.util.List, java.util.List)"})
+  @DisplayName(
+      "Test of(List, List); given Content; when ArrayList() add Content; then return Text is 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Table Table.of(List, List)"})
   void testOf_givenContent_whenArrayListAddContent_thenReturnTextIsNull() {
     // Arrange
     ArrayList<Content> headers = new ArrayList<>();
@@ -114,19 +121,21 @@ class TableDiffblueTest {
 
   /**
    * Test {@link Table#of(List, List)}.
+   *
    * <ul>
-   *   <li>Given {@link Content}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link Content}.</li>
-   *   <li>Then return Text is {@code null null}.</li>
+   *   <li>Given {@link Content}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link Content}.
+   *   <li>Then return Text is {@code null null}.
    * </ul>
-   * <p>
-   * Method under test: {@link Table#of(List, List)}
+   *
+   * <p>Method under test: {@link Table#of(List, List)}
    */
   @Test
-  @DisplayName("Test of(List, List); given Content; when ArrayList() add Content; then return Text is 'null null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.Table org.finos.springbot.workflow.content.Table.of(java.util.List, java.util.List)"})
+  @DisplayName(
+      "Test of(List, List); given Content; when ArrayList() add Content; then return Text is 'null null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Table Table.of(List, List)"})
   void testOf_givenContent_whenArrayListAddContent_thenReturnTextIsNullNull() {
     // Arrange
     ArrayList<Content> headers = new ArrayList<>();
@@ -145,18 +154,19 @@ class TableDiffblueTest {
 
   /**
    * Test {@link Table#of(List, List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Text is empty string.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Text is empty string.
    * </ul>
-   * <p>
-   * Method under test: {@link Table#of(List, List)}
+   *
+   * <p>Method under test: {@link Table#of(List, List)}
    */
   @Test
   @DisplayName("Test of(List, List); when ArrayList(); then return Text is empty string")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.Table org.finos.springbot.workflow.content.Table.of(java.util.List, java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Table Table.of(List, List)"})
   void testOf_whenArrayList_thenReturnTextIsEmptyString() {
     // Arrange
     ArrayList<Content> headers = new ArrayList<>();
@@ -173,22 +183,25 @@ class TableDiffblueTest {
 
   /**
    * Test TableImpl {@link TableImpl#equals(Object)}, and {@link TableImpl#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link TableImpl#equals(Object)}
    *   <li>{@link TableImpl#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName("Test TableImpl equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Table$TableImpl.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.Table$TableImpl.hashCode()"})
+  @DisplayName(
+      "Test TableImpl equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TableImpl.equals(Object)", "int TableImpl.hashCode()"})
   void testTableImplEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     ArrayList<Content> columns = new ArrayList<>();
@@ -204,22 +217,25 @@ class TableDiffblueTest {
 
   /**
    * Test TableImpl {@link TableImpl#equals(Object)}, and {@link TableImpl#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link TableImpl#equals(Object)}
    *   <li>{@link TableImpl#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName("Test TableImpl equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Table$TableImpl.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.Table$TableImpl.hashCode()"})
+  @DisplayName(
+      "Test TableImpl equals(Object), and hashCode(); when other is same; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TableImpl.equals(Object)", "int TableImpl.hashCode()"})
   void testTableImplEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     ArrayList<Content> columns = new ArrayList<>();
@@ -233,18 +249,19 @@ class TableDiffblueTest {
 
   /**
    * Test TableImpl {@link TableImpl#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link TableImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link TableImpl#equals(Object)}
    */
   @Test
   @DisplayName("Test TableImpl equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Table$TableImpl.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.Table$TableImpl.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TableImpl.equals(Object)", "int TableImpl.hashCode()"})
   void testTableImplEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
     ArrayList<Content> columns = new ArrayList<>();
@@ -258,18 +275,19 @@ class TableDiffblueTest {
 
   /**
    * Test TableImpl {@link TableImpl#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link TableImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link TableImpl#equals(Object)}
    */
   @Test
   @DisplayName("Test TableImpl equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Table$TableImpl.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.Table$TableImpl.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TableImpl.equals(Object)", "int TableImpl.hashCode()"})
   void testTableImplEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
     ArrayList<List<Content>> data = new ArrayList<>();
@@ -283,18 +301,48 @@ class TableDiffblueTest {
 
   /**
    * Test TableImpl {@link TableImpl#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link TableImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link TableImpl#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test TableImpl equals(Object); when other is different; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TableImpl.equals(Object)", "int TableImpl.hashCode()"})
+  void testTableImplEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
+    // Arrange
+    ArrayList<Content> columns = new ArrayList<>();
+    ArrayList<Content> columns2 = new ArrayList<>();
+    columns.add(new TableImpl(columns2, new ArrayList<>()));
+    TableImpl tableImpl = new TableImpl(columns, new ArrayList<>());
+
+    ArrayList<Content> columns3 = new ArrayList<>();
+    columns3.add(mock(Content.class));
+
+    // Act and Assert
+    assertNotEquals(tableImpl, new TableImpl(columns3, new ArrayList<>()));
+  }
+
+  /**
+   * Test TableImpl {@link TableImpl#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link TableImpl#equals(Object)}
    */
   @Test
   @DisplayName("Test TableImpl equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Table$TableImpl.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.Table$TableImpl.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TableImpl.equals(Object)", "int TableImpl.hashCode()"})
   void testTableImplEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
     ArrayList<Content> columns = new ArrayList<>();
@@ -305,18 +353,19 @@ class TableDiffblueTest {
 
   /**
    * Test TableImpl {@link TableImpl#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link TableImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link TableImpl#equals(Object)}
    */
   @Test
   @DisplayName("Test TableImpl equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Table$TableImpl.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.Table$TableImpl.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TableImpl.equals(Object)", "int TableImpl.hashCode()"})
   void testTableImplEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
     ArrayList<Content> columns = new ArrayList<>();
@@ -327,17 +376,20 @@ class TableDiffblueTest {
 
   /**
    * Test TableImpl {@link TableImpl#getText()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code Text Text}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@code Text Text}.
    * </ul>
-   * <p>
-   * Method under test: {@link TableImpl#getText()}
+   *
+   * <p>Method under test: {@link TableImpl#getText()}
    */
   @Test
-  @DisplayName("Test TableImpl getText(); given ArrayList() add ArrayList(); then return 'Text Text'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.workflow.content.Table$TableImpl.getText()"})
+  @DisplayName(
+      "Test TableImpl getText(); given ArrayList() add ArrayList(); then return 'Text Text'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String TableImpl.getText()"})
   void testTableImplGetText_givenArrayListAddArrayList_thenReturnTextText() {
     // Arrange
     Content content = mock(Content.class);
@@ -353,7 +405,7 @@ class TableDiffblueTest {
     data.add(new ArrayList<>());
 
     // Act
-    String actualText = (new TableImpl(columns, data)).getText();
+    String actualText = new TableImpl(columns, data).getText();
 
     // Assert
     verify(content2).getText();
@@ -363,17 +415,20 @@ class TableDiffblueTest {
 
   /**
    * Test TableImpl {@link TableImpl#getText()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code Text Text}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@code Text Text}.
    * </ul>
-   * <p>
-   * Method under test: {@link TableImpl#getText()}
+   *
+   * <p>Method under test: {@link TableImpl#getText()}
    */
   @Test
-  @DisplayName("Test TableImpl getText(); given ArrayList() add ArrayList(); then return 'Text Text'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.workflow.content.Table$TableImpl.getText()"})
+  @DisplayName(
+      "Test TableImpl getText(); given ArrayList() add ArrayList(); then return 'Text Text'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String TableImpl.getText()"})
   void testTableImplGetText_givenArrayListAddArrayList_thenReturnTextText2() {
     // Arrange
     Content content = mock(Content.class);
@@ -390,7 +445,7 @@ class TableDiffblueTest {
     data.add(new ArrayList<>());
 
     // Act
-    String actualText = (new TableImpl(columns, data)).getText();
+    String actualText = new TableImpl(columns, data).getText();
 
     // Assert
     verify(content2).getText();
@@ -400,17 +455,20 @@ class TableDiffblueTest {
 
   /**
    * Test TableImpl {@link TableImpl#getText()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code Text Text Text}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@code Text Text Text}.
    * </ul>
-   * <p>
-   * Method under test: {@link TableImpl#getText()}
+   *
+   * <p>Method under test: {@link TableImpl#getText()}
    */
   @Test
-  @DisplayName("Test TableImpl getText(); given ArrayList() add ArrayList(); then return 'Text Text Text'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.workflow.content.Table$TableImpl.getText()"})
+  @DisplayName(
+      "Test TableImpl getText(); given ArrayList() add ArrayList(); then return 'Text Text Text'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String TableImpl.getText()"})
   void testTableImplGetText_givenArrayListAddArrayList_thenReturnTextTextText() {
     // Arrange
     Content content = mock(Content.class);
@@ -431,7 +489,7 @@ class TableDiffblueTest {
     data.add(contentList);
 
     // Act
-    String actualText = (new TableImpl(columns, data)).getText();
+    String actualText = new TableImpl(columns, data).getText();
 
     // Assert
     verify(content2).getText();
@@ -442,17 +500,20 @@ class TableDiffblueTest {
 
   /**
    * Test TableImpl {@link TableImpl#getText()}.
+   *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return {@code Text}.</li>
-   *   <li>Then return {@code Text}.</li>
+   *   <li>Given {@link Content} {@link Content#getText()} return {@code Text}.
+   *   <li>Then return {@code Text}.
    * </ul>
-   * <p>
-   * Method under test: {@link TableImpl#getText()}
+   *
+   * <p>Method under test: {@link TableImpl#getText()}
    */
   @Test
-  @DisplayName("Test TableImpl getText(); given Content getText() return 'Text'; then return 'Text'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.workflow.content.Table$TableImpl.getText()"})
+  @DisplayName(
+      "Test TableImpl getText(); given Content getText() return 'Text'; then return 'Text'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String TableImpl.getText()"})
   void testTableImplGetText_givenContentGetTextReturnText_thenReturnText() {
     // Arrange
     Content content = mock(Content.class);
@@ -462,7 +523,7 @@ class TableDiffblueTest {
     columns.add(content);
 
     // Act
-    String actualText = (new TableImpl(columns, new ArrayList<>())).getText();
+    String actualText = new TableImpl(columns, new ArrayList<>()).getText();
 
     // Assert
     verify(content).getText();
@@ -471,17 +532,20 @@ class TableDiffblueTest {
 
   /**
    * Test TableImpl {@link TableImpl#getText()}.
+   *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return {@code Text}.</li>
-   *   <li>Then return {@code Text Text}.</li>
+   *   <li>Given {@link Content} {@link Content#getText()} return {@code Text}.
+   *   <li>Then return {@code Text Text}.
    * </ul>
-   * <p>
-   * Method under test: {@link TableImpl#getText()}
+   *
+   * <p>Method under test: {@link TableImpl#getText()}
    */
   @Test
-  @DisplayName("Test TableImpl getText(); given Content getText() return 'Text'; then return 'Text Text'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.workflow.content.Table$TableImpl.getText()"})
+  @DisplayName(
+      "Test TableImpl getText(); given Content getText() return 'Text'; then return 'Text Text'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String TableImpl.getText()"})
   void testTableImplGetText_givenContentGetTextReturnText_thenReturnTextText() {
     // Arrange
     Content content = mock(Content.class);
@@ -494,7 +558,7 @@ class TableDiffblueTest {
     columns.add(content);
 
     // Act
-    String actualText = (new TableImpl(columns, new ArrayList<>())).getText();
+    String actualText = new TableImpl(columns, new ArrayList<>()).getText();
 
     // Assert
     verify(content2).getText();
@@ -504,28 +568,31 @@ class TableDiffblueTest {
 
   /**
    * Test TableImpl {@link TableImpl#getText()}.
+   *
    * <ul>
-   *   <li>Then return empty string.</li>
+   *   <li>Then return empty string.
    * </ul>
-   * <p>
-   * Method under test: {@link TableImpl#getText()}
+   *
+   * <p>Method under test: {@link TableImpl#getText()}
    */
   @Test
   @DisplayName("Test TableImpl getText(); then return empty string")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.workflow.content.Table$TableImpl.getText()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String TableImpl.getText()"})
   void testTableImplGetText_thenReturnEmptyString() {
     // Arrange
     ArrayList<Content> columns = new ArrayList<>();
 
     // Act and Assert
-    assertEquals("", (new TableImpl(columns, new ArrayList<>())).getText());
+    assertEquals("", new TableImpl(columns, new ArrayList<>()).getText());
   }
 
   /**
    * Test TableImpl getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link TableImpl#TableImpl(List, List)}
    *   <li>{@link TableImpl#getColumnNames()}
@@ -534,10 +601,13 @@ class TableDiffblueTest {
    */
   @Test
   @DisplayName("Test TableImpl getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.content.Table$TableImpl.<init>(java.util.List, java.util.List)",
-      "java.util.List org.finos.springbot.workflow.content.Table$TableImpl.getColumnNames()",
-      "java.util.List org.finos.springbot.workflow.content.Table$TableImpl.getData()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TableImpl.<init>(List, List)",
+    "List TableImpl.getColumnNames()",
+    "List TableImpl.getData()"
+  })
   void testTableImplGettersAndSetters() {
     // Arrange
     ArrayList<Content> columns = new ArrayList<>();

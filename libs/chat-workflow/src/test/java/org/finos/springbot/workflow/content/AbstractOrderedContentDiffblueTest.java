@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import org.finos.springbot.workflow.content.BlockQuote.BlockQuoteImpl;
@@ -16,26 +17,30 @@ import org.junit.jupiter.api.Test;
 class AbstractOrderedContentDiffblueTest {
   /**
    * Test {@link AbstractOrderedContent#getContents()}.
-   * <p>
-   * Method under test: {@link AbstractOrderedContent#getContents()}
+   *
+   * <p>Method under test: {@link AbstractOrderedContent#getContents()}
    */
   @Test
   @DisplayName("Test getContents()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.util.List org.finos.springbot.workflow.content.AbstractOrderedContent.getContents()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.util.List AbstractOrderedContent.getContents()"})
   void testGetContents() {
     // Arrange, Act and Assert
-    assertTrue((new BlockQuoteImpl(new ArrayList<>())).getContents().isEmpty());
+    assertTrue(new BlockQuoteImpl(new ArrayList<>()).getContents().isEmpty());
   }
 
   /**
-   * Test {@link AbstractOrderedContent#equals(Object)}, and {@link AbstractOrderedContent#hashCode()}.
+   * Test {@link AbstractOrderedContent#equals(Object)}, and {@link
+   * AbstractOrderedContent#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link AbstractOrderedContent#equals(Object)}
    *   <li>{@link AbstractOrderedContent#hashCode()}
@@ -43,9 +48,12 @@ class AbstractOrderedContentDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.AbstractOrderedContent.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.AbstractOrderedContent.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractOrderedContent.equals(Object)",
+    "int AbstractOrderedContent.hashCode()"
+  })
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     BlockQuoteImpl blockQuoteImpl = new BlockQuoteImpl(new ArrayList<>());
@@ -58,13 +66,16 @@ class AbstractOrderedContentDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractOrderedContent#equals(Object)}, and {@link AbstractOrderedContent#hashCode()}.
+   * Test {@link AbstractOrderedContent#equals(Object)}, and {@link
+   * AbstractOrderedContent#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link AbstractOrderedContent#equals(Object)}
    *   <li>{@link AbstractOrderedContent#hashCode()}
@@ -72,9 +83,12 @@ class AbstractOrderedContentDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.AbstractOrderedContent.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.AbstractOrderedContent.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractOrderedContent.equals(Object)",
+    "int AbstractOrderedContent.hashCode()"
+  })
   void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     BlockQuoteImpl blockQuoteImpl = new BlockQuoteImpl(new ArrayList<>());
@@ -87,18 +101,22 @@ class AbstractOrderedContentDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedContent#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractOrderedContent#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractOrderedContent#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.AbstractOrderedContent.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.AbstractOrderedContent.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractOrderedContent.equals(Object)",
+    "int AbstractOrderedContent.hashCode()"
+  })
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
     ArrayList<Content> c = new ArrayList<>();
@@ -111,18 +129,22 @@ class AbstractOrderedContentDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedContent#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractOrderedContent#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractOrderedContent#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.AbstractOrderedContent.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.AbstractOrderedContent.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractOrderedContent.equals(Object)",
+    "int AbstractOrderedContent.hashCode()"
+  })
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
     ArrayList<Content> c = new ArrayList<>();
@@ -138,18 +160,22 @@ class AbstractOrderedContentDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedContent#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractOrderedContent#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractOrderedContent#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.AbstractOrderedContent.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.AbstractOrderedContent.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractOrderedContent.equals(Object)",
+    "int AbstractOrderedContent.hashCode()"
+  })
   void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange, Act and Assert
     assertNotEquals(new BlockQuoteImpl(new ArrayList<>()), null);
@@ -157,36 +183,43 @@ class AbstractOrderedContentDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedContent#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractOrderedContent#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractOrderedContent#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.AbstractOrderedContent.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.content.AbstractOrderedContent.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractOrderedContent.equals(Object)",
+    "int AbstractOrderedContent.hashCode()"
+  })
   void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange, Act and Assert
-    assertNotEquals(new BlockQuoteImpl(new ArrayList<>()), "Different type to AbstractOrderedContent");
+    assertNotEquals(
+        new BlockQuoteImpl(new ArrayList<>()), "Different type to AbstractOrderedContent");
   }
 
   /**
    * Test {@link AbstractOrderedContent#getText()}.
+   *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return empty string.</li>
-   *   <li>Then return {@code Text}.</li>
+   *   <li>Given {@link Content} {@link Content#getText()} return empty string.
+   *   <li>Then return {@code Text}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractOrderedContent#getText()}
+   *
+   * <p>Method under test: {@link AbstractOrderedContent#getText()}
    */
   @Test
   @DisplayName("Test getText(); given Content getText() return empty string; then return 'Text'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.workflow.content.AbstractOrderedContent.getText()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String AbstractOrderedContent.getText()"})
   void testGetText_givenContentGetTextReturnEmptyString_thenReturnText() {
     // Arrange
     Content content = mock(Content.class);
@@ -199,7 +232,7 @@ class AbstractOrderedContentDiffblueTest {
     c.add(content);
 
     // Act
-    String actualText = (new BlockQuoteImpl(c)).getText();
+    String actualText = new BlockQuoteImpl(c).getText();
 
     // Assert
     verify(content2).getText();
@@ -209,17 +242,19 @@ class AbstractOrderedContentDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedContent#getText()}.
+   *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return {@code Text}.</li>
-   *   <li>Then return {@code Text}.</li>
+   *   <li>Given {@link Content} {@link Content#getText()} return {@code Text}.
+   *   <li>Then return {@code Text}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractOrderedContent#getText()}
+   *
+   * <p>Method under test: {@link AbstractOrderedContent#getText()}
    */
   @Test
   @DisplayName("Test getText(); given Content getText() return 'Text'; then return 'Text'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.workflow.content.AbstractOrderedContent.getText()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String AbstractOrderedContent.getText()"})
   void testGetText_givenContentGetTextReturnText_thenReturnText() {
     // Arrange
     Content content = mock(Content.class);
@@ -229,7 +264,7 @@ class AbstractOrderedContentDiffblueTest {
     c.add(content);
 
     // Act
-    String actualText = (new BlockQuoteImpl(c)).getText();
+    String actualText = new BlockQuoteImpl(c).getText();
 
     // Assert
     verify(content).getText();
@@ -238,17 +273,19 @@ class AbstractOrderedContentDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedContent#getText()}.
+   *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return {@code Text}.</li>
-   *   <li>Then return {@code Text Text}.</li>
+   *   <li>Given {@link Content} {@link Content#getText()} return {@code Text}.
+   *   <li>Then return {@code Text Text}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractOrderedContent#getText()}
+   *
+   * <p>Method under test: {@link AbstractOrderedContent#getText()}
    */
   @Test
   @DisplayName("Test getText(); given Content getText() return 'Text'; then return 'Text Text'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.workflow.content.AbstractOrderedContent.getText()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String AbstractOrderedContent.getText()"})
   void testGetText_givenContentGetTextReturnText_thenReturnTextText() {
     // Arrange
     Content content = mock(Content.class);
@@ -261,7 +298,7 @@ class AbstractOrderedContentDiffblueTest {
     c.add(content);
 
     // Act
-    String actualText = (new BlockQuoteImpl(c)).getText();
+    String actualText = new BlockQuoteImpl(c).getText();
 
     // Assert
     verify(content2).getText();
@@ -271,18 +308,20 @@ class AbstractOrderedContentDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedContent#getText()}.
+   *
    * <ul>
-   *   <li>Then return empty string.</li>
+   *   <li>Then return empty string.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractOrderedContent#getText()}
+   *
+   * <p>Method under test: {@link AbstractOrderedContent#getText()}
    */
   @Test
   @DisplayName("Test getText(); then return empty string")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.workflow.content.AbstractOrderedContent.getText()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String AbstractOrderedContent.getText()"})
   void testGetText_thenReturnEmptyString() {
     // Arrange, Act and Assert
-    assertEquals("", (new BlockQuoteImpl(new ArrayList<>())).getText());
+    assertEquals("", new BlockQuoteImpl(new ArrayList<>()).getText());
   }
 }

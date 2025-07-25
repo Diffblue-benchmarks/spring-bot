@@ -3,6 +3,7 @@ package org.finos.springbot.workflow.actions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import org.finos.springbot.workflow.content.Addressable;
@@ -16,8 +17,9 @@ import org.junit.jupiter.api.Test;
 class SimpleMessageActionDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link SimpleMessageAction#SimpleMessageAction(Addressable, User, Message, Object)}
    *   <li>{@link SimpleMessageAction#getAddressable()}
@@ -28,13 +30,15 @@ class SimpleMessageActionDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.workflow.actions.SimpleMessageAction.<init>(org.finos.springbot.workflow.content.Addressable, org.finos.springbot.workflow.content.User, org.finos.springbot.workflow.content.Message, java.lang.Object)",
-      "org.finos.springbot.workflow.content.Addressable org.finos.springbot.workflow.actions.SimpleMessageAction.getAddressable()",
-      "java.lang.Object org.finos.springbot.workflow.actions.SimpleMessageAction.getData()",
-      "org.finos.springbot.workflow.content.Message org.finos.springbot.workflow.actions.SimpleMessageAction.getMessage()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.workflow.actions.SimpleMessageAction.getUser()"})
+    "void SimpleMessageAction.<init>(Addressable, User, Message, Object)",
+    "Addressable SimpleMessageAction.getAddressable()",
+    "Object SimpleMessageAction.getData()",
+    "Message SimpleMessageAction.getMessage()",
+    "User SimpleMessageAction.getUser()"
+  })
   void testGettersAndSetters() {
     // Arrange
     Addressable a = mock(Addressable.class);

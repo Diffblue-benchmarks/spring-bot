@@ -6,8 +6,8 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import java.util.function.Consumer;
 import org.finos.springbot.symphony.content.SymphonyUser;
 import org.finos.springbot.tool.rssbot.RSSProperties;
 import org.finos.springbot.tool.rssbot.feed.SubscribeRequest;
@@ -21,34 +21,32 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.aot.DisabledInAotMode;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {Notifier.class, RSSProperties.class})
-@ExtendWith(SpringExtension.class)
 @DisabledInAotMode
+@ExtendWith(SpringExtension.class)
 class NotifierDiffblueTest {
-  @Autowired
-  private Notifier notifier;
+  @Autowired private Notifier notifier;
 
-  @Autowired
-  private RSSProperties rSSProperties;
+  @Autowired private RSSProperties rSSProperties;
 
-  @MockBean
-  private ResponseHandlers responseHandlers;
+  @MockitoBean private ResponseHandlers responseHandlers;
 
   /**
    * Test {@link Notifier#sendSuccessNotification(SubscribeRequest, Addressable, User)}.
-   * <p>
-   * Method under test: {@link Notifier#sendSuccessNotification(SubscribeRequest, Addressable, User)}
+   *
+   * <p>Method under test: {@link Notifier#sendSuccessNotification(SubscribeRequest, Addressable,
+   * User)}
    */
   @Test
   @DisplayName("Test sendSuccessNotification(SubscribeRequest, Addressable, User)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.rssbot.notify.Notifier.sendSuccessNotification(org.finos.springbot.tool.rssbot.feed.SubscribeRequest, org.finos.springbot.workflow.content.Addressable, org.finos.springbot.workflow.content.User)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Notifier.sendSuccessNotification(SubscribeRequest, Addressable, User)"})
   void testSendSuccessNotification() {
     // Arrange
     doNothing().when(responseHandlers).accept(Mockito.<Response>any());
@@ -67,18 +65,23 @@ class NotifierDiffblueTest {
 
   /**
    * Test {@link Notifier#sendFailureNotification(SubscribeRequest, Addressable, Exception, User)}.
+   *
    * <ul>
-   *   <li>When {@link Exception#Exception(String)} with {@code foo}.</li>
-   *   <li>Then calls {@link Consumer#accept(Object)}.</li>
+   *   <li>When {@link Exception#Exception(String)} with {@code foo}.
+   *   <li>Then calls {@link ResponseHandlers#accept(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link Notifier#sendFailureNotification(SubscribeRequest, Addressable, Exception, User)}
+   *
+   * <p>Method under test: {@link Notifier#sendFailureNotification(SubscribeRequest, Addressable,
+   * Exception, User)}
    */
   @Test
-  @DisplayName("Test sendFailureNotification(SubscribeRequest, Addressable, Exception, User); when Exception(String) with 'foo'; then calls accept(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test sendFailureNotification(SubscribeRequest, Addressable, Exception, User); when Exception(String) with 'foo'; then calls accept(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.tool.rssbot.notify.Notifier.sendFailureNotification(org.finos.springbot.tool.rssbot.feed.SubscribeRequest, org.finos.springbot.workflow.content.Addressable, java.lang.Exception, org.finos.springbot.workflow.content.User)"})
+    "void Notifier.sendFailureNotification(SubscribeRequest, Addressable, Exception, User)"
+  })
   void testSendFailureNotification_whenExceptionWithFoo_thenCallsAccept() {
     // Arrange
     doNothing().when(responseHandlers).accept(Mockito.<Response>any());
@@ -98,18 +101,23 @@ class NotifierDiffblueTest {
 
   /**
    * Test {@link Notifier#sendFailureNotification(SubscribeRequest, Addressable, Exception, User)}.
+   *
    * <ul>
-   *   <li>When {@link Exception#Exception(String)} with {@code null}.</li>
-   *   <li>Then calls {@link Consumer#accept(Object)}.</li>
+   *   <li>When {@link Exception#Exception(String)} with {@code null}.
+   *   <li>Then calls {@link ResponseHandlers#accept(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link Notifier#sendFailureNotification(SubscribeRequest, Addressable, Exception, User)}
+   *
+   * <p>Method under test: {@link Notifier#sendFailureNotification(SubscribeRequest, Addressable,
+   * Exception, User)}
    */
   @Test
-  @DisplayName("Test sendFailureNotification(SubscribeRequest, Addressable, Exception, User); when Exception(String) with 'null'; then calls accept(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test sendFailureNotification(SubscribeRequest, Addressable, Exception, User); when Exception(String) with 'null'; then calls accept(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.tool.rssbot.notify.Notifier.sendFailureNotification(org.finos.springbot.tool.rssbot.feed.SubscribeRequest, org.finos.springbot.workflow.content.Addressable, java.lang.Exception, org.finos.springbot.workflow.content.User)"})
+    "void Notifier.sendFailureNotification(SubscribeRequest, Addressable, Exception, User)"
+  })
   void testSendFailureNotification_whenExceptionWithNull_thenCallsAccept() {
     // Arrange
     doNothing().when(responseHandlers).accept(Mockito.<Response>any());
@@ -129,13 +137,14 @@ class NotifierDiffblueTest {
 
   /**
    * Test new {@link Notifier} (default constructor).
-   * <p>
-   * Method under test: default or parameterless constructor of {@link Notifier}
+   *
+   * <p>Method under test: default or parameterless constructor of {@link Notifier}
    */
   @Test
   @DisplayName("Test new Notifier (default constructor)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.rssbot.notify.Notifier.<init>()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Notifier.<init>()"})
   void testNewNotifier() {
     // Arrange and Act
     Notifier actualNotifier = new Notifier();

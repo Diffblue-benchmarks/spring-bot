@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -23,22 +24,23 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {AllHistory.class})
-@ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
+@ExtendWith(SpringExtension.class)
 class HistoryDiffblueTest {
-  @Autowired
-  private History<Addressable> history;
+  @Autowired private History<Addressable> history;
 
   /**
-   * Test {@link History#getLastFromHistory(Class, Tag, Addressable)} with {@code Class}, {@code Tag}, {@code Addressable}.
-   * <p>
-   * Method under test: {@link History#getLastFromHistory(Class, Tag, Addressable)}
+   * Test {@link History#getLastFromHistory(Class, Tag, Addressable)} with {@code Class}, {@code
+   * Tag}, {@code Addressable}.
+   *
+   * <p>Method under test: {@link History#getLastFromHistory(Class, Tag, Addressable)}
    */
   @Test
-  @DisplayName("Test getLastFromHistory(Class, Tag, Addressable) with 'Class', 'Tag', 'Addressable'")
-  @org.junit.jupiter.api.Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.workflow.history.History.getLastFromHistory(java.lang.Class, org.finos.springbot.workflow.content.Tag, org.finos.springbot.workflow.content.Addressable)"})
+  @DisplayName(
+      "Test getLastFromHistory(Class, Tag, Addressable) with 'Class', 'Tag', 'Addressable'")
+  @org.junit.jupiter.api.Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional History.getLastFromHistory(Class, Tag, Addressable)"})
   void testGetLastFromHistoryWithClassTagAddressable() {
     // Arrange
     Class<Object> type = Object.class;
@@ -46,7 +48,8 @@ class HistoryDiffblueTest {
     when(t.getName()).thenReturn("Name");
 
     // Act
-    Optional<Object> actualLastFromHistory = history.getLastFromHistory(type, t, mock(Addressable.class));
+    Optional<Object> actualLastFromHistory =
+        history.getLastFromHistory(type, t, mock(Addressable.class));
 
     // Assert
     verify(t).getName();
@@ -54,15 +57,17 @@ class HistoryDiffblueTest {
   }
 
   /**
-   * Test {@link History#getFromHistory(Class, Tag, Addressable, Instant)} with {@code Class}, {@code Tag}, {@code Addressable}, {@code Instant}.
-   * <p>
-   * Method under test: {@link History#getFromHistory(Class, Tag, Addressable, Instant)}
+   * Test {@link History#getFromHistory(Class, Tag, Addressable, Instant)} with {@code Class},
+   * {@code Tag}, {@code Addressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link History#getFromHistory(Class, Tag, Addressable, Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, Tag, Addressable, Instant) with 'Class', 'Tag', 'Addressable', 'Instant'")
-  @org.junit.jupiter.api.Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.history.History.getFromHistory(java.lang.Class, org.finos.springbot.workflow.content.Tag, org.finos.springbot.workflow.content.Addressable, java.time.Instant)"})
+  @DisplayName(
+      "Test getFromHistory(Class, Tag, Addressable, Instant) with 'Class', 'Tag', 'Addressable', 'Instant'")
+  @org.junit.jupiter.api.Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List History.getFromHistory(Class, Tag, Addressable, Instant)"})
   void testGetFromHistoryWithClassTagAddressableInstant() {
     // Arrange
     Class<Object> type = Object.class;
@@ -71,8 +76,12 @@ class HistoryDiffblueTest {
     Addressable addressable = mock(Addressable.class);
 
     // Act
-    List<Object> actualFromHistory = history.getFromHistory(type, t, addressable,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        history.getFromHistory(
+            type,
+            t,
+            addressable,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
     verify(t).getName();

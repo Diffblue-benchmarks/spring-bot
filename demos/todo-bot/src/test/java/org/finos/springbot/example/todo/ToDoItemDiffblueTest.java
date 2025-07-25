@@ -2,6 +2,7 @@ package org.finos.springbot.example.todo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.example.todo.ToDoItem.Status;
 import org.finos.springbot.symphony.content.SymphonyUser;
@@ -13,8 +14,9 @@ import org.junit.jupiter.api.Test;
 class ToDoItemDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link ToDoItem#ToDoItem()}
    *   <li>{@link ToDoItem#setAssignTo(User)}
@@ -31,19 +33,22 @@ class ToDoItemDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.example.todo.ToDoItem.<init>()",
-      "void org.finos.springbot.example.todo.ToDoItem.<init>(java.lang.String, org.finos.springbot.workflow.content.User, org.finos.springbot.workflow.content.User, org.finos.springbot.example.todo.ToDoItem$Status)",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.example.todo.ToDoItem.getAssignTo()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.example.todo.ToDoItem.getCreator()",
-      "java.lang.String org.finos.springbot.example.todo.ToDoItem.getDescription()",
-      "java.lang.Integer org.finos.springbot.example.todo.ToDoItem.getNumber()",
-      "org.finos.springbot.example.todo.ToDoItem$Status org.finos.springbot.example.todo.ToDoItem.getStatus()",
-      "void org.finos.springbot.example.todo.ToDoItem.setAssignTo(org.finos.springbot.workflow.content.User)",
-      "void org.finos.springbot.example.todo.ToDoItem.setCreator(org.finos.springbot.workflow.content.User)",
-      "void org.finos.springbot.example.todo.ToDoItem.setDescription(java.lang.String)",
-      "void org.finos.springbot.example.todo.ToDoItem.setNumber(java.lang.Integer)",
-      "void org.finos.springbot.example.todo.ToDoItem.setStatus(org.finos.springbot.example.todo.ToDoItem$Status)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void ToDoItem.<init>()",
+    "void ToDoItem.<init>(String, User, User, Status)",
+    "User ToDoItem.getAssignTo()",
+    "User ToDoItem.getCreator()",
+    "String ToDoItem.getDescription()",
+    "Integer ToDoItem.getNumber()",
+    "Status ToDoItem.getStatus()",
+    "void ToDoItem.setAssignTo(User)",
+    "void ToDoItem.setCreator(User)",
+    "void ToDoItem.setDescription(String)",
+    "void ToDoItem.setNumber(Integer)",
+    "void ToDoItem.setStatus(Status)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     ToDoItem actualToDoItem = new ToDoItem();
@@ -70,11 +75,13 @@ class ToDoItemDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@code The characteristics of someone or something}.</li>
+   *   <li>When {@code The characteristics of someone or something}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link ToDoItem#ToDoItem(String, User, User, Status)}
    *   <li>{@link ToDoItem#setAssignTo(User)}
@@ -91,26 +98,33 @@ class ToDoItemDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when 'The characteristics of someone or something'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.example.todo.ToDoItem.<init>()",
-      "void org.finos.springbot.example.todo.ToDoItem.<init>(java.lang.String, org.finos.springbot.workflow.content.User, org.finos.springbot.workflow.content.User, org.finos.springbot.example.todo.ToDoItem$Status)",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.example.todo.ToDoItem.getAssignTo()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.example.todo.ToDoItem.getCreator()",
-      "java.lang.String org.finos.springbot.example.todo.ToDoItem.getDescription()",
-      "java.lang.Integer org.finos.springbot.example.todo.ToDoItem.getNumber()",
-      "org.finos.springbot.example.todo.ToDoItem$Status org.finos.springbot.example.todo.ToDoItem.getStatus()",
-      "void org.finos.springbot.example.todo.ToDoItem.setAssignTo(org.finos.springbot.workflow.content.User)",
-      "void org.finos.springbot.example.todo.ToDoItem.setCreator(org.finos.springbot.workflow.content.User)",
-      "void org.finos.springbot.example.todo.ToDoItem.setDescription(java.lang.String)",
-      "void org.finos.springbot.example.todo.ToDoItem.setNumber(java.lang.Integer)",
-      "void org.finos.springbot.example.todo.ToDoItem.setStatus(org.finos.springbot.example.todo.ToDoItem$Status)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void ToDoItem.<init>()",
+    "void ToDoItem.<init>(String, User, User, Status)",
+    "User ToDoItem.getAssignTo()",
+    "User ToDoItem.getCreator()",
+    "String ToDoItem.getDescription()",
+    "Integer ToDoItem.getNumber()",
+    "Status ToDoItem.getStatus()",
+    "void ToDoItem.setAssignTo(User)",
+    "void ToDoItem.setCreator(User)",
+    "void ToDoItem.setDescription(String)",
+    "void ToDoItem.setNumber(Integer)",
+    "void ToDoItem.setStatus(Status)"
+  })
   void testGettersAndSetters_whenTheCharacteristicsOfSomeoneOrSomething() {
     // Arrange
     SymphonyUser creator = new SymphonyUser(1L);
 
     // Act
-    ToDoItem actualToDoItem = new ToDoItem("The characteristics of someone or something", creator, new SymphonyUser(1L),
-        Status.OPEN);
+    ToDoItem actualToDoItem =
+        new ToDoItem(
+            "The characteristics of someone or something",
+            creator,
+            new SymphonyUser(1L),
+            Status.OPEN);
     SymphonyUser assignTo = new SymphonyUser(1L);
     actualToDoItem.setAssignTo(assignTo);
     SymphonyUser creator2 = new SymphonyUser(1L);

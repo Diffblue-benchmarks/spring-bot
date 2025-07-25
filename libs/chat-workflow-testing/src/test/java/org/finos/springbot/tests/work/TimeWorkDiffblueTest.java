@@ -2,6 +2,7 @@ package org.finos.springbot.tests.work;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -17,8 +18,9 @@ import org.junit.jupiter.api.Test;
 class TimeWorkDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link TimeWork}
    *   <li>{@link TimeWork#setI(Instant)}
@@ -37,20 +39,23 @@ class TimeWorkDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tests.work.TimeWork.<init>()",
-      "java.time.Instant org.finos.springbot.tests.work.TimeWork.getI()",
-      "java.time.LocalDate org.finos.springbot.tests.work.TimeWork.getLd()",
-      "java.time.LocalDateTime org.finos.springbot.tests.work.TimeWork.getLdt()",
-      "java.time.LocalTime org.finos.springbot.tests.work.TimeWork.getLt()",
-      "java.time.ZonedDateTime org.finos.springbot.tests.work.TimeWork.getZdt()",
-      "java.time.ZoneId org.finos.springbot.tests.work.TimeWork.getZid()",
-      "void org.finos.springbot.tests.work.TimeWork.setI(java.time.Instant)",
-      "void org.finos.springbot.tests.work.TimeWork.setLd(java.time.LocalDate)",
-      "void org.finos.springbot.tests.work.TimeWork.setLdt(java.time.LocalDateTime)",
-      "void org.finos.springbot.tests.work.TimeWork.setLt(java.time.LocalTime)",
-      "void org.finos.springbot.tests.work.TimeWork.setZdt(java.time.ZonedDateTime)",
-      "void org.finos.springbot.tests.work.TimeWork.setZid(java.time.ZoneId)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TimeWork.<init>()",
+    "Instant TimeWork.getI()",
+    "LocalDate TimeWork.getLd()",
+    "LocalDateTime TimeWork.getLdt()",
+    "LocalTime TimeWork.getLt()",
+    "ZonedDateTime TimeWork.getZdt()",
+    "ZoneId TimeWork.getZid()",
+    "void TimeWork.setI(Instant)",
+    "void TimeWork.setLd(LocalDate)",
+    "void TimeWork.setLdt(LocalDateTime)",
+    "void TimeWork.setLt(LocalTime)",
+    "void TimeWork.setZdt(ZonedDateTime)",
+    "void TimeWork.setZid(ZoneId)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     TimeWork actualTimeWork = new TimeWork();

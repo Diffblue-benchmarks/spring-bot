@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,8 +17,9 @@ import org.junit.jupiter.api.Test;
 class HeaderDetailsDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link HeaderDetails#HeaderDetails()}
    *   <li>{@link HeaderDetails#setDescription(String)}
@@ -30,16 +32,19 @@ class HeaderDetailsDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.tags.HeaderDetails.<init>()",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.<init>(java.lang.String, java.lang.String, java.util.List)",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.<init>(java.util.List)",
-      "java.lang.String org.finos.springbot.workflow.tags.HeaderDetails.getDescription()",
-      "java.lang.String org.finos.springbot.workflow.tags.HeaderDetails.getName()",
-      "java.util.List org.finos.springbot.workflow.tags.HeaderDetails.getTags()",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.setDescription(java.lang.String)",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.setName(java.lang.String)",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.setTags(java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void HeaderDetails.<init>()",
+    "void HeaderDetails.<init>(String, String, List)",
+    "void HeaderDetails.<init>(List)",
+    "String HeaderDetails.getDescription()",
+    "String HeaderDetails.getName()",
+    "List HeaderDetails.getTags()",
+    "void HeaderDetails.setDescription(String)",
+    "void HeaderDetails.setName(String)",
+    "void HeaderDetails.setTags(List)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     HeaderDetails actualHeaderDetails = new HeaderDetails();
@@ -60,11 +65,13 @@ class HeaderDetailsDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link HeaderDetails#HeaderDetails(List)}
    *   <li>{@link HeaderDetails#setDescription(String)}
@@ -77,16 +84,19 @@ class HeaderDetailsDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.tags.HeaderDetails.<init>()",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.<init>(java.lang.String, java.lang.String, java.util.List)",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.<init>(java.util.List)",
-      "java.lang.String org.finos.springbot.workflow.tags.HeaderDetails.getDescription()",
-      "java.lang.String org.finos.springbot.workflow.tags.HeaderDetails.getName()",
-      "java.util.List org.finos.springbot.workflow.tags.HeaderDetails.getTags()",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.setDescription(java.lang.String)",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.setName(java.lang.String)",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.setTags(java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void HeaderDetails.<init>()",
+    "void HeaderDetails.<init>(String, String, List)",
+    "void HeaderDetails.<init>(List)",
+    "String HeaderDetails.getDescription()",
+    "String HeaderDetails.getName()",
+    "List HeaderDetails.getTags()",
+    "void HeaderDetails.setDescription(String)",
+    "void HeaderDetails.setName(String)",
+    "void HeaderDetails.setTags(List)"
+  })
   void testGettersAndSetters_whenArrayList() {
     // Arrange and Act
     HeaderDetails actualHeaderDetails = new HeaderDetails(new ArrayList<>());
@@ -107,11 +117,13 @@ class HeaderDetailsDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@code Name}.</li>
+   *   <li>When {@code Name}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link HeaderDetails#HeaderDetails(String, String, List)}
    *   <li>{@link HeaderDetails#setDescription(String)}
@@ -124,20 +136,23 @@ class HeaderDetailsDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when 'Name'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.tags.HeaderDetails.<init>()",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.<init>(java.lang.String, java.lang.String, java.util.List)",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.<init>(java.util.List)",
-      "java.lang.String org.finos.springbot.workflow.tags.HeaderDetails.getDescription()",
-      "java.lang.String org.finos.springbot.workflow.tags.HeaderDetails.getName()",
-      "java.util.List org.finos.springbot.workflow.tags.HeaderDetails.getTags()",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.setDescription(java.lang.String)",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.setName(java.lang.String)",
-      "void org.finos.springbot.workflow.tags.HeaderDetails.setTags(java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void HeaderDetails.<init>()",
+    "void HeaderDetails.<init>(String, String, List)",
+    "void HeaderDetails.<init>(List)",
+    "String HeaderDetails.getDescription()",
+    "String HeaderDetails.getName()",
+    "List HeaderDetails.getTags()",
+    "void HeaderDetails.setDescription(String)",
+    "void HeaderDetails.setName(String)",
+    "void HeaderDetails.setTags(List)"
+  })
   void testGettersAndSetters_whenName() {
     // Arrange and Act
-    HeaderDetails actualHeaderDetails = new HeaderDetails("Name", "The characteristics of someone or something",
-        new ArrayList<>());
+    HeaderDetails actualHeaderDetails =
+        new HeaderDetails("Name", "The characteristics of someone or something", new ArrayList<>());
     actualHeaderDetails.setDescription("The characteristics of someone or something");
     actualHeaderDetails.setName("Name");
     ArrayList<String> tags = new ArrayList<>();
@@ -155,19 +170,21 @@ class HeaderDetailsDiffblueTest {
 
   /**
    * Test LegacyHeaderDeserialize {@link LegacyHeaderDeserialize#convert(Object)}.
+   *
    * <ul>
-   *   <li>Given {@code name}.</li>
-   *   <li>When {@link HashMap#HashMap()} {@code name} is {@code foo}.</li>
-   *   <li>Then return {@code foo}.</li>
+   *   <li>Given {@code name}.
+   *   <li>When {@link HashMap#HashMap()} {@code name} is {@code foo}.
+   *   <li>Then return {@code foo}.
    * </ul>
-   * <p>
-   * Method under test: {@link LegacyHeaderDeserialize#convert(Object)}
+   *
+   * <p>Method under test: {@link LegacyHeaderDeserialize#convert(Object)}
    */
   @Test
-  @DisplayName("Test LegacyHeaderDeserialize convert(Object); given 'name'; when HashMap() 'name' is 'foo'; then return 'foo'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.tags.HeaderDetails$LegacyHeaderDeserialize.convert(java.lang.Object)"})
+  @DisplayName(
+      "Test LegacyHeaderDeserialize convert(Object); given 'name'; when HashMap() 'name' is 'foo'; then return 'foo'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String LegacyHeaderDeserialize.convert(Object)"})
   void testLegacyHeaderDeserializeConvert_givenName_whenHashMapNameIsFoo_thenReturnFoo() {
     // Arrange
     LegacyHeaderDeserialize legacyHeaderDeserialize = new LegacyHeaderDeserialize();
@@ -181,39 +198,41 @@ class HeaderDetailsDiffblueTest {
 
   /**
    * Test LegacyHeaderDeserialize {@link LegacyHeaderDeserialize#convert(Object)}.
+   *
    * <ul>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
+   *   <li>When {@code 42}.
+   *   <li>Then return {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link LegacyHeaderDeserialize#convert(Object)}
+   *
+   * <p>Method under test: {@link LegacyHeaderDeserialize#convert(Object)}
    */
   @Test
   @DisplayName("Test LegacyHeaderDeserialize convert(Object); when '42'; then return '42'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.tags.HeaderDetails$LegacyHeaderDeserialize.convert(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String LegacyHeaderDeserialize.convert(Object)"})
   void testLegacyHeaderDeserializeConvert_when42_thenReturn42() {
     // Arrange, Act and Assert
-    assertEquals("42", (new LegacyHeaderDeserialize()).convert("42"));
+    assertEquals("42", new LegacyHeaderDeserialize().convert("42"));
   }
 
   /**
    * Test LegacyHeaderDeserialize {@link LegacyHeaderDeserialize#convert(Object)}.
+   *
    * <ul>
-   *   <li>When two.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>When two.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link LegacyHeaderDeserialize#convert(Object)}
+   *
+   * <p>Method under test: {@link LegacyHeaderDeserialize#convert(Object)}
    */
   @Test
   @DisplayName("Test LegacyHeaderDeserialize convert(Object); when two; then return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.tags.HeaderDetails$LegacyHeaderDeserialize.convert(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String LegacyHeaderDeserialize.convert(Object)"})
   void testLegacyHeaderDeserializeConvert_whenTwo_thenReturnNull() {
     // Arrange, Act and Assert
-    assertNull((new LegacyHeaderDeserialize()).convert(2));
+    assertNull(new LegacyHeaderDeserialize().convert(2));
   }
 }

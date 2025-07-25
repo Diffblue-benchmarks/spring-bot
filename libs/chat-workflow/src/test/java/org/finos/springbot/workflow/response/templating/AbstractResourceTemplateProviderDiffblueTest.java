@@ -1,28 +1,293 @@
 package org.finos.springbot.workflow.response.templating;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
+import java.io.UnsupportedEncodingException;
+import java.util.Collection;
+import java.util.Set;
 import java.util.function.BiFunction;
+import org.finos.springbot.workflow.content.Addressable;
+import org.finos.springbot.workflow.content.Content;
+import org.finos.springbot.workflow.response.AttachmentResponse;
+import org.finos.springbot.workflow.response.DataResponse;
+import org.finos.springbot.workflow.response.MessageResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.boot.io.ApplicationResourceLoader;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.ProtocolResolver;
+import org.springframework.core.io.ResourceLoader;
 
 class AbstractResourceTemplateProviderDiffblueTest {
   /**
+   * Test {@link AbstractResourceTemplateProvider#template(DataResponse)} with {@code
+   * MessageResponse}.
+   *
+   * <p>Method under test: {@link AbstractResourceTemplateProvider#template(DataResponse)}
+   */
+  @Test
+  @DisplayName("Test template(DataResponse) with 'MessageResponse'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.lang.Object AbstractResourceTemplateProvider.template(DataResponse)"})
+  void testTemplateWithMessageResponse() {
+    // Arrange
+    BiFunction<Content, Markup, String> converter = mock(BiFunction.class);
+    when(converter.apply(Mockito.<Content>any(), Mockito.<Markup>any())).thenReturn("Apply");
+    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider =
+        new SimpleMarkupTemplateProvider(
+            "Template Prefix", "Template Suffix", "Default Template Name", null, converter);
+
+    // Act
+    String actualContents =
+        simpleMarkupTemplateProvider
+            .template(new MessageResponse(mock(Addressable.class), "Not all who wander are lost"))
+            .getContents();
+
+    // Assert
+    verify(converter).apply(isA(Content.class), isA(Markup.class));
+    assertEquals("Apply", actualContents);
+  }
+
+  /**
+   * Test {@link AbstractResourceTemplateProvider#template(DataResponse)} with {@code
+   * MessageResponse}.
+   *
+   * <p>Method under test: {@link AbstractResourceTemplateProvider#template(DataResponse)}
+   */
+  @Test
+  @DisplayName("Test template(DataResponse) with 'MessageResponse'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.lang.Object AbstractResourceTemplateProvider.template(DataResponse)"})
+  void testTemplateWithMessageResponse2() throws UnsupportedEncodingException {
+    // Arrange
+    ProtocolResolver resolver = mock(ProtocolResolver.class);
+    when(resolver.resolve(Mockito.<String>any(), Mockito.<ResourceLoader>any()))
+        .thenReturn(new ByteArrayResource("AXAXAXAX".getBytes("UTF-8")));
+
+    ApplicationResourceLoader rl = new ApplicationResourceLoader();
+    rl.addProtocolResolver(resolver);
+    BiFunction<Content, Markup, String> converter = mock(BiFunction.class);
+    when(converter.apply(Mockito.<Content>any(), Mockito.<Markup>any())).thenReturn("Apply");
+    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider =
+        new SimpleMarkupTemplateProvider(
+            "Template Prefix", "Template Suffix", "Default Template Name", rl, converter);
+    Addressable stream = mock(Addressable.class);
+    Content m = mock(Content.class);
+
+    // Act
+    String actualContents =
+        simpleMarkupTemplateProvider
+            .template(
+                new AttachmentResponse(
+                    stream, m, "Template", "AXAXAXAX".getBytes("UTF-8"), "Name", "Extension"))
+            .getContents();
+
+    // Assert
+    verify(converter).apply(isA(Content.class), isA(Markup.class));
+    verify(resolver)
+        .resolve(eq("Template PrefixTemplateTemplate Suffix"), isA(ResourceLoader.class));
+    assertEquals("AXAXAXAX", actualContents);
+  }
+
+  /**
+   * Test {@link AbstractResourceTemplateProvider#template(DataResponse)} with {@code
+   * MessageResponse}.
+   *
+   * <ul>
+   *   <li>Then return Contents is {@code Apply}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractResourceTemplateProvider#template(DataResponse)}
+   */
+  @Test
+  @DisplayName(
+      "Test template(DataResponse) with 'MessageResponse'; then return Contents is 'Apply'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.lang.Object AbstractResourceTemplateProvider.template(DataResponse)"})
+  void testTemplateWithMessageResponse_thenReturnContentsIsApply() {
+    // Arrange
+    BiFunction<Content, Markup, String> converter = mock(BiFunction.class);
+    when(converter.apply(Mockito.<Content>any(), Mockito.<Markup>any())).thenReturn("Apply");
+    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider =
+        new SimpleMarkupTemplateProvider(
+            "Template Prefix",
+            "Template Suffix",
+            "Default Template Name",
+            new ApplicationResourceLoader(),
+            converter);
+
+    // Act
+    String actualContents =
+        simpleMarkupTemplateProvider
+            .template(new MessageResponse(mock(Addressable.class), "Not all who wander are lost"))
+            .getContents();
+
+    // Assert
+    verify(converter).apply(isA(Content.class), isA(Markup.class));
+    assertEquals("Apply", actualContents);
+  }
+
+  /**
+   * Test {@link AbstractResourceTemplateProvider#template(DataResponse)} with {@code
+   * MessageResponse}.
+   *
+   * <ul>
+   *   <li>Then return Contents is {@code AXAXAXAX}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractResourceTemplateProvider#template(DataResponse)}
+   */
+  @Test
+  @DisplayName(
+      "Test template(DataResponse) with 'MessageResponse'; then return Contents is 'AXAXAXAX'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.lang.Object AbstractResourceTemplateProvider.template(DataResponse)"})
+  void testTemplateWithMessageResponse_thenReturnContentsIsAxaxaxax()
+      throws UnsupportedEncodingException {
+    // Arrange
+    ProtocolResolver resolver = mock(ProtocolResolver.class);
+    when(resolver.resolve(Mockito.<String>any(), Mockito.<ResourceLoader>any()))
+        .thenReturn(new ByteArrayResource("AXAXAXAX".getBytes("UTF-8")));
+
+    ApplicationResourceLoader rl = new ApplicationResourceLoader();
+    rl.addProtocolResolver(resolver);
+    BiFunction<Content, Markup, String> converter = mock(BiFunction.class);
+    when(converter.apply(Mockito.<Content>any(), Mockito.<Markup>any())).thenReturn("Apply");
+    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider =
+        new SimpleMarkupTemplateProvider(
+            "Template Prefix", "Template Suffix", "Default Template Name", rl, converter);
+
+    // Act
+    String actualContents =
+        simpleMarkupTemplateProvider
+            .template(new MessageResponse(mock(Addressable.class), "Not all who wander are lost"))
+            .getContents();
+
+    // Assert
+    verify(converter).apply(isA(Content.class), isA(Markup.class));
+    verify(resolver)
+        .resolve(
+            eq("Template PrefixDefault Template NameTemplate Suffix"), isA(ResourceLoader.class));
+    assertEquals("AXAXAXAX", actualContents);
+  }
+
+  /**
+   * Test {@link AbstractResourceTemplateProvider#getTemplateForName(String)}.
+   *
+   * <p>Method under test: {@link AbstractResourceTemplateProvider#getTemplateForName(String)}
+   */
+  @Test
+  @DisplayName("Test getTemplateForName(String)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "java.lang.Object AbstractResourceTemplateProvider.getTemplateForName(String)"
+  })
+  void testGetTemplateForName() {
+    // Arrange
+    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider =
+        new SimpleMarkupTemplateProvider(
+            "Template Prefix",
+            "Template Suffix",
+            "Default Template Name",
+            new ApplicationResourceLoader(),
+            mock(BiFunction.class));
+
+    // Act
+    Markup actualTemplateForName = simpleMarkupTemplateProvider.getTemplateForName("Name");
+
+    // Assert
+    ResourceLoader resourceLoader = simpleMarkupTemplateProvider.rl;
+    Collection<ProtocolResolver> protocolResolvers =
+        ((ApplicationResourceLoader) resourceLoader).getProtocolResolvers();
+    assertEquals(1, protocolResolvers.size());
+    assertTrue(protocolResolvers instanceof Set);
+    assertTrue(resourceLoader instanceof ApplicationResourceLoader);
+    assertEquals("Default Template Name", simpleMarkupTemplateProvider.getDefaultTemplateName());
+    assertEquals("Template Prefix", simpleMarkupTemplateProvider.templatePrefix);
+    assertEquals("Template Suffix", simpleMarkupTemplateProvider.templateSuffix);
+    assertNull(actualTemplateForName);
+  }
+
+  /**
+   * Test {@link AbstractResourceTemplateProvider#getTemplateForName(String)}.
+   *
+   * <p>Method under test: {@link AbstractResourceTemplateProvider#getTemplateForName(String)}
+   */
+  @Test
+  @DisplayName("Test getTemplateForName(String)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "java.lang.Object AbstractResourceTemplateProvider.getTemplateForName(String)"
+  })
+  void testGetTemplateForName2() throws UnsupportedEncodingException {
+    // Arrange
+    ProtocolResolver resolver = mock(ProtocolResolver.class);
+    when(resolver.resolve(Mockito.<String>any(), Mockito.<ResourceLoader>any()))
+        .thenReturn(new ByteArrayResource("AXAXAXAX".getBytes("UTF-8")));
+
+    ApplicationResourceLoader rl = new ApplicationResourceLoader();
+    rl.addProtocolResolver(resolver);
+    SimpleMarkupTemplateProvider simpleMarkupTemplateProvider =
+        new SimpleMarkupTemplateProvider(
+            "Template Prefix",
+            "Template Suffix",
+            "Default Template Name",
+            rl,
+            mock(BiFunction.class));
+
+    // Act
+    String actualContents = simpleMarkupTemplateProvider.getTemplateForName("Name").getContents();
+
+    // Assert
+    verify(resolver).resolve(eq("Template PrefixNameTemplate Suffix"), isA(ResourceLoader.class));
+    ResourceLoader resourceLoader = simpleMarkupTemplateProvider.rl;
+    Collection<ProtocolResolver> protocolResolvers =
+        ((ApplicationResourceLoader) resourceLoader).getProtocolResolvers();
+    assertEquals(2, protocolResolvers.size());
+    assertTrue(protocolResolvers instanceof Set);
+    assertTrue(resourceLoader instanceof ApplicationResourceLoader);
+    assertEquals("AXAXAXAX", actualContents);
+    assertEquals("Default Template Name", simpleMarkupTemplateProvider.getDefaultTemplateName());
+    assertEquals("Template Prefix", simpleMarkupTemplateProvider.templatePrefix);
+    assertEquals("Template Suffix", simpleMarkupTemplateProvider.templateSuffix);
+  }
+
+  /**
    * Test {@link AbstractResourceTemplateProvider#getDefaultTemplateName()}.
-   * <p>
-   * Method under test: {@link AbstractResourceTemplateProvider#getDefaultTemplateName()}
+   *
+   * <p>Method under test: {@link AbstractResourceTemplateProvider#getDefaultTemplateName()}
    */
   @Test
   @DisplayName("Test getDefaultTemplateName()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.response.templating.AbstractResourceTemplateProvider.getDefaultTemplateName()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String AbstractResourceTemplateProvider.getDefaultTemplateName()"})
   void testGetDefaultTemplateName() {
     // Arrange, Act and Assert
-    assertEquals("Default Template Name", (new SimpleMarkupTemplateProvider("Template Prefix", "Template Suffix",
-        "Default Template Name", new ApplicationResourceLoader(), mock(BiFunction.class))).getDefaultTemplateName());
+    assertEquals(
+        "Default Template Name",
+        new SimpleMarkupTemplateProvider(
+                "Template Prefix",
+                "Template Suffix",
+                "Default Template Name",
+                new ApplicationResourceLoader(),
+                mock(BiFunction.class))
+            .getDefaultTemplateName());
   }
 }

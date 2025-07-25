@@ -1,6 +1,7 @@
 package org.finos.springbot;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import io.micrometer.core.aop.CountedAspect;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -16,22 +17,22 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ContextConfiguration(classes = {MeterRegistryConfig.class})
 @ExtendWith(SpringExtension.class)
 class MeterRegistryConfigDiffblueTest {
-  @Autowired
-  private MeterRegistryConfig meterRegistryConfig;
+  @Autowired private MeterRegistryConfig meterRegistryConfig;
 
   /**
    * Test {@link MeterRegistryConfig#countedAspect(MeterRegistry)}.
-   * <p>
-   * Method under test: {@link MeterRegistryConfig#countedAspect(MeterRegistry)}
+   *
+   * <p>Method under test: {@link MeterRegistryConfig#countedAspect(MeterRegistry)}
    */
   @Test
   @DisplayName("Test countedAspect(MeterRegistry)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "io.micrometer.core.aop.CountedAspect org.finos.springbot.MeterRegistryConfig.countedAspect(io.micrometer.core.instrument.MeterRegistry)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"CountedAspect MeterRegistryConfig.countedAspect(MeterRegistry)"})
   void testCountedAspect() {
     // Arrange and Act
-    CountedAspect actualCountedAspectResult = meterRegistryConfig.countedAspect(new CompositeMeterRegistry());
+    CountedAspect actualCountedAspectResult =
+        meterRegistryConfig.countedAspect(new CompositeMeterRegistry());
 
     // Assert
     assertEquals("failure", actualCountedAspectResult.RESULT_TAG_FAILURE_VALUE);

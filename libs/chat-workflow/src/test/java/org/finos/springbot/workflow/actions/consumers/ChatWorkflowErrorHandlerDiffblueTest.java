@@ -5,8 +5,8 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import java.util.function.Consumer;
 import org.finos.springbot.workflow.response.Response;
 import org.finos.springbot.workflow.response.handlers.ResponseHandlers;
 import org.junit.jupiter.api.DisplayName;
@@ -15,51 +15,53 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.aot.DisabledInAotMode;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {ChatWorkflowErrorHandler.class, String.class})
-@ExtendWith(SpringExtension.class)
 @DisabledInAotMode
+@ExtendWith(SpringExtension.class)
 class ChatWorkflowErrorHandlerDiffblueTest {
-  @Autowired
-  private ChatWorkflowErrorHandler chatWorkflowErrorHandler;
+  @Autowired private ChatWorkflowErrorHandler chatWorkflowErrorHandler;
 
-  @MockBean
-  private ResponseHandlers responseHandlers;
+  @MockitoBean private ResponseHandlers responseHandlers;
 
   /**
    * Test {@link ChatWorkflowErrorHandler#ChatWorkflowErrorHandler(ResponseHandlers, String)}.
-   * <p>
-   * Method under test: {@link ChatWorkflowErrorHandler#ChatWorkflowErrorHandler(ResponseHandlers, String)}
+   *
+   * <p>Method under test: {@link
+   * ChatWorkflowErrorHandler#ChatWorkflowErrorHandler(ResponseHandlers, String)}
    */
   @Test
   @DisplayName("Test new ChatWorkflowErrorHandler(ResponseHandlers, String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.actions.consumers.ChatWorkflowErrorHandler.<init>(org.finos.springbot.workflow.response.handlers.ResponseHandlers, java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void ChatWorkflowErrorHandler.<init>(ResponseHandlers, String)"})
   void testNewChatWorkflowErrorHandler() {
     // Arrange, Act and Assert
-    assertEquals("Template Name",
-        (new ChatWorkflowErrorHandler(mock(ResponseHandlers.class), "Template Name")).templateName);
+    assertEquals(
+        "Template Name",
+        new ChatWorkflowErrorHandler(mock(ResponseHandlers.class), "Template Name").templateName);
   }
 
   /**
    * Test {@link ChatWorkflowErrorHandler#handleError(Throwable)}.
+   *
    * <ul>
-   *   <li>When {@link Throwable#Throwable(String)} with {@code Error thrown:}.</li>
-   *   <li>Then calls {@link Consumer#accept(Object)}.</li>
+   *   <li>When {@link Throwable#Throwable(String)} with {@code Error thrown:}.
+   *   <li>Then calls {@link ResponseHandlers#accept(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatWorkflowErrorHandler#handleError(Throwable)}
+   *
+   * <p>Method under test: {@link ChatWorkflowErrorHandler#handleError(Throwable)}
    */
   @Test
-  @DisplayName("Test handleError(Throwable); when Throwable(String) with 'Error thrown:'; then calls accept(Object)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.actions.consumers.ChatWorkflowErrorHandler.handleError(java.lang.Throwable)"})
+  @DisplayName(
+      "Test handleError(Throwable); when Throwable(String) with 'Error thrown:'; then calls accept(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void ChatWorkflowErrorHandler.handleError(Throwable)"})
   void testHandleError_whenThrowableWithErrorThrown_thenCallsAccept() {
     // Arrange
     doNothing().when(responseHandlers).accept(Mockito.<Response>any());
@@ -73,18 +75,19 @@ class ChatWorkflowErrorHandlerDiffblueTest {
 
   /**
    * Test {@link ChatWorkflowErrorHandler#handleError(Throwable)}.
+   *
    * <ul>
-   *   <li>When {@link Throwable#Throwable()}.</li>
-   *   <li>Then calls {@link Consumer#accept(Object)}.</li>
+   *   <li>When {@link Throwable#Throwable()}.
+   *   <li>Then calls {@link ResponseHandlers#accept(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatWorkflowErrorHandler#handleError(Throwable)}
+   *
+   * <p>Method under test: {@link ChatWorkflowErrorHandler#handleError(Throwable)}
    */
   @Test
   @DisplayName("Test handleError(Throwable); when Throwable(); then calls accept(Object)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.actions.consumers.ChatWorkflowErrorHandler.handleError(java.lang.Throwable)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void ChatWorkflowErrorHandler.handleError(Throwable)"})
   void testHandleError_whenThrowable_thenCallsAccept() {
     // Arrange
     doNothing().when(responseHandlers).accept(Mockito.<Response>any());

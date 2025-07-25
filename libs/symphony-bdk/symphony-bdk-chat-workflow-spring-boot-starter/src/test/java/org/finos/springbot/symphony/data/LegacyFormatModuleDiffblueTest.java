@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.Module;
@@ -19,22 +20,24 @@ import org.mockito.Mockito;
 class LegacyFormatModuleDiffblueTest {
   /**
    * Test {@link LegacyFormatModule#version()}.
-   * <p>
-   * Method under test: {@link LegacyFormatModule#version()}
+   *
+   * <p>Method under test: {@link LegacyFormatModule#version()}
    */
   @Test
   @DisplayName("Test version()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "com.fasterxml.jackson.core.Version org.finos.springbot.symphony.data.LegacyFormatModule.version()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Version LegacyFormatModule.version()"})
   void testVersion() {
     // Arrange and Act
-    Version actualVersionResult = (new LegacyFormatModule()).version();
+    Version actualVersionResult = new LegacyFormatModule().version();
 
     // Assert
     assertEquals("legacy-hashtag-module", actualVersionResult.getArtifactId());
     assertEquals("org.finos.springbot.symphony.data", actualVersionResult.getGroupId());
-    assertEquals("org.finos.springbot.symphony.data/legacy-hashtag-module/1.0.0", actualVersionResult.toFullString());
+    assertEquals(
+        "org.finos.springbot.symphony.data/legacy-hashtag-module/1.0.0",
+        actualVersionResult.toFullString());
     assertEquals(0, actualVersionResult.getMinorVersion());
     assertEquals(0, actualVersionResult.getPatchLevel());
     assertEquals(1, actualVersionResult.getMajorVersion());
@@ -45,8 +48,9 @@ class LegacyFormatModuleDiffblueTest {
 
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link LegacyFormatModule}
    *   <li>{@link LegacyFormatModule#getModuleName()}
@@ -54,24 +58,27 @@ class LegacyFormatModuleDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.symphony.data.LegacyFormatModule.<init>()",
-      "java.lang.String org.finos.springbot.symphony.data.LegacyFormatModule.getModuleName()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void LegacyFormatModule.<init>()",
+    "java.lang.String LegacyFormatModule.getModuleName()"
+  })
   void testGettersAndSetters() {
     // Arrange, Act and Assert
-    assertEquals("Symphony Workflow Module", (new LegacyFormatModule()).getModuleName());
+    assertEquals("Symphony Workflow Module", new LegacyFormatModule().getModuleName());
   }
 
   /**
    * Test {@link LegacyFormatModule#setupModule(SetupContext)}.
-   * <p>
-   * Method under test: {@link LegacyFormatModule#setupModule(SetupContext)}
+   *
+   * <p>Method under test: {@link LegacyFormatModule#setupModule(SetupContext)}
    */
   @Test
   @DisplayName("Test setupModule(SetupContext)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.symphony.data.LegacyFormatModule.setupModule(com.fasterxml.jackson.databind.Module$SetupContext)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void LegacyFormatModule.setupModule(SetupContext)"})
   void testSetupModule() {
     // Arrange
     LegacyFormatModule legacyFormatModule = new LegacyFormatModule();

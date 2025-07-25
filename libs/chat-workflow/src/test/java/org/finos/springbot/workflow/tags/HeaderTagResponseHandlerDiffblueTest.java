@@ -3,8 +3,13 @@ package org.finos.springbot.workflow.tags;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
+import java.util.HashMap;
 import java.util.Map;
 import org.finos.springbot.workflow.content.Addressable;
 import org.finos.springbot.workflow.response.ErrorResponse;
@@ -20,19 +25,18 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ContextConfiguration(classes = {HeaderTagResponseHandler.class})
 @ExtendWith(SpringExtension.class)
 class HeaderTagResponseHandlerDiffblueTest {
-  @Autowired
-  private HeaderTagResponseHandler headerTagResponseHandler;
+  @Autowired private HeaderTagResponseHandler headerTagResponseHandler;
 
   /**
    * Test {@link HeaderTagResponseHandler#apply(Response)} with {@code Response}.
-   * <p>
-   * Method under test: {@link HeaderTagResponseHandler#apply(Response)}
+   *
+   * <p>Method under test: {@link HeaderTagResponseHandler#apply(Response)}
    */
   @Test
   @DisplayName("Test apply(Response) with 'Response'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Void org.finos.springbot.workflow.tags.HeaderTagResponseHandler.apply(org.finos.springbot.workflow.response.Response)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Void HeaderTagResponseHandler.apply(Response)"})
   void testApplyWithResponse() {
     // Arrange
     Addressable stream = mock(Addressable.class);
@@ -55,18 +59,51 @@ class HeaderTagResponseHandlerDiffblueTest {
 
   /**
    * Test {@link HeaderTagResponseHandler#apply(Response)} with {@code Response}.
+   *
    * <ul>
-   *   <li>When {@link Response}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link HashMap#HashMap()} {@link HeaderDetails#KEY} is {@link
+   *       HeaderDetails#HeaderDetails()}.
+   *   <li>Then calls {@link ErrorResponse#getData()}.
    * </ul>
-   * <p>
-   * Method under test: {@link HeaderTagResponseHandler#apply(Response)}
+   *
+   * <p>Method under test: {@link HeaderTagResponseHandler#apply(Response)}
+   */
+  @Test
+  @DisplayName(
+      "Test apply(Response) with 'Response'; given HashMap() KEY is HeaderDetails(); then calls getData()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Void HeaderTagResponseHandler.apply(Response)"})
+  void testApplyWithResponse_givenHashMapKeyIsHeaderDetails_thenCallsGetData() {
+    // Arrange
+    HashMap<String, Object> stringObjectMap = new HashMap<>();
+    stringObjectMap.put(HeaderDetails.KEY, new HeaderDetails());
+    ErrorResponse t = mock(ErrorResponse.class);
+    when(t.getData()).thenReturn(stringObjectMap);
+
+    // Act
+    Void actualApplyResult = headerTagResponseHandler.apply(t);
+
+    // Assert
+    verify(t, atLeast(1)).getData();
+    assertNull(actualApplyResult);
+  }
+
+  /**
+   * Test {@link HeaderTagResponseHandler#apply(Response)} with {@code Response}.
+   *
+   * <ul>
+   *   <li>When {@link Response}.
+   *   <li>Then return {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link HeaderTagResponseHandler#apply(Response)}
    */
   @Test
   @DisplayName("Test apply(Response) with 'Response'; when Response; then return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Void org.finos.springbot.workflow.tags.HeaderTagResponseHandler.apply(org.finos.springbot.workflow.response.Response)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Void HeaderTagResponseHandler.apply(Response)"})
   void testApplyWithResponse_whenResponse_thenReturnNull() {
     // Arrange, Act and Assert
     assertNull(headerTagResponseHandler.apply(mock(Response.class)));
@@ -74,13 +111,14 @@ class HeaderTagResponseHandlerDiffblueTest {
 
   /**
    * Test {@link HeaderTagResponseHandler#getOrder()}.
-   * <p>
-   * Method under test: {@link HeaderTagResponseHandler#getOrder()}
+   *
+   * <p>Method under test: {@link HeaderTagResponseHandler#getOrder()}
    */
   @Test
   @DisplayName("Test getOrder()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"int org.finos.springbot.workflow.tags.HeaderTagResponseHandler.getOrder()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"int HeaderTagResponseHandler.getOrder()"})
   void testGetOrder() {
     // Arrange, Act and Assert
     assertEquals(100, headerTagResponseHandler.getOrder());
@@ -88,15 +126,16 @@ class HeaderTagResponseHandlerDiffblueTest {
 
   /**
    * Test new {@link HeaderTagResponseHandler} (default constructor).
-   * <p>
-   * Method under test: default or parameterless constructor of {@link HeaderTagResponseHandler}
+   *
+   * <p>Method under test: default or parameterless constructor of {@link HeaderTagResponseHandler}
    */
   @Test
   @DisplayName("Test new HeaderTagResponseHandler (default constructor)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.tags.HeaderTagResponseHandler.<init>()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void HeaderTagResponseHandler.<init>()"})
   void testNewHeaderTagResponseHandler() {
     // Arrange, Act and Assert
-    assertEquals(100, (new HeaderTagResponseHandler()).getOrder());
+    assertEquals(100, new HeaderTagResponseHandler().getOrder());
   }
 }

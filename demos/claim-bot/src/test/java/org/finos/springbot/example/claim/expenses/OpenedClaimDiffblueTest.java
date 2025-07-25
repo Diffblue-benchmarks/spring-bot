@@ -3,6 +3,7 @@ package org.finos.springbot.example.claim.expenses;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.example.claim.expenses.OpenedClaim.Status;
 import org.finos.springbot.symphony.content.SymphonyUser;
@@ -14,8 +15,9 @@ import org.junit.jupiter.api.Test;
 class OpenedClaimDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link OpenedClaim#setAmount(Number)}
    *   <li>{@link OpenedClaim#setApprovedBy(User)}
@@ -33,19 +35,22 @@ class OpenedClaimDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.Number org.finos.springbot.example.claim.expenses.OpenedClaim.getAmount()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.example.claim.expenses.OpenedClaim.getApprovedBy()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.example.claim.expenses.OpenedClaim.getAuthor()",
-      "java.lang.String org.finos.springbot.example.claim.expenses.OpenedClaim.getDescription()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.example.claim.expenses.OpenedClaim.getPaidBy()",
-      "org.finos.springbot.example.claim.expenses.OpenedClaim$Status org.finos.springbot.example.claim.expenses.OpenedClaim.getStatus()",
-      "void org.finos.springbot.example.claim.expenses.OpenedClaim.setAmount(java.lang.Number)",
-      "void org.finos.springbot.example.claim.expenses.OpenedClaim.setApprovedBy(org.finos.springbot.workflow.content.User)",
-      "void org.finos.springbot.example.claim.expenses.OpenedClaim.setAuthor(org.finos.springbot.workflow.content.User)",
-      "void org.finos.springbot.example.claim.expenses.OpenedClaim.setDescription(java.lang.String)",
-      "void org.finos.springbot.example.claim.expenses.OpenedClaim.setPaidBy(org.finos.springbot.workflow.content.User)",
-      "void org.finos.springbot.example.claim.expenses.OpenedClaim.setStatus(org.finos.springbot.example.claim.expenses.OpenedClaim$Status)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "Number OpenedClaim.getAmount()",
+    "User OpenedClaim.getApprovedBy()",
+    "User OpenedClaim.getAuthor()",
+    "String OpenedClaim.getDescription()",
+    "User OpenedClaim.getPaidBy()",
+    "Status OpenedClaim.getStatus()",
+    "void OpenedClaim.setAmount(Number)",
+    "void OpenedClaim.setApprovedBy(User)",
+    "void OpenedClaim.setAuthor(User)",
+    "void OpenedClaim.setDescription(String)",
+    "void OpenedClaim.setPaidBy(User)",
+    "void OpenedClaim.setStatus(Status)"
+  })
   void testGettersAndSetters() {
     // Arrange
     OpenedClaim openedClaim = new OpenedClaim();
@@ -78,13 +83,14 @@ class OpenedClaimDiffblueTest {
 
   /**
    * Test new {@link OpenedClaim} (default constructor).
-   * <p>
-   * Method under test: default or parameterless constructor of {@link OpenedClaim}
+   *
+   * <p>Method under test: default or parameterless constructor of {@link OpenedClaim}
    */
   @Test
   @DisplayName("Test new OpenedClaim (default constructor)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.example.claim.expenses.OpenedClaim.<init>()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void OpenedClaim.<init>()"})
   void testNewOpenedClaim() {
     // Arrange and Act
     OpenedClaim actualOpenedClaim = new OpenedClaim();

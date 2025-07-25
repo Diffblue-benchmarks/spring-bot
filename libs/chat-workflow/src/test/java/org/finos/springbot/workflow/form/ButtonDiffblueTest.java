@@ -1,6 +1,7 @@
 package org.finos.springbot.workflow.form;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.workflow.form.Button.Type;
 import org.junit.jupiter.api.DisplayName;
@@ -10,8 +11,9 @@ import org.junit.jupiter.api.Test;
 class ButtonDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Button#Button()}
    *   <li>{@link Button#setButtonType(Type)}
@@ -24,15 +26,18 @@ class ButtonDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.form.Button.<init>()",
-      "void org.finos.springbot.workflow.form.Button.<init>(java.lang.String, org.finos.springbot.workflow.form.Button$Type, java.lang.String)",
-      "org.finos.springbot.workflow.form.Button$Type org.finos.springbot.workflow.form.Button.getButtonType()",
-      "java.lang.String org.finos.springbot.workflow.form.Button.getName()",
-      "java.lang.String org.finos.springbot.workflow.form.Button.getText()",
-      "void org.finos.springbot.workflow.form.Button.setButtonType(org.finos.springbot.workflow.form.Button$Type)",
-      "void org.finos.springbot.workflow.form.Button.setName(java.lang.String)",
-      "void org.finos.springbot.workflow.form.Button.setText(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Button.<init>()",
+    "void Button.<init>(String, Type, String)",
+    "Type Button.getButtonType()",
+    "String Button.getName()",
+    "String Button.getText()",
+    "void Button.setButtonType(Type)",
+    "void Button.setName(String)",
+    "void Button.setText(String)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     Button actualButton = new Button();
@@ -50,11 +55,13 @@ class ButtonDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@code Name}.</li>
+   *   <li>When {@code Name}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Button#Button(String, Type, String)}
    *   <li>{@link Button#setButtonType(Type)}
@@ -67,15 +74,18 @@ class ButtonDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when 'Name'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.form.Button.<init>()",
-      "void org.finos.springbot.workflow.form.Button.<init>(java.lang.String, org.finos.springbot.workflow.form.Button$Type, java.lang.String)",
-      "org.finos.springbot.workflow.form.Button$Type org.finos.springbot.workflow.form.Button.getButtonType()",
-      "java.lang.String org.finos.springbot.workflow.form.Button.getName()",
-      "java.lang.String org.finos.springbot.workflow.form.Button.getText()",
-      "void org.finos.springbot.workflow.form.Button.setButtonType(org.finos.springbot.workflow.form.Button$Type)",
-      "void org.finos.springbot.workflow.form.Button.setName(java.lang.String)",
-      "void org.finos.springbot.workflow.form.Button.setText(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Button.<init>()",
+    "void Button.<init>(String, Type, String)",
+    "Type Button.getButtonType()",
+    "String Button.getName()",
+    "String Button.getText()",
+    "void Button.setButtonType(Type)",
+    "void Button.setName(String)",
+    "void Button.setText(String)"
+  })
   void testGettersAndSetters_whenName() {
     // Arrange and Act
     Button actualButton = new Button("Name", Type.ACTION, "Text");
@@ -93,14 +103,14 @@ class ButtonDiffblueTest {
 
   /**
    * Test {@link Button#Button(Class, String, Type, String)}.
-   * <p>
-   * Method under test: {@link Button#Button(Class, String, Type, String)}
+   *
+   * <p>Method under test: {@link Button#Button(Class, String, Type, String)}
    */
   @Test
   @DisplayName("Test new Button(Class, String, Type, String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.form.Button.<init>(java.lang.Class, java.lang.String, org.finos.springbot.workflow.form.Button$Type, java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Button.<init>(Class, String, Type, String)"})
   void testNewButton() {
     // Arrange
     Class<Object> c = Object.class;
@@ -116,18 +126,21 @@ class ButtonDiffblueTest {
 
   /**
    * Test {@link Button#compareTo(Button)} with {@code Button}.
+   *
    * <ul>
-   *   <li>Given {@link Button#Button(String, Type, String)} with {@code Name} and type is {@code ACTION} and {@code Text}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link Button#Button(String, Type, String)} with {@code Name} and type is {@code
+   *       ACTION} and {@code Text}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link Button#compareTo(Button)}
+   *
+   * <p>Method under test: {@link Button#compareTo(Button)}
    */
   @Test
-  @DisplayName("Test compareTo(Button) with 'Button'; given Button(String, Type, String) with 'Name' and type is 'ACTION' and 'Text'; then return zero")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "int org.finos.springbot.workflow.form.Button.compareTo(org.finos.springbot.workflow.form.Button)"})
+  @DisplayName(
+      "Test compareTo(Button) with 'Button'; given Button(String, Type, String) with 'Name' and type is 'ACTION' and 'Text'; then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"int Button.compareTo(Button)"})
   void testCompareToWithButton_givenButtonWithNameAndTypeIsActionAndText_thenReturnZero() {
     // Arrange
     Button button = new Button("Name", Type.ACTION, "Text");

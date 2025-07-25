@@ -2,6 +2,7 @@ package org.finos.springbot.tool.reminders;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -12,8 +13,9 @@ import org.junit.jupiter.api.Test;
 class ReminderPropertiesDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link ReminderProperties#setDefaultRemindBefore(int)}
    *   <li>{@link ReminderProperties#setDefaultTimeZone(ZoneId)}
@@ -25,13 +27,16 @@ class ReminderPropertiesDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"int org.finos.springbot.tool.reminders.ReminderProperties.getDefaultRemindBefore()",
-      "java.time.ZoneId org.finos.springbot.tool.reminders.ReminderProperties.getDefaultTimeZone()",
-      "java.lang.String org.finos.springbot.tool.reminders.ReminderProperties.getWelcomeMessage()",
-      "void org.finos.springbot.tool.reminders.ReminderProperties.setDefaultRemindBefore(int)",
-      "void org.finos.springbot.tool.reminders.ReminderProperties.setDefaultTimeZone(java.time.ZoneId)",
-      "void org.finos.springbot.tool.reminders.ReminderProperties.setWelcomeMessage(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "int ReminderProperties.getDefaultRemindBefore()",
+    "ZoneId ReminderProperties.getDefaultTimeZone()",
+    "String ReminderProperties.getWelcomeMessage()",
+    "void ReminderProperties.setDefaultRemindBefore(int)",
+    "void ReminderProperties.setDefaultTimeZone(ZoneId)",
+    "void ReminderProperties.setWelcomeMessage(String)"
+  })
   void testGettersAndSetters() {
     // Arrange
     ReminderProperties reminderProperties = new ReminderProperties();
@@ -54,13 +59,14 @@ class ReminderPropertiesDiffblueTest {
 
   /**
    * Test new {@link ReminderProperties} (default constructor).
-   * <p>
-   * Method under test: default or parameterless constructor of {@link ReminderProperties}
+   *
+   * <p>Method under test: default or parameterless constructor of {@link ReminderProperties}
    */
   @Test
   @DisplayName("Test new ReminderProperties (default constructor)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.reminders.ReminderProperties.<init>()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void ReminderProperties.<init>()"})
   void testNewReminderProperties() {
     // Arrange and Act
     ReminderProperties actualReminderProperties = new ReminderProperties();
@@ -69,7 +75,8 @@ class ReminderPropertiesDiffblueTest {
     assertEquals(
         "Welcome!\n"
             + "I am the Reminder Bot. If you mention a date or time in your chat message , I will suggest creating a"
-            + " reminder for it.\n" + "type /help for help and /list to see existing reminders.",
+            + " reminder for it.\n"
+            + "type /help for help and /list to see existing reminders.",
         actualReminderProperties.getWelcomeMessage());
     assertEquals(0, actualReminderProperties.getDefaultRemindBefore());
     String expectedToStringResult = System.getProperty("user.timezone");

@@ -3,6 +3,7 @@ package org.finos.springbot.workflow.templating;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.classmate.types.TypePlaceHolder;
 import java.lang.reflect.Field;
@@ -14,14 +15,14 @@ import org.junit.jupiter.api.Test;
 class EnumConverterDiffblueTest {
   /**
    * Test {@link EnumConverter#EnumConverter(Rendering)}.
-   * <p>
-   * Method under test: {@link EnumConverter#EnumConverter(Rendering)}
+   *
+   * <p>Method under test: {@link EnumConverter#EnumConverter(Rendering)}
    */
   @Test
   @DisplayName("Test new EnumConverter(Rendering)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.templating.EnumConverter.<init>(org.finos.springbot.workflow.templating.Rendering)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void EnumConverter.<init>(Rendering)"})
   void testNewEnumConverter() {
     // Arrange and Act
     EnumConverter<Object> actualEnumConverter = new EnumConverter<>(mock(Rendering.class));
@@ -32,17 +33,18 @@ class EnumConverterDiffblueTest {
 
   /**
    * Test {@link EnumConverter#canConvert(Field, Type)}.
+   *
    * <ul>
-   *   <li>When {@code Object}.</li>
+   *   <li>When {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link EnumConverter#canConvert(Field, Type)}
+   *
+   * <p>Method under test: {@link EnumConverter#canConvert(Field, Type)}
    */
   @Test
   @DisplayName("Test canConvert(Field, Type); when 'java.lang.Object'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.templating.EnumConverter.canConvert(java.lang.reflect.Field, java.lang.reflect.Type)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean EnumConverter.canConvert(Field, Type)"})
   void testCanConvert_whenJavaLangObject() {
     // Arrange
     EnumConverter<Object> enumConverter = new EnumConverter<>(mock(Rendering.class));
@@ -54,17 +56,18 @@ class EnumConverterDiffblueTest {
 
   /**
    * Test {@link EnumConverter#canConvert(Field, Type)}.
+   *
    * <ul>
-   *   <li>When {@link TypePlaceHolder#TypePlaceHolder(int)} with ordinal is one.</li>
+   *   <li>When {@link TypePlaceHolder#TypePlaceHolder(int)} with ordinal is one.
    * </ul>
-   * <p>
-   * Method under test: {@link EnumConverter#canConvert(Field, Type)}
+   *
+   * <p>Method under test: {@link EnumConverter#canConvert(Field, Type)}
    */
   @Test
   @DisplayName("Test canConvert(Field, Type); when TypePlaceHolder(int) with ordinal is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.templating.EnumConverter.canConvert(java.lang.reflect.Field, java.lang.reflect.Type)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean EnumConverter.canConvert(Field, Type)"})
   void testCanConvert_whenTypePlaceHolderWithOrdinalIsOne() {
     // Arrange
     EnumConverter<Object> enumConverter = new EnumConverter<>(mock(Rendering.class));

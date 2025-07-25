@@ -3,6 +3,7 @@ package org.finos.springbot.workflow.form;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,8 +14,9 @@ import org.junit.jupiter.api.Test;
 class ErrorMapDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link ErrorMap#ErrorMap()}
    *   <li>{@link ErrorMap#setContents(Map)}
@@ -23,11 +25,14 @@ class ErrorMapDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.form.ErrorMap.<init>()",
-      "void org.finos.springbot.workflow.form.ErrorMap.<init>(java.util.Map)",
-      "java.util.Map org.finos.springbot.workflow.form.ErrorMap.getContents()",
-      "void org.finos.springbot.workflow.form.ErrorMap.setContents(java.util.Map)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void ErrorMap.<init>()",
+    "void ErrorMap.<init>(Map)",
+    "Map ErrorMap.getContents()",
+    "void ErrorMap.setContents(Map)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     ErrorMap actualErrorMap = new ErrorMap();
@@ -42,11 +47,13 @@ class ErrorMapDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.</li>
+   *   <li>When {@link HashMap#HashMap()}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link ErrorMap#ErrorMap(Map)}
    *   <li>{@link ErrorMap#setContents(Map)}
@@ -55,11 +62,14 @@ class ErrorMapDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when HashMap()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.form.ErrorMap.<init>()",
-      "void org.finos.springbot.workflow.form.ErrorMap.<init>(java.util.Map)",
-      "java.util.Map org.finos.springbot.workflow.form.ErrorMap.getContents()",
-      "void org.finos.springbot.workflow.form.ErrorMap.setContents(java.util.Map)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void ErrorMap.<init>()",
+    "void ErrorMap.<init>(Map)",
+    "Map ErrorMap.getContents()",
+    "void ErrorMap.setContents(Map)"
+  })
   void testGettersAndSetters_whenHashMap() {
     // Arrange and Act
     ErrorMap actualErrorMap = new ErrorMap(new HashMap<>());
@@ -74,13 +84,14 @@ class ErrorMapDiffblueTest {
 
   /**
    * Test {@link ErrorMap#add(String, String)}.
-   * <p>
-   * Method under test: {@link ErrorMap#add(String, String)}
+   *
+   * <p>Method under test: {@link ErrorMap#add(String, String)}
    */
   @Test
   @DisplayName("Test add(String, String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.form.ErrorMap.add(java.lang.String, java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void ErrorMap.add(String, String)"})
   void testAdd() {
     // Arrange
     ErrorMap errorMap = new ErrorMap();
@@ -97,15 +108,16 @@ class ErrorMapDiffblueTest {
 
   /**
    * Test {@link ErrorMap#size()}.
-   * <p>
-   * Method under test: {@link ErrorMap#size()}
+   *
+   * <p>Method under test: {@link ErrorMap#size()}
    */
   @Test
   @DisplayName("Test size()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"int org.finos.springbot.workflow.form.ErrorMap.size()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"int ErrorMap.size()"})
   void testSize() {
     // Arrange, Act and Assert
-    assertEquals(0, (new ErrorMap()).size());
+    assertEquals(0, new ErrorMap().size());
   }
 }

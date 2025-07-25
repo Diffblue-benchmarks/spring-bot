@@ -3,6 +3,7 @@ package org.finos.springbot.workflow.response.handlers;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.workflow.content.Addressable;
 import org.finos.springbot.workflow.conversations.AllConversations;
@@ -13,49 +14,52 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.aot.DisabledInAotMode;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {UserListResponseHandler.class})
-@ExtendWith(SpringExtension.class)
 @DisabledInAotMode
+@ExtendWith(SpringExtension.class)
 class UserListResponseHandlerDiffblueTest {
-  @MockBean
-  private AllConversations allConversations;
+  @MockitoBean private AllConversations allConversations;
 
-  @Autowired
-  private UserListResponseHandler userListResponseHandler;
+  @Autowired private UserListResponseHandler userListResponseHandler;
 
   /**
    * Test {@link UserListResponseHandler#UserListResponseHandler(AllConversations)}.
-   * <p>
-   * Method under test: {@link UserListResponseHandler#UserListResponseHandler(AllConversations)}
+   *
+   * <p>Method under test: {@link UserListResponseHandler#UserListResponseHandler(AllConversations)}
    */
   @Test
   @DisplayName("Test new UserListResponseHandler(AllConversations)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.response.handlers.UserListResponseHandler.<init>(org.finos.springbot.workflow.conversations.AllConversations)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void UserListResponseHandler.<init>(AllConversations)"})
   void testNewUserListResponseHandler() {
     // Arrange, Act and Assert
-    assertEquals(ResponseHandler.MEDIUM_PRIORITY, (new UserListResponseHandler(new AllConversations())).getOrder());
+    assertEquals(
+        ResponseHandler.MEDIUM_PRIORITY,
+        new UserListResponseHandler(new AllConversations()).getOrder());
   }
 
   /**
    * Test {@link UserListResponseHandler#apply(Response)} with {@code Response}.
+   *
    * <ul>
-   *   <li>When {@link ErrorResponse#ErrorResponse(Addressable, Throwable)} with stream is {@link Addressable} and e is {@link Throwable#Throwable()}.</li>
+   *   <li>When {@link ErrorResponse#ErrorResponse(Addressable, Throwable)} with stream is {@link
+   *       Addressable} and e is {@link Throwable#Throwable()}.
    * </ul>
-   * <p>
-   * Method under test: {@link UserListResponseHandler#apply(Response)}
+   *
+   * <p>Method under test: {@link UserListResponseHandler#apply(Response)}
    */
   @Test
-  @DisplayName("Test apply(Response) with 'Response'; when ErrorResponse(Addressable, Throwable) with stream is Addressable and e is Throwable()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Void org.finos.springbot.workflow.response.handlers.UserListResponseHandler.apply(org.finos.springbot.workflow.response.Response)"})
+  @DisplayName(
+      "Test apply(Response) with 'Response'; when ErrorResponse(Addressable, Throwable) with stream is Addressable and e is Throwable()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.lang.Void UserListResponseHandler.apply(Response)"})
   void testApplyWithResponse_whenErrorResponseWithStreamIsAddressableAndEIsThrowable() {
     // Arrange
     Addressable stream = mock(Addressable.class);
@@ -66,18 +70,19 @@ class UserListResponseHandlerDiffblueTest {
 
   /**
    * Test {@link UserListResponseHandler#apply(Response)} with {@code Response}.
+   *
    * <ul>
-   *   <li>When {@link Response}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>When {@link Response}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link UserListResponseHandler#apply(Response)}
+   *
+   * <p>Method under test: {@link UserListResponseHandler#apply(Response)}
    */
   @Test
   @DisplayName("Test apply(Response) with 'Response'; when Response; then return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Void org.finos.springbot.workflow.response.handlers.UserListResponseHandler.apply(org.finos.springbot.workflow.response.Response)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.lang.Void UserListResponseHandler.apply(Response)"})
   void testApplyWithResponse_whenResponse_thenReturnNull() {
     // Arrange, Act and Assert
     assertNull(userListResponseHandler.apply(mock(Response.class)));
@@ -85,13 +90,14 @@ class UserListResponseHandlerDiffblueTest {
 
   /**
    * Test {@link UserListResponseHandler#getOrder()}.
-   * <p>
-   * Method under test: {@link UserListResponseHandler#getOrder()}
+   *
+   * <p>Method under test: {@link UserListResponseHandler#getOrder()}
    */
   @Test
   @DisplayName("Test getOrder()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"int org.finos.springbot.workflow.response.handlers.UserListResponseHandler.getOrder()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"int UserListResponseHandler.getOrder()"})
   void testGetOrder() {
     // Arrange, Act and Assert
     assertEquals(ResponseHandler.MEDIUM_PRIORITY, userListResponseHandler.getOrder());

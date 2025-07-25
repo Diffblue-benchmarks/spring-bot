@@ -7,6 +7,7 @@ import static org.mockito.Mockito.anyBoolean;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.classmate.types.TypePlaceHolder;
 import java.lang.reflect.Field;
@@ -19,14 +20,14 @@ import org.mockito.Mockito;
 class TimeConverterDiffblueTest {
   /**
    * Test {@link TimeConverter#TimeConverter(int, Rendering, Class[])}.
-   * <p>
-   * Method under test: {@link TimeConverter#TimeConverter(int, Rendering, Class[])}
+   *
+   * <p>Method under test: {@link TimeConverter#TimeConverter(int, Rendering, Class[])}
    */
   @Test
   @DisplayName("Test new TimeConverter(int, Rendering, Class[])")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.templating.TimeConverter.<init>(int, org.finos.springbot.workflow.templating.Rendering, java.lang.Class[])"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeConverter.<init>(int, Rendering, Class[])"})
   void testNewTimeConverter() {
     // Arrange
     Rendering<Object> r = mock(Rendering.class);
@@ -41,14 +42,14 @@ class TimeConverterDiffblueTest {
 
   /**
    * Test {@link TimeConverter#TimeConverter(Rendering)}.
-   * <p>
-   * Method under test: {@link TimeConverter#TimeConverter(Rendering)}
+   *
+   * <p>Method under test: {@link TimeConverter#TimeConverter(Rendering)}
    */
   @Test
   @DisplayName("Test new TimeConverter(Rendering)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.templating.TimeConverter.<init>(org.finos.springbot.workflow.templating.Rendering)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeConverter.<init>(Rendering)"})
   void testNewTimeConverter2() {
     // Arrange and Act
     TimeConverter<Object> actualTimeConverter = new TimeConverter<>(mock(Rendering.class));
@@ -58,15 +59,16 @@ class TimeConverterDiffblueTest {
   }
 
   /**
-   * Test {@link TimeConverter#apply(Field, Type, boolean, Variable)} with {@code ctx}, {@code t}, {@code editMode}, {@code variable}.
-   * <p>
-   * Method under test: {@link TimeConverter#apply(Field, Type, boolean, Variable)}
+   * Test {@link TimeConverter#apply(Field, Type, boolean, Variable)} with {@code ctx}, {@code t},
+   * {@code editMode}, {@code variable}.
+   *
+   * <p>Method under test: {@link TimeConverter#apply(Field, Type, boolean, Variable)}
    */
   @Test
   @DisplayName("Test apply(Field, Type, boolean, Variable) with 'ctx', 't', 'editMode', 'variable'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Object org.finos.springbot.workflow.templating.TimeConverter.apply(java.lang.reflect.Field, java.lang.reflect.Type, boolean, org.finos.springbot.workflow.templating.Variable)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object TimeConverter.apply(Field, Type, boolean, Variable)"})
   void testApplyWithCtxTEditModeVariable() {
     // Arrange
     Rendering<Object> r = mock(Rendering.class);
@@ -74,7 +76,8 @@ class TimeConverterDiffblueTest {
     TimeConverter<Object> timeConverter = new TimeConverter<>(r);
 
     // Act
-    Object actualApplyResult = timeConverter.apply(null, new TypePlaceHolder(1), true, mock(Variable.class));
+    Object actualApplyResult =
+        timeConverter.apply(null, new TypePlaceHolder(1), true, mock(Variable.class));
 
     // Assert
     verify(r).textField(isA(Variable.class), eq(true));

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.workflow.content.Addressable;
 import org.junit.jupiter.api.DisplayName;
@@ -13,8 +14,9 @@ import org.junit.jupiter.api.Test;
 class ErrorActionDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link ErrorAction#ErrorAction(Addressable, Object)}
    *   <li>{@link ErrorAction#getAddressable()}
@@ -24,12 +26,14 @@ class ErrorActionDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.workflow.actions.ErrorAction.<init>(org.finos.springbot.workflow.content.Addressable, java.lang.Object)",
-      "org.finos.springbot.workflow.content.Addressable org.finos.springbot.workflow.actions.ErrorAction.getAddressable()",
-      "java.lang.Object org.finos.springbot.workflow.actions.ErrorAction.getData()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.workflow.actions.ErrorAction.getUser()"})
+    "void ErrorAction.<init>(Addressable, Object)",
+    "Addressable ErrorAction.getAddressable()",
+    "Object ErrorAction.getData()",
+    "org.finos.springbot.workflow.content.User ErrorAction.getUser()"
+  })
   void testGettersAndSetters() {
     // Arrange
     Addressable a = mock(Addressable.class);

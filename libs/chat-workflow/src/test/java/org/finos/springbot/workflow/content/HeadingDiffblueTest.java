@@ -6,8 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.finos.springbot.workflow.content.Heading.HeadingImpl;
 import org.junit.jupiter.api.DisplayName;
@@ -17,17 +19,20 @@ import org.junit.jupiter.api.Test;
 class HeadingDiffblueTest {
   /**
    * Test HeadingImpl {@link HeadingImpl#buildAnother(List)}.
+   *
    * <ul>
-   *   <li>Then return {@link HeadingImpl#HeadingImpl(List, int)} with c is {@link ArrayList#ArrayList()} and level is one.</li>
+   *   <li>Then return {@link HeadingImpl#HeadingImpl(List, int)} with c is {@link
+   *       ArrayList#ArrayList()} and level is one.
    * </ul>
-   * <p>
-   * Method under test: {@link HeadingImpl#buildAnother(List)}
+   *
+   * <p>Method under test: {@link HeadingImpl#buildAnother(List)}
    */
   @Test
-  @DisplayName("Test HeadingImpl buildAnother(List); then return HeadingImpl(List, int) with c is ArrayList() and level is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.Heading org.finos.springbot.workflow.content.Heading$HeadingImpl.buildAnother(java.util.List)"})
+  @DisplayName(
+      "Test HeadingImpl buildAnother(List); then return HeadingImpl(List, int) with c is ArrayList() and level is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Heading HeadingImpl.buildAnother(List)"})
   void testHeadingImplBuildAnother_thenReturnHeadingImplWithCIsArrayListAndLevelIsOne() {
     // Arrange
     HeadingImpl headingImpl = new HeadingImpl(new ArrayList<>(), 1);
@@ -41,18 +46,21 @@ class HeadingDiffblueTest {
   }
 
   /**
-   * Test HeadingImpl {@link HeadingImpl#equals(Object)}, and {@link AbstractOrderedContent#hashCode()}.
+   * Test HeadingImpl {@link HeadingImpl#equals(Object)}, and {@link HeadingImpl#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Method under test: {@link HeadingImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link HeadingImpl#equals(Object)}
    */
   @Test
-  @DisplayName("Test HeadingImpl equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Heading$HeadingImpl.equals(java.lang.Object)"})
+  @DisplayName(
+      "Test HeadingImpl equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean HeadingImpl.equals(Object)"})
   void testHeadingImplEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     HeadingImpl headingImpl = new HeadingImpl(new ArrayList<>(), 1);
@@ -65,18 +73,21 @@ class HeadingDiffblueTest {
   }
 
   /**
-   * Test HeadingImpl {@link HeadingImpl#equals(Object)}, and {@link AbstractOrderedContent#hashCode()}.
+   * Test HeadingImpl {@link HeadingImpl#equals(Object)}, and {@link HeadingImpl#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Method under test: {@link HeadingImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link HeadingImpl#equals(Object)}
    */
   @Test
-  @DisplayName("Test HeadingImpl equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Heading$HeadingImpl.equals(java.lang.Object)"})
+  @DisplayName(
+      "Test HeadingImpl equals(Object), and hashCode(); when other is same; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean HeadingImpl.equals(Object)"})
   void testHeadingImplEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     HeadingImpl headingImpl = new HeadingImpl(new ArrayList<>(), 1);
@@ -89,17 +100,19 @@ class HeadingDiffblueTest {
 
   /**
    * Test HeadingImpl {@link HeadingImpl#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link HeadingImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link HeadingImpl#equals(Object)}
    */
   @Test
   @DisplayName("Test HeadingImpl equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Heading$HeadingImpl.equals(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean HeadingImpl.equals(Object)"})
   void testHeadingImplEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
     ArrayList<Word> c = new ArrayList<>();
@@ -112,17 +125,19 @@ class HeadingDiffblueTest {
 
   /**
    * Test HeadingImpl {@link HeadingImpl#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link HeadingImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link HeadingImpl#equals(Object)}
    */
   @Test
   @DisplayName("Test HeadingImpl equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Heading$HeadingImpl.equals(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean HeadingImpl.equals(Object)"})
   void testHeadingImplEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
     HeadingImpl headingImpl = new HeadingImpl(new ArrayList<>(), 3);
@@ -133,17 +148,19 @@ class HeadingDiffblueTest {
 
   /**
    * Test HeadingImpl {@link HeadingImpl#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link HeadingImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link HeadingImpl#equals(Object)}
    */
   @Test
   @DisplayName("Test HeadingImpl equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Heading$HeadingImpl.equals(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean HeadingImpl.equals(Object)"})
   void testHeadingImplEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange, Act and Assert
     assertNotEquals(new HeadingImpl(new ArrayList<>(), 1), null);
@@ -151,17 +168,19 @@ class HeadingDiffblueTest {
 
   /**
    * Test HeadingImpl {@link HeadingImpl#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link HeadingImpl#equals(Object)}
+   *
+   * <p>Method under test: {@link HeadingImpl#equals(Object)}
    */
   @Test
   @DisplayName("Test HeadingImpl equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Heading$HeadingImpl.equals(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean HeadingImpl.equals(Object)"})
   void testHeadingImplEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange, Act and Assert
     assertNotEquals(new HeadingImpl(new ArrayList<>(), 1), "Different type to HeadingImpl");
@@ -169,8 +188,9 @@ class HeadingDiffblueTest {
 
   /**
    * Test HeadingImpl getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link HeadingImpl#HeadingImpl(List, int)}
    *   <li>{@link HeadingImpl#toString()}
@@ -179,10 +199,13 @@ class HeadingDiffblueTest {
    */
   @Test
   @DisplayName("Test HeadingImpl getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.content.Heading$HeadingImpl.<init>(java.util.List, int)",
-      "int org.finos.springbot.workflow.content.Heading$HeadingImpl.getLevel()",
-      "java.lang.String org.finos.springbot.workflow.content.Heading$HeadingImpl.toString()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void HeadingImpl.<init>(List, int)",
+    "int HeadingImpl.getLevel()",
+    "String HeadingImpl.toString()"
+  })
   void testHeadingImplGettersAndSetters() {
     // Arrange
     ArrayList<Word> c = new ArrayList<>();
@@ -201,16 +224,18 @@ class HeadingDiffblueTest {
 
   /**
    * Test HeadingImpl {@link HeadingImpl#rightClass(Object)}.
+   *
    * <ul>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link HeadingImpl#rightClass(Object)}
+   *
+   * <p>Method under test: {@link HeadingImpl#rightClass(Object)}
    */
   @Test
   @DisplayName("Test HeadingImpl rightClass(Object); then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Heading$HeadingImpl.rightClass(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean HeadingImpl.rightClass(Object)"})
   void testHeadingImplRightClass_thenReturnTrue() {
     // Arrange
     HeadingImpl headingImpl = new HeadingImpl(new ArrayList<>(), 1);
@@ -221,19 +246,78 @@ class HeadingDiffblueTest {
 
   /**
    * Test HeadingImpl {@link HeadingImpl#rightClass(Object)}.
+   *
    * <ul>
-   *   <li>When {@code Obj}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code Obj}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link HeadingImpl#rightClass(Object)}
+   *
+   * <p>Method under test: {@link HeadingImpl#rightClass(Object)}
    */
   @Test
   @DisplayName("Test HeadingImpl rightClass(Object); when 'Obj'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.content.Heading$HeadingImpl.rightClass(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean HeadingImpl.rightClass(Object)"})
   void testHeadingImplRightClass_whenObj_thenReturnFalse() {
     // Arrange, Act and Assert
-    assertFalse((new HeadingImpl(new ArrayList<>(), 1)).rightClass("Obj"));
+    assertFalse(new HeadingImpl(new ArrayList<>(), 1).rightClass("Obj"));
+  }
+
+  /**
+   * Test {@link Heading#of(int, Word[])} with {@code level}, {@code c}.
+   *
+   * <p>Method under test: {@link Heading#of(int, Word[])}
+   */
+  @Test
+  @DisplayName("Test of(int, Word[]) with 'level', 'c'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Heading Heading.of(int, Word[])"})
+  void testOfWithLevelC() {
+    // Arrange and Act
+    Heading actualOfResult = Heading.of(1, mock(Word.class));
+
+    // Assert
+    assertTrue(actualOfResult instanceof HeadingImpl);
+    List<Word> contents = actualOfResult.getContents();
+    assertEquals(1, contents.size());
+    Word expectedNextResult = contents.get(0);
+    assertEquals(1, actualOfResult.getLevel());
+    assertEquals("null", actualOfResult.getText());
+    Iterator<Word> iteratorResult = actualOfResult.iterator();
+    Word actualNextResult = iteratorResult.next();
+    assertFalse(iteratorResult.hasNext());
+    assertSame(expectedNextResult, actualNextResult);
+    assertEquals(1, actualOfResult.size());
+  }
+
+  /**
+   * Test {@link Heading#of(String, int)} with {@code str}, {@code level}.
+   *
+   * <p>Method under test: {@link Heading#of(String, int)}
+   */
+  @Test
+  @DisplayName("Test of(String, int) with 'str', 'level'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Heading Heading.of(String, int)"})
+  void testOfWithStrLevel() {
+    // Arrange and Act
+    Heading actualOfResult = Heading.of("Str", 1);
+
+    // Assert
+    assertTrue(actualOfResult instanceof HeadingImpl);
+    List<Word> contents = actualOfResult.getContents();
+    assertEquals(1, contents.size());
+    Word getResult = contents.get(0);
+    assertEquals("str", getResult.getIdentifier());
+    assertEquals(1, actualOfResult.getLevel());
+    assertEquals("Str", actualOfResult.getText());
+    Iterator<Word> iteratorResult = actualOfResult.iterator();
+    Word actualNextResult = iteratorResult.next();
+    assertFalse(iteratorResult.hasNext());
+    assertSame(getResult, actualNextResult);
+    assertEquals(1, actualOfResult.size());
   }
 }

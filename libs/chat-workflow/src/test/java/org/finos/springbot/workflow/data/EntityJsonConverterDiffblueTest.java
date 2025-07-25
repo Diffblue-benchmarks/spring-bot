@@ -11,24 +11,17 @@ import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationConfig;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationConfig;
-import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.cfg.CacheProvider;
 import com.fasterxml.jackson.databind.cfg.ContextAttributes;
+import com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper.Builder;
-import com.fasterxml.jackson.databind.jsontype.impl.AsDeductionTypeSerializer;
-import com.fasterxml.jackson.databind.ser.BeanSerializerModifier;
-import com.fasterxml.jackson.databind.ser.SerializerFactory;
-import com.fasterxml.jackson.databind.ser.Serializers;
-import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
-import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 import com.fasterxml.jackson.databind.util.LRUMap;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,17 +39,18 @@ import org.mockito.Mockito;
 class EntityJsonConverterDiffblueTest {
   /**
    * Test {@link EntityJsonConverter#EntityJsonConverter(ObjectMapper, List)}.
+   *
    * <ul>
-   *   <li>Given {@code Object}.</li>
+   *   <li>Given {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#EntityJsonConverter(ObjectMapper, List)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#EntityJsonConverter(ObjectMapper, List)}
    */
   @Test
   @DisplayName("Test new EntityJsonConverter(ObjectMapper, List); given 'java.lang.Object'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.data.EntityJsonConverter.<init>(com.fasterxml.jackson.databind.ObjectMapper, java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void EntityJsonConverter.<init>(ObjectMapper, List)"})
   void testNewEntityJsonConverter_givenJavaLangObject() {
     // Arrange
     JsonMapper om = JsonMapper.builder().findAndAddModules().build();
@@ -78,17 +72,18 @@ class EntityJsonConverterDiffblueTest {
 
   /**
    * Test {@link EntityJsonConverter#EntityJsonConverter(ObjectMapper, List)}.
+   *
    * <ul>
-   *   <li>Given {@code Object}.</li>
+   *   <li>Given {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#EntityJsonConverter(ObjectMapper, List)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#EntityJsonConverter(ObjectMapper, List)}
    */
   @Test
   @DisplayName("Test new EntityJsonConverter(ObjectMapper, List); given 'java.lang.Object'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.data.EntityJsonConverter.<init>(com.fasterxml.jackson.databind.ObjectMapper, java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void EntityJsonConverter.<init>(ObjectMapper, List)"})
   void testNewEntityJsonConverter_givenJavaLangObject2() {
     // Arrange
     JsonMapper om = JsonMapper.builder().findAndAddModules().build();
@@ -112,17 +107,18 @@ class EntityJsonConverterDiffblueTest {
 
   /**
    * Test {@link EntityJsonConverter#EntityJsonConverter(ObjectMapper, List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#EntityJsonConverter(ObjectMapper, List)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#EntityJsonConverter(ObjectMapper, List)}
    */
   @Test
   @DisplayName("Test new EntityJsonConverter(ObjectMapper, List); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.data.EntityJsonConverter.<init>(com.fasterxml.jackson.databind.ObjectMapper, java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void EntityJsonConverter.<init>(ObjectMapper, List)"})
   void testNewEntityJsonConverter_whenArrayList() {
     // Arrange
     JsonMapper om = JsonMapper.builder().findAndAddModules().build();
@@ -140,22 +136,28 @@ class EntityJsonConverterDiffblueTest {
 
   /**
    * Test {@link EntityJsonConverter#readValue(String)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@link VersionSpace#VersionSpace(Class)} with toUse is {@link Object}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@link VersionSpace#VersionSpace(Class)} with
+   *       toUse is {@link Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#readValue(String)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#readValue(String)}
    */
   @Test
-  @DisplayName("Test readValue(String); given ArrayList() add VersionSpace(Class) with toUse is Object")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.entityjson.EntityJson org.finos.springbot.workflow.data.EntityJsonConverter.readValue(java.lang.String)"})
-  void testReadValue_givenArrayListAddVersionSpaceWithToUseIsObject() throws JsonProcessingException {
+  @DisplayName(
+      "Test readValue(String); given ArrayList() add VersionSpace(Class) with toUse is Object")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson EntityJsonConverter.readValue(String)"})
+  void testReadValue_givenArrayListAddVersionSpaceWithToUseIsObject()
+      throws JsonProcessingException {
     // Arrange
     CacheProvider cacheProvider = mock(CacheProvider.class);
-    when(cacheProvider.forDeserializerCache(Mockito.<DeserializationConfig>any())).thenReturn(new LRUMap<>(1, 3));
-    when(cacheProvider.forSerializerCache(Mockito.<SerializationConfig>any())).thenReturn(new LRUMap<>(1, 3));
+    when(cacheProvider.forDeserializerCache(Mockito.<DeserializationConfig>any()))
+        .thenReturn(new LRUMap<>(1, 3));
+    when(cacheProvider.forSerializerCache(Mockito.<SerializationConfig>any()))
+        .thenReturn(new LRUMap<>(1, 3));
     when(cacheProvider.forTypeFactory()).thenReturn(new LRUMap<>(1, 3));
     Builder builderResult = JsonMapper.builder();
     builderResult.cacheProvider(cacheProvider);
@@ -171,7 +173,8 @@ class EntityJsonConverterDiffblueTest {
     JsonMapper buildResult = JsonMapper.builder().findAndAddModules().build();
 
     // Act
-    EntityJson actualReadValueResult = entityJsonConverter.readValue(buildResult.writeValueAsString(new EntityJson()));
+    EntityJson actualReadValueResult =
+        entityJsonConverter.readValue(buildResult.writeValueAsString(new EntityJson()));
 
     // Assert
     verify(cacheProvider).forDeserializerCache(isNull());
@@ -182,19 +185,22 @@ class EntityJsonConverterDiffblueTest {
 
   /**
    * Test {@link EntityJsonConverter#readValue(String)}.
+   *
    * <ul>
-   *   <li>Given builder addMixIn {@link Object} and {@link Object}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given builder addMixIn {@link Object} and {@link Object}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#readValue(String)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#readValue(String)}
    */
   @Test
-  @DisplayName("Test readValue(String); given builder addMixIn Object and Object; then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.entityjson.EntityJson org.finos.springbot.workflow.data.EntityJsonConverter.readValue(java.lang.String)"})
-  void testReadValue_givenBuilderAddMixInObjectAndObject_thenReturnEmpty() throws JsonProcessingException {
+  @DisplayName(
+      "Test readValue(String); given builder addMixIn Object and Object; then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson EntityJsonConverter.readValue(String)"})
+  void testReadValue_givenBuilderAddMixInObjectAndObject_thenReturnEmpty()
+      throws JsonProcessingException {
     // Arrange
     Builder builderResult = JsonMapper.builder();
     Class<Object> target = Object.class;
@@ -205,28 +211,67 @@ class EntityJsonConverterDiffblueTest {
     JsonMapper buildResult = JsonMapper.builder().findAndAddModules().build();
 
     // Act and Assert
-    assertTrue(entityJsonConverter.readValue(buildResult.writeValueAsString(new EntityJson())).isEmpty());
+    assertTrue(
+        entityJsonConverter.readValue(buildResult.writeValueAsString(new EntityJson())).isEmpty());
   }
 
   /**
    * Test {@link EntityJsonConverter#readValue(String)}.
+   *
    * <ul>
-   *   <li>Given builder defaultLeniency {@code true}.</li>
-   *   <li>Then calls {@link CacheProvider#forDeserializerCache(DeserializationConfig)}.</li>
+   *   <li>Given builder annotationIntrospector {@link JacksonAnnotationIntrospector} (default
+   *       constructor).
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#readValue(String)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#readValue(String)}
    */
   @Test
-  @DisplayName("Test readValue(String); given builder defaultLeniency 'true'; then calls forDeserializerCache(DeserializationConfig)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.entityjson.EntityJson org.finos.springbot.workflow.data.EntityJsonConverter.readValue(java.lang.String)"})
-  void testReadValue_givenBuilderDefaultLeniencyTrue_thenCallsForDeserializerCache() throws JsonProcessingException {
+  @DisplayName(
+      "Test readValue(String); given builder annotationIntrospector JacksonAnnotationIntrospector (default constructor)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson EntityJsonConverter.readValue(String)"})
+  void testReadValue_givenBuilderAnnotationIntrospectorJacksonAnnotationIntrospector()
+      throws JsonProcessingException {
+    // Arrange
+    Builder builderResult = JsonMapper.builder();
+    builderResult.annotationIntrospector(new JacksonAnnotationIntrospector());
+    Class<Object> target = Object.class;
+    Class<Object> mixinSource = Object.class;
+    builderResult.addMixIn(target, mixinSource);
+    JsonMapper om = builderResult.findAndAddModules().build();
+    EntityJsonConverter entityJsonConverter = new EntityJsonConverter(om, new ArrayList<>());
+    JsonMapper buildResult = JsonMapper.builder().findAndAddModules().build();
+
+    // Act and Assert
+    assertTrue(
+        entityJsonConverter.readValue(buildResult.writeValueAsString(new EntityJson())).isEmpty());
+  }
+
+  /**
+   * Test {@link EntityJsonConverter#readValue(String)}.
+   *
+   * <ul>
+   *   <li>Given builder defaultLeniency {@code true}.
+   *   <li>Then calls {@link CacheProvider#forDeserializerCache(DeserializationConfig)}.
+   * </ul>
+   *
+   * <p>Method under test: {@link EntityJsonConverter#readValue(String)}
+   */
+  @Test
+  @DisplayName(
+      "Test readValue(String); given builder defaultLeniency 'true'; then calls forDeserializerCache(DeserializationConfig)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson EntityJsonConverter.readValue(String)"})
+  void testReadValue_givenBuilderDefaultLeniencyTrue_thenCallsForDeserializerCache()
+      throws JsonProcessingException {
     // Arrange
     CacheProvider cacheProvider = mock(CacheProvider.class);
-    when(cacheProvider.forDeserializerCache(Mockito.<DeserializationConfig>any())).thenReturn(new LRUMap<>(1, 3));
-    when(cacheProvider.forSerializerCache(Mockito.<SerializationConfig>any())).thenReturn(new LRUMap<>(1, 3));
+    when(cacheProvider.forDeserializerCache(Mockito.<DeserializationConfig>any()))
+        .thenReturn(new LRUMap<>(1, 3));
+    when(cacheProvider.forSerializerCache(Mockito.<SerializationConfig>any()))
+        .thenReturn(new LRUMap<>(1, 3));
     when(cacheProvider.forTypeFactory()).thenReturn(new LRUMap<>(1, 3));
     Builder builderResult = JsonMapper.builder();
     builderResult.defaultLeniency(true);
@@ -239,7 +284,8 @@ class EntityJsonConverterDiffblueTest {
     JsonMapper buildResult = JsonMapper.builder().findAndAddModules().build();
 
     // Act
-    EntityJson actualReadValueResult = entityJsonConverter.readValue(buildResult.writeValueAsString(new EntityJson()));
+    EntityJson actualReadValueResult =
+        entityJsonConverter.readValue(buildResult.writeValueAsString(new EntityJson()));
 
     // Assert
     verify(cacheProvider).forDeserializerCache(isNull());
@@ -250,18 +296,21 @@ class EntityJsonConverterDiffblueTest {
 
   /**
    * Test {@link EntityJsonConverter#readValue(String)}.
+   *
    * <ul>
-   *   <li>Given {@code EntityJsonConverter}.</li>
+   *   <li>Given {@code EntityJsonConverter}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#readValue(String)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#readValue(String)}
    */
   @Test
-  @DisplayName("Test readValue(String); given 'org.finos.springbot.workflow.data.EntityJsonConverter'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.entityjson.EntityJson org.finos.springbot.workflow.data.EntityJsonConverter.readValue(java.lang.String)"})
-  void testReadValue_givenOrgFinosSpringbotWorkflowDataEntityJsonConverter() throws JsonProcessingException {
+  @DisplayName(
+      "Test readValue(String); given 'org.finos.springbot.workflow.data.EntityJsonConverter'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson EntityJsonConverter.readValue(String)"})
+  void testReadValue_givenOrgFinosSpringbotWorkflowDataEntityJsonConverter()
+      throws JsonProcessingException {
     // Arrange
     Builder builderResult = JsonMapper.builder();
     Class<Object> target = Object.class;
@@ -272,22 +321,24 @@ class EntityJsonConverterDiffblueTest {
     JsonMapper buildResult = JsonMapper.builder().findAndAddModules().build();
 
     // Act and Assert
-    assertTrue(entityJsonConverter.readValue(buildResult.writeValueAsString(new EntityJson())).isEmpty());
+    assertTrue(
+        entityJsonConverter.readValue(buildResult.writeValueAsString(new EntityJson())).isEmpty());
   }
 
   /**
    * Test {@link EntityJsonConverter#readValue(String)}.
+   *
    * <ul>
-   *   <li>Then return Empty.</li>
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#readValue(String)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#readValue(String)}
    */
   @Test
   @DisplayName("Test readValue(String); then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.entityjson.EntityJson org.finos.springbot.workflow.data.EntityJsonConverter.readValue(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson EntityJsonConverter.readValue(String)"})
   void testReadValue_thenReturnEmpty() throws JsonProcessingException {
     // Arrange
     JsonMapper om = JsonMapper.builder().findAndAddModules().build();
@@ -295,24 +346,125 @@ class EntityJsonConverterDiffblueTest {
     JsonMapper buildResult = JsonMapper.builder().findAndAddModules().build();
 
     // Act and Assert
-    assertTrue(entityJsonConverter.readValue(buildResult.writeValueAsString(new EntityJson())).isEmpty());
+    assertTrue(
+        entityJsonConverter.readValue(buildResult.writeValueAsString(new EntityJson())).isEmpty());
+  }
+
+  /**
+   * Test {@link EntityJsonConverter#readValue(String)}.
+   *
+   * <ul>
+   *   <li>When {@code 42}.
+   *   <li>Then throw {@link UnsupportedOperationException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link EntityJsonConverter#readValue(String)}
+   */
+  @Test
+  @DisplayName("Test readValue(String); when '42'; then throw UnsupportedOperationException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson EntityJsonConverter.readValue(String)"})
+  void testReadValue_when42_thenThrowUnsupportedOperationException() {
+    // Arrange
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+
+    // Act and Assert
+    assertThrows(
+        UnsupportedOperationException.class,
+        () -> new EntityJsonConverter(om, new ArrayList<>()).readValue("42"));
+  }
+
+  /**
+   * Test {@link EntityJsonConverter#readValue(String)}.
+   *
+   * <ul>
+   *   <li>When empty string.
+   *   <li>Then throw {@link UnsupportedOperationException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link EntityJsonConverter#readValue(String)}
+   */
+  @Test
+  @DisplayName(
+      "Test readValue(String); when empty string; then throw UnsupportedOperationException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson EntityJsonConverter.readValue(String)"})
+  void testReadValue_whenEmptyString_thenThrowUnsupportedOperationException() {
+    // Arrange
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+
+    // Act and Assert
+    assertThrows(
+        UnsupportedOperationException.class,
+        () -> new EntityJsonConverter(om, new ArrayList<>()).readValue(""));
+  }
+
+  /**
+   * Test {@link EntityJsonConverter#readValue(String)}.
+   *
+   * <ul>
+   *   <li>When {@code Json}.
+   *   <li>Then throw {@link UnsupportedOperationException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link EntityJsonConverter#readValue(String)}
+   */
+  @Test
+  @DisplayName("Test readValue(String); when 'Json'; then throw UnsupportedOperationException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson EntityJsonConverter.readValue(String)"})
+  void testReadValue_whenJson_thenThrowUnsupportedOperationException() {
+    // Arrange
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+
+    // Act and Assert
+    assertThrows(
+        UnsupportedOperationException.class,
+        () -> new EntityJsonConverter(om, new ArrayList<>()).readValue("Json"));
+  }
+
+  /**
+   * Test {@link EntityJsonConverter#readValue(String)}.
+   *
+   * <ul>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link EntityJsonConverter#readValue(String)}
+   */
+  @Test
+  @DisplayName("Test readValue(String); when 'null'; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson EntityJsonConverter.readValue(String)"})
+  void testReadValue_whenNull_thenReturnNull() {
+    // Arrange
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+
+    // Act and Assert
+    assertNull(new EntityJsonConverter(om, new ArrayList<>()).readValue(null));
   }
 
   /**
    * Test {@link EntityJsonConverter#writeValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@code Ej}.</li>
-   *   <li>Then return {@code "Ej"}.</li>
+   *   <li>Given {@code Object}.
+   *   <li>When {@code Ej}.
+   *   <li>Then return {@code "Ej"}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#writeValue(Object)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#writeValue(Object)}
    */
   @Test
   @DisplayName("Test writeValue(Object); given 'java.lang.Object'; when 'Ej'; then return '\"Ej\"'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.data.EntityJsonConverter.writeValue(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String EntityJsonConverter.writeValue(Object)"})
   void testWriteValue_givenJavaLangObject_whenEj_thenReturnEj() {
     // Arrange
     ArrayList<VersionSpace> initial = new ArrayList<>();
@@ -320,118 +472,128 @@ class EntityJsonConverterDiffblueTest {
     initial.add(new VersionSpace(toUse));
 
     // Act and Assert
-    assertEquals("\"Ej\"",
-        (new EntityJsonConverter(JsonMapper.builder().findAndAddModules().build(), initial)).writeValue("Ej"));
+    assertEquals(
+        "\"Ej\"",
+        new EntityJsonConverter(JsonMapper.builder().findAndAddModules().build(), initial)
+            .writeValue("Ej"));
   }
 
   /**
    * Test {@link EntityJsonConverter#writeValue(Object)}.
+   *
    * <ul>
-   *   <li>When {@code 19088743}.</li>
-   *   <li>Then return {@code 19088743}.</li>
+   *   <li>When {@code 19088743}.
+   *   <li>Then return {@code 19088743}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#writeValue(Object)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#writeValue(Object)}
    */
   @Test
   @DisplayName("Test writeValue(Object); when '19088743'; then return '19088743'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.data.EntityJsonConverter.writeValue(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String EntityJsonConverter.writeValue(Object)"})
   void testWriteValue_when19088743_thenReturn19088743() {
     // Arrange
     JsonMapper om = JsonMapper.builder().findAndAddModules().build();
 
     // Act and Assert
-    assertEquals("19088743", (new EntityJsonConverter(om, new ArrayList<>())).writeValue(19088743));
+    assertEquals("19088743", new EntityJsonConverter(om, new ArrayList<>()).writeValue(19088743));
   }
 
   /**
    * Test {@link EntityJsonConverter#writeValue(Object)}.
+   *
    * <ul>
-   *   <li>When {@code Ej}.</li>
-   *   <li>Then return {@code "Ej"}.</li>
+   *   <li>When {@code Ej}.
+   *   <li>Then return {@code "Ej"}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#writeValue(Object)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#writeValue(Object)}
    */
   @Test
   @DisplayName("Test writeValue(Object); when 'Ej'; then return '\"Ej\"'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.data.EntityJsonConverter.writeValue(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String EntityJsonConverter.writeValue(Object)"})
   void testWriteValue_whenEj_thenReturnEj() {
     // Arrange
     JsonMapper om = JsonMapper.builder().findAndAddModules().build();
 
     // Act and Assert
-    assertEquals("\"Ej\"", (new EntityJsonConverter(om, new ArrayList<>())).writeValue("Ej"));
+    assertEquals("\"Ej\"", new EntityJsonConverter(om, new ArrayList<>()).writeValue("Ej"));
   }
 
   /**
    * Test {@link EntityJsonConverter#writeValue(Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#writeValue(Object)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#writeValue(Object)}
    */
   @Test
   @DisplayName("Test writeValue(Object); when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.data.EntityJsonConverter.writeValue(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String EntityJsonConverter.writeValue(Object)"})
   void testWriteValue_whenNull_thenReturnNull() {
     // Arrange
     JsonMapper om = JsonMapper.builder().findAndAddModules().build();
 
     // Act and Assert
-    assertNull((new EntityJsonConverter(om, new ArrayList<>())).writeValue(null));
+    assertNull(new EntityJsonConverter(om, new ArrayList<>()).writeValue(null));
   }
 
   /**
    * Test {@link EntityJsonConverter#fromJson(String, Object)}.
+   *
    * <ul>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then throw {@link UnsupportedOperationException}.</li>
+   *   <li>When {@code 42}.
+   *   <li>Then throw {@link UnsupportedOperationException}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#fromJson(String, Object)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#fromJson(String, Object)}
    */
   @Test
   @DisplayName("Test fromJson(String, Object); when '42'; then throw UnsupportedOperationException")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Object org.finos.springbot.workflow.data.EntityJsonConverter.fromJson(java.lang.String, java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object EntityJsonConverter.fromJson(String, Object)"})
   void testFromJson_when42_thenThrowUnsupportedOperationException() {
     // Arrange
     JsonMapper om = JsonMapper.builder().findAndAddModules().build();
 
     // Act and Assert
-    assertThrows(UnsupportedOperationException.class,
-        () -> (new EntityJsonConverter(om, new ArrayList<>())).fromJson("42", "Json"));
+    assertThrows(
+        UnsupportedOperationException.class,
+        () -> new EntityJsonConverter(om, new ArrayList<>()).fromJson("42", "Json"));
   }
 
   /**
    * Test {@link EntityJsonConverter#fromJson(String, Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#fromJson(String, Object)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#fromJson(String, Object)}
    */
   @Test
   @DisplayName("Test fromJson(String, Object); when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Object org.finos.springbot.workflow.data.EntityJsonConverter.fromJson(java.lang.String, java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object EntityJsonConverter.fromJson(String, Object)"})
   void testFromJson_whenNull_thenReturnNull() {
     // Arrange
     CacheProvider cacheProvider = mock(CacheProvider.class);
-    when(cacheProvider.forDeserializerCache(Mockito.<DeserializationConfig>any())).thenReturn(new LRUMap<>(1, 3));
-    when(cacheProvider.forSerializerCache(Mockito.<SerializationConfig>any())).thenReturn(new LRUMap<>(1, 3));
+    when(cacheProvider.forDeserializerCache(Mockito.<DeserializationConfig>any()))
+        .thenReturn(new LRUMap<>(1, 3));
+    when(cacheProvider.forSerializerCache(Mockito.<SerializationConfig>any()))
+        .thenReturn(new LRUMap<>(1, 3));
     when(cacheProvider.forTypeFactory()).thenReturn(new LRUMap<>(1, 3));
     Builder builderResult = JsonMapper.builder();
     builderResult.cacheProvider(cacheProvider);
@@ -445,8 +607,9 @@ class EntityJsonConverterDiffblueTest {
     initial.add(new VersionSpace(toUse));
 
     // Act
-    Object actualFromJsonResult = (new EntityJsonConverter(om, initial))
-        .fromJson("org.finos.springbot.workflow.data.EntityJsonConverter", null);
+    Object actualFromJsonResult =
+        new EntityJsonConverter(om, initial)
+            .fromJson("org.finos.springbot.workflow.data.EntityJsonConverter", null);
 
     // Assert
     verify(cacheProvider).forDeserializerCache(isNull());
@@ -457,14 +620,14 @@ class EntityJsonConverterDiffblueTest {
 
   /**
    * Test {@link EntityJsonConverter#getObjectMapper()}.
-   * <p>
-   * Method under test: {@link EntityJsonConverter#getObjectMapper()}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#getObjectMapper()}
    */
   @Test
   @DisplayName("Test getObjectMapper()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "com.fasterxml.jackson.databind.ObjectMapper org.finos.springbot.workflow.data.EntityJsonConverter.getObjectMapper()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"ObjectMapper EntityJsonConverter.getObjectMapper()"})
   void testGetObjectMapper() {
     // Arrange
     JsonMapper om = JsonMapper.builder().findAndAddModules().build();
@@ -475,110 +638,89 @@ class EntityJsonConverterDiffblueTest {
   }
 
   /**
-   * Test {@link EntityJsonConverter#formatData(DataResponse)}.
-   * <p>
-   * Method under test: {@link EntityJsonConverter#formatData(DataResponse)}
-   */
-  @Test
-  @DisplayName("Test formatData(DataResponse)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.data.EntityJsonConverter.formatData(org.finos.springbot.workflow.response.DataResponse)"})
-  void testFormatData() throws JsonMappingException {
-    // Arrange
-    SerializerFactory serializerFactory = mock(SerializerFactory.class);
-    when(serializerFactory.createSerializer(Mockito.<SerializerProvider>any(), Mockito.<JavaType>any()))
-        .thenThrow(new UnsupportedOperationException("Map Fail"));
-    SerializerFactory serializerFactory2 = mock(SerializerFactory.class);
-    when(serializerFactory2.withAdditionalKeySerializers(Mockito.<Serializers>any())).thenReturn(serializerFactory);
-    SerializerFactory serializerFactory3 = mock(SerializerFactory.class);
-    when(serializerFactory3.withAdditionalSerializers(Mockito.<Serializers>any())).thenReturn(serializerFactory2);
-    SerializerFactory serializerFactory4 = mock(SerializerFactory.class);
-    when(serializerFactory4.withSerializerModifier(Mockito.<BeanSerializerModifier>any()))
-        .thenReturn(serializerFactory3);
-    SerializerFactory f = mock(SerializerFactory.class);
-    when(f.withAdditionalSerializers(Mockito.<Serializers>any())).thenReturn(serializerFactory4);
-    Builder builderResult = JsonMapper.builder();
-    builderResult.serializerFactory(f);
-    builderResult.defaultAttributes(mock(ContextAttributes.class));
-    Class<Object> target = Object.class;
-    Class<Object> mixinSource = Object.class;
-    builderResult.addMixIn(target, mixinSource);
-    JsonMapper om = builderResult.findAndAddModules().build();
-    EntityJsonConverter entityJsonConverter = new EntityJsonConverter(om, new ArrayList<>());
-    Addressable resultTo = mock(Addressable.class);
-
-    // Act and Assert
-    assertThrows(UnsupportedOperationException.class,
-        () -> entityJsonConverter.formatData(new DataResponse(resultTo, new HashMap<>(), "Template Name")));
-    verify(serializerFactory).createSerializer(isA(SerializerProvider.class), isA(JavaType.class));
-    verify(serializerFactory2).withAdditionalKeySerializers(isA(Serializers.class));
-    verify(f).withAdditionalSerializers(isA(Serializers.class));
-    verify(serializerFactory3).withAdditionalSerializers(isA(Serializers.class));
-    verify(serializerFactory4).withSerializerModifier(isA(BeanSerializerModifier.class));
-  }
-
-  /**
-   * Test {@link EntityJsonConverter#formatData(DataResponse)}.
-   * <p>
-   * Method under test: {@link EntityJsonConverter#formatData(DataResponse)}
-   */
-  @Test
-  @DisplayName("Test formatData(DataResponse)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.data.EntityJsonConverter.formatData(org.finos.springbot.workflow.response.DataResponse)"})
-  void testFormatData2() throws JsonMappingException {
-    // Arrange
-    SerializerFactory serializerFactory = mock(SerializerFactory.class);
-    Class<Object> type = Object.class;
-    when(serializerFactory.createSerializer(Mockito.<SerializerProvider>any(), Mockito.<JavaType>any()))
-        .thenReturn(new Default(1, type));
-    when(serializerFactory.createTypeSerializer(Mockito.<SerializationConfig>any(), Mockito.<JavaType>any()))
-        .thenReturn(AsDeductionTypeSerializer.instance());
-    SerializerFactory serializerFactory2 = mock(SerializerFactory.class);
-    when(serializerFactory2.withAdditionalKeySerializers(Mockito.<Serializers>any())).thenReturn(serializerFactory);
-    SerializerFactory serializerFactory3 = mock(SerializerFactory.class);
-    when(serializerFactory3.withAdditionalSerializers(Mockito.<Serializers>any())).thenReturn(serializerFactory2);
-    SerializerFactory serializerFactory4 = mock(SerializerFactory.class);
-    when(serializerFactory4.withSerializerModifier(Mockito.<BeanSerializerModifier>any()))
-        .thenReturn(serializerFactory3);
-    SerializerFactory f = mock(SerializerFactory.class);
-    when(f.withAdditionalSerializers(Mockito.<Serializers>any())).thenReturn(serializerFactory4);
-    Builder builderResult = JsonMapper.builder();
-    builderResult.serializerFactory(f);
-    builderResult.defaultAttributes(mock(ContextAttributes.class));
-    Class<Object> target = Object.class;
-    Class<Object> mixinSource = Object.class;
-    builderResult.addMixIn(target, mixinSource);
-    JsonMapper om = builderResult.findAndAddModules().build();
-    EntityJsonConverter entityJsonConverter = new EntityJsonConverter(om, new ArrayList<>());
-    Addressable resultTo = mock(Addressable.class);
-
-    // Act and Assert
-    assertThrows(UnsupportedOperationException.class,
-        () -> entityJsonConverter.formatData(new DataResponse(resultTo, new HashMap<>(), "Template Name")));
-    verify(serializerFactory).createSerializer(isA(SerializerProvider.class), isA(JavaType.class));
-    verify(serializerFactory).createTypeSerializer(isA(SerializationConfig.class), isA(JavaType.class));
-    verify(serializerFactory2).withAdditionalKeySerializers(isA(Serializers.class));
-    verify(f).withAdditionalSerializers(isA(Serializers.class));
-    verify(serializerFactory3).withAdditionalSerializers(isA(Serializers.class));
-    verify(serializerFactory4).withSerializerModifier(isA(BeanSerializerModifier.class));
-  }
-
-  /**
-   * Test {@link EntityJsonConverter#formatData(DataResponse)}.
+   * Test {@link EntityJsonConverter#addVersionSpace(VersionSpace)}.
+   *
    * <ul>
-   *   <li>Given {@code EntityJsonConverter}.</li>
+   *   <li>Then calls {@link VersionSpace#getToUse()}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#formatData(DataResponse)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#addVersionSpace(VersionSpace)}
    */
   @Test
-  @DisplayName("Test formatData(DataResponse); given 'org.finos.springbot.workflow.data.EntityJsonConverter'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.data.EntityJsonConverter.formatData(org.finos.springbot.workflow.response.DataResponse)"})
+  @DisplayName("Test addVersionSpace(VersionSpace); then calls getToUse()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void EntityJsonConverter.addVersionSpace(VersionSpace)"})
+  void testAddVersionSpace_thenCallsGetToUse() {
+    // Arrange
+    VersionSpace versionSpace = mock(VersionSpace.class);
+    Class<EntityJsonConverter> forNameResult = EntityJsonConverter.class;
+    Mockito.<Class<?>>when(versionSpace.getToUse()).thenReturn(forNameResult);
+
+    ArrayList<VersionSpace> initial = new ArrayList<>();
+    initial.add(versionSpace);
+    EntityJsonConverter entityJsonConverter =
+        new EntityJsonConverter(JsonMapper.builder().findAndAddModules().build(), initial);
+    Class<Object> toUse = Object.class;
+
+    // Act
+    entityJsonConverter.addVersionSpace(new VersionSpace(toUse));
+
+    // Assert
+    verify(versionSpace).getToUse();
+  }
+
+  /**
+   * Test {@link EntityJsonConverter#addVersionSpace(VersionSpace)}.
+   *
+   * <ul>
+   *   <li>Then calls {@link VersionSpace#getToUse()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link EntityJsonConverter#addVersionSpace(VersionSpace)}
+   */
+  @Test
+  @DisplayName("Test addVersionSpace(VersionSpace); then calls getToUse()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void EntityJsonConverter.addVersionSpace(VersionSpace)"})
+  void testAddVersionSpace_thenCallsGetToUse2() {
+    // Arrange
+    VersionSpace versionSpace = mock(VersionSpace.class);
+    Class<EntityJsonConverter> forNameResult = EntityJsonConverter.class;
+    Mockito.<Class<?>>when(versionSpace.getToUse()).thenReturn(forNameResult);
+
+    ArrayList<VersionSpace> initial = new ArrayList<>();
+    initial.add(versionSpace);
+    EntityJsonConverter entityJsonConverter =
+        new EntityJsonConverter(JsonMapper.builder().findAndAddModules().build(), initial);
+    VersionSpace vs = mock(VersionSpace.class);
+    Class<Object> forNameResult2 = Object.class;
+    Mockito.<Class<?>>when(vs.getToUse()).thenReturn(forNameResult2);
+
+    // Act
+    entityJsonConverter.addVersionSpace(vs);
+
+    // Assert
+    verify(versionSpace).getToUse();
+    verify(vs).getToUse();
+  }
+
+  /**
+   * Test {@link EntityJsonConverter#formatData(DataResponse)}.
+   *
+   * <ul>
+   *   <li>Given {@code EntityJsonConverter}.
+   * </ul>
+   *
+   * <p>Method under test: {@link EntityJsonConverter#formatData(DataResponse)}
+   */
+  @Test
+  @DisplayName(
+      "Test formatData(DataResponse); given 'org.finos.springbot.workflow.data.EntityJsonConverter'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String EntityJsonConverter.formatData(DataResponse)"})
   void testFormatData_givenOrgFinosSpringbotWorkflowDataEntityJsonConverter() {
     // Arrange
     Builder builderResult = JsonMapper.builder();
@@ -590,41 +732,42 @@ class EntityJsonConverterDiffblueTest {
     Addressable resultTo = mock(Addressable.class);
 
     // Act and Assert
-    assertEquals("{}", entityJsonConverter.formatData(new DataResponse(resultTo, new HashMap<>(), "Template Name")));
+    assertEquals(
+        "{}",
+        entityJsonConverter.formatData(
+            new DataResponse(resultTo, new HashMap<>(), "Template Name")));
   }
 
   /**
    * Test {@link EntityJsonConverter#formatData(DataResponse)}.
+   *
    * <ul>
-   *   <li>Given {@link SerializerFactory} {@link SerializerFactory#createSerializer(SerializerProvider, JavaType)} return {@code null}.</li>
+   *   <li>Then calls {@link CacheProvider#forDeserializerCache(DeserializationConfig)}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#formatData(DataResponse)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#formatData(DataResponse)}
    */
   @Test
-  @DisplayName("Test formatData(DataResponse); given SerializerFactory createSerializer(SerializerProvider, JavaType) return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.data.EntityJsonConverter.formatData(org.finos.springbot.workflow.response.DataResponse)"})
-  void testFormatData_givenSerializerFactoryCreateSerializerReturnNull() throws JsonMappingException {
+  @DisplayName(
+      "Test formatData(DataResponse); then calls forDeserializerCache(DeserializationConfig)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String EntityJsonConverter.formatData(DataResponse)"})
+  void testFormatData_thenCallsForDeserializerCache() {
     // Arrange
-    SerializerFactory serializerFactory = mock(SerializerFactory.class);
-    when(serializerFactory.createSerializer(Mockito.<SerializerProvider>any(), Mockito.<JavaType>any()))
-        .thenReturn(null);
-    when(serializerFactory.createTypeSerializer(Mockito.<SerializationConfig>any(), Mockito.<JavaType>any()))
-        .thenReturn(AsDeductionTypeSerializer.instance());
-    SerializerFactory serializerFactory2 = mock(SerializerFactory.class);
-    when(serializerFactory2.withAdditionalKeySerializers(Mockito.<Serializers>any())).thenReturn(serializerFactory);
-    SerializerFactory serializerFactory3 = mock(SerializerFactory.class);
-    when(serializerFactory3.withAdditionalSerializers(Mockito.<Serializers>any())).thenReturn(serializerFactory2);
-    SerializerFactory serializerFactory4 = mock(SerializerFactory.class);
-    when(serializerFactory4.withSerializerModifier(Mockito.<BeanSerializerModifier>any()))
-        .thenReturn(serializerFactory3);
-    SerializerFactory f = mock(SerializerFactory.class);
-    when(f.withAdditionalSerializers(Mockito.<Serializers>any())).thenReturn(serializerFactory4);
+    ContextAttributes attrs = mock(ContextAttributes.class);
+    when(attrs.getAttribute(Mockito.<Object>any()))
+        .thenThrow(new UnsupportedOperationException("foo"));
+    CacheProvider cacheProvider = mock(CacheProvider.class);
+    when(cacheProvider.forDeserializerCache(Mockito.<DeserializationConfig>any()))
+        .thenReturn(new LRUMap<>(1, 3));
+    when(cacheProvider.forSerializerCache(Mockito.<SerializationConfig>any()))
+        .thenReturn(new LRUMap<>(1, 3));
+    when(cacheProvider.forTypeFactory()).thenReturn(new LRUMap<>(1, 3));
     Builder builderResult = JsonMapper.builder();
-    builderResult.serializerFactory(f);
-    builderResult.defaultAttributes(mock(ContextAttributes.class));
+    builderResult.defaultLeniency(true);
+    builderResult.cacheProvider(cacheProvider);
+    builderResult.defaultAttributes(attrs);
     Class<Object> target = Object.class;
     Class<Object> mixinSource = Object.class;
     builderResult.addMixIn(target, mixinSource);
@@ -633,29 +776,31 @@ class EntityJsonConverterDiffblueTest {
     Addressable resultTo = mock(Addressable.class);
 
     // Act and Assert
-    assertThrows(UnsupportedOperationException.class,
-        () -> entityJsonConverter.formatData(new DataResponse(resultTo, new HashMap<>(), "Template Name")));
-    verify(serializerFactory).createSerializer(isA(SerializerProvider.class), isA(JavaType.class));
-    verify(serializerFactory).createTypeSerializer(isA(SerializationConfig.class), isA(JavaType.class));
-    verify(serializerFactory2).withAdditionalKeySerializers(isA(Serializers.class));
-    verify(f).withAdditionalSerializers(isA(Serializers.class));
-    verify(serializerFactory3).withAdditionalSerializers(isA(Serializers.class));
-    verify(serializerFactory4).withSerializerModifier(isA(BeanSerializerModifier.class));
+    assertThrows(
+        UnsupportedOperationException.class,
+        () ->
+            entityJsonConverter.formatData(
+                new DataResponse(resultTo, new HashMap<>(), "Template Name")));
+    verify(cacheProvider).forDeserializerCache(isNull());
+    verify(cacheProvider).forSerializerCache(isNull());
+    verify(cacheProvider).forTypeFactory();
+    verify(attrs).getAttribute(isA(Object.class));
   }
 
   /**
    * Test {@link EntityJsonConverter#formatData(DataResponse)}.
+   *
    * <ul>
-   *   <li>Then return {@code {}}.</li>
+   *   <li>Then return {@code {}}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#formatData(DataResponse)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#formatData(DataResponse)}
    */
   @Test
   @DisplayName("Test formatData(DataResponse); then return '{}'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.data.EntityJsonConverter.formatData(org.finos.springbot.workflow.response.DataResponse)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String EntityJsonConverter.formatData(DataResponse)"})
   void testFormatData_thenReturnLeftCurlyBracketRightCurlyBracket() {
     // Arrange
     JsonMapper om = JsonMapper.builder().findAndAddModules().build();
@@ -663,22 +808,26 @@ class EntityJsonConverterDiffblueTest {
     Addressable resultTo = mock(Addressable.class);
 
     // Act and Assert
-    assertEquals("{}", entityJsonConverter.formatData(new DataResponse(resultTo, new HashMap<>(), "Template Name")));
+    assertEquals(
+        "{}",
+        entityJsonConverter.formatData(
+            new DataResponse(resultTo, new HashMap<>(), "Template Name")));
   }
 
   /**
    * Test {@link EntityJsonConverter#formatData(DataResponse)}.
+   *
    * <ul>
-   *   <li>Then return {@code {}}.</li>
+   *   <li>Then return {@code {}}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntityJsonConverter#formatData(DataResponse)}
+   *
+   * <p>Method under test: {@link EntityJsonConverter#formatData(DataResponse)}
    */
   @Test
   @DisplayName("Test formatData(DataResponse); then return '{}'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.String org.finos.springbot.workflow.data.EntityJsonConverter.formatData(org.finos.springbot.workflow.response.DataResponse)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String EntityJsonConverter.formatData(DataResponse)"})
   void testFormatData_thenReturnLeftCurlyBracketRightCurlyBracket2() {
     // Arrange
     Builder builderResult = JsonMapper.builder();
@@ -690,6 +839,71 @@ class EntityJsonConverterDiffblueTest {
     Addressable resultTo = mock(Addressable.class);
 
     // Act and Assert
-    assertEquals("{}", entityJsonConverter.formatData(new DataResponse(resultTo, new HashMap<>(), "Template Name")));
+    assertEquals(
+        "{}",
+        entityJsonConverter.formatData(
+            new DataResponse(resultTo, new HashMap<>(), "Template Name")));
+  }
+
+  /**
+   * Test {@link EntityJsonConverter#formatData(DataResponse)}.
+   *
+   * <ul>
+   *   <li>Then return {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link EntityJsonConverter#formatData(DataResponse)}
+   */
+  @Test
+  @DisplayName("Test formatData(DataResponse); then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String EntityJsonConverter.formatData(DataResponse)"})
+  void testFormatData_thenReturnNull() {
+    // Arrange
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+    EntityJsonConverter entityJsonConverter = new EntityJsonConverter(om, new ArrayList<>());
+
+    // Act and Assert
+    assertNull(
+        entityJsonConverter.formatData(
+            new DataResponse(mock(Addressable.class), null, "Template Name")));
+  }
+
+  /**
+   * Test {@link EntityJsonConverter#formatData(DataResponse)}.
+   *
+   * <ul>
+   *   <li>Then throw {@link UnsupportedOperationException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link EntityJsonConverter#formatData(DataResponse)}
+   */
+  @Test
+  @DisplayName("Test formatData(DataResponse); then throw UnsupportedOperationException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String EntityJsonConverter.formatData(DataResponse)"})
+  void testFormatData_thenThrowUnsupportedOperationException() {
+    // Arrange
+    ContextAttributes attrs = mock(ContextAttributes.class);
+    when(attrs.getAttribute(Mockito.<Object>any()))
+        .thenThrow(new UnsupportedOperationException("foo"));
+    Builder builderResult = JsonMapper.builder();
+    builderResult.defaultAttributes(attrs);
+    Class<Object> target = Object.class;
+    Class<Object> mixinSource = Object.class;
+    builderResult.addMixIn(target, mixinSource);
+    JsonMapper om = builderResult.findAndAddModules().build();
+    EntityJsonConverter entityJsonConverter = new EntityJsonConverter(om, new ArrayList<>());
+    Addressable resultTo = mock(Addressable.class);
+
+    // Act and Assert
+    assertThrows(
+        UnsupportedOperationException.class,
+        () ->
+            entityJsonConverter.formatData(
+                new DataResponse(resultTo, new HashMap<>(), "Template Name")));
+    verify(attrs).getAttribute(isA(Object.class));
   }
 }

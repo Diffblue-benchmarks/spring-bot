@@ -11,7 +11,9 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.symphony.bdk.core.service.message.MessageService;
 import com.symphony.bdk.core.service.pagination.model.PaginationAttribute;
 import com.symphony.bdk.gen.api.model.MessageSearchQuery;
@@ -26,7 +28,6 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import org.finos.springbot.entityjson.EntityJson;
 import org.finos.springbot.symphony.content.SymphonyAddressable;
-import org.finos.springbot.symphony.content.SymphonyRoom;
 import org.finos.springbot.symphony.conversations.StreamResolver;
 import org.finos.springbot.workflow.content.Addressable;
 import org.finos.springbot.workflow.data.EntityJsonConverter;
@@ -36,134 +37,239 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.aot.DisabledInAotMode;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {SymphonyHistoryImpl.class})
-@ExtendWith(SpringExtension.class)
 @DisabledInAotMode
+@ExtendWith(SpringExtension.class)
 class SymphonyHistoryImplDiffblueTest {
-  @MockBean
-  private EntityJsonConverter entityJsonConverter;
+  @MockitoBean private EntityJsonConverter entityJsonConverter;
 
-  @MockBean
-  private MessageService messageService;
+  @MockitoBean private MessageService messageService;
 
-  @MockBean
-  private StreamResolver streamResolver;
+  @MockitoBean private StreamResolver streamResolver;
 
-  @Autowired
-  private SymphonyHistoryImpl symphonyHistoryImpl;
+  @Autowired private SymphonyHistoryImpl symphonyHistoryImpl;
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)}
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)} with
+   * {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, String,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastFromHistory(Class, String, SymphonyAddressable)"
+  })
   void testGetLastFromHistoryWithClassStringSymphonyAddressable() {
     // Arrange
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(new ArrayList<>());
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<Object> actualLastFromHistory = symphonyHistoryImpl.getLastFromHistory(type, "foo",
-        mock(SymphonyAddressable.class));
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(type, "foo", mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertFalse(actualLastFromHistory.isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)}
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)} with
+   * {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, String,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'; given ArrayList() add 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastFromHistory(Class, String, SymphonyAddressable)"
+  })
+  void testGetLastFromHistoryWithClassStringSymphonyAddressable2() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+    SymphonyHistoryImpl symphonyHistoryImpl =
+        new SymphonyHistoryImpl(new EntityJsonConverter(om, new ArrayList<>()), messageApi, sr);
+    Class<Object> type = Object.class;
+
+    // Act
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(type, "foo", mock(SymphonyAddressable.class));
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertFalse(actualLastFromHistory.isPresent());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)} with
+   * {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, String,
+   * SymphonyAddressable)}
+   */
+  @Test
+  @DisplayName(
+      "Test getLastFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "Optional SymphonyHistoryImpl.getLastFromHistory(Class, String, SymphonyAddressable)"
+  })
+  void testGetLastFromHistoryWithClassStringSymphonyAddressable3() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    SymphonyHistoryImpl symphonyHistoryImpl = new SymphonyHistoryImpl(null, messageApi, sr);
+    Class<Object> type = Object.class;
+
+    // Act
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(type, "foo", mock(SymphonyAddressable.class));
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertFalse(actualLastFromHistory.isPresent());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)} with
+   * {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
+   * <ul>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, String,
+   * SymphonyAddressable)}
+   */
+  @Test
+  @DisplayName(
+      "Test getLastFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'; given ArrayList() add 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "Optional SymphonyHistoryImpl.getLastFromHistory(Class, String, SymphonyAddressable)"
+  })
   void testGetLastFromHistoryWithClassStringSymphonyAddressable_givenArrayListAddNull() {
     // Arrange
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(null);
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<Object> actualLastFromHistory = symphonyHistoryImpl.getLastFromHistory(type, "foo",
-        mock(SymphonyAddressable.class));
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(type, "foo", mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertFalse(actualLastFromHistory.isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)} with
+   * {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
    * <ul>
-   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.</li>
+   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, String,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'; then calls readValue(String)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'; then calls readValue(String)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastFromHistory(Class, String, SymphonyAddressable)"
+  })
   void testGetLastFromHistoryWithClassStringSymphonyAddressable_thenCallsReadValue() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<Object> actualLastFromHistory = symphonyHistoryImpl.getLastFromHistory(type, "foo",
-        mock(SymphonyAddressable.class));
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(type, "foo", mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertFalse(actualLastFromHistory.isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)} with
+   * {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
    * <ul>
-   *   <li>Then return {@link Optional#get()} is {@code 42}.</li>
+   *   <li>Then return {@link Optional#get()} is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, String,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'; then return get() is '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'; then return get() is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastFromHistory(Class, String, SymphonyAddressable)"
+  })
   void testGetLastFromHistoryWithClassStringSymphonyAddressable_thenReturnGetIs42() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -172,17 +278,19 @@ class SymphonyHistoryImplDiffblueTest {
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<Object> actualLastFromHistory = symphonyHistoryImpl.getLastFromHistory(type, "foo",
-        mock(SymphonyAddressable.class));
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(type, "foo", mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertEquals("42", actualLastFromHistory.get());
@@ -190,150 +298,257 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)} with
+   * {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
+   *   <li>When {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, String, SymphonyAddressable)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, String,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'; when 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'; when 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastFromHistory(Class, String, SymphonyAddressable)"
+  })
   void testGetLastFromHistoryWithClassStringSymphonyAddressable_whenNull() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<Object> actualLastFromHistory = symphonyHistoryImpl.getLastFromHistory(type, (String) null,
-        mock(SymphonyAddressable.class));
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(
+            type, (String) null, mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertFalse(actualLastFromHistory.isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)} with {@code Class}, {@code SymphonyAddressable}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)}
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)} with {@code
+   * Class}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; given ArrayList() add 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+  @DisplayName(
+      "Test getLastFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getLastFromHistory(Class, SymphonyAddressable)"})
+  void testGetLastFromHistoryWithClassSymphonyAddressable() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+    SymphonyHistoryImpl symphonyHistoryImpl =
+        new SymphonyHistoryImpl(new EntityJsonConverter(om, new ArrayList<>()), messageApi, sr);
+    Class<Object> type = Object.class;
+
+    // Act
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(type, mock(SymphonyAddressable.class));
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertFalse(actualLastFromHistory.isPresent());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)} with {@code
+   * Class}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class,
+   * SymphonyAddressable)}
+   */
+  @Test
+  @DisplayName(
+      "Test getLastFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getLastFromHistory(Class, SymphonyAddressable)"})
+  void testGetLastFromHistoryWithClassSymphonyAddressable2() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    SymphonyHistoryImpl symphonyHistoryImpl = new SymphonyHistoryImpl(null, messageApi, sr);
+    Class<Object> type = Object.class;
+
+    // Act
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(type, mock(SymphonyAddressable.class));
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertFalse(actualLastFromHistory.isPresent());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)} with {@code
+   * Class}, {@code SymphonyAddressable}.
+   *
+   * <ul>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class,
+   * SymphonyAddressable)}
+   */
+  @Test
+  @DisplayName(
+      "Test getLastFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; given ArrayList() add 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getLastFromHistory(Class, SymphonyAddressable)"})
   void testGetLastFromHistoryWithClassSymphonyAddressable_givenArrayListAddNull() {
     // Arrange
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(null);
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<Object> actualLastFromHistory = symphonyHistoryImpl.getLastFromHistory(type,
-        mock(SymphonyAddressable.class));
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(type, mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertFalse(actualLastFromHistory.isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)} with {@code Class}, {@code SymphonyAddressable}.
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)} with {@code
+   * Class}, {@code SymphonyAddressable}.
+   *
    * <ul>
-   *   <li>Given {@link EntityJsonConverter}.</li>
+   *   <li>Given {@link EntityJsonConverter}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; given EntityJsonConverter")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+  @DisplayName(
+      "Test getLastFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; given EntityJsonConverter")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getLastFromHistory(Class, SymphonyAddressable)"})
   void testGetLastFromHistoryWithClassSymphonyAddressable_givenEntityJsonConverter() {
     // Arrange
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(new ArrayList<>());
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<Object> actualLastFromHistory = symphonyHistoryImpl.getLastFromHistory(type,
-        mock(SymphonyAddressable.class));
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(type, mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertFalse(actualLastFromHistory.isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)} with {@code Class}, {@code SymphonyAddressable}.
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)} with {@code
+   * Class}, {@code SymphonyAddressable}.
+   *
    * <ul>
-   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.</li>
+   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; then calls readValue(String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+  @DisplayName(
+      "Test getLastFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; then calls readValue(String)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getLastFromHistory(Class, SymphonyAddressable)"})
   void testGetLastFromHistoryWithClassSymphonyAddressable_thenCallsReadValue() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<Object> actualLastFromHistory = symphonyHistoryImpl.getLastFromHistory(type,
-        mock(SymphonyAddressable.class));
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(type, mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertFalse(actualLastFromHistory.isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)} with {@code Class}, {@code SymphonyAddressable}.
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)} with {@code
+   * Class}, {@code SymphonyAddressable}.
+   *
    * <ul>
-   *   <li>Then return {@link Optional#get()} is {@code 42}.</li>
+   *   <li>Then return {@link Optional#get()} is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; then return get() is '42'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+  @DisplayName(
+      "Test getLastFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; then return get() is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getLastFromHistory(Class, SymphonyAddressable)"})
   void testGetLastFromHistoryWithClassSymphonyAddressable_thenReturnGetIs42() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -342,17 +557,19 @@ class SymphonyHistoryImplDiffblueTest {
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<Object> actualLastFromHistory = symphonyHistoryImpl.getLastFromHistory(type,
-        mock(SymphonyAddressable.class));
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(type, mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertEquals("42", actualLastFromHistory.get());
@@ -360,77 +577,96 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)} with {@code Class}, {@code SymphonyAddressable}.
+   * Test {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)} with {@code
+   * Class}, {@code SymphonyAddressable}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class, SymphonyAddressable)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastFromHistory(Class,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; when 'null'; then calls readValue(String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+  @DisplayName(
+      "Test getLastFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; when 'null'; then calls readValue(String)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getLastFromHistory(Class, SymphonyAddressable)"})
   void testGetLastFromHistoryWithClassSymphonyAddressable_whenNull_thenCallsReadValue() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
 
     // Act
-    Optional<Object> actualLastFromHistory = symphonyHistoryImpl.getLastFromHistory(null,
-        mock(SymphonyAddressable.class));
+    Optional<Object> actualLastFromHistory =
+        symphonyHistoryImpl.getLastFromHistory(null, mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertFalse(actualLastFromHistory.isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)}
+   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String,
+   * SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastEntityJsonFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastEntityJsonFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastEntityJsonFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)"
+  })
   void testGetLastEntityJsonFromHistoryWithClassStringSymphonyAddressable() {
     // Arrange
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(new ArrayList<>());
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<EntityJson> actualLastEntityJsonFromHistory = symphonyHistoryImpl.getLastEntityJsonFromHistory(type, "foo",
-        mock(SymphonyAddressable.class));
+    Optional<EntityJson> actualLastEntityJsonFromHistory =
+        symphonyHistoryImpl.getLastEntityJsonFromHistory(
+            type, "foo", mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertFalse(actualLastEntityJsonFromHistory.isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)}
+   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String,
+   * SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastEntityJsonFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastEntityJsonFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastEntityJsonFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)"
+  })
   void testGetLastEntityJsonFromHistoryWithClassStringSymphonyAddressable2() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -438,17 +674,20 @@ class SymphonyHistoryImplDiffblueTest {
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<EntityJson> actualLastEntityJsonFromHistory = symphonyHistoryImpl.getLastEntityJsonFromHistory(type, "foo",
-        mock(SymphonyAddressable.class));
+    Optional<EntityJson> actualLastEntityJsonFromHistory =
+        symphonyHistoryImpl.getLastEntityJsonFromHistory(
+            type, "foo", mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     EntityJson getResult = actualLastEntityJsonFromHistory.get();
@@ -458,47 +697,143 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)}
+   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String,
+   * SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastEntityJsonFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastEntityJsonFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastEntityJsonFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)"
+  })
   void testGetLastEntityJsonFromHistoryWithClassStringSymphonyAddressable3() {
     // Arrange
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(null);
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<EntityJson> actualLastEntityJsonFromHistory = symphonyHistoryImpl.getLastEntityJsonFromHistory(type, "foo",
-        mock(SymphonyAddressable.class));
+    Optional<EntityJson> actualLastEntityJsonFromHistory =
+        symphonyHistoryImpl.getLastEntityJsonFromHistory(
+            type, "foo", mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertFalse(actualLastEntityJsonFromHistory.isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)}
+   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String,
+   * SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastEntityJsonFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'; when 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastEntityJsonFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastEntityJsonFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)"
+  })
+  void testGetLastEntityJsonFromHistoryWithClassStringSymphonyAddressable4() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+    SymphonyHistoryImpl symphonyHistoryImpl =
+        new SymphonyHistoryImpl(new EntityJsonConverter(om, new ArrayList<>()), messageApi, sr);
+    Class<Object> type = Object.class;
+
+    // Act
+    Optional<EntityJson> actualLastEntityJsonFromHistory =
+        symphonyHistoryImpl.getLastEntityJsonFromHistory(
+            type, "foo", mock(SymphonyAddressable.class));
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertFalse(actualLastEntityJsonFromHistory.isPresent());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String,
+   * SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String,
+   * SymphonyAddressable)}
+   */
+  @Test
+  @DisplayName(
+      "Test getLastEntityJsonFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "Optional SymphonyHistoryImpl.getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)"
+  })
+  void testGetLastEntityJsonFromHistoryWithClassStringSymphonyAddressable5() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    SymphonyHistoryImpl symphonyHistoryImpl = new SymphonyHistoryImpl(null, messageApi, sr);
+    Class<Object> type = Object.class;
+
+    // Act
+    Optional<EntityJson> actualLastEntityJsonFromHistory =
+        symphonyHistoryImpl.getLastEntityJsonFromHistory(
+            type, "foo", mock(SymphonyAddressable.class));
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertFalse(actualLastEntityJsonFromHistory.isPresent());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String,
+   * SymphonyAddressable)} with {@code Class}, {@code String}, {@code SymphonyAddressable}.
+   *
+   * <ul>
+   *   <li>When {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, String,
+   * SymphonyAddressable)}
+   */
+  @Test
+  @DisplayName(
+      "Test getLastEntityJsonFromHistory(Class, String, SymphonyAddressable) with 'Class', 'String', 'SymphonyAddressable'; when 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "Optional SymphonyHistoryImpl.getLastEntityJsonFromHistory(Class, String, SymphonyAddressable)"
+  })
   void testGetLastEntityJsonFromHistoryWithClassStringSymphonyAddressable_whenNull() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -506,17 +841,20 @@ class SymphonyHistoryImplDiffblueTest {
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<EntityJson> actualLastEntityJsonFromHistory = symphonyHistoryImpl.getLastEntityJsonFromHistory(type,
-        (String) null, mock(SymphonyAddressable.class));
+    Optional<EntityJson> actualLastEntityJsonFromHistory =
+        symphonyHistoryImpl.getLastEntityJsonFromHistory(
+            type, (String) null, mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     EntityJson getResult = actualLastEntityJsonFromHistory.get();
@@ -526,74 +864,174 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)} with {@code Class}, {@code SymphonyAddressable}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)}
+   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)} with
+   * {@code Class}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastEntityJsonFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastEntityJsonFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastEntityJsonFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastEntityJsonFromHistory(Class, SymphonyAddressable)"
+  })
   void testGetLastEntityJsonFromHistoryWithClassSymphonyAddressable() {
     // Arrange
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(new ArrayList<>());
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<EntityJson> actualLastEntityJsonFromHistory = symphonyHistoryImpl.getLastEntityJsonFromHistory(type,
-        mock(SymphonyAddressable.class));
+    Optional<EntityJson> actualLastEntityJsonFromHistory =
+        symphonyHistoryImpl.getLastEntityJsonFromHistory(type, mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertFalse(actualLastEntityJsonFromHistory.isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)} with {@code Class}, {@code SymphonyAddressable}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)}
+   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)} with
+   * {@code Class}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastEntityJsonFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastEntityJsonFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastEntityJsonFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastEntityJsonFromHistory(Class, SymphonyAddressable)"
+  })
   void testGetLastEntityJsonFromHistoryWithClassSymphonyAddressable2() {
     // Arrange
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(null);
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<EntityJson> actualLastEntityJsonFromHistory = symphonyHistoryImpl.getLastEntityJsonFromHistory(type,
-        mock(SymphonyAddressable.class));
+    Optional<EntityJson> actualLastEntityJsonFromHistory =
+        symphonyHistoryImpl.getLastEntityJsonFromHistory(type, mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertFalse(actualLastEntityJsonFromHistory.isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)} with {@code Class}, {@code SymphonyAddressable}.
-   * <ul>
-   *   <li>Then return {@link Optional#get()} Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)}
+   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)} with
+   * {@code Class}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastEntityJsonFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; then return get() Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastEntityJsonFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastEntityJsonFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastEntityJsonFromHistory(Class, SymphonyAddressable)"
+  })
+  void testGetLastEntityJsonFromHistoryWithClassSymphonyAddressable3() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+    SymphonyHistoryImpl symphonyHistoryImpl =
+        new SymphonyHistoryImpl(new EntityJsonConverter(om, new ArrayList<>()), messageApi, sr);
+    Class<Object> type = Object.class;
+
+    // Act
+    Optional<EntityJson> actualLastEntityJsonFromHistory =
+        symphonyHistoryImpl.getLastEntityJsonFromHistory(type, mock(SymphonyAddressable.class));
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertFalse(actualLastEntityJsonFromHistory.isPresent());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)} with
+   * {@code Class}, {@code SymphonyAddressable}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class,
+   * SymphonyAddressable)}
+   */
+  @Test
+  @DisplayName(
+      "Test getLastEntityJsonFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "Optional SymphonyHistoryImpl.getLastEntityJsonFromHistory(Class, SymphonyAddressable)"
+  })
+  void testGetLastEntityJsonFromHistoryWithClassSymphonyAddressable4() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    SymphonyHistoryImpl symphonyHistoryImpl = new SymphonyHistoryImpl(null, messageApi, sr);
+    Class<Object> type = Object.class;
+
+    // Act
+    Optional<EntityJson> actualLastEntityJsonFromHistory =
+        symphonyHistoryImpl.getLastEntityJsonFromHistory(type, mock(SymphonyAddressable.class));
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertFalse(actualLastEntityJsonFromHistory.isPresent());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)} with
+   * {@code Class}, {@code SymphonyAddressable}.
+   *
+   * <ul>
+   *   <li>Then return {@link Optional#get()} Empty.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class,
+   * SymphonyAddressable)}
+   */
+  @Test
+  @DisplayName(
+      "Test getLastEntityJsonFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; then return get() Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "Optional SymphonyHistoryImpl.getLastEntityJsonFromHistory(Class, SymphonyAddressable)"
+  })
   void testGetLastEntityJsonFromHistoryWithClassSymphonyAddressable_thenReturnGetEmpty() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -601,17 +1039,19 @@ class SymphonyHistoryImplDiffblueTest {
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
 
     // Act
-    Optional<EntityJson> actualLastEntityJsonFromHistory = symphonyHistoryImpl.getLastEntityJsonFromHistory(type,
-        mock(SymphonyAddressable.class));
+    Optional<EntityJson> actualLastEntityJsonFromHistory =
+        symphonyHistoryImpl.getLastEntityJsonFromHistory(type, mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     EntityJson getResult = actualLastEntityJsonFromHistory.get();
@@ -621,18 +1061,24 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)} with {@code Class}, {@code SymphonyAddressable}.
+   * Test {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)} with
+   * {@code Class}, {@code SymphonyAddressable}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
+   *   <li>When {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class, SymphonyAddressable)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getLastEntityJsonFromHistory(Class,
+   * SymphonyAddressable)}
    */
   @Test
-  @DisplayName("Test getLastEntityJsonFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; when 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getLastEntityJsonFromHistory(Class, SymphonyAddressable) with 'Class', 'SymphonyAddressable'; when 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getLastEntityJsonFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable)"})
+    "Optional SymphonyHistoryImpl.getLastEntityJsonFromHistory(Class, SymphonyAddressable)"
+  })
   void testGetLastEntityJsonFromHistoryWithClassSymphonyAddressable_whenNull() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -640,16 +1086,18 @@ class SymphonyHistoryImplDiffblueTest {
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
 
     // Act
-    Optional<EntityJson> actualLastEntityJsonFromHistory = symphonyHistoryImpl.getLastEntityJsonFromHistory(null,
-        mock(SymphonyAddressable.class));
+    Optional<EntityJson> actualLastEntityJsonFromHistory =
+        symphonyHistoryImpl.getLastEntityJsonFromHistory(null, mock(SymphonyAddressable.class));
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     EntityJson getResult = actualLastEntityJsonFromHistory.get();
@@ -660,37 +1108,19 @@ class SymphonyHistoryImplDiffblueTest {
 
   /**
    * Test {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}.
+   *
    * <ul>
-   *   <li>Given {@link EntityJsonConverter}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Given {@code null}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}
-   */
-  @Test
-  @DisplayName("Test convertToOptionalEntityJson(List); given EntityJsonConverter; when ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.convertToOptionalEntityJson(java.util.List)"})
-  void testConvertToOptionalEntityJson_givenEntityJsonConverter_whenArrayList() {
-    // Arrange, Act and Assert
-    assertFalse(symphonyHistoryImpl.convertToOptionalEntityJson(new ArrayList<>()).isPresent());
-  }
-
-  /**
-   * Test {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}.
-   * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}
    */
   @Test
   @DisplayName("Test convertToOptionalEntityJson(List); given 'null'; when ArrayList() add 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.convertToOptionalEntityJson(java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.convertToOptionalEntityJson(List)"})
   void testConvertToOptionalEntityJson_givenNull_whenArrayListAddNull() {
     // Arrange
     ArrayList<V4Message> out = new ArrayList<>();
@@ -702,27 +1132,34 @@ class SymphonyHistoryImplDiffblueTest {
 
   /**
    * Test {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}.
+   *
    * <ul>
-   *   <li>Then return {@link Optional#get()} Empty.</li>
+   *   <li>Given {@link V4Message} (default constructor) data {@code null}.
+   *   <li>Then return {@link Optional#get()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}
    */
   @Test
-  @DisplayName("Test convertToOptionalEntityJson(List); then return get() Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.convertToOptionalEntityJson(java.util.List)"})
-  void testConvertToOptionalEntityJson_thenReturnGetEmpty() {
+  @DisplayName(
+      "Test convertToOptionalEntityJson(List); given V4Message (default constructor) data 'null'; then return get() Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.convertToOptionalEntityJson(List)"})
+  void testConvertToOptionalEntityJson_givenV4MessageDataNull_thenReturnGetEmpty() {
     // Arrange
     EntityJson entityJson = new EntityJson();
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(entityJson);
 
+    V4Message v4Message = new V4Message();
+    v4Message.data(null);
+
     ArrayList<V4Message> out = new ArrayList<>();
-    out.add(new V4Message());
+    out.add(v4Message);
 
     // Act
-    Optional<EntityJson> actualConvertToOptionalEntityJsonResult = symphonyHistoryImpl.convertToOptionalEntityJson(out);
+    Optional<EntityJson> actualConvertToOptionalEntityJsonResult =
+        symphonyHistoryImpl.convertToOptionalEntityJson(out);
 
     // Assert
     verify(entityJsonConverter).readValue(isNull());
@@ -734,18 +1171,21 @@ class SymphonyHistoryImplDiffblueTest {
 
   /**
    * Test {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}.
+   *
    * <ul>
-   *   <li>Then return {@link Optional#get()} Empty.</li>
+   *   <li>Given {@link V4Message} (default constructor).
+   *   <li>Then return {@link Optional#get()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}
    */
   @Test
-  @DisplayName("Test convertToOptionalEntityJson(List); then return get() Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.convertToOptionalEntityJson(java.util.List)"})
-  void testConvertToOptionalEntityJson_thenReturnGetEmpty2() {
+  @DisplayName(
+      "Test convertToOptionalEntityJson(List); given V4Message (default constructor); then return get() Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.convertToOptionalEntityJson(List)"})
+  void testConvertToOptionalEntityJson_givenV4Message_thenReturnGetEmpty() {
     // Arrange
     EntityJson entityJson = new EntityJson();
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(entityJson);
@@ -755,7 +1195,8 @@ class SymphonyHistoryImplDiffblueTest {
     out.add(new V4Message());
 
     // Act
-    Optional<EntityJson> actualConvertToOptionalEntityJsonResult = symphonyHistoryImpl.convertToOptionalEntityJson(out);
+    Optional<EntityJson> actualConvertToOptionalEntityJsonResult =
+        symphonyHistoryImpl.convertToOptionalEntityJson(out);
 
     // Assert
     verify(entityJsonConverter).readValue(isNull());
@@ -766,19 +1207,41 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}.
+   * Test {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}.
+   *
    * <ul>
-   *   <li>Given {@link EntityJsonConverter}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return not Present.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#convertToOptionalEntityJson(List)}
    */
   @Test
-  @DisplayName("Test convertToOptionalInstance(Class, List); given EntityJsonConverter; when ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.convertToOptionalInstance(java.lang.Class, java.util.List)"})
+  @DisplayName("Test convertToOptionalEntityJson(List); when ArrayList(); then return not Present")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.convertToOptionalEntityJson(List)"})
+  void testConvertToOptionalEntityJson_whenArrayList_thenReturnNotPresent() {
+    // Arrange, Act and Assert
+    assertFalse(symphonyHistoryImpl.convertToOptionalEntityJson(new ArrayList<>()).isPresent());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}.
+   *
+   * <ul>
+   *   <li>Given {@link EntityJsonConverter}.
+   *   <li>When {@link ArrayList#ArrayList()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}
+   */
+  @Test
+  @DisplayName(
+      "Test convertToOptionalInstance(Class, List); given EntityJsonConverter; when ArrayList()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.convertToOptionalInstance(Class, List)"})
   void testConvertToOptionalInstance_givenEntityJsonConverter_whenArrayList() {
     // Arrange
     Class<Object> type = Object.class;
@@ -789,18 +1252,20 @@ class SymphonyHistoryImplDiffblueTest {
 
   /**
    * Test {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}.
+   *
    * <ul>
-   *   <li>Given {@link EntityJson#EntityJson()} {@code foo} is {@code 42}.</li>
-   *   <li>Then return {@link Optional#get()} is {@code 42}.</li>
+   *   <li>Given {@link EntityJson#EntityJson()} {@code foo} is {@code 42}.
+   *   <li>Then return {@link Optional#get()} is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}
    */
   @Test
-  @DisplayName("Test convertToOptionalInstance(Class, List); given EntityJson() 'foo' is '42'; then return get() is '42'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.convertToOptionalInstance(java.lang.Class, java.util.List)"})
+  @DisplayName(
+      "Test convertToOptionalInstance(Class, List); given EntityJson() 'foo' is '42'; then return get() is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.convertToOptionalInstance(Class, List)"})
   void testConvertToOptionalInstance_givenEntityJsonFooIs42_thenReturnGetIs42() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -812,7 +1277,8 @@ class SymphonyHistoryImplDiffblueTest {
     out.add(new V4Message());
 
     // Act
-    Optional<Object> actualConvertToOptionalInstanceResult = symphonyHistoryImpl.convertToOptionalInstance(type, out);
+    Optional<Object> actualConvertToOptionalInstanceResult =
+        symphonyHistoryImpl.convertToOptionalInstance(type, out);
 
     // Assert
     verify(entityJsonConverter).readValue(isNull());
@@ -822,18 +1288,20 @@ class SymphonyHistoryImplDiffblueTest {
 
   /**
    * Test {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}.
+   *
    * <ul>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return not Present.</li>
+   *   <li>When {@code Object}.
+   *   <li>Then return not Present.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}
    */
   @Test
-  @DisplayName("Test convertToOptionalInstance(Class, List); when 'java.lang.Object'; then return not Present")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.convertToOptionalInstance(java.lang.Class, java.util.List)"})
+  @DisplayName(
+      "Test convertToOptionalInstance(Class, List); when 'java.lang.Object'; then return not Present")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.convertToOptionalInstance(Class, List)"})
   void testConvertToOptionalInstance_whenJavaLangObject_thenReturnNotPresent() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
@@ -843,7 +1311,8 @@ class SymphonyHistoryImplDiffblueTest {
     out.add(new V4Message());
 
     // Act
-    Optional<Object> actualConvertToOptionalInstanceResult = symphonyHistoryImpl.convertToOptionalInstance(type, out);
+    Optional<Object> actualConvertToOptionalInstanceResult =
+        symphonyHistoryImpl.convertToOptionalInstance(type, out);
 
     // Assert
     verify(entityJsonConverter).readValue(isNull());
@@ -852,18 +1321,20 @@ class SymphonyHistoryImplDiffblueTest {
 
   /**
    * Test {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}.
+   *
    * <ul>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return not Present.</li>
+   *   <li>When {@code Object}.
+   *   <li>Then return not Present.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#convertToOptionalInstance(Class, List)}
    */
   @Test
-  @DisplayName("Test convertToOptionalInstance(Class, List); when 'java.lang.Object'; then return not Present")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.convertToOptionalInstance(java.lang.Class, java.util.List)"})
+  @DisplayName(
+      "Test convertToOptionalInstance(Class, List); when 'java.lang.Object'; then return not Present")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.convertToOptionalInstance(Class, List)"})
   void testConvertToOptionalInstance_whenJavaLangObject_thenReturnNotPresent2() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
@@ -874,7 +1345,8 @@ class SymphonyHistoryImplDiffblueTest {
     out.add(new V4Message());
 
     // Act
-    Optional<Object> actualConvertToOptionalInstanceResult = symphonyHistoryImpl.convertToOptionalInstance(type, out);
+    Optional<Object> actualConvertToOptionalInstanceResult =
+        symphonyHistoryImpl.convertToOptionalInstance(type, out);
 
     // Assert
     verify(entityJsonConverter, atLeast(1)).readValue(isNull());
@@ -882,112 +1354,242 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)} with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getFromHistory(Class, String, SymphonyAddressable, Instant)"
+  })
   void testGetFromHistoryWithClassStringSymphonyAddressableInstant() {
     // Arrange
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(new ArrayList<>());
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<Object> actualFromHistory = symphonyHistoryImpl.getFromHistory(type, "foo", address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertTrue(actualFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)} with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getFromHistory(Class, String, SymphonyAddressable, Instant)"
+  })
   void testGetFromHistoryWithClassStringSymphonyAddressableInstant2() {
     // Arrange
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(null);
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<Object> actualFromHistory = symphonyHistoryImpl.getFromHistory(type, "foo", address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertTrue(actualFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)} with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
-   * <ul>
-   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'; then calls readValue(String)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getFromHistory(Class, String, SymphonyAddressable, Instant)"
+  })
+  void testGetFromHistoryWithClassStringSymphonyAddressableInstant3() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+    SymphonyHistoryImpl symphonyHistoryImpl =
+        new SymphonyHistoryImpl(new EntityJsonConverter(om, new ArrayList<>()), messageApi, sr);
+    Class<Object> type = Object.class;
+    SymphonyAddressable address = mock(SymphonyAddressable.class);
+
+    // Act
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertTrue(actualFromHistory.isEmpty());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String,
+   * SymphonyAddressable, Instant)}
+   */
+  @Test
+  @DisplayName(
+      "Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "List SymphonyHistoryImpl.getFromHistory(Class, String, SymphonyAddressable, Instant)"
+  })
+  void testGetFromHistoryWithClassStringSymphonyAddressableInstant4() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    SymphonyHistoryImpl symphonyHistoryImpl = new SymphonyHistoryImpl(null, messageApi, sr);
+    Class<Object> type = Object.class;
+    SymphonyAddressable address = mock(SymphonyAddressable.class);
+
+    // Act
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertTrue(actualFromHistory.isEmpty());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <ul>
+   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String,
+   * SymphonyAddressable, Instant)}
+   */
+  @Test
+  @DisplayName(
+      "Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'; then calls readValue(String)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "List SymphonyHistoryImpl.getFromHistory(Class, String, SymphonyAddressable, Instant)"
+  })
   void testGetFromHistoryWithClassStringSymphonyAddressableInstant_thenCallsReadValue() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<Object> actualFromHistory = symphonyHistoryImpl.getFromHistory(type, "foo", address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertTrue(actualFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)} with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
    * <ul>
-   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.</li>
+   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'; then calls readValue(String)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'; then calls readValue(String)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getFromHistory(Class, String, SymphonyAddressable, Instant)"
+  })
   void testGetFromHistoryWithClassStringSymphonyAddressableInstant_thenCallsReadValue2() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
@@ -995,36 +1597,48 @@ class SymphonyHistoryImplDiffblueTest {
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<Object> actualFromHistory = symphonyHistoryImpl.getFromHistory(type, "foo", address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter, atLeast(1)).readValue(isNull());
     assertTrue(actualFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)} with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
    * <ul>
-   *   <li>Then return size is one.</li>
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getFromHistory(Class, String, SymphonyAddressable, Instant)"
+  })
   void testGetFromHistoryWithClassStringSymphonyAddressableInstant_thenReturnSizeIsOne() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -1033,18 +1647,24 @@ class SymphonyHistoryImplDiffblueTest {
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<Object> actualFromHistory = symphonyHistoryImpl.getFromHistory(type, "foo", address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertEquals(1, actualFromHistory.size());
@@ -1052,154 +1672,293 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)} with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
+   *   <li>When {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String, SymphonyAddressable, Instant)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, String,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'; when 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getFromHistory(Class, String, SymphonyAddressable, Instant) with 'Class', 'String', 'SymphonyAddressable', 'Instant'; when 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromHistory(java.lang.Class, java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getFromHistory(Class, String, SymphonyAddressable, Instant)"
+  })
   void testGetFromHistoryWithClassStringSymphonyAddressableInstant_whenNull() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<Object> actualFromHistory = symphonyHistoryImpl.getFromHistory(type, (String) null, address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            (String) null,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertTrue(actualFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with
+   * {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable,
+   * Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'; given ArrayList() add 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getFromHistory(Class, SymphonyAddressable, Instant)"
+  })
+  void testGetFromHistoryWithClassSymphonyAddressableInstant() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+    SymphonyHistoryImpl symphonyHistoryImpl =
+        new SymphonyHistoryImpl(new EntityJsonConverter(om, new ArrayList<>()), messageApi, sr);
+    Class<Object> type = Object.class;
+    SymphonyAddressable address = mock(SymphonyAddressable.class);
+
+    // Act
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertTrue(actualFromHistory.isEmpty());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with
+   * {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable,
+   * Instant)}
+   */
+  @Test
+  @DisplayName(
+      "Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "List SymphonyHistoryImpl.getFromHistory(Class, SymphonyAddressable, Instant)"
+  })
+  void testGetFromHistoryWithClassSymphonyAddressableInstant2() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    SymphonyHistoryImpl symphonyHistoryImpl = new SymphonyHistoryImpl(null, messageApi, sr);
+    Class<Object> type = Object.class;
+    SymphonyAddressable address = mock(SymphonyAddressable.class);
+
+    // Act
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertTrue(actualFromHistory.isEmpty());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with
+   * {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <ul>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable,
+   * Instant)}
+   */
+  @Test
+  @DisplayName(
+      "Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'; given ArrayList() add 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "List SymphonyHistoryImpl.getFromHistory(Class, SymphonyAddressable, Instant)"
+  })
   void testGetFromHistoryWithClassSymphonyAddressableInstant_givenArrayListAddNull() {
     // Arrange
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(null);
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<Object> actualFromHistory = symphonyHistoryImpl.getFromHistory(type, address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertTrue(actualFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with
+   * {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
    * <ul>
-   *   <li>Given {@link EntityJsonConverter}.</li>
+   *   <li>Given {@link EntityJsonConverter}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable,
+   * Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'; given EntityJsonConverter")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'; given EntityJsonConverter")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getFromHistory(Class, SymphonyAddressable, Instant)"
+  })
   void testGetFromHistoryWithClassSymphonyAddressableInstant_givenEntityJsonConverter() {
     // Arrange
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(new ArrayList<>());
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<Object> actualFromHistory = symphonyHistoryImpl.getFromHistory(type, address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertTrue(actualFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with
+   * {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
    * <ul>
-   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.</li>
+   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable,
+   * Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'; then calls readValue(String)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'; then calls readValue(String)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getFromHistory(Class, SymphonyAddressable, Instant)"
+  })
   void testGetFromHistoryWithClassSymphonyAddressableInstant_thenCallsReadValue() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<Object> actualFromHistory = symphonyHistoryImpl.getFromHistory(type, address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertTrue(actualFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with
+   * {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
    * <ul>
-   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.</li>
+   *   <li>Then calls {@link EntityJsonConverter#readValue(String)}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable,
+   * Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'; then calls readValue(String)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'; then calls readValue(String)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getFromHistory(Class, SymphonyAddressable, Instant)"
+  })
   void testGetFromHistoryWithClassSymphonyAddressableInstant_thenCallsReadValue2() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
@@ -1207,36 +1966,47 @@ class SymphonyHistoryImplDiffblueTest {
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<Object> actualFromHistory = symphonyHistoryImpl.getFromHistory(type, address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter, atLeast(1)).readValue(isNull());
     assertTrue(actualFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with
+   * {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
    * <ul>
-   *   <li>Then return size is one.</li>
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable,
+   * Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getFromHistory(Class, SymphonyAddressable, Instant)"
+  })
   void testGetFromHistoryWithClassSymphonyAddressableInstant_thenReturnSizeIsOne() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -1245,18 +2015,23 @@ class SymphonyHistoryImplDiffblueTest {
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<Object> actualFromHistory = symphonyHistoryImpl.getFromHistory(type, address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertEquals(1, actualFromHistory.size());
@@ -1264,54 +2039,68 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   * Test {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)} with
+   * {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
+   *   <li>When {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable, Instant)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromHistory(Class, SymphonyAddressable,
+   * Instant)}
    */
   @Test
-  @DisplayName("Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'; when 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'; when 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getFromHistory(Class, SymphonyAddressable, Instant)"
+  })
   void testGetFromHistoryWithClassSymphonyAddressableInstant_whenNull() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<Object> actualFromHistory = symphonyHistoryImpl.getFromHistory(null, address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<Object> actualFromHistory =
+        symphonyHistoryImpl.getFromHistory(
+            null,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertTrue(actualFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromEntityJson(EntityJson, Class)} with {@code ej}, {@code required}.
+   * Test {@link SymphonyHistoryImpl#getFromEntityJson(EntityJson, Class)} with {@code ej}, {@code
+   * required}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return {@link Optional#get()} is {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>Then return {@link Optional#get()} is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(EntityJson, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(EntityJson, Class)}
    */
   @Test
-  @DisplayName("Test getFromEntityJson(EntityJson, Class) with 'ej', 'required'; given '42'; then return get() is '42'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromEntityJson(org.finos.springbot.entityjson.EntityJson, java.lang.Class)"})
+  @DisplayName(
+      "Test getFromEntityJson(EntityJson, Class) with 'ej', 'required'; given '42'; then return get() is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getFromEntityJson(EntityJson, Class)"})
   void testGetFromEntityJsonWithEjRequired_given42_thenReturnGetIs42() {
     // Arrange
     EntityJson ej = new EntityJson();
@@ -1327,19 +2116,22 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromEntityJson(EntityJson, Class)} with {@code ej}, {@code required}.
+   * Test {@link SymphonyHistoryImpl#getFromEntityJson(EntityJson, Class)} with {@code ej}, {@code
+   * required}.
+   *
    * <ul>
-   *   <li>When {@link EntityJson#EntityJson()}.</li>
-   *   <li>Then return not Present.</li>
+   *   <li>When {@link EntityJson#EntityJson()}.
+   *   <li>Then return not Present.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(EntityJson, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(EntityJson, Class)}
    */
   @Test
-  @DisplayName("Test getFromEntityJson(EntityJson, Class) with 'ej', 'required'; when EntityJson(); then return not Present")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromEntityJson(org.finos.springbot.entityjson.EntityJson, java.lang.Class)"})
+  @DisplayName(
+      "Test getFromEntityJson(EntityJson, Class) with 'ej', 'required'; when EntityJson(); then return not Present")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getFromEntityJson(EntityJson, Class)"})
   void testGetFromEntityJsonWithEjRequired_whenEntityJson_thenReturnNotPresent() {
     // Arrange
     EntityJson ej = new EntityJson();
@@ -1350,19 +2142,22 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getFromEntityJson(EntityJson, Class)} with {@code ej}, {@code required}.
+   * Test {@link SymphonyHistoryImpl#getFromEntityJson(EntityJson, Class)} with {@code ej}, {@code
+   * required}.
+   *
    * <ul>
-   *   <li>When {@code Map$Entry}.</li>
-   *   <li>Then return not Present.</li>
+   *   <li>When {@code Map$Entry}.
+   *   <li>Then return not Present.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(EntityJson, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(EntityJson, Class)}
    */
   @Test
-  @DisplayName("Test getFromEntityJson(EntityJson, Class) with 'ej', 'required'; when 'java.util.Map$Entry'; then return not Present")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromEntityJson(org.finos.springbot.entityjson.EntityJson, java.lang.Class)"})
+  @DisplayName(
+      "Test getFromEntityJson(EntityJson, Class) with 'ej', 'required'; when 'java.util.Map$Entry'; then return not Present")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getFromEntityJson(EntityJson, Class)"})
   void testGetFromEntityJsonWithEjRequired_whenJavaUtilMapEntry_thenReturnNotPresent() {
     // Arrange
     EntityJson ej = new EntityJson();
@@ -1375,18 +2170,20 @@ class SymphonyHistoryImplDiffblueTest {
 
   /**
    * Test {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)} with {@code ej}, {@code type}.
+   *
    * <ul>
-   *   <li>Given {@link EntityJson#EntityJson()} {@code foo} is {@code 42}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@link EntityJson#EntityJson()} {@code foo} is {@code 42}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)}
    */
   @Test
-  @DisplayName("Test getFromEntityJson(List, Class) with 'ej', 'type'; given EntityJson() 'foo' is '42'; then return size is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromEntityJson(java.util.List, java.lang.Class)"})
+  @DisplayName(
+      "Test getFromEntityJson(List, Class) with 'ej', 'type'; given EntityJson() 'foo' is '42'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List SymphonyHistoryImpl.getFromEntityJson(List, Class)"})
   void testGetFromEntityJsonWithEjType_givenEntityJsonFooIs42_thenReturnSizeIsOne() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -1406,45 +2203,20 @@ class SymphonyHistoryImplDiffblueTest {
 
   /**
    * Test {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)} with {@code ej}, {@code type}.
+   *
    * <ul>
-   *   <li>Given {@link EntityJson#EntityJson()} {@code foo} is {@code 42}.</li>
-   *   <li>When {@code Map$Entry}.</li>
+   *   <li>Given {@link EntityJson#EntityJson()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)}
    */
   @Test
-  @DisplayName("Test getFromEntityJson(List, Class) with 'ej', 'type'; given EntityJson() 'foo' is '42'; when 'java.util.Map$Entry'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromEntityJson(java.util.List, java.lang.Class)"})
-  void testGetFromEntityJsonWithEjType_givenEntityJsonFooIs42_whenJavaUtilMapEntry() {
-    // Arrange
-    EntityJson entityJson = new EntityJson();
-    entityJson.put("foo", "42");
-
-    ArrayList<EntityJson> ej = new ArrayList<>();
-    ej.add(entityJson);
-    Class<Entry> type = Entry.class;
-
-    // Act and Assert
-    assertTrue(symphonyHistoryImpl.getFromEntityJson(ej, type).isEmpty());
-  }
-
-  /**
-   * Test {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)} with {@code ej}, {@code type}.
-   * <ul>
-   *   <li>Given {@link EntityJson#EntityJson()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)}
-   */
-  @Test
-  @DisplayName("Test getFromEntityJson(List, Class) with 'ej', 'type'; given EntityJson(); then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromEntityJson(java.util.List, java.lang.Class)"})
+  @DisplayName(
+      "Test getFromEntityJson(List, Class) with 'ej', 'type'; given EntityJson(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List SymphonyHistoryImpl.getFromEntityJson(List, Class)"})
   void testGetFromEntityJsonWithEjType_givenEntityJson_thenReturnEmpty() {
     // Arrange
     ArrayList<EntityJson> ej = new ArrayList<>();
@@ -1457,18 +2229,20 @@ class SymphonyHistoryImplDiffblueTest {
 
   /**
    * Test {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)} with {@code ej}, {@code type}.
+   *
    * <ul>
-   *   <li>Given {@link EntityJson#EntityJson()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@link EntityJson#EntityJson()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)}
    */
   @Test
-  @DisplayName("Test getFromEntityJson(List, Class) with 'ej', 'type'; given EntityJson(); then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromEntityJson(java.util.List, java.lang.Class)"})
+  @DisplayName(
+      "Test getFromEntityJson(List, Class) with 'ej', 'type'; given EntityJson(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List SymphonyHistoryImpl.getFromEntityJson(List, Class)"})
   void testGetFromEntityJsonWithEjType_givenEntityJson_thenReturnEmpty2() {
     // Arrange
     ArrayList<EntityJson> ej = new ArrayList<>();
@@ -1482,18 +2256,20 @@ class SymphonyHistoryImplDiffblueTest {
 
   /**
    * Test {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)} with {@code ej}, {@code type}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getFromEntityJson(List, Class)}
    */
   @Test
-  @DisplayName("Test getFromEntityJson(List, Class) with 'ej', 'type'; when ArrayList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getFromEntityJson(java.util.List, java.lang.Class)"})
+  @DisplayName(
+      "Test getFromEntityJson(List, Class) with 'ej', 'type'; when ArrayList(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List SymphonyHistoryImpl.getFromEntityJson(List, Class)"})
   void testGetFromEntityJsonWithEjType_whenArrayList_thenReturnEmpty() {
     // Arrange
     ArrayList<EntityJson> ej = new ArrayList<>();
@@ -1504,43 +2280,58 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)} with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getEntityJsonFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getEntityJsonFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getEntityJsonFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)"
+  })
   void testGetEntityJsonFromHistoryWithClassSymphonyAddressableInstant() {
     // Arrange
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(new ArrayList<>());
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<EntityJson> actualEntityJsonFromHistory = symphonyHistoryImpl.getEntityJsonFromHistory(type, address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertTrue(actualEntityJsonFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)} with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getEntityJsonFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getEntityJsonFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getEntityJsonFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)"
+  })
   void testGetEntityJsonFromHistoryWithClassSymphonyAddressableInstant2() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -1548,18 +2339,23 @@ class SymphonyHistoryImplDiffblueTest {
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<EntityJson> actualEntityJsonFromHistory = symphonyHistoryImpl.getEntityJsonFromHistory(type, address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertEquals(1, actualEntityJsonFromHistory.size());
@@ -1569,15 +2365,20 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)} with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getEntityJsonFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getEntityJsonFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getEntityJsonFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)"
+  })
   void testGetEntityJsonFromHistoryWithClassSymphonyAddressableInstant3() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -1586,18 +2387,23 @@ class SymphonyHistoryImplDiffblueTest {
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<EntityJson> actualEntityJsonFromHistory = symphonyHistoryImpl.getEntityJsonFromHistory(type, address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter, atLeast(1)).readValue(isNull());
     assertEquals(2, actualEntityJsonFromHistory.size());
@@ -1608,72 +2414,185 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)} with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getEntityJsonFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getEntityJsonFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getEntityJsonFromHistory(java.lang.Class, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)"
+  })
   void testGetEntityJsonFromHistoryWithClassSymphonyAddressableInstant4() {
     // Arrange
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(null);
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     Class<Object> type = Object.class;
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<EntityJson> actualEntityJsonFromHistory = symphonyHistoryImpl.getEntityJsonFromHistory(type, address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertTrue(actualEntityJsonFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)} with {@code String}, {@code SymphonyAddressable}, {@code Instant}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getEntityJsonFromHistory(String, SymphonyAddressable, Instant) with 'String', 'SymphonyAddressable', 'Instant'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getEntityJsonFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getEntityJsonFromHistory(java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)"
+  })
+  void testGetEntityJsonFromHistoryWithClassSymphonyAddressableInstant5() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+    SymphonyHistoryImpl symphonyHistoryImpl =
+        new SymphonyHistoryImpl(new EntityJsonConverter(om, new ArrayList<>()), messageApi, sr);
+    Class<Object> type = Object.class;
+    SymphonyAddressable address = mock(SymphonyAddressable.class);
+
+    // Act
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertTrue(actualEntityJsonFromHistory.isEmpty());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)}
+   * with {@code Class}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(Class,
+   * SymphonyAddressable, Instant)}
+   */
+  @Test
+  @DisplayName(
+      "Test getEntityJsonFromHistory(Class, SymphonyAddressable, Instant) with 'Class', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(Class, SymphonyAddressable, Instant)"
+  })
+  void testGetEntityJsonFromHistoryWithClassSymphonyAddressableInstant6() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    SymphonyHistoryImpl symphonyHistoryImpl = new SymphonyHistoryImpl(null, messageApi, sr);
+    Class<Object> type = Object.class;
+    SymphonyAddressable address = mock(SymphonyAddressable.class);
+
+    // Act
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            type,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertTrue(actualEntityJsonFromHistory.isEmpty());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)}
+   * with {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String,
+   * SymphonyAddressable, Instant)}
+   */
+  @Test
+  @DisplayName(
+      "Test getEntityJsonFromHistory(String, SymphonyAddressable, Instant) with 'String', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(String, SymphonyAddressable, Instant)"
+  })
   void testGetEntityJsonFromHistoryWithStringSymphonyAddressableInstant() {
     // Arrange
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(new ArrayList<>());
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<EntityJson> actualEntityJsonFromHistory = symphonyHistoryImpl.getEntityJsonFromHistory("foo", address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertTrue(actualEntityJsonFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)} with {@code String}, {@code SymphonyAddressable}, {@code Instant}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)}
+   * with {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getEntityJsonFromHistory(String, SymphonyAddressable, Instant) with 'String', 'SymphonyAddressable', 'Instant'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getEntityJsonFromHistory(String, SymphonyAddressable, Instant) with 'String', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getEntityJsonFromHistory(java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(String, SymphonyAddressable, Instant)"
+  })
   void testGetEntityJsonFromHistoryWithStringSymphonyAddressableInstant2() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -1681,17 +2600,22 @@ class SymphonyHistoryImplDiffblueTest {
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<EntityJson> actualEntityJsonFromHistory = symphonyHistoryImpl.getEntityJsonFromHistory("foo", address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertEquals(1, actualEntityJsonFromHistory.size());
@@ -1701,15 +2625,20 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)} with {@code String}, {@code SymphonyAddressable}, {@code Instant}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)}
+   * with {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getEntityJsonFromHistory(String, SymphonyAddressable, Instant) with 'String', 'SymphonyAddressable', 'Instant'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getEntityJsonFromHistory(String, SymphonyAddressable, Instant) with 'String', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getEntityJsonFromHistory(java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(String, SymphonyAddressable, Instant)"
+  })
   void testGetEntityJsonFromHistoryWithStringSymphonyAddressableInstant3() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -1718,17 +2647,22 @@ class SymphonyHistoryImplDiffblueTest {
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<EntityJson> actualEntityJsonFromHistory = symphonyHistoryImpl.getEntityJsonFromHistory("foo", address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter, atLeast(1)).readValue(isNull());
     assertEquals(2, actualEntityJsonFromHistory.size());
@@ -1739,47 +2673,149 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)} with {@code String}, {@code SymphonyAddressable}, {@code Instant}.
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)}
+   * with {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getEntityJsonFromHistory(String, SymphonyAddressable, Instant) with 'String', 'SymphonyAddressable', 'Instant'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getEntityJsonFromHistory(String, SymphonyAddressable, Instant) with 'String', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getEntityJsonFromHistory(java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(String, SymphonyAddressable, Instant)"
+  })
   void testGetEntityJsonFromHistoryWithStringSymphonyAddressableInstant4() {
     // Arrange
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(null);
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<EntityJson> actualEntityJsonFromHistory = symphonyHistoryImpl.getEntityJsonFromHistory("foo", address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     assertTrue(actualEntityJsonFromHistory.isEmpty());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)} with {@code String}, {@code SymphonyAddressable}, {@code Instant}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)}
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)}
+   * with {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String,
+   * SymphonyAddressable, Instant)}
    */
   @Test
-  @DisplayName("Test getEntityJsonFromHistory(String, SymphonyAddressable, Instant) with 'String', 'SymphonyAddressable', 'Instant'; when 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getEntityJsonFromHistory(String, SymphonyAddressable, Instant) with 'String', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.symphony.history.SymphonyHistoryImpl.getEntityJsonFromHistory(java.lang.String, org.finos.springbot.symphony.content.SymphonyAddressable, java.time.Instant)"})
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(String, SymphonyAddressable, Instant)"
+  })
+  void testGetEntityJsonFromHistoryWithStringSymphonyAddressableInstant5() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+    SymphonyHistoryImpl symphonyHistoryImpl =
+        new SymphonyHistoryImpl(new EntityJsonConverter(om, new ArrayList<>()), messageApi, sr);
+    SymphonyAddressable address = mock(SymphonyAddressable.class);
+
+    // Act
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertTrue(actualEntityJsonFromHistory.isEmpty());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)}
+   * with {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String,
+   * SymphonyAddressable, Instant)}
+   */
+  @Test
+  @DisplayName(
+      "Test getEntityJsonFromHistory(String, SymphonyAddressable, Instant) with 'String', 'SymphonyAddressable', 'Instant'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(String, SymphonyAddressable, Instant)"
+  })
+  void testGetEntityJsonFromHistoryWithStringSymphonyAddressableInstant6() {
+    // Arrange
+    ArrayList<V4Message> v4MessageList = new ArrayList<>();
+    v4MessageList.add(new V4Message());
+    MessageService messageApi = mock(MessageService.class);
+    when(messageApi.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+        .thenReturn(v4MessageList);
+    StreamResolver sr = mock(StreamResolver.class);
+    when(sr.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
+    SymphonyHistoryImpl symphonyHistoryImpl = new SymphonyHistoryImpl(null, messageApi, sr);
+    SymphonyAddressable address = mock(SymphonyAddressable.class);
+
+    // Act
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            "foo",
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+
+    // Assert
+    verify(messageApi)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(sr).getStreamFor(isA(SymphonyAddressable.class));
+    assertTrue(actualEntityJsonFromHistory.isEmpty());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String, SymphonyAddressable, Instant)}
+   * with {@code String}, {@code SymphonyAddressable}, {@code Instant}.
+   *
+   * <ul>
+   *   <li>When {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJsonFromHistory(String,
+   * SymphonyAddressable, Instant)}
+   */
+  @Test
+  @DisplayName(
+      "Test getEntityJsonFromHistory(String, SymphonyAddressable, Instant) with 'String', 'SymphonyAddressable', 'Instant'; when 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "List SymphonyHistoryImpl.getEntityJsonFromHistory(String, SymphonyAddressable, Instant)"
+  })
   void testGetEntityJsonFromHistoryWithStringSymphonyAddressableInstant_whenNull() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -1787,17 +2823,22 @@ class SymphonyHistoryImplDiffblueTest {
 
     ArrayList<V4Message> v4MessageList = new ArrayList<>();
     v4MessageList.add(new V4Message());
-    when(messageService.searchMessages(Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
+    when(messageService.searchMessages(
+            Mockito.<MessageSearchQuery>any(), Mockito.<PaginationAttribute>any()))
         .thenReturn(v4MessageList);
     when(streamResolver.getStreamFor(Mockito.<SymphonyAddressable>any())).thenReturn("Stream For");
     SymphonyAddressable address = mock(SymphonyAddressable.class);
 
     // Act
-    List<EntityJson> actualEntityJsonFromHistory = symphonyHistoryImpl.getEntityJsonFromHistory((String) null, address,
-        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    List<EntityJson> actualEntityJsonFromHistory =
+        symphonyHistoryImpl.getEntityJsonFromHistory(
+            (String) null,
+            address,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
 
     // Assert
-    verify(messageService).searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
+    verify(messageService)
+        .searchMessages(isA(MessageSearchQuery.class), isA(PaginationAttribute.class));
     verify(streamResolver).getStreamFor(isA(SymphonyAddressable.class));
     verify(entityJsonConverter).readValue(isNull());
     assertEquals(1, actualEntityJsonFromHistory.size());
@@ -1808,18 +2849,19 @@ class SymphonyHistoryImplDiffblueTest {
 
   /**
    * Test {@link SymphonyHistoryImpl#isSupported(Addressable)}.
+   *
    * <ul>
-   *   <li>When {@link Addressable}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@link Addressable}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#isSupported(Addressable)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#isSupported(Addressable)}
    */
   @Test
   @DisplayName("Test isSupported(Addressable); when Addressable; then return 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.symphony.history.SymphonyHistoryImpl.isSupported(org.finos.springbot.workflow.content.Addressable)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean SymphonyHistoryImpl.isSupported(Addressable)"})
   void testIsSupported_whenAddressable_thenReturnFalse() {
     // Arrange, Act and Assert
     assertFalse(symphonyHistoryImpl.isSupported(mock(Addressable.class)));
@@ -1827,36 +2869,81 @@ class SymphonyHistoryImplDiffblueTest {
 
   /**
    * Test {@link SymphonyHistoryImpl#isSupported(Addressable)}.
+   *
    * <ul>
-   *   <li>When {@link SymphonyRoom#SymphonyRoom(String, String)} with {@code Name} and id is {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When {@link SymphonyAddressable}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#isSupported(Addressable)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#isSupported(Addressable)}
    */
   @Test
-  @DisplayName("Test isSupported(Addressable); when SymphonyRoom(String, String) with 'Name' and id is '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.symphony.history.SymphonyHistoryImpl.isSupported(org.finos.springbot.workflow.content.Addressable)"})
-  void testIsSupported_whenSymphonyRoomWithNameAndIdIs42_thenReturnTrue() {
+  @DisplayName("Test isSupported(Addressable); when SymphonyAddressable; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean SymphonyHistoryImpl.isSupported(Addressable)"})
+  void testIsSupported_whenSymphonyAddressable_thenReturnTrue() {
     // Arrange, Act and Assert
-    assertTrue(symphonyHistoryImpl.isSupported(new SymphonyRoom("Name", "42")));
+    assertTrue(symphonyHistoryImpl.isSupported(mock(SymphonyAddressable.class)));
   }
 
   /**
    * Test {@link SymphonyHistoryImpl#getEntityJson(V4Message)}.
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJson(V4Message)}
+   */
+  @Test
+  @DisplayName("Test getEntityJson(V4Message)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson SymphonyHistoryImpl.getEntityJson(V4Message)"})
+  void testGetEntityJson() {
+    // Arrange
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+    SymphonyHistoryImpl symphonyHistoryImpl =
+        new SymphonyHistoryImpl(
+            new EntityJsonConverter(om, new ArrayList<>()), null, mock(StreamResolver.class));
+
+    // Act and Assert
+    assertNull(symphonyHistoryImpl.getEntityJson(new V4Message()));
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getEntityJson(V4Message)}.
+   *
    * <ul>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@link EntityJsonConverter}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getEntityJson(V4Message)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJson(V4Message)}
+   */
+  @Test
+  @DisplayName(
+      "Test getEntityJson(V4Message); given EntityJsonConverter; when 'null'; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson SymphonyHistoryImpl.getEntityJson(V4Message)"})
+  void testGetEntityJson_givenEntityJsonConverter_whenNull_thenReturnNull() {
+    // Arrange, Act and Assert
+    assertNull(symphonyHistoryImpl.getEntityJson(null));
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getEntityJson(V4Message)}.
+   *
+   * <ul>
+   *   <li>Then return Empty.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getEntityJson(V4Message)}
    */
   @Test
   @DisplayName("Test getEntityJson(V4Message); then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.entityjson.EntityJson org.finos.springbot.symphony.history.SymphonyHistoryImpl.getEntityJson(com.symphony.bdk.gen.api.model.V4Message)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"EntityJson SymphonyHistoryImpl.getEntityJson(V4Message)"})
   void testGetEntityJson_thenReturnEmpty() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -1872,38 +2959,22 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getEntityJson(V4Message)}.
+   * Test {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)} with {@code ej}, {@code
+   * required}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>Then return {@link Optional#get()} is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getEntityJson(V4Message)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)}
    */
   @Test
-  @DisplayName("Test getEntityJson(V4Message); when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.entityjson.EntityJson org.finos.springbot.symphony.history.SymphonyHistoryImpl.getEntityJson(com.symphony.bdk.gen.api.model.V4Message)"})
-  void testGetEntityJson_whenNull_thenReturnNull() {
-    // Arrange, Act and Assert
-    assertNull(symphonyHistoryImpl.getEntityJson(null));
-  }
-
-  /**
-   * Test {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)} with {@code ej}, {@code required}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return {@link Optional#get()} is {@code 42}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)}
-   */
-  @Test
-  @DisplayName("Test getRelevantObject(Optional, Class) with 'ej', 'required'; given '42'; then return get() is '42'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getRelevantObject(java.util.Optional, java.lang.Class)"})
+  @DisplayName(
+      "Test getRelevantObject(Optional, Class) with 'ej', 'required'; given '42'; then return get() is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getRelevantObject(Optional, Class)"})
   void testGetRelevantObjectWithEjRequired_given42_thenReturnGetIs42() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -1920,19 +2991,22 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)} with {@code ej}, {@code required}.
+   * Test {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)} with {@code ej}, {@code
+   * required}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@code Map$Entry}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@code Map$Entry}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)}
    */
   @Test
-  @DisplayName("Test getRelevantObject(Optional, Class) with 'ej', 'required'; given '42'; when 'java.util.Map$Entry'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getRelevantObject(java.util.Optional, java.lang.Class)"})
+  @DisplayName(
+      "Test getRelevantObject(Optional, Class) with 'ej', 'required'; given '42'; when 'java.util.Map$Entry'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getRelevantObject(Optional, Class)"})
   void testGetRelevantObjectWithEjRequired_given42_whenJavaUtilMapEntry() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -1945,41 +3019,22 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)} with {@code ej}, {@code required}.
+   * Test {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)} with {@code ej}, {@code
+   * required}.
+   *
    * <ul>
-   *   <li>Then return not Present.</li>
+   *   <li>When empty.
+   *   <li>Then return not Present.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)}
    */
   @Test
-  @DisplayName("Test getRelevantObject(Optional, Class) with 'ej', 'required'; then return not Present")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getRelevantObject(java.util.Optional, java.lang.Class)"})
-  void testGetRelevantObjectWithEjRequired_thenReturnNotPresent() {
-    // Arrange
-    Optional<EntityJson> ej = Optional.of(new EntityJson());
-    Class<Object> required = Object.class;
-
-    // Act and Assert
-    assertFalse(symphonyHistoryImpl.getRelevantObject(ej, required).isPresent());
-  }
-
-  /**
-   * Test {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)} with {@code ej}, {@code required}.
-   * <ul>
-   *   <li>When empty.</li>
-   *   <li>Then return not Present.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)}
-   */
-  @Test
-  @DisplayName("Test getRelevantObject(Optional, Class) with 'ej', 'required'; when empty; then return not Present")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getRelevantObject(java.util.Optional, java.lang.Class)"})
+  @DisplayName(
+      "Test getRelevantObject(Optional, Class) with 'ej', 'required'; when empty; then return not Present")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getRelevantObject(Optional, Class)"})
   void testGetRelevantObjectWithEjRequired_whenEmpty_thenReturnNotPresent() {
     // Arrange
     Optional<EntityJson> ej = Optional.empty();
@@ -1990,41 +3045,74 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)} with {@code ej}, {@code required}.
+   * Test {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)} with {@code ej}, {@code
+   * required}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return not Present.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return not Present.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)}
    */
   @Test
-  @DisplayName("Test getRelevantObject(Optional, Class) with 'ej', 'required'; when 'null'; then return not Present")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.Optional org.finos.springbot.symphony.history.SymphonyHistoryImpl.getRelevantObject(java.util.Optional, java.lang.Class)"})
+  @DisplayName(
+      "Test getRelevantObject(Optional, Class) with 'ej', 'required'; when 'null'; then return not Present")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getRelevantObject(Optional, Class)"})
   void testGetRelevantObjectWithEjRequired_whenNull_thenReturnNotPresent() {
     // Arrange
     Class<Object> required = Object.class;
 
     // Act and Assert
-    assertFalse(symphonyHistoryImpl.getRelevantObject((Optional<EntityJson>) null, required).isPresent());
+    assertFalse(
+        symphonyHistoryImpl.getRelevantObject((Optional<EntityJson>) null, required).isPresent());
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getRelevantObject(V4Message, Class)} with {@code msg}, {@code required}.
+   * Test {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)} with {@code ej}, {@code
+   * required}.
+   *
    * <ul>
-   *   <li>Given {@link EntityJson#EntityJson()} {@code foo} is {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
+   *   <li>When of {@link EntityJson#EntityJson()}.
+   *   <li>Then return not Present.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getRelevantObject(V4Message, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getRelevantObject(Optional, Class)}
    */
   @Test
-  @DisplayName("Test getRelevantObject(V4Message, Class) with 'msg', 'required'; given EntityJson() 'foo' is '42'; then return '42'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Object org.finos.springbot.symphony.history.SymphonyHistoryImpl.getRelevantObject(com.symphony.bdk.gen.api.model.V4Message, java.lang.Class)"})
+  @DisplayName(
+      "Test getRelevantObject(Optional, Class) with 'ej', 'required'; when of EntityJson(); then return not Present")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Optional SymphonyHistoryImpl.getRelevantObject(Optional, Class)"})
+  void testGetRelevantObjectWithEjRequired_whenOfEntityJson_thenReturnNotPresent() {
+    // Arrange
+    Optional<EntityJson> ej = Optional.of(new EntityJson());
+    Class<Object> required = Object.class;
+
+    // Act and Assert
+    assertFalse(symphonyHistoryImpl.getRelevantObject(ej, required).isPresent());
+  }
+
+  /**
+   * Test {@link SymphonyHistoryImpl#getRelevantObject(V4Message, Class)} with {@code msg}, {@code
+   * required}.
+   *
+   * <ul>
+   *   <li>Given {@link EntityJson#EntityJson()} {@code foo} is {@code 42}.
+   *   <li>Then return {@code 42}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getRelevantObject(V4Message, Class)}
+   */
+  @Test
+  @DisplayName(
+      "Test getRelevantObject(V4Message, Class) with 'msg', 'required'; given EntityJson() 'foo' is '42'; then return '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object SymphonyHistoryImpl.getRelevantObject(V4Message, Class)"})
   void testGetRelevantObjectWithMsgRequired_givenEntityJsonFooIs42_thenReturn42() {
     // Arrange
     EntityJson entityJson = new EntityJson();
@@ -2042,19 +3130,22 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getRelevantObject(V4Message, Class)} with {@code msg}, {@code required}.
+   * Test {@link SymphonyHistoryImpl#getRelevantObject(V4Message, Class)} with {@code msg}, {@code
+   * required}.
+   *
    * <ul>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>When {@code Object}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getRelevantObject(V4Message, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getRelevantObject(V4Message, Class)}
    */
   @Test
-  @DisplayName("Test getRelevantObject(V4Message, Class) with 'msg', 'required'; when 'java.lang.Object'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Object org.finos.springbot.symphony.history.SymphonyHistoryImpl.getRelevantObject(com.symphony.bdk.gen.api.model.V4Message, java.lang.Class)"})
+  @DisplayName(
+      "Test getRelevantObject(V4Message, Class) with 'msg', 'required'; when 'java.lang.Object'; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object SymphonyHistoryImpl.getRelevantObject(V4Message, Class)"})
   void testGetRelevantObjectWithMsgRequired_whenJavaLangObject_thenReturnNull() {
     // Arrange
     when(entityJsonConverter.readValue(Mockito.<String>any())).thenReturn(new EntityJson());
@@ -2070,19 +3161,22 @@ class SymphonyHistoryImplDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyHistoryImpl#getRelevantObject(V4Message, Class)} with {@code msg}, {@code required}.
+   * Test {@link SymphonyHistoryImpl#getRelevantObject(V4Message, Class)} with {@code msg}, {@code
+   * required}.
+   *
    * <ul>
-   *   <li>When {@code Map$Entry}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>When {@code Map$Entry}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyHistoryImpl#getRelevantObject(V4Message, Class)}
+   *
+   * <p>Method under test: {@link SymphonyHistoryImpl#getRelevantObject(V4Message, Class)}
    */
   @Test
-  @DisplayName("Test getRelevantObject(V4Message, Class) with 'msg', 'required'; when 'java.util.Map$Entry'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Object org.finos.springbot.symphony.history.SymphonyHistoryImpl.getRelevantObject(com.symphony.bdk.gen.api.model.V4Message, java.lang.Class)"})
+  @DisplayName(
+      "Test getRelevantObject(V4Message, Class) with 'msg', 'required'; when 'java.util.Map$Entry'; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object SymphonyHistoryImpl.getRelevantObject(V4Message, Class)"})
   void testGetRelevantObjectWithMsgRequired_whenJavaUtilMapEntry_thenReturnNull() {
     // Arrange
     EntityJson entityJson = new EntityJson();

@@ -7,6 +7,7 @@ import static org.mockito.Mockito.anyBoolean;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.classmate.types.TypePlaceHolder;
 import java.lang.reflect.Field;
@@ -19,14 +20,14 @@ import org.mockito.Mockito;
 class BooleanConverterDiffblueTest {
   /**
    * Test {@link BooleanConverter#BooleanConverter(int, Rendering, Class[])}.
-   * <p>
-   * Method under test: {@link BooleanConverter#BooleanConverter(int, Rendering, Class[])}
+   *
+   * <p>Method under test: {@link BooleanConverter#BooleanConverter(int, Rendering, Class[])}
    */
   @Test
   @DisplayName("Test new BooleanConverter(int, Rendering, Class[])")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.templating.BooleanConverter.<init>(int, org.finos.springbot.workflow.templating.Rendering, java.lang.Class[])"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void BooleanConverter.<init>(int, Rendering, Class[])"})
   void testNewBooleanConverter() {
     // Arrange
     Rendering<Object> r = mock(Rendering.class);
@@ -41,14 +42,14 @@ class BooleanConverterDiffblueTest {
 
   /**
    * Test {@link BooleanConverter#BooleanConverter(Rendering)}.
-   * <p>
-   * Method under test: {@link BooleanConverter#BooleanConverter(Rendering)}
+   *
+   * <p>Method under test: {@link BooleanConverter#BooleanConverter(Rendering)}
    */
   @Test
   @DisplayName("Test new BooleanConverter(Rendering)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.templating.BooleanConverter.<init>(org.finos.springbot.workflow.templating.Rendering)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void BooleanConverter.<init>(Rendering)"})
   void testNewBooleanConverter2() {
     // Arrange and Act
     BooleanConverter<Object> actualBooleanConverter = new BooleanConverter<>(mock(Rendering.class));
@@ -58,15 +59,16 @@ class BooleanConverterDiffblueTest {
   }
 
   /**
-   * Test {@link BooleanConverter#apply(Field, Type, boolean, Variable)} with {@code ctx}, {@code t}, {@code editMode}, {@code variable}.
-   * <p>
-   * Method under test: {@link BooleanConverter#apply(Field, Type, boolean, Variable)}
+   * Test {@link BooleanConverter#apply(Field, Type, boolean, Variable)} with {@code ctx}, {@code
+   * t}, {@code editMode}, {@code variable}.
+   *
+   * <p>Method under test: {@link BooleanConverter#apply(Field, Type, boolean, Variable)}
    */
   @Test
   @DisplayName("Test apply(Field, Type, boolean, Variable) with 'ctx', 't', 'editMode', 'variable'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Object org.finos.springbot.workflow.templating.BooleanConverter.apply(java.lang.reflect.Field, java.lang.reflect.Type, boolean, org.finos.springbot.workflow.templating.Variable)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object BooleanConverter.apply(Field, Type, boolean, Variable)"})
   void testApplyWithCtxTEditModeVariable() {
     // Arrange
     Rendering<Object> r = mock(Rendering.class);
@@ -74,7 +76,8 @@ class BooleanConverterDiffblueTest {
     BooleanConverter<Object> booleanConverter = new BooleanConverter<>(r);
 
     // Act
-    Object actualApplyResult = booleanConverter.apply(null, new TypePlaceHolder(1), true, mock(Variable.class));
+    Object actualApplyResult =
+        booleanConverter.apply(null, new TypePlaceHolder(1), true, mock(Variable.class));
 
     // Assert
     verify(r).checkBox(isA(Variable.class), eq(true));

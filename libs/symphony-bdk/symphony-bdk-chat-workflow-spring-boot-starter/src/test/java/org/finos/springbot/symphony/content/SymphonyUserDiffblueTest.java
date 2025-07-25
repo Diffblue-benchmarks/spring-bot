@@ -3,6 +3,7 @@ package org.finos.springbot.symphony.content;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.symphony.user.EmailAddress;
 import com.symphony.user.UserId;
@@ -15,8 +16,9 @@ import org.symphonyoss.TaxonomyElement;
 class SymphonyUserDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link SymphonyUser#SymphonyUser()}
    *   <li>{@link SymphonyUser#toString()}
@@ -25,10 +27,13 @@ class SymphonyUserDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.symphony.content.SymphonyUser.<init>()",
-      "org.finos.springbot.workflow.content.Tag$Type org.finos.springbot.symphony.content.SymphonyUser.getTagType()",
-      "java.lang.String org.finos.springbot.symphony.content.SymphonyUser.toString()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void SymphonyUser.<init>()",
+    "org.finos.springbot.workflow.content.Tag.Type SymphonyUser.getTagType()",
+    "String SymphonyUser.toString()"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     SymphonyUser actualSymphonyUser = new SymphonyUser();
@@ -42,13 +47,14 @@ class SymphonyUserDiffblueTest {
 
   /**
    * Test {@link SymphonyUser#SymphonyUser(long)}.
-   * <p>
-   * Method under test: {@link SymphonyUser#SymphonyUser(long)}
+   *
+   * <p>Method under test: {@link SymphonyUser#SymphonyUser(long)}
    */
   @Test
   @DisplayName("Test new SymphonyUser(long)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.symphony.content.SymphonyUser.<init>(long)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void SymphonyUser.<init>(long)"})
   void testNewSymphonyUser() {
     // Arrange and Act
     SymphonyUser actualSymphonyUser = new SymphonyUser(1L);
@@ -72,18 +78,20 @@ class SymphonyUserDiffblueTest {
 
   /**
    * Test {@link SymphonyUser#SymphonyUser(long, String, String)}.
+   *
    * <ul>
-   *   <li>When {@code Name}.</li>
-   *   <li>Then Id second return {@link com.symphony.user.DisplayName}.</li>
+   *   <li>When {@code Name}.
+   *   <li>Then Id second return {@link com.symphony.user.DisplayName}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyUser#SymphonyUser(long, String, String)}
+   *
+   * <p>Method under test: {@link SymphonyUser#SymphonyUser(long, String, String)}
    */
   @Test
-  @DisplayName("Test new SymphonyUser(long, String, String); when 'Name'; then Id second return DisplayName")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.symphony.content.SymphonyUser.<init>(long, java.lang.String, java.lang.String)"})
+  @DisplayName(
+      "Test new SymphonyUser(long, String, String); when 'Name'; then Id second return DisplayName")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void SymphonyUser.<init>(long, String, String)"})
   void testNewSymphonyUser_whenName_thenIdSecondReturnDisplayName() {
     // Arrange and Act
     SymphonyUser actualSymphonyUser = new SymphonyUser(1L, "Name", "42 Main St");
@@ -106,18 +114,20 @@ class SymphonyUserDiffblueTest {
 
   /**
    * Test {@link SymphonyUser#SymphonyUser(String, String)}.
+   *
    * <ul>
-   *   <li>When {@code Name}.</li>
-   *   <li>Then Id second return {@link com.symphony.user.DisplayName}.</li>
+   *   <li>When {@code Name}.
+   *   <li>Then Id second return {@link com.symphony.user.DisplayName}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyUser#SymphonyUser(String, String)}
+   *
+   * <p>Method under test: {@link SymphonyUser#SymphonyUser(String, String)}
    */
   @Test
-  @DisplayName("Test new SymphonyUser(String, String); when 'Name'; then Id second return DisplayName")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.symphony.content.SymphonyUser.<init>(java.lang.String, java.lang.String)"})
+  @DisplayName(
+      "Test new SymphonyUser(String, String); when 'Name'; then Id second return DisplayName")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void SymphonyUser.<init>(String, String)"})
   void testNewSymphonyUser_whenName_thenIdSecondReturnDisplayName2() {
     // Arrange and Act
     SymphonyUser actualSymphonyUser = new SymphonyUser("Name", "42 Main St");
@@ -140,18 +150,20 @@ class SymphonyUserDiffblueTest {
 
   /**
    * Test {@link SymphonyUser#SymphonyUser(long, String, String)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return Text is {@code @null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return Text is {@code @null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyUser#SymphonyUser(long, String, String)}
+   *
+   * <p>Method under test: {@link SymphonyUser#SymphonyUser(long, String, String)}
    */
   @Test
-  @DisplayName("Test new SymphonyUser(long, String, String); when 'null'; then return Text is '@null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.symphony.content.SymphonyUser.<init>(long, java.lang.String, java.lang.String)"})
+  @DisplayName(
+      "Test new SymphonyUser(long, String, String); when 'null'; then return Text is '@null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void SymphonyUser.<init>(long, String, String)"})
   void testNewSymphonyUser_whenNull_thenReturnTextIsNull() {
     // Arrange and Act
     SymphonyUser actualSymphonyUser = new SymphonyUser(1L, null, null);
@@ -168,18 +180,19 @@ class SymphonyUserDiffblueTest {
 
   /**
    * Test {@link SymphonyUser#SymphonyUser(String, String)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return Text is {@code @null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return Text is {@code @null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyUser#SymphonyUser(String, String)}
+   *
+   * <p>Method under test: {@link SymphonyUser#SymphonyUser(String, String)}
    */
   @Test
   @DisplayName("Test new SymphonyUser(String, String); when 'null'; then return Text is '@null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.symphony.content.SymphonyUser.<init>(java.lang.String, java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void SymphonyUser.<init>(String, String)"})
   void testNewSymphonyUser_whenNull_thenReturnTextIsNull2() {
     // Arrange and Act
     SymphonyUser actualSymphonyUser = new SymphonyUser(null, null);
@@ -196,91 +209,103 @@ class SymphonyUserDiffblueTest {
 
   /**
    * Test {@link SymphonyUser#getEmailAddress()}.
+   *
    * <ul>
-   *   <li>Given {@link SymphonyUser#SymphonyUser(long)} with userId is one.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link SymphonyUser#SymphonyUser(long)} with userId is one.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyUser#getEmailAddress()}
+   *
+   * <p>Method under test: {@link SymphonyUser#getEmailAddress()}
    */
   @Test
-  @DisplayName("Test getEmailAddress(); given SymphonyUser(long) with userId is one; then return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.symphony.content.SymphonyUser.getEmailAddress()"})
+  @DisplayName(
+      "Test getEmailAddress(); given SymphonyUser(long) with userId is one; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String SymphonyUser.getEmailAddress()"})
   void testGetEmailAddress_givenSymphonyUserWithUserIdIsOne_thenReturnNull() {
     // Arrange, Act and Assert
-    assertNull((new SymphonyUser(1L)).getEmailAddress());
+    assertNull(new SymphonyUser(1L).getEmailAddress());
   }
 
   /**
    * Test {@link SymphonyUser#getStreamId()}.
+   *
    * <ul>
-   *   <li>Given {@link SymphonyUser#SymphonyUser(long)} with userId is one.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link SymphonyUser#SymphonyUser(long)} with userId is one.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyUser#getStreamId()}
+   *
+   * <p>Method under test: {@link SymphonyUser#getStreamId()}
    */
   @Test
-  @DisplayName("Test getStreamId(); given SymphonyUser(long) with userId is one; then return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.symphony.content.SymphonyUser.getStreamId()"})
+  @DisplayName(
+      "Test getStreamId(); given SymphonyUser(long) with userId is one; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String SymphonyUser.getStreamId()"})
   void testGetStreamId_givenSymphonyUserWithUserIdIsOne_thenReturnNull() {
     // Arrange, Act and Assert
-    assertNull((new SymphonyUser(1L)).getStreamId());
+    assertNull(new SymphonyUser(1L).getStreamId());
   }
 
   /**
    * Test {@link SymphonyUser#getName()}.
+   *
    * <ul>
-   *   <li>Given {@link SymphonyUser#SymphonyUser(long)} with userId is one.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link SymphonyUser#SymphonyUser(long)} with userId is one.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyUser#getName()}
+   *
+   * <p>Method under test: {@link SymphonyUser#getName()}
    */
   @Test
   @DisplayName("Test getName(); given SymphonyUser(long) with userId is one; then return 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.symphony.content.SymphonyUser.getName()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String SymphonyUser.getName()"})
   void testGetName_givenSymphonyUserWithUserIdIsOne_thenReturnNull() {
     // Arrange, Act and Assert
-    assertNull((new SymphonyUser(1L)).getName());
+    assertNull(new SymphonyUser(1L).getName());
   }
 
   /**
    * Test {@link SymphonyUser#getUserId()}.
+   *
    * <ul>
-   *   <li>Given {@link SymphonyUser#SymphonyUser(long)} with userId is one.</li>
-   *   <li>Then return {@code 1}.</li>
+   *   <li>Given {@link SymphonyUser#SymphonyUser(long)} with userId is one.
+   *   <li>Then return {@code 1}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyUser#getUserId()}
+   *
+   * <p>Method under test: {@link SymphonyUser#getUserId()}
    */
   @Test
   @DisplayName("Test getUserId(); given SymphonyUser(long) with userId is one; then return '1'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.symphony.content.SymphonyUser.getUserId()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String SymphonyUser.getUserId()"})
   void testGetUserId_givenSymphonyUserWithUserIdIsOne_thenReturn1() {
     // Arrange, Act and Assert
-    assertEquals("1", (new SymphonyUser(1L)).getUserId());
+    assertEquals("1", new SymphonyUser(1L).getUserId());
   }
 
   /**
    * Test {@link SymphonyUser#getKey()}.
+   *
    * <ul>
-   *   <li>Given {@link SymphonyUser#SymphonyUser(long)} with userId is one.</li>
-   *   <li>Then return {@code 1}.</li>
+   *   <li>Given {@link SymphonyUser#SymphonyUser(long)} with userId is one.
+   *   <li>Then return {@code 1}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyUser#getKey()}
+   *
+   * <p>Method under test: {@link SymphonyUser#getKey()}
    */
   @Test
   @DisplayName("Test getKey(); given SymphonyUser(long) with userId is one; then return '1'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.symphony.content.SymphonyUser.getKey()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String SymphonyUser.getKey()"})
   void testGetKey_givenSymphonyUserWithUserIdIsOne_thenReturn1() {
     // Arrange, Act and Assert
-    assertEquals("1", (new SymphonyUser(1L)).getKey());
+    assertEquals("1", new SymphonyUser(1L).getKey());
   }
 }

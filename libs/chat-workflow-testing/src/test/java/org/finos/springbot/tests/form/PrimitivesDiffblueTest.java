@@ -2,6 +2,7 @@ package org.finos.springbot.tests.form;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.tests.form.Primitives.Meal;
 import org.junit.jupiter.api.DisplayName;
@@ -11,8 +12,9 @@ import org.junit.jupiter.api.Test;
 class PrimitivesDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link Primitives}
    *   <li>{@link Primitives#setA(String)}
@@ -27,16 +29,19 @@ class PrimitivesDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tests.form.Primitives.<init>()",
-      "java.lang.String org.finos.springbot.tests.form.Primitives.getA()",
-      "int org.finos.springbot.tests.form.Primitives.getC()",
-      "org.finos.springbot.tests.form.Primitives$Meal org.finos.springbot.tests.form.Primitives.getM()",
-      "boolean org.finos.springbot.tests.form.Primitives.isB()",
-      "void org.finos.springbot.tests.form.Primitives.setA(java.lang.String)",
-      "void org.finos.springbot.tests.form.Primitives.setB(boolean)",
-      "void org.finos.springbot.tests.form.Primitives.setC(int)",
-      "void org.finos.springbot.tests.form.Primitives.setM(org.finos.springbot.tests.form.Primitives$Meal)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Primitives.<init>()",
+    "String Primitives.getA()",
+    "int Primitives.getC()",
+    "Meal Primitives.getM()",
+    "boolean Primitives.isB()",
+    "void Primitives.setA(String)",
+    "void Primitives.setB(boolean)",
+    "void Primitives.setC(int)",
+    "void Primitives.setM(Meal)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     Primitives actualPrimitives = new Primitives();

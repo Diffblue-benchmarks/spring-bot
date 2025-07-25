@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -13,8 +14,9 @@ import org.junit.jupiter.api.Test;
 class VersionSpaceDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link VersionSpace#VersionSpace(String, Class, String, String[])}
    *   <li>{@link VersionSpace#toString()}
@@ -23,11 +25,13 @@ class VersionSpaceDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.entityjson.VersionSpace.<init>(java.lang.String, java.lang.Class, java.lang.String, java.lang.String[])",
-      "java.lang.Class org.finos.springbot.entityjson.VersionSpace.getToUse()",
-      "java.lang.String org.finos.springbot.entityjson.VersionSpace.toString()"})
+    "void VersionSpace.<init>(String, Class, String, String[])",
+    "Class VersionSpace.getToUse()",
+    "String VersionSpace.toString()"
+  })
   void testGettersAndSetters() {
     // Arrange
     Class<Object> toUse = Object.class;
@@ -38,8 +42,10 @@ class VersionSpaceDiffblueTest {
     Class<?> actualToUse = actualVersionSpace.getToUse();
 
     // Assert
-    assertEquals("VersionSpace [typeName=Type Name, writeVersion=1.0.2, readVersions=[1.0.2], toUse=class"
-        + " java.lang.Object]", actualToStringResult);
+    assertEquals(
+        "VersionSpace [typeName=Type Name, writeVersion=1.0.2, readVersions=[1.0.2], toUse=class"
+            + " java.lang.Object]",
+        actualToStringResult);
     Class<Object> expectedToUse = Object.class;
     assertEquals(expectedToUse, actualToUse);
     assertSame(toUse, actualToUse);
@@ -47,17 +53,20 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#VersionSpace(Class)}.
+   *
    * <ul>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return {@link VersionSpace#writeVersion} is {@code 1.0}.</li>
+   *   <li>When {@code Object}.
+   *   <li>Then return {@link VersionSpace#writeVersion} is {@code 1.0}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#VersionSpace(Class)}
+   *
+   * <p>Method under test: {@link VersionSpace#VersionSpace(Class)}
    */
   @Test
-  @DisplayName("Test new VersionSpace(Class); when 'java.lang.Object'; then return writeVersion is '1.0'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.entityjson.VersionSpace.<init>(java.lang.Class)"})
+  @DisplayName(
+      "Test new VersionSpace(Class); when 'java.lang.Object'; then return writeVersion is '1.0'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void VersionSpace.<init>(Class)"})
   void testNewVersionSpace_whenJavaLangObject_thenReturnWriteVersionIs10() {
     // Arrange
     Class<Object> toUse = Object.class;
@@ -75,18 +84,20 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#VersionSpace(Class, String, String[])}.
+   *
    * <ul>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return {@link VersionSpace#writeVersion} is {@code 1.0.2}.</li>
+   *   <li>When {@code Object}.
+   *   <li>Then return {@link VersionSpace#writeVersion} is {@code 1.0.2}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#VersionSpace(Class, String, String[])}
+   *
+   * <p>Method under test: {@link VersionSpace#VersionSpace(Class, String, String[])}
    */
   @Test
-  @DisplayName("Test new VersionSpace(Class, String, String[]); when 'java.lang.Object'; then return writeVersion is '1.0.2'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.entityjson.VersionSpace.<init>(java.lang.Class, java.lang.String, java.lang.String[])"})
+  @DisplayName(
+      "Test new VersionSpace(Class, String, String[]); when 'java.lang.Object'; then return writeVersion is '1.0.2'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void VersionSpace.<init>(Class, String, String[])"})
   void testNewVersionSpace_whenJavaLangObject_thenReturnWriteVersionIs102() {
     // Arrange
     Class<Object> toUse = Object.class;
@@ -104,18 +115,19 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#toPattern(String)}.
+   *
    * <ul>
-   *   <li>When {@code 1.0.2}.</li>
-   *   <li>Then return not test {@code foo}.</li>
+   *   <li>When {@code 1.0.2}.
+   *   <li>Then return not test {@code foo}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#toPattern(String)}
+   *
+   * <p>Method under test: {@link VersionSpace#toPattern(String)}
    */
   @Test
   @DisplayName("Test toPattern(String); when '1.0.2'; then return not test 'foo'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.function.Predicate org.finos.springbot.entityjson.VersionSpace.toPattern(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.util.function.Predicate VersionSpace.toPattern(String)"})
   void testToPattern_when102_thenReturnNotTestFoo() {
     // Arrange
     Class<Object> class1 = Object.class;
@@ -126,18 +138,19 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#toPattern(String)}.
+   *
    * <ul>
-   *   <li>When empty string.</li>
-   *   <li>Then return test {@code foo}.</li>
+   *   <li>When empty string.
+   *   <li>Then return test {@code foo}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#toPattern(String)}
+   *
+   * <p>Method under test: {@link VersionSpace#toPattern(String)}
    */
   @Test
   @DisplayName("Test toPattern(String); when empty string; then return test 'foo'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.function.Predicate org.finos.springbot.entityjson.VersionSpace.toPattern(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.util.function.Predicate VersionSpace.toPattern(String)"})
   void testToPattern_whenEmptyString_thenReturnTestFoo() {
     // Arrange
     Class<Object> class1 = Object.class;
@@ -148,17 +161,19 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#typeMatches(Object)} with {@code Object}.
+   *
    * <ul>
-   *   <li>When {@code In}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code In}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#typeMatches(Object)}
+   *
+   * <p>Method under test: {@link VersionSpace#typeMatches(Object)}
    */
   @Test
   @DisplayName("Test typeMatches(Object) with 'Object'; when 'In'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.typeMatches(java.lang.Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.typeMatches(Object)"})
   void testTypeMatchesWithObject_whenIn_thenReturnFalse() {
     // Arrange
     Class<Object> class1 = Object.class;
@@ -172,17 +187,20 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#typeMatches(Object)} with {@code Object}.
+   *
    * <ul>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When {@code Object}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#typeMatches(Object)}
+   *
+   * <p>Method under test: {@link VersionSpace#typeMatches(Object)}
    */
   @Test
-  @DisplayName("Test typeMatches(Object) with 'Object'; when 'java.lang.Object'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.typeMatches(java.lang.Object)"})
+  @DisplayName(
+      "Test typeMatches(Object) with 'Object'; when 'java.lang.Object'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.typeMatches(Object)"})
   void testTypeMatchesWithObject_whenJavaLangObject_thenReturnTrue() {
     // Arrange
     Class<Object> class1 = Object.class;
@@ -197,18 +215,21 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#typeMatches(String)} with {@code String}.
+   *
    * <ul>
-   *   <li>Given {@code Class}.</li>
-   *   <li>When {@code Class}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@code Class}.
+   *   <li>When {@code Class}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#typeMatches(String)}
+   *
+   * <p>Method under test: {@link VersionSpace#typeMatches(String)}
    */
   @Test
-  @DisplayName("Test typeMatches(String) with 'String'; given 'java.lang.Class'; when 'java.lang.Class'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.typeMatches(java.lang.String)"})
+  @DisplayName(
+      "Test typeMatches(String) with 'String'; given 'java.lang.Class'; when 'java.lang.Class'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.typeMatches(String)"})
   void testTypeMatchesWithString_givenJavaLangClass_whenJavaLangClass_thenReturnTrue() {
     // Arrange
     Class<Class> class1 = Class.class;
@@ -219,18 +240,21 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#typeMatches(String)} with {@code String}.
+   *
    * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@code In}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@code Object}.
+   *   <li>When {@code In}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#typeMatches(String)}
+   *
+   * <p>Method under test: {@link VersionSpace#typeMatches(String)}
    */
   @Test
-  @DisplayName("Test typeMatches(String) with 'String'; given 'java.lang.Object'; when 'In'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.typeMatches(java.lang.String)"})
+  @DisplayName(
+      "Test typeMatches(String) with 'String'; given 'java.lang.Object'; when 'In'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.typeMatches(String)"})
   void testTypeMatchesWithString_givenJavaLangObject_whenIn_thenReturnFalse() {
     // Arrange
     Class<Object> class1 = Object.class;
@@ -241,69 +265,75 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#versionMatches(String)}.
-   * <p>
-   * Method under test: {@link VersionSpace#versionMatches(String)}
+   *
+   * <p>Method under test: {@link VersionSpace#versionMatches(String)}
    */
   @Test
   @DisplayName("Test versionMatches(String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.versionMatches(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.versionMatches(String)"})
   void testVersionMatches() {
     // Arrange
     Class<Object> toUse = Object.class;
 
     // Act and Assert
-    assertFalse((new VersionSpace(toUse, "1.0.2", "1.0.2")).versionMatches("In"));
+    assertFalse(new VersionSpace(toUse, "1.0.2", "1.0.2").versionMatches("In"));
   }
 
   /**
    * Test {@link VersionSpace#versionMatches(String)}.
-   * <p>
-   * Method under test: {@link VersionSpace#versionMatches(String)}
+   *
+   * <p>Method under test: {@link VersionSpace#versionMatches(String)}
    */
   @Test
   @DisplayName("Test versionMatches(String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.versionMatches(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.versionMatches(String)"})
   void testVersionMatches2() {
     // Arrange
     Class<Object> toUse = Object.class;
 
     // Act and Assert
-    assertTrue((new VersionSpace(toUse, "1.0.2", "In")).versionMatches("In"));
+    assertTrue(new VersionSpace(toUse, "1.0.2", "In").versionMatches("In"));
   }
 
   /**
    * Test {@link VersionSpace#versionMatches(String)}.
-   * <p>
-   * Method under test: {@link VersionSpace#versionMatches(String)}
+   *
+   * <p>Method under test: {@link VersionSpace#versionMatches(String)}
    */
   @Test
   @DisplayName("Test versionMatches(String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.versionMatches(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.versionMatches(String)"})
   void testVersionMatches3() {
     // Arrange
     Class<Object> toUse = Object.class;
 
     // Act and Assert
-    assertTrue((new VersionSpace(toUse, "1.0.2", "1.0.2", "In")).versionMatches("In"));
+    assertTrue(new VersionSpace(toUse, "1.0.2", "1.0.2", "In").versionMatches("In"));
   }
 
   /**
    * Test {@link VersionSpace#versionMatches(String)}.
+   *
    * <ul>
-   *   <li>Given noVersion {@link Object}.</li>
-   *   <li>When empty string.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given noVersion {@link Object}.
+   *   <li>When empty string.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#versionMatches(String)}
+   *
+   * <p>Method under test: {@link VersionSpace#versionMatches(String)}
    */
   @Test
-  @DisplayName("Test versionMatches(String); given noVersion Object; when empty string; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.versionMatches(java.lang.String)"})
+  @DisplayName(
+      "Test versionMatches(String); given noVersion Object; when empty string; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.versionMatches(String)"})
   void testVersionMatches_givenNoVersionObject_whenEmptyString_thenReturnTrue() {
     // Arrange
     Class<Object> class1 = Object.class;
@@ -314,18 +344,21 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#versionMatches(String)}.
+   *
    * <ul>
-   *   <li>Given noVersion {@link Object}.</li>
-   *   <li>When {@code In}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given noVersion {@link Object}.
+   *   <li>When {@code In}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#versionMatches(String)}
+   *
+   * <p>Method under test: {@link VersionSpace#versionMatches(String)}
    */
   @Test
-  @DisplayName("Test versionMatches(String); given noVersion Object; when 'In'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.versionMatches(java.lang.String)"})
+  @DisplayName(
+      "Test versionMatches(String); given noVersion Object; when 'In'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.versionMatches(String)"})
   void testVersionMatches_givenNoVersionObject_whenIn_thenReturnFalse() {
     // Arrange
     Class<Object> class1 = Object.class;
@@ -336,17 +369,19 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#getVersions()}.
+   *
    * <ul>
-   *   <li>Given noVersion {@link Object}.</li>
-   *   <li>Then return {@code ,}.</li>
+   *   <li>Given noVersion {@link Object}.
+   *   <li>Then return {@code ,}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#getVersions()}
+   *
+   * <p>Method under test: {@link VersionSpace#getVersions()}
    */
   @Test
   @DisplayName("Test getVersions(); given noVersion Object; then return ','")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.entityjson.VersionSpace.getVersions()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String VersionSpace.getVersions()"})
   void testGetVersions_givenNoVersionObject_thenReturnComma() {
     // Arrange
     Class<Object> class1 = Object.class;
@@ -357,53 +392,60 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#getVersions()}.
+   *
    * <ul>
-   *   <li>Then return {@code 1.0.2, , 1.0.2}.</li>
+   *   <li>Then return {@code 1.0.2, , 1.0.2}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#getVersions()}
+   *
+   * <p>Method under test: {@link VersionSpace#getVersions()}
    */
   @Test
   @DisplayName("Test getVersions(); then return '1.0.2, , 1.0.2'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.entityjson.VersionSpace.getVersions()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String VersionSpace.getVersions()"})
   void testGetVersions_thenReturn102102() {
     // Arrange
     Class<Object> toUse = Object.class;
 
     // Act and Assert
-    assertEquals("1.0.2, , 1.0.2", (new VersionSpace(toUse, "1.0.2", "1.0.2")).getVersions());
+    assertEquals("1.0.2, , 1.0.2", new VersionSpace(toUse, "1.0.2", "1.0.2").getVersions());
   }
 
   /**
    * Test {@link VersionSpace#getVersions()}.
+   *
    * <ul>
-   *   <li>Then return {@code 1.0.2, , 1.0.2, Read Versions}.</li>
+   *   <li>Then return {@code 1.0.2, , 1.0.2, Read Versions}.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#getVersions()}
+   *
+   * <p>Method under test: {@link VersionSpace#getVersions()}
    */
   @Test
   @DisplayName("Test getVersions(); then return '1.0.2, , 1.0.2, Read Versions'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.entityjson.VersionSpace.getVersions()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String VersionSpace.getVersions()"})
   void testGetVersions_thenReturn102102ReadVersions() {
     // Arrange
     Class<Object> toUse = Object.class;
 
     // Act and Assert
-    assertEquals("1.0.2, , 1.0.2, Read Versions",
-        (new VersionSpace(toUse, "1.0.2", "1.0.2", "Read Versions")).getVersions());
+    assertEquals(
+        "1.0.2, , 1.0.2, Read Versions",
+        new VersionSpace(toUse, "1.0.2", "1.0.2", "Read Versions").getVersions());
   }
 
   /**
    * Test {@link VersionSpace#equals(Object)}, and {@link VersionSpace#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link VersionSpace#equals(Object)}
    *   <li>{@link VersionSpace#hashCode()}
@@ -411,9 +453,9 @@ class VersionSpaceDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.equals(java.lang.Object)",
-      "int org.finos.springbot.entityjson.VersionSpace.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.equals(Object)", "int VersionSpace.hashCode()"})
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     Class<Object> class1 = Object.class;
@@ -429,12 +471,14 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#equals(Object)}, and {@link VersionSpace#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link VersionSpace#equals(Object)}
    *   <li>{@link VersionSpace#hashCode()}
@@ -442,9 +486,9 @@ class VersionSpaceDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.equals(java.lang.Object)",
-      "int org.finos.springbot.entityjson.VersionSpace.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.equals(Object)", "int VersionSpace.hashCode()"})
   void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     Class<Object> class1 = Object.class;
@@ -458,18 +502,19 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#equals(Object)}
+   *
+   * <p>Method under test: {@link VersionSpace#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.equals(java.lang.Object)",
-      "int org.finos.springbot.entityjson.VersionSpace.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.equals(Object)", "int VersionSpace.hashCode()"})
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
     Class<Class> class1 = Class.class;
@@ -482,18 +527,19 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#equals(Object)}
+   *
+   * <p>Method under test: {@link VersionSpace#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.equals(java.lang.Object)",
-      "int org.finos.springbot.entityjson.VersionSpace.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.equals(Object)", "int VersionSpace.hashCode()"})
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
     Class<Object> toUse = Object.class;
@@ -506,18 +552,19 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#equals(Object)}
+   *
+   * <p>Method under test: {@link VersionSpace#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.equals(java.lang.Object)",
-      "int org.finos.springbot.entityjson.VersionSpace.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.equals(Object)", "int VersionSpace.hashCode()"})
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
     // Arrange
     Class<Object> toUse = Object.class;
@@ -530,18 +577,19 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#equals(Object)}
+   *
+   * <p>Method under test: {@link VersionSpace#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.equals(java.lang.Object)",
-      "int org.finos.springbot.entityjson.VersionSpace.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.equals(Object)", "int VersionSpace.hashCode()"})
   void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
     Class<Object> class1 = Object.class;
@@ -552,18 +600,19 @@ class VersionSpaceDiffblueTest {
 
   /**
    * Test {@link VersionSpace#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link VersionSpace#equals(Object)}
+   *
+   * <p>Method under test: {@link VersionSpace#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.entityjson.VersionSpace.equals(java.lang.Object)",
-      "int org.finos.springbot.entityjson.VersionSpace.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean VersionSpace.equals(Object)", "int VersionSpace.hashCode()"})
   void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
     Class<Object> class1 = Object.class;

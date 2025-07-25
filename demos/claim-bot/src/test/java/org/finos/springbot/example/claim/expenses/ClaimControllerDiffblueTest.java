@@ -11,6 +11,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
@@ -33,31 +34,29 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.aot.DisabledInAotMode;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {ClaimController.class})
-@ExtendWith(SpringExtension.class)
 @DisabledInAotMode
+@ExtendWith(SpringExtension.class)
 class ClaimControllerDiffblueTest {
-  @MockBean
-  private AllConversations allConversations;
+  @MockitoBean private AllConversations allConversations;
 
-  @Autowired
-  private ClaimController claimController;
+  @Autowired private ClaimController claimController;
 
   /**
    * Test {@link ClaimController#open(Addressable)}.
-   * <p>
-   * Method under test: {@link ClaimController#open(Addressable)}
+   *
+   * <p>Method under test: {@link ClaimController#open(Addressable)}
    */
   @Test
   @DisplayName("Test open(Addressable)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.example.claim.expenses.NewClaim org.finos.springbot.example.claim.expenses.ClaimController.open(org.finos.springbot.workflow.content.Addressable)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"NewClaim ClaimController.open(Addressable)"})
   void testOpen() {
     // Arrange and Act
     NewClaim actualOpenResult = claimController.open(mock(Addressable.class));
@@ -69,17 +68,18 @@ class ClaimControllerDiffblueTest {
 
   /**
    * Test {@link ClaimController#add(NewClaim, User, Addressable)}.
+   *
    * <ul>
-   *   <li>Then return size is two.</li>
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link ClaimController#add(NewClaim, User, Addressable)}
+   *
+   * <p>Method under test: {@link ClaimController#add(NewClaim, User, Addressable)}
    */
   @Test
   @DisplayName("Test add(NewClaim, User, Addressable); then return size is two")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.example.claim.expenses.ClaimController.add(org.finos.springbot.example.claim.expenses.NewClaim, org.finos.springbot.workflow.content.User, org.finos.springbot.workflow.content.Addressable)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ClaimController.add(NewClaim, User, Addressable)"})
   void testAdd_thenReturnSizeIsTwo() {
     // Arrange
     SymphonyRoom symphonyRoom = new SymphonyRoom("Name", "42");
@@ -122,17 +122,18 @@ class ClaimControllerDiffblueTest {
 
   /**
    * Test {@link ClaimController#add(NewClaim, User, Addressable)}.
+   *
    * <ul>
-   *   <li>Then throw {@link RuntimeException}.</li>
+   *   <li>Then throw {@link RuntimeException}.
    * </ul>
-   * <p>
-   * Method under test: {@link ClaimController#add(NewClaim, User, Addressable)}
+   *
+   * <p>Method under test: {@link ClaimController#add(NewClaim, User, Addressable)}
    */
   @Test
   @DisplayName("Test add(NewClaim, User, Addressable); then throw RuntimeException")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.example.claim.expenses.ClaimController.add(org.finos.springbot.example.claim.expenses.NewClaim, org.finos.springbot.workflow.content.User, org.finos.springbot.workflow.content.Addressable)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ClaimController.add(NewClaim, User, Addressable)"})
   void testAdd_thenThrowRuntimeException() {
     // Arrange
     when(allConversations.getExistingChat(Mockito.<String>any()))
@@ -143,24 +144,28 @@ class ClaimControllerDiffblueTest {
     sc.setDescription("The characteristics of someone or something");
 
     // Act and Assert
-    assertThrows(RuntimeException.class, () -> claimController.add(sc, new SymphonyUser(1L), mock(Addressable.class)));
+    assertThrows(
+        RuntimeException.class,
+        () -> claimController.add(sc, new SymphonyUser(1L), mock(Addressable.class)));
     verify(allConversations).getExistingChat(eq("Claim Approval Room"));
   }
 
   /**
    * Test {@link ClaimController#approve(OpenedClaim, User, Chat)}.
+   *
    * <ul>
-   *   <li>When {@link OpenedClaim} (default constructor) Amount is valueOf one.</li>
-   *   <li>Then return size is two.</li>
+   *   <li>When {@link OpenedClaim} (default constructor) Amount is valueOf one.
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link ClaimController#approve(OpenedClaim, User, Chat)}
+   *
+   * <p>Method under test: {@link ClaimController#approve(OpenedClaim, User, Chat)}
    */
   @Test
-  @DisplayName("Test approve(OpenedClaim, User, Chat); when OpenedClaim (default constructor) Amount is valueOf one; then return size is two")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.example.claim.expenses.ClaimController.approve(org.finos.springbot.example.claim.expenses.OpenedClaim, org.finos.springbot.workflow.content.User, org.finos.springbot.workflow.content.Chat)"})
+  @DisplayName(
+      "Test approve(OpenedClaim, User, Chat); when OpenedClaim (default constructor) Amount is valueOf one; then return size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ClaimController.approve(OpenedClaim, User, Chat)"})
   void testApprove_whenOpenedClaimAmountIsValueOfOne_thenReturnSizeIsTwo() {
     // Arrange
     OpenedClaim c = new OpenedClaim();
@@ -218,18 +223,20 @@ class ClaimControllerDiffblueTest {
 
   /**
    * Test {@link ClaimController#approve(OpenedClaim, User, Chat)}.
+   *
    * <ul>
-   *   <li>When {@link OpenedClaim} {@link OpenedClaim#setAmount(Number)} does nothing.</li>
-   *   <li>Then throw {@link RuntimeException}.</li>
+   *   <li>When {@link OpenedClaim} {@link OpenedClaim#setAmount(Number)} does nothing.
+   *   <li>Then throw {@link RuntimeException}.
    * </ul>
-   * <p>
-   * Method under test: {@link ClaimController#approve(OpenedClaim, User, Chat)}
+   *
+   * <p>Method under test: {@link ClaimController#approve(OpenedClaim, User, Chat)}
    */
   @Test
-  @DisplayName("Test approve(OpenedClaim, User, Chat); when OpenedClaim setAmount(Number) does nothing; then throw RuntimeException")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.example.claim.expenses.ClaimController.approve(org.finos.springbot.example.claim.expenses.OpenedClaim, org.finos.springbot.workflow.content.User, org.finos.springbot.workflow.content.Chat)"})
+  @DisplayName(
+      "Test approve(OpenedClaim, User, Chat); when OpenedClaim setAmount(Number) does nothing; then throw RuntimeException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ClaimController.approve(OpenedClaim, User, Chat)"})
   void testApprove_whenOpenedClaimSetAmountDoesNothing_thenThrowRuntimeException() {
     // Arrange
     OpenedClaim c = mock(OpenedClaim.class);
@@ -248,7 +255,9 @@ class ClaimControllerDiffblueTest {
     SymphonyUser currentUser = new SymphonyUser(1L);
 
     // Act and Assert
-    assertThrows(RuntimeException.class, () -> claimController.approve(c, currentUser, new SymphonyRoom("Name", "42")));
+    assertThrows(
+        RuntimeException.class,
+        () -> claimController.approve(c, currentUser, new SymphonyRoom("Name", "42")));
     verify(c).setAmount(isA(Number.class));
     verify(c).setApprovedBy(isA(User.class));
     verify(c).setAuthor(isA(User.class));

@@ -3,6 +3,7 @@ package org.finos.springbot.workflow.help;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +14,9 @@ import org.junit.jupiter.api.Test;
 class CommandDescriptionDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link CommandDescription#CommandDescription()}
    *   <li>{@link CommandDescription#setButton(boolean)}
@@ -31,19 +33,22 @@ class CommandDescriptionDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.help.CommandDescription.<init>()",
-      "void org.finos.springbot.workflow.help.CommandDescription.<init>(boolean, java.lang.String, java.lang.String, int, java.util.List)",
-      "java.lang.String org.finos.springbot.workflow.help.CommandDescription.getButtonName()",
-      "java.lang.String org.finos.springbot.workflow.help.CommandDescription.getDescription()",
-      "java.util.List org.finos.springbot.workflow.help.CommandDescription.getExamples()",
-      "int org.finos.springbot.workflow.help.CommandDescription.getHelpOrder()",
-      "boolean org.finos.springbot.workflow.help.CommandDescription.isButton()",
-      "void org.finos.springbot.workflow.help.CommandDescription.setButton(boolean)",
-      "void org.finos.springbot.workflow.help.CommandDescription.setButtonName(java.lang.String)",
-      "void org.finos.springbot.workflow.help.CommandDescription.setDescription(java.lang.String)",
-      "void org.finos.springbot.workflow.help.CommandDescription.setExamples(java.util.List)",
-      "void org.finos.springbot.workflow.help.CommandDescription.setHelpOrder(int)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void CommandDescription.<init>()",
+    "void CommandDescription.<init>(boolean, String, String, int, List)",
+    "String CommandDescription.getButtonName()",
+    "String CommandDescription.getDescription()",
+    "List CommandDescription.getExamples()",
+    "int CommandDescription.getHelpOrder()",
+    "boolean CommandDescription.isButton()",
+    "void CommandDescription.setButton(boolean)",
+    "void CommandDescription.setButtonName(String)",
+    "void CommandDescription.setDescription(String)",
+    "void CommandDescription.setExamples(List)",
+    "void CommandDescription.setHelpOrder(int)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     CommandDescription actualCommandDescription = new CommandDescription();
@@ -70,11 +75,13 @@ class CommandDescriptionDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@code true}.</li>
+   *   <li>When {@code true}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link CommandDescription#CommandDescription(boolean, String, String, int, List)}
    *   <li>{@link CommandDescription#setButton(boolean)}
@@ -91,23 +98,31 @@ class CommandDescriptionDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.help.CommandDescription.<init>()",
-      "void org.finos.springbot.workflow.help.CommandDescription.<init>(boolean, java.lang.String, java.lang.String, int, java.util.List)",
-      "java.lang.String org.finos.springbot.workflow.help.CommandDescription.getButtonName()",
-      "java.lang.String org.finos.springbot.workflow.help.CommandDescription.getDescription()",
-      "java.util.List org.finos.springbot.workflow.help.CommandDescription.getExamples()",
-      "int org.finos.springbot.workflow.help.CommandDescription.getHelpOrder()",
-      "boolean org.finos.springbot.workflow.help.CommandDescription.isButton()",
-      "void org.finos.springbot.workflow.help.CommandDescription.setButton(boolean)",
-      "void org.finos.springbot.workflow.help.CommandDescription.setButtonName(java.lang.String)",
-      "void org.finos.springbot.workflow.help.CommandDescription.setDescription(java.lang.String)",
-      "void org.finos.springbot.workflow.help.CommandDescription.setExamples(java.util.List)",
-      "void org.finos.springbot.workflow.help.CommandDescription.setHelpOrder(int)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void CommandDescription.<init>()",
+    "void CommandDescription.<init>(boolean, String, String, int, List)",
+    "String CommandDescription.getButtonName()",
+    "String CommandDescription.getDescription()",
+    "List CommandDescription.getExamples()",
+    "int CommandDescription.getHelpOrder()",
+    "boolean CommandDescription.isButton()",
+    "void CommandDescription.setButton(boolean)",
+    "void CommandDescription.setButtonName(String)",
+    "void CommandDescription.setDescription(String)",
+    "void CommandDescription.setExamples(List)",
+    "void CommandDescription.setHelpOrder(int)"
+  })
   void testGettersAndSetters_whenTrue() {
     // Arrange and Act
-    CommandDescription actualCommandDescription = new CommandDescription(true, "Button Name",
-        "The characteristics of someone or something", 1, new ArrayList<>());
+    CommandDescription actualCommandDescription =
+        new CommandDescription(
+            true,
+            "Button Name",
+            "The characteristics of someone or something",
+            1,
+            new ArrayList<>());
     actualCommandDescription.setButton(true);
     actualCommandDescription.setButtonName("Button Name");
     actualCommandDescription.setDescription("The characteristics of someone or something");

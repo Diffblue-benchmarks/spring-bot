@@ -1,12 +1,17 @@
 package org.finos.springbot.example.demo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.finos.springbot.workflow.content.Addressable;
 import org.finos.springbot.workflow.content.Content;
@@ -27,25 +32,27 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ContextConfiguration(classes = {DemoController.class})
 @ExtendWith(SpringExtension.class)
 class DemoControllerDiffblueTest {
-  @Autowired
-  private DemoController demoController;
+  @Autowired private DemoController demoController;
 
   /**
    * Test {@link DemoController#missingChatButton(List, Addressable)}.
+   *
    * <ul>
-   *   <li>Then return Message Contents first Text is {@code Bot echoing - Hello}.</li>
+   *   <li>Then return Message Contents first Text is {@code Bot echoing - Hello}.
    * </ul>
-   * <p>
-   * Method under test: {@link DemoController#missingChatButton(List, Addressable)}
+   *
+   * <p>Method under test: {@link DemoController#missingChatButton(List, Addressable)}
    */
   @Test
-  @DisplayName("Test missingChatButton(List, Addressable); then return Message Contents first Text is 'Bot echoing - Hello'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.response.MessageResponse org.finos.springbot.example.demo.DemoController.missingChatButton(java.util.List, org.finos.springbot.workflow.content.Addressable)"})
+  @DisplayName(
+      "Test missingChatButton(List, Addressable); then return Message Contents first Text is 'Bot echoing - Hello'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"MessageResponse DemoController.missingChatButton(List, Addressable)"})
   void testMissingChatButton_thenReturnMessageContentsFirstTextIsBotEchoingHello() {
     // Arrange, Act and Assert
-    Content message = demoController.missingChatButton(new ArrayList<>(), mock(Addressable.class)).getMessage();
+    Content message =
+        demoController.missingChatButton(new ArrayList<>(), mock(Addressable.class)).getMessage();
     assertTrue(message instanceof MessageImpl);
     List<Content> contents = ((MessageImpl) message).getContents();
     assertEquals(1, contents.size());
@@ -59,17 +66,19 @@ class DemoControllerDiffblueTest {
 
   /**
    * Test {@link DemoController#missingChatButton(List, Addressable)}.
+   *
    * <ul>
-   *   <li>Then return Message Contents first Text is {@code Bot echoing - Text}.</li>
+   *   <li>Then return Message Contents first Text is {@code Bot echoing - Text}.
    * </ul>
-   * <p>
-   * Method under test: {@link DemoController#missingChatButton(List, Addressable)}
+   *
+   * <p>Method under test: {@link DemoController#missingChatButton(List, Addressable)}
    */
   @Test
-  @DisplayName("Test missingChatButton(List, Addressable); then return Message Contents first Text is 'Bot echoing - Text'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.response.MessageResponse org.finos.springbot.example.demo.DemoController.missingChatButton(java.util.List, org.finos.springbot.workflow.content.Addressable)"})
+  @DisplayName(
+      "Test missingChatButton(List, Addressable); then return Message Contents first Text is 'Bot echoing - Text'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"MessageResponse DemoController.missingChatButton(List, Addressable)"})
   void testMissingChatButton_thenReturnMessageContentsFirstTextIsBotEchoingText() {
     // Arrange
     Word word = mock(Word.class);
@@ -79,7 +88,8 @@ class DemoControllerDiffblueTest {
     msg.add(word);
 
     // Act
-    MessageResponse actualMissingChatButtonResult = demoController.missingChatButton(msg, mock(Addressable.class));
+    MessageResponse actualMissingChatButtonResult =
+        demoController.missingChatButton(msg, mock(Addressable.class));
 
     // Assert
     verify(word).getText();
@@ -97,17 +107,19 @@ class DemoControllerDiffblueTest {
 
   /**
    * Test {@link DemoController#missingChatButton(List, Addressable)}.
+   *
    * <ul>
-   *   <li>Then return Message Contents first Text is {@code Bot echoing - Text Text}.</li>
+   *   <li>Then return Message Contents first Text is {@code Bot echoing - Text Text}.
    * </ul>
-   * <p>
-   * Method under test: {@link DemoController#missingChatButton(List, Addressable)}
+   *
+   * <p>Method under test: {@link DemoController#missingChatButton(List, Addressable)}
    */
   @Test
-  @DisplayName("Test missingChatButton(List, Addressable); then return Message Contents first Text is 'Bot echoing - Text Text'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.response.MessageResponse org.finos.springbot.example.demo.DemoController.missingChatButton(java.util.List, org.finos.springbot.workflow.content.Addressable)"})
+  @DisplayName(
+      "Test missingChatButton(List, Addressable); then return Message Contents first Text is 'Bot echoing - Text Text'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"MessageResponse DemoController.missingChatButton(List, Addressable)"})
   void testMissingChatButton_thenReturnMessageContentsFirstTextIsBotEchoingTextText() {
     // Arrange
     Word word = mock(Word.class);
@@ -120,7 +132,8 @@ class DemoControllerDiffblueTest {
     msg.add(word);
 
     // Act
-    MessageResponse actualMissingChatButtonResult = demoController.missingChatButton(msg, mock(Addressable.class));
+    MessageResponse actualMissingChatButtonResult =
+        demoController.missingChatButton(msg, mock(Addressable.class));
 
     // Assert
     verify(word2).getText();
@@ -135,5 +148,40 @@ class DemoControllerDiffblueTest {
     assertEquals("Bot echoing - Text Text", message.getText());
     assertEquals(5, ((ParagraphImpl) getResult).getContents().size());
     assertEquals(5, ((ParagraphImpl) getResult).size());
+  }
+
+  /**
+   * Test {@link DemoController#withChatButton(Addressable)}.
+   *
+   * <p>Method under test: {@link DemoController#withChatButton(Addressable)}
+   */
+  @Test
+  @DisplayName("Test withChatButton(Addressable)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"MessageResponse DemoController.withChatButton(Addressable)"})
+  void testWithChatButton() {
+    // Arrange
+    Addressable a = mock(Addressable.class);
+
+    // Act
+    MessageResponse actualWithChatButtonResult = demoController.withChatButton(a);
+
+    // Assert
+    assertSame(a, actualWithChatButtonResult.getAddress());
+    assertTrue(actualWithChatButtonResult.getData().isEmpty());
+    Content message = actualWithChatButtonResult.getMessage();
+    assertTrue(message instanceof MessageImpl);
+    List<Content> contents = ((MessageImpl) message).getContents();
+    assertEquals(1, contents.size());
+    Content getResult = contents.get(0);
+    assertTrue(getResult instanceof ParagraphImpl);
+    assertEquals("Echo echo...", message.getText());
+    Iterator<Content> iteratorResult = ((MessageImpl) message).iterator();
+    Content actualNextResult = iteratorResult.next();
+    assertFalse(iteratorResult.hasNext());
+    assertSame(getResult, actualNextResult);
+    assertEquals(1, ((MessageImpl) message).size());
+    assertNull(actualWithChatButtonResult.getTemplateName());
   }
 }

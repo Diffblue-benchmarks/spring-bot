@@ -7,6 +7,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import java.time.ZoneId;
@@ -27,51 +28,55 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.web.reactive.context.AnnotationConfigReactiveWebApplicationContext;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.aot.DisabledInAotMode;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.util.ErrorHandler;
 
 @ContextConfiguration(classes = {TimeFinder.class, ReminderProperties.class})
-@ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 @DisabledInAotMode
+@ExtendWith(MockitoExtension.class)
+@ExtendWith(SpringExtension.class)
 class TimeFinderDiffblueTest {
-  @MockBean
-  private AllConversations allConversations;
+  @MockitoBean private AllConversations allConversations;
 
-  @MockBean
-  private AllHistory allHistory;
+  @MockitoBean private AllHistory allHistory;
 
-  @MockBean
-  private ErrorHandler errorHandler;
+  @MockitoBean private ErrorHandler errorHandler;
 
-  @Autowired
-  private ReminderProperties reminderProperties;
+  @Autowired private ReminderProperties reminderProperties;
 
-  @MockBean
-  private ResponseHandlers responseHandlers;
+  @MockitoBean private ResponseHandlers responseHandlers;
 
-  @Autowired
-  private TimeFinder timeFinder;
+  @Autowired private TimeFinder timeFinder;
+
+  @InjectMocks private TimeFinder timeFinder2;
 
   /**
-   * Test {@link TimeFinder#TimeFinder(ErrorHandler, AllConversations, AllHistory, ReminderProperties, ResponseHandlers)}.
-   * <p>
-   * Method under test: {@link TimeFinder#TimeFinder(ErrorHandler, AllConversations, AllHistory, ReminderProperties, ResponseHandlers)}
+   * Test {@link TimeFinder#TimeFinder(ErrorHandler, AllConversations, AllHistory,
+   * ReminderProperties, ResponseHandlers)}.
+   *
+   * <p>Method under test: {@link TimeFinder#TimeFinder(ErrorHandler, AllConversations, AllHistory,
+   * ReminderProperties, ResponseHandlers)}
    */
   @Test
-  @DisplayName("Test new TimeFinder(ErrorHandler, AllConversations, AllHistory, ReminderProperties, ResponseHandlers)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new TimeFinder(ErrorHandler, AllConversations, AllHistory, ReminderProperties, ResponseHandlers)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.tool.reminders.TimeFinder.<init>(org.springframework.util.ErrorHandler, org.finos.springbot.workflow.conversations.AllConversations, org.finos.springbot.workflow.history.AllHistory, org.finos.springbot.tool.reminders.ReminderProperties, org.finos.springbot.workflow.response.handlers.ResponseHandlers)"})
+    "void TimeFinder.<init>(ErrorHandler, AllConversations, AllHistory, ReminderProperties, ResponseHandlers)"
+  })
   void testNewTimeFinder() throws BeansException {
     // Arrange
     ErrorHandler errorHandler = mock(ErrorHandler.class);
@@ -87,8 +92,9 @@ class TimeFinderDiffblueTest {
     reminderProperties.setWelcomeMessage("Welcome Message");
 
     // Act and Assert
-    ReminderProperties reminderProperties2 = (new TimeFinder(errorHandler, rooms, h, reminderProperties,
-        mock(ResponseHandlers.class))).reminderProperties;
+    ReminderProperties reminderProperties2 =
+        new TimeFinder(errorHandler, rooms, h, reminderProperties, mock(ResponseHandlers.class))
+            .reminderProperties;
     ZoneId defaultTimeZone2 = reminderProperties2.getDefaultTimeZone();
     assertEquals("+00:00:01", defaultTimeZone2.toString());
     assertEquals("Welcome Message", reminderProperties2.getWelcomeMessage());
@@ -98,30 +104,20 @@ class TimeFinderDiffblueTest {
 
   /**
    * Test {@link TimeFinder#initializingStanfordProperties()}.
-   * <p>
-   * Method under test: {@link TimeFinder#initializingStanfordProperties()}
+   *
+   * <p>Method under test: {@link TimeFinder#initializingStanfordProperties()}
    */
   @Test
   @DisplayName("Test initializingStanfordProperties()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.reminders.TimeFinder.initializingStanfordProperties()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeFinder.initializingStanfordProperties()"})
   void testInitializingStanfordProperties() {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
-
-    // Arrange
-    ErrorHandler errorHandler = mock(ErrorHandler.class);
-    AllConversations rooms = new AllConversations();
-    AllHistory h = new AllHistory();
-    TimeFinder timeFinder = new TimeFinder(errorHandler, rooms, h, new ReminderProperties(),
-        mock(ResponseHandlers.class));
-
-    // Act
-    timeFinder.initializingStanfordProperties();
+    // Arrange and Act
+    timeFinder2.initializingStanfordProperties();
 
     // Assert
-    StanfordCoreNLP stanfordCoreNLP = timeFinder.stanfordCoreNLP;
+    StanfordCoreNLP stanfordCoreNLP = timeFinder2.stanfordCoreNLP;
     assertEquals("UTF-8", stanfordCoreNLP.getEncoding());
     Properties properties = stanfordCoreNLP.getProperties();
     assertEquals(2, properties.size());
@@ -132,18 +128,59 @@ class TimeFinderDiffblueTest {
 
   /**
    * Test {@link TimeFinder#accept(Action)} with {@code Action}.
-   * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return {@code 1st}.</li>
-   *   <li>Then calls {@link Content#getText()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TimeFinder#accept(Action)}
+   *
+   * <p>Method under test: {@link TimeFinder#accept(Action)}
    */
   @Test
-  @DisplayName("Test accept(Action) with 'Action'; given Content getText() return '1st'; then calls getText()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.reminders.TimeFinder.accept(org.finos.springbot.workflow.actions.Action)"})
+  @DisplayName("Test accept(Action) with 'Action'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeFinder.accept(Action)"})
+  void testAcceptWithAction() throws BeansException {
+    // Arrange
+    ErrorHandler errorHandler = mock(ErrorHandler.class);
+    doNothing().when(errorHandler).handleError(Mockito.<Throwable>any());
+
+    AllHistory h = new AllHistory();
+    h.setApplicationContext(new AnnotationConfigReactiveWebApplicationContext());
+
+    ReminderProperties reminderProperties = new ReminderProperties();
+    reminderProperties.setDefaultRemindBefore(1);
+    reminderProperties.setDefaultTimeZone(ZoneOffset.ofTotalSeconds(1));
+    reminderProperties.setWelcomeMessage("Welcome Message");
+    TimeFinder timeFinder =
+        new TimeFinder(
+            errorHandler,
+            new AllConversations(),
+            h,
+            reminderProperties,
+            mock(ResponseHandlers.class));
+    Addressable a = mock(Addressable.class);
+    SymphonyUser u = new SymphonyUser(1L);
+
+    // Act
+    timeFinder.accept(new SimpleMessageAction(a, u, new MessageImpl(new ArrayList<>()), "Ej"));
+
+    // Assert
+    verify(errorHandler).handleError(isA(Throwable.class));
+  }
+
+  /**
+   * Test {@link TimeFinder#accept(Action)} with {@code Action}.
+   *
+   * <ul>
+   *   <li>Given {@link Content} {@link Content#getText()} return {@code 1st}.
+   *   <li>Then calls {@link Content#getText()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link TimeFinder#accept(Action)}
+   */
+  @Test
+  @DisplayName(
+      "Test accept(Action) with 'Action'; given Content getText() return '1st'; then calls getText()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeFinder.accept(Action)"})
   void testAcceptWithAction_givenContentGetTextReturn1st_thenCallsGetText() {
     // Arrange
     Content content = mock(Content.class);
@@ -169,18 +206,20 @@ class TimeFinderDiffblueTest {
 
   /**
    * Test {@link TimeFinder#accept(Action)} with {@code Action}.
+   *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return {@code '99}.</li>
-   *   <li>Then calls {@link Content#getText()}.</li>
+   *   <li>Given {@link Content} {@link Content#getText()} return {@code '99}.
+   *   <li>Then calls {@link Content#getText()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TimeFinder#accept(Action)}
+   *
+   * <p>Method under test: {@link TimeFinder#accept(Action)}
    */
   @Test
-  @DisplayName("Test accept(Action) with 'Action'; given Content getText() return ''99'; then calls getText()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.reminders.TimeFinder.accept(org.finos.springbot.workflow.actions.Action)"})
+  @DisplayName(
+      "Test accept(Action) with 'Action'; given Content getText() return ''99'; then calls getText()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeFinder.accept(Action)"})
   void testAcceptWithAction_givenContentGetTextReturn99_thenCallsGetText() {
     // Arrange
     Content content = mock(Content.class);
@@ -206,18 +245,20 @@ class TimeFinderDiffblueTest {
 
   /**
    * Test {@link TimeFinder#accept(Action)} with {@code Action}.
+   *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return {@code 0999}.</li>
-   *   <li>Then calls {@link Content#getText()}.</li>
+   *   <li>Given {@link Content} {@link Content#getText()} return {@code 0999}.
+   *   <li>Then calls {@link Content#getText()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TimeFinder#accept(Action)}
+   *
+   * <p>Method under test: {@link TimeFinder#accept(Action)}
    */
   @Test
-  @DisplayName("Test accept(Action) with 'Action'; given Content getText() return '0999'; then calls getText()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.reminders.TimeFinder.accept(org.finos.springbot.workflow.actions.Action)"})
+  @DisplayName(
+      "Test accept(Action) with 'Action'; given Content getText() return '0999'; then calls getText()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeFinder.accept(Action)"})
   void testAcceptWithAction_givenContentGetTextReturn0999_thenCallsGetText() {
     // Arrange
     Content content = mock(Content.class);
@@ -243,17 +284,19 @@ class TimeFinderDiffblueTest {
 
   /**
    * Test {@link TimeFinder#accept(Action)} with {@code Action}.
+   *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return {@code 999999T999999,999+9999}.</li>
+   *   <li>Given {@link Content} {@link Content#getText()} return {@code 999999T999999,999+9999}.
    * </ul>
-   * <p>
-   * Method under test: {@link TimeFinder#accept(Action)}
+   *
+   * <p>Method under test: {@link TimeFinder#accept(Action)}
    */
   @Test
-  @DisplayName("Test accept(Action) with 'Action'; given Content getText() return '999999T999999,999+9999'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.reminders.TimeFinder.accept(org.finos.springbot.workflow.actions.Action)"})
+  @DisplayName(
+      "Test accept(Action) with 'Action'; given Content getText() return '999999T999999,999+9999'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeFinder.accept(Action)"})
   void testAcceptWithAction_givenContentGetTextReturn999999t9999999999999() {
     // Arrange
     Content content = mock(Content.class);
@@ -279,18 +322,20 @@ class TimeFinderDiffblueTest {
 
   /**
    * Test {@link TimeFinder#accept(Action)} with {@code Action}.
+   *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return {@code 9999-99-99}.</li>
-   *   <li>Then calls {@link Content#getText()}.</li>
+   *   <li>Given {@link Content} {@link Content#getText()} return {@code 9999-99-99}.
+   *   <li>Then calls {@link Content#getText()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TimeFinder#accept(Action)}
+   *
+   * <p>Method under test: {@link TimeFinder#accept(Action)}
    */
   @Test
-  @DisplayName("Test accept(Action) with 'Action'; given Content getText() return '9999-99-99'; then calls getText()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.reminders.TimeFinder.accept(org.finos.springbot.workflow.actions.Action)"})
+  @DisplayName(
+      "Test accept(Action) with 'Action'; given Content getText() return '9999-99-99'; then calls getText()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeFinder.accept(Action)"})
   void testAcceptWithAction_givenContentGetTextReturn99999999_thenCallsGetText() {
     // Arrange
     Content content = mock(Content.class);
@@ -316,18 +361,20 @@ class TimeFinderDiffblueTest {
 
   /**
    * Test {@link TimeFinder#accept(Action)} with {@code Action}.
+   *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return {@code 9,999,999.9}.</li>
-   *   <li>Then calls {@link Content#getText()}.</li>
+   *   <li>Given {@link Content} {@link Content#getText()} return {@code 9,999,999.9}.
+   *   <li>Then calls {@link Content#getText()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TimeFinder#accept(Action)}
+   *
+   * <p>Method under test: {@link TimeFinder#accept(Action)}
    */
   @Test
-  @DisplayName("Test accept(Action) with 'Action'; given Content getText() return '9,999,999.9'; then calls getText()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.reminders.TimeFinder.accept(org.finos.springbot.workflow.actions.Action)"})
+  @DisplayName(
+      "Test accept(Action) with 'Action'; given Content getText() return '9,999,999.9'; then calls getText()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeFinder.accept(Action)"})
   void testAcceptWithAction_givenContentGetTextReturn99999999_thenCallsGetText2() {
     // Arrange
     Content content = mock(Content.class);
@@ -353,18 +400,20 @@ class TimeFinderDiffblueTest {
 
   /**
    * Test {@link TimeFinder#accept(Action)} with {@code Action}.
+   *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return {@code Text}.</li>
-   *   <li>Then calls {@link Content#getText()}.</li>
+   *   <li>Given {@link Content} {@link Content#getText()} return {@code Text}.
+   *   <li>Then calls {@link Content#getText()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TimeFinder#accept(Action)}
+   *
+   * <p>Method under test: {@link TimeFinder#accept(Action)}
    */
   @Test
-  @DisplayName("Test accept(Action) with 'Action'; given Content getText() return 'Text'; then calls getText()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.reminders.TimeFinder.accept(org.finos.springbot.workflow.actions.Action)"})
+  @DisplayName(
+      "Test accept(Action) with 'Action'; given Content getText() return 'Text'; then calls getText()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeFinder.accept(Action)"})
   void testAcceptWithAction_givenContentGetTextReturnText_thenCallsGetText() {
     // Arrange
     Content content = mock(Content.class);
@@ -390,18 +439,20 @@ class TimeFinderDiffblueTest {
 
   /**
    * Test {@link TimeFinder#accept(Action)} with {@code Action}.
+   *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#getText()} return {@code zero-zero}.</li>
-   *   <li>Then calls {@link Content#getText()}.</li>
+   *   <li>Given {@link Content} {@link Content#getText()} return {@code zero-zero}.
+   *   <li>Then calls {@link Content#getText()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TimeFinder#accept(Action)}
+   *
+   * <p>Method under test: {@link TimeFinder#accept(Action)}
    */
   @Test
-  @DisplayName("Test accept(Action) with 'Action'; given Content getText() return 'zero-zero'; then calls getText()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.reminders.TimeFinder.accept(org.finos.springbot.workflow.actions.Action)"})
+  @DisplayName(
+      "Test accept(Action) with 'Action'; given Content getText() return 'zero-zero'; then calls getText()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeFinder.accept(Action)"})
   void testAcceptWithAction_givenContentGetTextReturnZeroZero_thenCallsGetText() {
     // Arrange
     Content content = mock(Content.class);
@@ -427,18 +478,53 @@ class TimeFinderDiffblueTest {
 
   /**
    * Test {@link TimeFinder#accept(Action)} with {@code Action}.
+   *
    * <ul>
-   *   <li>Then calls {@link ErrorHandler#handleError(Throwable)}.</li>
+   *   <li>Given {@link Message.MessageImpl#MessageImpl(List)} with c is {@link
+   *       ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TimeFinder#accept(Action)}
+   *
+   * <p>Method under test: {@link TimeFinder#accept(Action)}
    */
   @Test
-  @DisplayName("Test accept(Action) with 'Action'; then calls handleError(Throwable)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.reminders.TimeFinder.accept(org.finos.springbot.workflow.actions.Action)"})
-  void testAcceptWithAction_thenCallsHandleError() {
+  @DisplayName("Test accept(Action) with 'Action'; given MessageImpl(List) with c is ArrayList()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeFinder.accept(Action)"})
+  void testAcceptWithAction_givenMessageImplWithCIsArrayList() {
+    // Arrange
+    SimpleMessageAction t = mock(SimpleMessageAction.class);
+    when(t.getAddressable()).thenReturn(mock(Addressable.class));
+    when(t.getMessage()).thenReturn(new MessageImpl(new ArrayList<>()));
+    when(t.getUser()).thenReturn(new SymphonyUser(1L));
+
+    // Act
+    timeFinder.accept(t);
+
+    // Assert
+    verify(t).getAddressable();
+    verify(t).getMessage();
+    verify(t).getUser();
+  }
+
+  /**
+   * Test {@link TimeFinder#accept(Action)} with {@code Action}.
+   *
+   * <ul>
+   *   <li>Given {@code null}.
+   *   <li>When {@link SimpleMessageAction} {@link SimpleMessageAction#getMessage()} return {@code
+   *       null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link TimeFinder#accept(Action)}
+   */
+  @Test
+  @DisplayName(
+      "Test accept(Action) with 'Action'; given 'null'; when SimpleMessageAction getMessage() return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TimeFinder.accept(Action)"})
+  void testAcceptWithAction_givenNull_whenSimpleMessageActionGetMessageReturnNull() {
     // Arrange
     doNothing().when(errorHandler).handleError(Mockito.<Throwable>any());
     SimpleMessageAction t = mock(SimpleMessageAction.class);

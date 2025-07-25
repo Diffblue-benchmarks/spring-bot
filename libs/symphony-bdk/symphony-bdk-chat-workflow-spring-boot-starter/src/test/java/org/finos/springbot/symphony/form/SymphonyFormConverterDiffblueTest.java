@@ -2,68 +2,146 @@ package org.finos.springbot.symphony.form;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import java.util.HashMap;
 import java.util.Map;
+import org.finos.springbot.workflow.form.FormSubmission;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.aot.DisabledInAotMode;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {SymphonyFormConverter.class})
-@ExtendWith(SpringExtension.class)
 @DisabledInAotMode
+@ExtendWith(SpringExtension.class)
 class SymphonyFormConverterDiffblueTest {
-  @MockBean
-  private ObjectMapper objectMapper;
+  @MockitoBean private ObjectMapper objectMapper;
 
-  @Autowired
-  private SymphonyFormConverter symphonyFormConverter;
+  @Autowired private SymphonyFormConverter symphonyFormConverter;
 
   /**
    * Test {@link SymphonyFormConverter#SymphonyFormConverter(ObjectMapper)}.
-   * <p>
-   * Method under test: {@link SymphonyFormConverter#SymphonyFormConverter(ObjectMapper)}
+   *
+   * <p>Method under test: {@link SymphonyFormConverter#SymphonyFormConverter(ObjectMapper)}
    */
   @Test
   @DisplayName("Test new SymphonyFormConverter(ObjectMapper)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.symphony.form.SymphonyFormConverter.<init>(com.fasterxml.jackson.databind.ObjectMapper)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void SymphonyFormConverter.<init>(ObjectMapper)"})
   void testNewSymphonyFormConverter() {
     // Arrange, Act and Assert
-    assertSame(objectMapper, (new SymphonyFormConverter(objectMapper)).getObjectMapper());
+    assertSame(objectMapper, new SymphonyFormConverter(objectMapper).getObjectMapper());
   }
 
   /**
    * Test {@link SymphonyFormConverter#convert(Map, String)}.
+   *
    * <ul>
-   *   <li>Given {@code entity.formdata}.</li>
-   *   <li>Then return {@code Convert Value}.</li>
+   *   <li>Given {@code action}.
+   *   <li>When {@link HashMap#HashMap()} {@code action} is {@code 42}.
+   *   <li>Then return {@code Convert Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyFormConverter#convert(Map, String)}
+   *
+   * <p>Method under test: {@link SymphonyFormConverter#convert(Map, String)}
+   */
+  @Test
+  @DisplayName(
+      "Test convert(Map, String); given 'action'; when HashMap() 'action' is '42'; then return 'Convert Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object SymphonyFormConverter.convert(Map, String)"})
+  void testConvert_givenAction_whenHashMapActionIs42_thenReturnConvertValue()
+      throws ClassNotFoundException, IllegalArgumentException {
+    // Arrange
+    when(objectMapper.convertValue(Mockito.<Object>any(), Mockito.<Class<Object>>any()))
+        .thenReturn("Convert Value");
+
+    HashMap<String, Object> formValues = new HashMap<>();
+    formValues.put("action", "42");
+    formValues.put("entity.formdata", "42");
+    formValues.put("Couldn't convert {} ", "42");
+    formValues.put("entity.formdata", "42");
+
+    // Act
+    Object actualConvertResult = symphonyFormConverter.convert(formValues, "Type");
+
+    // Assert
+    verify(objectMapper).convertValue(isA(Object.class), (Class<Object>) isNull());
+    assertEquals("Convert Value", actualConvertResult);
+  }
+
+  /**
+   * Test {@link SymphonyFormConverter#convert(Map, String)}.
+   *
+   * <ul>
+   *   <li>Given {@code .}.
+   *   <li>When {@link HashMap#HashMap()} {@code .} is {@code 42}.
+   *   <li>Then return {@code Convert Value}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyFormConverter#convert(Map, String)}
+   */
+  @Test
+  @DisplayName(
+      "Test convert(Map, String); given '.'; when HashMap() '.' is '42'; then return 'Convert Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object SymphonyFormConverter.convert(Map, String)"})
+  void testConvert_givenDot_whenHashMapDotIs42_thenReturnConvertValue()
+      throws ClassNotFoundException, IllegalArgumentException {
+    // Arrange
+    when(objectMapper.convertValue(Mockito.<Object>any(), Mockito.<Class<Object>>any()))
+        .thenReturn("Convert Value");
+
+    HashMap<String, Object> formValues = new HashMap<>();
+    formValues.put("action", "42");
+    formValues.put(".", "42");
+    formValues.put("Couldn't convert {} ", "42");
+    formValues.put("entity.formdata", "42");
+
+    // Act
+    Object actualConvertResult = symphonyFormConverter.convert(formValues, "Type");
+
+    // Assert
+    verify(objectMapper).convertValue(isA(Object.class), (Class<Object>) isNull());
+    assertEquals("Convert Value", actualConvertResult);
+  }
+
+  /**
+   * Test {@link SymphonyFormConverter#convert(Map, String)}.
+   *
+   * <ul>
+   *   <li>Given {@code entity.formdata}.
+   *   <li>Then return {@code Convert Value}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyFormConverter#convert(Map, String)}
    */
   @Test
   @DisplayName("Test convert(Map, String); given 'entity.formdata'; then return 'Convert Value'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Object org.finos.springbot.symphony.form.SymphonyFormConverter.convert(java.util.Map, java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object SymphonyFormConverter.convert(Map, String)"})
   void testConvert_givenEntityFormdata_thenReturnConvertValue()
       throws ClassNotFoundException, IllegalArgumentException {
     // Arrange
-    when(objectMapper.convertValue(Mockito.<Object>any(), Mockito.<Class<Object>>any())).thenReturn("Convert Value");
+    when(objectMapper.convertValue(Mockito.<Object>any(), Mockito.<Class<Object>>any()))
+        .thenReturn("Convert Value");
 
     HashMap<String, Object> formValues = new HashMap<>();
     formValues.put("entity.formdata", "42");
@@ -78,21 +156,54 @@ class SymphonyFormConverterDiffblueTest {
 
   /**
    * Test {@link SymphonyFormConverter#convert(Map, String)}.
+   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.</li>
-   *   <li>Then return {@code Convert Value}.</li>
+   *   <li>Then {@link FormSubmission#structure} return {@link Map}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyFormConverter#convert(Map, String)}
+   *
+   * <p>Method under test: {@link SymphonyFormConverter#convert(Map, String)}
+   */
+  @Test
+  @DisplayName("Test convert(Map, String); then structure return Map")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object SymphonyFormConverter.convert(Map, String)"})
+  void testConvert_thenStructureReturnMap() throws ClassNotFoundException {
+    // Arrange
+    SymphonyFormConverter symphonyFormConverter =
+        new SymphonyFormConverter(JsonMapper.builder().findAndAddModules().build());
+
+    // Act
+    Object actualConvertResult = symphonyFormConverter.convert(new HashMap<>(), "Type");
+
+    // Assert
+    Object object = ((FormSubmission) actualConvertResult).structure;
+    assertTrue(object instanceof Map);
+    assertTrue(actualConvertResult instanceof FormSubmission);
+    assertEquals("Type", ((FormSubmission) actualConvertResult).formName);
+    assertTrue(((Map<Object, Object>) object).isEmpty());
+  }
+
+  /**
+   * Test {@link SymphonyFormConverter#convert(Map, String)}.
+   *
+   * <ul>
+   *   <li>When {@link HashMap#HashMap()}.
+   *   <li>Then return {@code Convert Value}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyFormConverter#convert(Map, String)}
    */
   @Test
   @DisplayName("Test convert(Map, String); when HashMap(); then return 'Convert Value'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Object org.finos.springbot.symphony.form.SymphonyFormConverter.convert(java.util.Map, java.lang.String)"})
-  void testConvert_whenHashMap_thenReturnConvertValue() throws ClassNotFoundException, IllegalArgumentException {
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object SymphonyFormConverter.convert(Map, String)"})
+  void testConvert_whenHashMap_thenReturnConvertValue()
+      throws ClassNotFoundException, IllegalArgumentException {
     // Arrange
-    when(objectMapper.convertValue(Mockito.<Object>any(), Mockito.<Class<Object>>any())).thenReturn("Convert Value");
+    when(objectMapper.convertValue(Mockito.<Object>any(), Mockito.<Class<Object>>any()))
+        .thenReturn("Convert Value");
 
     // Act
     Object actualConvertResult = symphonyFormConverter.convert(new HashMap<>(), "Type");

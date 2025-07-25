@@ -9,8 +9,11 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Supplier;
 import org.finos.springbot.workflow.actions.FormAction;
 import org.finos.springbot.workflow.content.Addressable;
@@ -22,43 +25,46 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.aot.DisabledInAotMode;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.validation.BindException;
 import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.Validator;
 
-@DisabledInAotMode
 @ContextConfiguration(classes = {FormValidationProcessor.class})
+@DisabledInAotMode
 @ExtendWith(SpringExtension.class)
 class FormValidationProcessorDiffblueTest {
-  @MockBean
-  private ResponseHandlers responseHandlers;
+  @Autowired private FormValidationProcessor formValidationProcessor;
 
-  @MockBean
-  private Validator validator;
+  @MockitoBean private ResponseHandlers responseHandlers;
 
-  @Autowired
-  private FormValidationProcessor formValidationProcessor;
+  @MockitoBean private Validator validator;
 
   /**
    * Test {@link FormValidationProcessor#validationCheck(String, Addressable, Object, Supplier)}.
+   *
    * <ul>
-   *   <li>Given {@link Validator} {@link Validator#validate(Object, Errors)} does nothing.</li>
-   *   <li>When {@code Form}.</li>
-   *   <li>Then calls {@link Validator#validate(Object, Errors)}.</li>
+   *   <li>Given {@link Validator} {@link Validator#validate(Object, Errors)} does nothing.
+   *   <li>When {@code Form}.
+   *   <li>Then calls {@link Validator#validate(Object, Errors)}.
    * </ul>
-   * <p>
-   * Method under test: {@link FormValidationProcessor#validationCheck(String, Addressable, Object, Supplier)}
+   *
+   * <p>Method under test: {@link FormValidationProcessor#validationCheck(String, Addressable,
+   * Object, Supplier)}
    */
   @Test
-  @DisplayName("Test validationCheck(String, Addressable, Object, Supplier); given Validator validate(Object, Errors) does nothing; when 'Form'; then calls validate(Object, Errors)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test validationCheck(String, Addressable, Object, Supplier); given Validator validate(Object, Errors) does nothing; when 'Form'; then calls validate(Object, Errors)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.actions.FormAction org.finos.springbot.workflow.form.FormValidationProcessor.validationCheck(java.lang.String, org.finos.springbot.workflow.content.Addressable, java.lang.Object, java.util.function.Supplier)"})
+    "FormAction FormValidationProcessor.validationCheck(String, Addressable, Object, Supplier)"
+  })
   void testValidationCheck_givenValidatorValidateDoesNothing_whenForm_thenCallsValidate() {
     // Arrange
     doNothing().when(validator).validate(Mockito.<Object>any(), Mockito.<Errors>any());
@@ -71,7 +77,8 @@ class FormValidationProcessorDiffblueTest {
     when(callback.get()).thenReturn(formAction);
 
     // Act
-    FormAction actualValidationCheckResult = formValidationProcessor.validationCheck("Verb", from, "Form", callback);
+    FormAction actualValidationCheckResult =
+        formValidationProcessor.validationCheck("Verb", from, "Form", callback);
 
     // Assert
     verify(callback).get();
@@ -81,18 +88,25 @@ class FormValidationProcessorDiffblueTest {
 
   /**
    * Test {@link FormValidationProcessor#validationCheck(String, Addressable, Object, Supplier)}.
+   *
    * <ul>
-   *   <li>When {@link FormSubmission#FormSubmission(String, Object)} with {@code Form Name} and {@code Structure}.</li>
+   *   <li>Given {@link Validator}.
+   *   <li>When {@link FormSubmission#FormSubmission(String, Object)} with {@code Form Name} and
+   *       {@code Structure}.
    * </ul>
-   * <p>
-   * Method under test: {@link FormValidationProcessor#validationCheck(String, Addressable, Object, Supplier)}
+   *
+   * <p>Method under test: {@link FormValidationProcessor#validationCheck(String, Addressable,
+   * Object, Supplier)}
    */
   @Test
-  @DisplayName("Test validationCheck(String, Addressable, Object, Supplier); when FormSubmission(String, Object) with 'Form Name' and 'Structure'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test validationCheck(String, Addressable, Object, Supplier); given Validator; when FormSubmission(String, Object) with 'Form Name' and 'Structure'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.actions.FormAction org.finos.springbot.workflow.form.FormValidationProcessor.validationCheck(java.lang.String, org.finos.springbot.workflow.content.Addressable, java.lang.Object, java.util.function.Supplier)"})
-  void testValidationCheck_whenFormSubmissionWithFormNameAndStructure() {
+    "FormAction FormValidationProcessor.validationCheck(String, Addressable, Object, Supplier)"
+  })
+  void testValidationCheck_givenValidator_whenFormSubmissionWithFormNameAndStructure() {
     // Arrange
     Addressable from = mock(Addressable.class);
     FormSubmission formSubmission = new FormSubmission("Form Name", "Structure");
@@ -105,8 +119,8 @@ class FormValidationProcessorDiffblueTest {
     when(callback.get()).thenReturn(formAction);
 
     // Act
-    FormAction actualValidationCheckResult = formValidationProcessor.validationCheck("Verb", from, formSubmission,
-        callback);
+    FormAction actualValidationCheckResult =
+        formValidationProcessor.validationCheck("Verb", from, formSubmission, callback);
 
     // Assert
     verify(callback).get();
@@ -115,18 +129,24 @@ class FormValidationProcessorDiffblueTest {
 
   /**
    * Test {@link FormValidationProcessor#validationCheck(String, Addressable, Object, Supplier)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
+   *   <li>Given {@link Validator}.
+   *   <li>When {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link FormValidationProcessor#validationCheck(String, Addressable, Object, Supplier)}
+   *
+   * <p>Method under test: {@link FormValidationProcessor#validationCheck(String, Addressable,
+   * Object, Supplier)}
    */
   @Test
-  @DisplayName("Test validationCheck(String, Addressable, Object, Supplier); when 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test validationCheck(String, Addressable, Object, Supplier); given Validator; when 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.actions.FormAction org.finos.springbot.workflow.form.FormValidationProcessor.validationCheck(java.lang.String, org.finos.springbot.workflow.content.Addressable, java.lang.Object, java.util.function.Supplier)"})
-  void testValidationCheck_whenNull() {
+    "FormAction FormValidationProcessor.validationCheck(String, Addressable, Object, Supplier)"
+  })
+  void testValidationCheck_givenValidator_whenNull() {
     // Arrange
     Addressable from = mock(Addressable.class);
     Supplier<FormAction> callback = mock(Supplier.class);
@@ -137,7 +157,8 @@ class FormValidationProcessorDiffblueTest {
     when(callback.get()).thenReturn(formAction);
 
     // Act
-    FormAction actualValidationCheckResult = formValidationProcessor.validationCheck("Verb", from, null, callback);
+    FormAction actualValidationCheckResult =
+        formValidationProcessor.validationCheck("Verb", from, null, callback);
 
     // Assert
     verify(callback).get();
@@ -146,18 +167,21 @@ class FormValidationProcessorDiffblueTest {
 
   /**
    * Test {@link FormValidationProcessor#validated(Object, Errors)}.
+   *
    * <ul>
-   *   <li>Given {@link ObjectError#ObjectError(String, String)} with {@code Object Name} and {@code Default Message}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link ObjectError#ObjectError(String, String)} with {@code Object Name} and {@code
+   *       Default Message}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link FormValidationProcessor#validated(Object, Errors)}
+   *
+   * <p>Method under test: {@link FormValidationProcessor#validated(Object, Errors)}
    */
   @Test
-  @DisplayName("Test validated(Object, Errors); given ObjectError(String, String) with 'Object Name' and 'Default Message'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.form.FormValidationProcessor.validated(java.lang.Object, org.springframework.validation.Errors)"})
+  @DisplayName(
+      "Test validated(Object, Errors); given ObjectError(String, String) with 'Object Name' and 'Default Message'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean FormValidationProcessor.validated(Object, Errors)"})
   void testValidated_givenObjectErrorWithObjectNameAndDefaultMessage_thenReturnFalse() {
     // Arrange
     doNothing().when(validator).validate(Mockito.<Object>any(), Mockito.<Errors>any());
@@ -175,25 +199,28 @@ class FormValidationProcessorDiffblueTest {
 
   /**
    * Test {@link FormValidationProcessor#validated(Object, Errors)}.
+   *
    * <ul>
-   *   <li>Given {@link Validator} {@link Validator#validate(Object, Errors)} does nothing.</li>
-   *   <li>Then calls {@link Validator#validate(Object, Errors)}.</li>
+   *   <li>Given {@link Validator} {@link Validator#validate(Object, Errors)} does nothing.
+   *   <li>Then calls {@link Validator#validate(Object, Errors)}.
    * </ul>
-   * <p>
-   * Method under test: {@link FormValidationProcessor#validated(Object, Errors)}
+   *
+   * <p>Method under test: {@link FormValidationProcessor#validated(Object, Errors)}
    */
   @Test
-  @DisplayName("Test validated(Object, Errors); given Validator validate(Object, Errors) does nothing; then calls validate(Object, Errors)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.form.FormValidationProcessor.validated(java.lang.Object, org.springframework.validation.Errors)"})
+  @DisplayName(
+      "Test validated(Object, Errors); given Validator validate(Object, Errors) does nothing; then calls validate(Object, Errors)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean FormValidationProcessor.validated(Object, Errors)"})
   void testValidated_givenValidatorValidateDoesNothing_thenCallsValidate() {
     // Arrange
     doNothing().when(validator).validate(Mockito.<Object>any(), Mockito.<Errors>any());
 
     // Act
-    boolean actualValidatedResult = formValidationProcessor.validated("Current Form",
-        new BindException("Target", "Object Name"));
+    boolean actualValidatedResult =
+        formValidationProcessor.validated(
+            "Current Form", new BindException("Target", "Object Name"));
 
     // Assert
     verify(validator).validate(isA(Object.class), isA(Errors.class));
@@ -202,62 +229,104 @@ class FormValidationProcessorDiffblueTest {
 
   /**
    * Test {@link FormValidationProcessor#validated(Object, Errors)}.
+   *
    * <ul>
-   *   <li>When {@link FormSubmission#FormSubmission(String, Object)} with {@code Form Name} and {@code Structure}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Validator}.
+   *   <li>When {@link FormSubmission#FormSubmission(String, Object)} with {@code Form Name} and
+   *       {@code Structure}.
    * </ul>
-   * <p>
-   * Method under test: {@link FormValidationProcessor#validated(Object, Errors)}
+   *
+   * <p>Method under test: {@link FormValidationProcessor#validated(Object, Errors)}
    */
   @Test
-  @DisplayName("Test validated(Object, Errors); when FormSubmission(String, Object) with 'Form Name' and 'Structure'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.form.FormValidationProcessor.validated(java.lang.Object, org.springframework.validation.Errors)"})
-  void testValidated_whenFormSubmissionWithFormNameAndStructure_thenReturnTrue() {
+  @DisplayName(
+      "Test validated(Object, Errors); given Validator; when FormSubmission(String, Object) with 'Form Name' and 'Structure'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean FormValidationProcessor.validated(Object, Errors)"})
+  void testValidated_givenValidator_whenFormSubmissionWithFormNameAndStructure() {
     // Arrange
     FormSubmission formSubmission = new FormSubmission("Form Name", "Structure");
 
     // Act and Assert
-    assertTrue(formValidationProcessor.validated(formSubmission, new BindException("Target", "Object Name")));
+    assertTrue(
+        formValidationProcessor.validated(
+            formSubmission, new BindException("Target", "Object Name")));
   }
 
   /**
    * Test {@link FormValidationProcessor#validated(Object, Errors)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Validator}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link FormValidationProcessor#validated(Object, Errors)}
+   *
+   * <p>Method under test: {@link FormValidationProcessor#validated(Object, Errors)}
    */
   @Test
-  @DisplayName("Test validated(Object, Errors); when 'null'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.form.FormValidationProcessor.validated(java.lang.Object, org.springframework.validation.Errors)"})
-  void testValidated_whenNull_thenReturnTrue() {
+  @DisplayName("Test validated(Object, Errors); given Validator; when 'null'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean FormValidationProcessor.validated(Object, Errors)"})
+  void testValidated_givenValidator_whenNull_thenReturnTrue() {
     // Arrange, Act and Assert
     assertTrue(formValidationProcessor.validated(null, new BindException("Target", "Object Name")));
   }
 
   /**
    * Test {@link FormValidationProcessor#convertErrorsToMap(Errors)}.
+   *
    * <ul>
-   *   <li>When {@link BindException#BindException(Object, String)} with {@code Target} and {@code Object Name}.</li>
+   *   <li>Then return Contents size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link FormValidationProcessor#convertErrorsToMap(Errors)}
+   *
+   * <p>Method under test: {@link FormValidationProcessor#convertErrorsToMap(Errors)}
    */
   @Test
-  @DisplayName("Test convertErrorsToMap(Errors); when BindException(Object, String) with 'Target' and 'Object Name'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.form.ErrorMap org.finos.springbot.workflow.form.FormValidationProcessor.convertErrorsToMap(org.springframework.validation.Errors)"})
+  @DisplayName("Test convertErrorsToMap(Errors); then return Contents size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"ErrorMap FormValidationProcessor.convertErrorsToMap(Errors)"})
+  void testConvertErrorsToMap_thenReturnContentsSizeIsOne() {
+    // Arrange
+    ArrayList<ObjectError> objectErrorList = new ArrayList<>();
+    objectErrorList.add(new FieldError("Object Name", "Field", "Default Message"));
+    Errors e = mock(Errors.class);
+    when(e.getAllErrors()).thenReturn(objectErrorList);
+
+    // Act
+    ErrorMap actualConvertErrorsToMapResult = FormValidationProcessor.convertErrorsToMap(e);
+
+    // Assert
+    verify(e).getAllErrors();
+    Map<String, String> contents = actualConvertErrorsToMapResult.getContents();
+    assertEquals(1, contents.size());
+    assertEquals("Default Message", contents.get("Field"));
+    assertEquals(1, actualConvertErrorsToMapResult.size());
+  }
+
+  /**
+   * Test {@link FormValidationProcessor#convertErrorsToMap(Errors)}.
+   *
+   * <ul>
+   *   <li>When {@link BindException#BindException(Object, String)} with {@code Target} and {@code
+   *       Object Name}.
+   * </ul>
+   *
+   * <p>Method under test: {@link FormValidationProcessor#convertErrorsToMap(Errors)}
+   */
+  @Test
+  @DisplayName(
+      "Test convertErrorsToMap(Errors); when BindException(Object, String) with 'Target' and 'Object Name'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"ErrorMap FormValidationProcessor.convertErrorsToMap(Errors)"})
   void testConvertErrorsToMap_whenBindExceptionWithTargetAndObjectName() {
     // Arrange and Act
-    ErrorMap actualConvertErrorsToMapResult = FormValidationProcessor
-        .convertErrorsToMap(new BindException("Target", "Object Name"));
+    ErrorMap actualConvertErrorsToMapResult =
+        FormValidationProcessor.convertErrorsToMap(new BindException("Target", "Object Name"));
 
     // Assert
     assertEquals(0, actualConvertErrorsToMapResult.size());
@@ -266,18 +335,20 @@ class FormValidationProcessorDiffblueTest {
 
   /**
    * Test {@link FormValidationProcessor#convertErrorsToMap(Errors)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return size is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link FormValidationProcessor#convertErrorsToMap(Errors)}
+   *
+   * <p>Method under test: {@link FormValidationProcessor#convertErrorsToMap(Errors)}
    */
   @Test
-  @DisplayName("Test convertErrorsToMap(Errors); when 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.form.ErrorMap org.finos.springbot.workflow.form.FormValidationProcessor.convertErrorsToMap(org.springframework.validation.Errors)"})
-  void testConvertErrorsToMap_whenNull() {
+  @DisplayName("Test convertErrorsToMap(Errors); when 'null'; then return size is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"ErrorMap FormValidationProcessor.convertErrorsToMap(Errors)"})
+  void testConvertErrorsToMap_whenNull_thenReturnSizeIsZero() {
     // Arrange and Act
     ErrorMap actualConvertErrorsToMapResult = FormValidationProcessor.convertErrorsToMap(null);
 

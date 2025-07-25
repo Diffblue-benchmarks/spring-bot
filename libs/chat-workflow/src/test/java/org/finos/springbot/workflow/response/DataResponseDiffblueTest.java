@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +16,9 @@ import org.junit.jupiter.api.Test;
 class DataResponseDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link DataResponse#DataResponse(Addressable, Map, String)}
    *   <li>{@link DataResponse#toString()}
@@ -27,13 +29,15 @@ class DataResponseDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.workflow.response.DataResponse.<init>(org.finos.springbot.workflow.content.Addressable, java.util.Map, java.lang.String)",
-      "org.finos.springbot.workflow.content.Addressable org.finos.springbot.workflow.response.DataResponse.getAddress()",
-      "java.util.Map org.finos.springbot.workflow.response.DataResponse.getData()",
-      "java.lang.String org.finos.springbot.workflow.response.DataResponse.getTemplateName()",
-      "java.lang.String org.finos.springbot.workflow.response.DataResponse.toString()"})
+    "void DataResponse.<init>(Addressable, Map, String)",
+    "Addressable DataResponse.getAddress()",
+    "Map DataResponse.getData()",
+    "String DataResponse.getTemplateName()",
+    "String DataResponse.toString()"
+  })
   void testGettersAndSetters() {
     // Arrange
     Addressable resultTo = mock(Addressable.class);

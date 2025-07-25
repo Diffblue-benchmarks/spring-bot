@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +17,13 @@ import org.symphonyoss.fin.security.id.Ticker;
 class CashTagDiffblueTest {
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>Then return Id is {@code null}.</li>
+   *   <li>Then return Id is {@code null}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link CashTag#CashTag()}
    *   <li>{@link CashTag#getTagType()}
@@ -28,10 +31,13 @@ class CashTagDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; then return Id is 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.symphony.content.CashTag.<init>()",
-      "void org.finos.springbot.symphony.content.CashTag.<init>(java.util.List)",
-      "org.finos.springbot.workflow.content.Tag$Type org.finos.springbot.symphony.content.CashTag.getTagType()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void CashTag.<init>()",
+    "void CashTag.<init>(List)",
+    "org.finos.springbot.workflow.content.Tag.Type CashTag.getTagType()"
+  })
   void testGettersAndSetters_thenReturnIdIsNull() {
     // Arrange and Act
     CashTag actualCashTag = new CashTag();
@@ -43,12 +49,14 @@ class CashTagDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Id Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Id Empty.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link CashTag#CashTag(List)}
    *   <li>{@link CashTag#getTagType()}
@@ -56,10 +64,13 @@ class CashTagDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when ArrayList(); then return Id Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.symphony.content.CashTag.<init>()",
-      "void org.finos.springbot.symphony.content.CashTag.<init>(java.util.List)",
-      "org.finos.springbot.workflow.content.Tag$Type org.finos.springbot.symphony.content.CashTag.getTagType()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void CashTag.<init>()",
+    "void CashTag.<init>(List)",
+    "org.finos.springbot.workflow.content.Tag.Type CashTag.getTagType()"
+  })
   void testGettersAndSetters_whenArrayList_thenReturnIdEmpty() {
     // Arrange
     ArrayList<TaxonomyElement> id = new ArrayList<>();
@@ -76,13 +87,14 @@ class CashTagDiffblueTest {
 
   /**
    * Test {@link CashTag#CashTag(String)}.
-   * <p>
-   * Method under test: {@link CashTag#CashTag(String)}
+   *
+   * <p>Method under test: {@link CashTag#CashTag(String)}
    */
   @Test
   @DisplayName("Test new CashTag(String)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.symphony.content.CashTag.<init>(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void CashTag.<init>(String)"})
   void testNewCashTag() {
     // Arrange and Act
     CashTag actualCashTag = new CashTag("42");
@@ -100,19 +112,21 @@ class CashTagDiffblueTest {
 
   /**
    * Test {@link CashTag#getName()}.
+   *
    * <ul>
-   *   <li>Given {@link CashTag#CashTag(String)} with id is {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
+   *   <li>Given {@link CashTag#CashTag(String)} with id is {@code 42}.
+   *   <li>Then return {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link CashTag#getName()}
+   *
+   * <p>Method under test: {@link CashTag#getName()}
    */
   @Test
   @DisplayName("Test getName(); given CashTag(String) with id is '42'; then return '42'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.symphony.content.CashTag.getName()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String CashTag.getName()"})
   void testGetName_givenCashTagWithIdIs42_thenReturn42() {
     // Arrange, Act and Assert
-    assertEquals("42", (new CashTag("42")).getName());
+    assertEquals("42", new CashTag("42").getName());
   }
 }

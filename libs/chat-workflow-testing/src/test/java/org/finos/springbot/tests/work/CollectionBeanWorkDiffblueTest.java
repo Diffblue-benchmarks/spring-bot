@@ -3,6 +3,7 @@ package org.finos.springbot.tests.work;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +15,9 @@ import org.junit.jupiter.api.Test;
 class CollectionBeanWorkDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link CollectionBeanWork}
    *   <li>{@link CollectionBeanWork#setInners(List)}
@@ -24,10 +26,13 @@ class CollectionBeanWorkDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tests.work.CollectionBeanWork.<init>()",
-      "java.util.List org.finos.springbot.tests.work.CollectionBeanWork.getInners()",
-      "void org.finos.springbot.tests.work.CollectionBeanWork.setInners(java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void CollectionBeanWork.<init>()",
+    "List CollectionBeanWork.getInners()",
+    "void CollectionBeanWork.setInners(List)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     CollectionBeanWork actualCollectionBeanWork = new CollectionBeanWork();
@@ -42,8 +47,9 @@ class CollectionBeanWorkDiffblueTest {
 
   /**
    * Test Inner getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link Inner}
    *   <li>{@link Inner#setB(boolean)}
@@ -54,12 +60,15 @@ class CollectionBeanWorkDiffblueTest {
    */
   @Test
   @DisplayName("Test Inner getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tests.work.CollectionBeanWork$Inner.<init>()",
-      "java.lang.String org.finos.springbot.tests.work.CollectionBeanWork$Inner.getS()",
-      "boolean org.finos.springbot.tests.work.CollectionBeanWork$Inner.isB()",
-      "void org.finos.springbot.tests.work.CollectionBeanWork$Inner.setB(boolean)",
-      "void org.finos.springbot.tests.work.CollectionBeanWork$Inner.setS(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Inner.<init>()",
+    "String Inner.getS()",
+    "boolean Inner.isB()",
+    "void Inner.setB(boolean)",
+    "void Inner.setS(String)"
+  })
   void testInnerGettersAndSetters() {
     // Arrange and Act
     Inner actualInner = new Inner();

@@ -2,6 +2,7 @@ package org.finos.springbot.tool.poll.poll;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -15,8 +16,9 @@ import org.junit.jupiter.api.Test;
 class AnswerDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Answer#Answer()}
    *   <li>{@link Answer#setChoice(Integer)}
@@ -33,26 +35,30 @@ class AnswerDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.poll.poll.Answer.<init>()",
-      "void org.finos.springbot.tool.poll.poll.Answer.<init>(org.finos.springbot.workflow.content.User, java.time.Instant, java.lang.Integer, java.lang.String, java.lang.String)",
-      "java.lang.Integer org.finos.springbot.tool.poll.poll.Answer.getChoice()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.Answer.getChoiceText()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.Answer.getQuestionText()",
-      "java.time.Instant org.finos.springbot.tool.poll.poll.Answer.getTime()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.tool.poll.poll.Answer.getUser()",
-      "void org.finos.springbot.tool.poll.poll.Answer.setChoice(java.lang.Integer)",
-      "void org.finos.springbot.tool.poll.poll.Answer.setChoiceText(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.Answer.setQuestionText(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.Answer.setTime(java.time.Instant)",
-      "void org.finos.springbot.tool.poll.poll.Answer.setUser(org.finos.springbot.workflow.content.User)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Answer.<init>()",
+    "void Answer.<init>(User, Instant, Integer, String, String)",
+    "Integer Answer.getChoice()",
+    "String Answer.getChoiceText()",
+    "String Answer.getQuestionText()",
+    "Instant Answer.getTime()",
+    "User Answer.getUser()",
+    "void Answer.setChoice(Integer)",
+    "void Answer.setChoiceText(String)",
+    "void Answer.setQuestionText(String)",
+    "void Answer.setTime(Instant)",
+    "void Answer.setUser(User)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     Answer actualAnswer = new Answer();
     actualAnswer.setChoice(1);
     actualAnswer.setChoiceText("Choice Text");
     actualAnswer.setQuestionText("Question Text");
-    actualAnswer.setTime(LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    actualAnswer.setTime(
+        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
     SymphonyUser User = new SymphonyUser(1L);
     actualAnswer.setUser(User);
     Integer actualChoice = actualAnswer.getChoice();
@@ -71,11 +77,13 @@ class AnswerDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link SymphonyUser#SymphonyUser(long)} with userId is one.</li>
+   *   <li>When {@link SymphonyUser#SymphonyUser(long)} with userId is one.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Answer#Answer(User, Instant, Integer, String, String)}
    *   <li>{@link Answer#setChoice(Integer)}
@@ -92,30 +100,39 @@ class AnswerDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when SymphonyUser(long) with userId is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.poll.poll.Answer.<init>()",
-      "void org.finos.springbot.tool.poll.poll.Answer.<init>(org.finos.springbot.workflow.content.User, java.time.Instant, java.lang.Integer, java.lang.String, java.lang.String)",
-      "java.lang.Integer org.finos.springbot.tool.poll.poll.Answer.getChoice()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.Answer.getChoiceText()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.Answer.getQuestionText()",
-      "java.time.Instant org.finos.springbot.tool.poll.poll.Answer.getTime()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.tool.poll.poll.Answer.getUser()",
-      "void org.finos.springbot.tool.poll.poll.Answer.setChoice(java.lang.Integer)",
-      "void org.finos.springbot.tool.poll.poll.Answer.setChoiceText(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.Answer.setQuestionText(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.Answer.setTime(java.time.Instant)",
-      "void org.finos.springbot.tool.poll.poll.Answer.setUser(org.finos.springbot.workflow.content.User)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Answer.<init>()",
+    "void Answer.<init>(User, Instant, Integer, String, String)",
+    "Integer Answer.getChoice()",
+    "String Answer.getChoiceText()",
+    "String Answer.getQuestionText()",
+    "Instant Answer.getTime()",
+    "User Answer.getUser()",
+    "void Answer.setChoice(Integer)",
+    "void Answer.setChoiceText(String)",
+    "void Answer.setQuestionText(String)",
+    "void Answer.setTime(Instant)",
+    "void Answer.setUser(User)"
+  })
   void testGettersAndSetters_whenSymphonyUserWithUserIdIsOne() {
     // Arrange
     SymphonyUser User = new SymphonyUser(1L);
 
     // Act
-    Answer actualAnswer = new Answer(User, LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant(),
-        1, "Question Text", "Choice Text");
+    Answer actualAnswer =
+        new Answer(
+            User,
+            LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant(),
+            1,
+            "Question Text",
+            "Choice Text");
     actualAnswer.setChoice(1);
     actualAnswer.setChoiceText("Choice Text");
     actualAnswer.setQuestionText("Question Text");
-    actualAnswer.setTime(LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
+    actualAnswer.setTime(
+        LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant());
     SymphonyUser User2 = new SymphonyUser(1L);
     actualAnswer.setUser(User2);
     Integer actualChoice = actualAnswer.getChoice();

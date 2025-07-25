@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,8 +17,9 @@ import org.junit.jupiter.api.Test;
 class DropdownListDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link DropdownList#DropdownList()}
    *   <li>{@link DropdownList#setContents(Collection)}
@@ -26,11 +28,14 @@ class DropdownListDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.form.DropdownList.<init>()",
-      "void org.finos.springbot.workflow.form.DropdownList.<init>(java.util.Collection)",
-      "java.util.Collection org.finos.springbot.workflow.form.DropdownList.getContents()",
-      "void org.finos.springbot.workflow.form.DropdownList.setContents(java.util.Collection)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void DropdownList.<init>()",
+    "void DropdownList.<init>(Collection)",
+    "Collection DropdownList.getContents()",
+    "void DropdownList.setContents(Collection)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     DropdownList actualDropdownList = new DropdownList();
@@ -45,11 +50,13 @@ class DropdownListDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link DropdownList#DropdownList(Collection)}
    *   <li>{@link DropdownList#setContents(Collection)}
@@ -58,11 +65,14 @@ class DropdownListDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.form.DropdownList.<init>()",
-      "void org.finos.springbot.workflow.form.DropdownList.<init>(java.util.Collection)",
-      "java.util.Collection org.finos.springbot.workflow.form.DropdownList.getContents()",
-      "void org.finos.springbot.workflow.form.DropdownList.setContents(java.util.Collection)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void DropdownList.<init>()",
+    "void DropdownList.<init>(Collection)",
+    "Collection DropdownList.getContents()",
+    "void DropdownList.setContents(Collection)"
+  })
   void testGettersAndSetters_whenArrayList() {
     // Arrange and Act
     DropdownList actualDropdownList = new DropdownList(new ArrayList<>());
@@ -77,12 +87,14 @@ class DropdownListDiffblueTest {
 
   /**
    * Test Item {@link Item#equals(Object)}, and {@link Item#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Item#equals(Object)}
    *   <li>{@link Item#hashCode()}
@@ -90,9 +102,9 @@ class DropdownListDiffblueTest {
    */
   @Test
   @DisplayName("Test Item equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.form.DropdownList$Item.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.form.DropdownList$Item.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Item.equals(Object)", "int Item.hashCode()"})
   void testItemEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     Item item = new Item("Key", "Name");
@@ -106,12 +118,14 @@ class DropdownListDiffblueTest {
 
   /**
    * Test Item {@link Item#equals(Object)}, and {@link Item#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Item#equals(Object)}
    *   <li>{@link Item#hashCode()}
@@ -119,9 +133,9 @@ class DropdownListDiffblueTest {
    */
   @Test
   @DisplayName("Test Item equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.form.DropdownList$Item.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.form.DropdownList$Item.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Item.equals(Object)", "int Item.hashCode()"})
   void testItemEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     Item item = new Item("Key", "Name");
@@ -134,18 +148,19 @@ class DropdownListDiffblueTest {
 
   /**
    * Test Item {@link Item#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link Item#equals(Object)}
+   *
+   * <p>Method under test: {@link Item#equals(Object)}
    */
   @Test
   @DisplayName("Test Item equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.form.DropdownList$Item.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.form.DropdownList$Item.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Item.equals(Object)", "int Item.hashCode()"})
   void testItemEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
     Item item = new Item(null, "Name");
@@ -156,18 +171,19 @@ class DropdownListDiffblueTest {
 
   /**
    * Test Item {@link Item#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link Item#equals(Object)}
+   *
+   * <p>Method under test: {@link Item#equals(Object)}
    */
   @Test
   @DisplayName("Test Item equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.form.DropdownList$Item.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.form.DropdownList$Item.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Item.equals(Object)", "int Item.hashCode()"})
   void testItemEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
     Item item = new Item("Key", null);
@@ -178,18 +194,19 @@ class DropdownListDiffblueTest {
 
   /**
    * Test Item {@link Item#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link Item#equals(Object)}
+   *
+   * <p>Method under test: {@link Item#equals(Object)}
    */
   @Test
   @DisplayName("Test Item equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.form.DropdownList$Item.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.form.DropdownList$Item.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Item.equals(Object)", "int Item.hashCode()"})
   void testItemEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange, Act and Assert
     assertNotEquals(new Item("Key", "Name"), null);
@@ -197,18 +214,19 @@ class DropdownListDiffblueTest {
 
   /**
    * Test Item {@link Item#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link Item#equals(Object)}
+   *
+   * <p>Method under test: {@link Item#equals(Object)}
    */
   @Test
   @DisplayName("Test Item equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean org.finos.springbot.workflow.form.DropdownList$Item.equals(java.lang.Object)",
-      "int org.finos.springbot.workflow.form.DropdownList$Item.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Item.equals(Object)", "int Item.hashCode()"})
   void testItemEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange, Act and Assert
     assertNotEquals(new Item("Key", "Name"), "Different type to Item");
@@ -216,8 +234,9 @@ class DropdownListDiffblueTest {
 
   /**
    * Test Item getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Item#Item()}
    *   <li>{@link Item#setKey(String)}
@@ -228,13 +247,16 @@ class DropdownListDiffblueTest {
    */
   @Test
   @DisplayName("Test Item getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.form.DropdownList$Item.<init>()",
-      "void org.finos.springbot.workflow.form.DropdownList$Item.<init>(java.lang.String, java.lang.String)",
-      "java.lang.String org.finos.springbot.workflow.form.DropdownList$Item.getKey()",
-      "java.lang.String org.finos.springbot.workflow.form.DropdownList$Item.getName()",
-      "void org.finos.springbot.workflow.form.DropdownList$Item.setKey(java.lang.String)",
-      "void org.finos.springbot.workflow.form.DropdownList$Item.setName(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Item.<init>()",
+    "void Item.<init>(String, String)",
+    "String Item.getKey()",
+    "String Item.getName()",
+    "void Item.setKey(String)",
+    "void Item.setName(String)"
+  })
   void testItemGettersAndSetters() {
     // Arrange and Act
     Item actualItem = new Item();
@@ -249,11 +271,13 @@ class DropdownListDiffblueTest {
 
   /**
    * Test Item getters and setters.
+   *
    * <ul>
-   *   <li>When {@code Key}.</li>
+   *   <li>When {@code Key}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Item#Item(String, String)}
    *   <li>{@link Item#setKey(String)}
@@ -264,13 +288,16 @@ class DropdownListDiffblueTest {
    */
   @Test
   @DisplayName("Test Item getters and setters; when 'Key'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.workflow.form.DropdownList$Item.<init>()",
-      "void org.finos.springbot.workflow.form.DropdownList$Item.<init>(java.lang.String, java.lang.String)",
-      "java.lang.String org.finos.springbot.workflow.form.DropdownList$Item.getKey()",
-      "java.lang.String org.finos.springbot.workflow.form.DropdownList$Item.getName()",
-      "void org.finos.springbot.workflow.form.DropdownList$Item.setKey(java.lang.String)",
-      "void org.finos.springbot.workflow.form.DropdownList$Item.setName(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Item.<init>()",
+    "void Item.<init>(String, String)",
+    "String Item.getKey()",
+    "String Item.getName()",
+    "void Item.setKey(String)",
+    "void Item.setName(String)"
+  })
   void testItemGettersAndSetters_whenKey() {
     // Arrange and Act
     Item actualItem = new Item("Key", "Name");
@@ -285,14 +312,14 @@ class DropdownListDiffblueTest {
 
   /**
    * Test {@link DropdownList#of(Item[])}.
-   * <p>
-   * Method under test: {@link DropdownList#of(Item[])}
+   *
+   * <p>Method under test: {@link DropdownList#of(Item[])}
    */
   @Test
   @DisplayName("Test of(Item[])")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.form.DropdownList org.finos.springbot.workflow.form.DropdownList.of(org.finos.springbot.workflow.form.DropdownList$Item[])"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"DropdownList DropdownList.of(Item[])"})
   void testOf() {
     // Arrange
     Item item = new Item("Key", "Name");
@@ -310,18 +337,19 @@ class DropdownListDiffblueTest {
 
   /**
    * Test {@link DropdownList#add(Item)}.
+   *
    * <ul>
-   *   <li>Given {@link DropdownList#DropdownList()}.</li>
-   *   <li>Then {@link DropdownList#DropdownList()} Contents size is one.</li>
+   *   <li>Given {@link DropdownList#DropdownList()}.
+   *   <li>Then {@link DropdownList#DropdownList()} Contents size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link DropdownList#add(Item)}
+   *
+   * <p>Method under test: {@link DropdownList#add(Item)}
    */
   @Test
   @DisplayName("Test add(Item); given DropdownList(); then DropdownList() Contents size is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.workflow.form.DropdownList.add(org.finos.springbot.workflow.form.DropdownList$Item)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void DropdownList.add(Item)"})
   void testAdd_givenDropdownList_thenDropdownListContentsSizeIsOne() {
     // Arrange
     DropdownList dropdownList = new DropdownList();
@@ -340,15 +368,16 @@ class DropdownListDiffblueTest {
 
   /**
    * Test {@link DropdownList#size()}.
-   * <p>
-   * Method under test: {@link DropdownList#size()}
+   *
+   * <p>Method under test: {@link DropdownList#size()}
    */
   @Test
   @DisplayName("Test size()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"int org.finos.springbot.workflow.form.DropdownList.size()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"int DropdownList.size()"})
   void testSize() {
     // Arrange, Act and Assert
-    assertEquals(0, (new DropdownList()).size());
+    assertEquals(0, new DropdownList().size());
   }
 }

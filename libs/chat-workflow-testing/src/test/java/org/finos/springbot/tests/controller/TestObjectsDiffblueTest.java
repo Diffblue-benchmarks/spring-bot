@@ -3,6 +3,7 @@ package org.finos.springbot.tests.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +14,9 @@ import org.junit.jupiter.api.Test;
 class TestObjectsDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link TestObjects#TestObjects()}
    *   <li>{@link TestObjects#setItems(List)}
@@ -24,12 +26,15 @@ class TestObjectsDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tests.controller.TestObjects.<init>()",
-      "void org.finos.springbot.tests.controller.TestObjects.<init>(java.util.List)",
-      "java.util.List org.finos.springbot.tests.controller.TestObjects.getItems()",
-      "void org.finos.springbot.tests.controller.TestObjects.setItems(java.util.List)",
-      "java.lang.String org.finos.springbot.tests.controller.TestObjects.toString()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TestObjects.<init>()",
+    "void TestObjects.<init>(List)",
+    "List TestObjects.getItems()",
+    "void TestObjects.setItems(List)",
+    "String TestObjects.toString()"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     TestObjects actualTestObjects = new TestObjects();
@@ -46,11 +51,13 @@ class TestObjectsDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link TestObjects#TestObjects(List)}
    *   <li>{@link TestObjects#setItems(List)}
@@ -60,12 +67,15 @@ class TestObjectsDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tests.controller.TestObjects.<init>()",
-      "void org.finos.springbot.tests.controller.TestObjects.<init>(java.util.List)",
-      "java.util.List org.finos.springbot.tests.controller.TestObjects.getItems()",
-      "void org.finos.springbot.tests.controller.TestObjects.setItems(java.util.List)",
-      "java.lang.String org.finos.springbot.tests.controller.TestObjects.toString()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TestObjects.<init>()",
+    "void TestObjects.<init>(List)",
+    "List TestObjects.getItems()",
+    "void TestObjects.setItems(List)",
+    "String TestObjects.toString()"
+  })
   void testGettersAndSetters_whenArrayList() {
     // Arrange and Act
     TestObjects actualTestObjects = new TestObjects(new ArrayList<>());

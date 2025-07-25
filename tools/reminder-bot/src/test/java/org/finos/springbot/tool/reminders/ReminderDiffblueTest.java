@@ -3,6 +3,7 @@ package org.finos.springbot.tool.reminders;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,8 +16,9 @@ import org.junit.jupiter.api.Test;
 class ReminderDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Reminder#setAuthor(User)}
    *   <li>{@link Reminder#setDescription(String)}
@@ -28,14 +30,16 @@ class ReminderDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.content.User org.finos.springbot.tool.reminders.Reminder.getAuthor()",
-      "java.lang.String org.finos.springbot.tool.reminders.Reminder.getDescription()",
-      "java.time.LocalDateTime org.finos.springbot.tool.reminders.Reminder.getLocalTime()",
-      "void org.finos.springbot.tool.reminders.Reminder.setAuthor(org.finos.springbot.workflow.content.User)",
-      "void org.finos.springbot.tool.reminders.Reminder.setDescription(java.lang.String)",
-      "void org.finos.springbot.tool.reminders.Reminder.setLocalTime(java.time.LocalDateTime)"})
+    "User Reminder.getAuthor()",
+    "String Reminder.getDescription()",
+    "LocalDateTime Reminder.getLocalTime()",
+    "void Reminder.setAuthor(User)",
+    "void Reminder.setDescription(String)",
+    "void Reminder.setLocalTime(LocalDateTime)"
+  })
   void testGettersAndSetters() {
     // Arrange
     Reminder reminder = new Reminder();
@@ -57,13 +61,14 @@ class ReminderDiffblueTest {
 
   /**
    * Test new {@link Reminder} (default constructor).
-   * <p>
-   * Method under test: default or parameterless constructor of {@link Reminder}
+   *
+   * <p>Method under test: default or parameterless constructor of {@link Reminder}
    */
   @Test
   @DisplayName("Test new Reminder (default constructor)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.reminders.Reminder.<init>()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Reminder.<init>()"})
   void testNewReminder() {
     // Arrange and Act
     Reminder actualReminder = new Reminder();

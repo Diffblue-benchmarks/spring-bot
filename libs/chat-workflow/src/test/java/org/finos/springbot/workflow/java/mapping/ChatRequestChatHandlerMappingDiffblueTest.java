@@ -9,6 +9,7 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.classmate.types.TypePlaceHolder;
 import java.lang.reflect.Type;
@@ -31,45 +32,46 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.MethodParameter;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.aot.DisabledInAotMode;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {ChatRequestChatHandlerMapping.class})
-@ExtendWith(SpringExtension.class)
 @DisabledInAotMode
+@ExtendWith(SpringExtension.class)
 class ChatRequestChatHandlerMappingDiffblueTest {
-  @MockBean
-  private AllConversations allConversations;
+  @MockitoBean private AllConversations allConversations;
 
-  @Autowired
-  private ChatRequestChatHandlerMapping chatRequestChatHandlerMapping;
+  @Autowired private ChatRequestChatHandlerMapping chatRequestChatHandlerMapping;
 
-  @MockBean
-  private ResponseConverters responseConverters;
+  @MockitoBean private ResponseConverters responseConverters;
 
-  @MockBean
-  private WorkflowResolversFactory workflowResolversFactory;
+  @MockitoBean private WorkflowResolversFactory workflowResolversFactory;
 
   /**
-   * Test {@link ChatRequestChatHandlerMapping#ChatRequestChatHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)}.
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#ChatRequestChatHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)}
+   * Test {@link
+   * ChatRequestChatHandlerMapping#ChatRequestChatHandlerMapping(WorkflowResolversFactory,
+   * ResponseConverters, AllConversations)}.
+   *
+   * <p>Method under test: {@link
+   * ChatRequestChatHandlerMapping#ChatRequestChatHandlerMapping(WorkflowResolversFactory,
+   * ResponseConverters, AllConversations)}
    */
   @Test
-  @DisplayName("Test new ChatRequestChatHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new ChatRequestChatHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.<init>(org.finos.springbot.workflow.java.resolvers.WorkflowResolversFactory, org.finos.springbot.workflow.java.converters.ResponseConverters, org.finos.springbot.workflow.conversations.AllConversations)"})
+    "void ChatRequestChatHandlerMapping.<init>(WorkflowResolversFactory, ResponseConverters, AllConversations)"
+  })
   void testNewChatRequestChatHandlerMapping() throws IllegalStateException {
-    // Arrange
-    ResponseConverters converters = mock(ResponseConverters.class);
-
-    // Act
-    ChatRequestChatHandlerMapping actualChatRequestChatHandlerMapping = new ChatRequestChatHandlerMapping(
-        workflowResolversFactory, converters, allConversations);
+    // Arrange and Act
+    ChatRequestChatHandlerMapping actualChatRequestChatHandlerMapping =
+        new ChatRequestChatHandlerMapping(
+            workflowResolversFactory, mock(ResponseConverters.class), allConversations);
 
     // Assert
     assertNull(actualChatRequestChatHandlerMapping.getApplicationContext());
@@ -79,37 +81,44 @@ class ChatRequestChatHandlerMappingDiffblueTest {
 
   /**
    * Test {@link ChatRequestChatHandlerMapping#getHandlers(Action)}.
+   *
    * <ul>
-   *   <li>When {@link ErrorAction#ErrorAction(Addressable, Object)} with a is {@link Addressable} and {@code Ej}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ErrorAction#ErrorAction(Addressable, Object)} with a is {@link Addressable}
+   *       and {@code Ej}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#getHandlers(Action)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#getHandlers(Action)}
    */
   @Test
-  @DisplayName("Test getHandlers(Action); when ErrorAction(Addressable, Object) with a is Addressable and 'Ej'; then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.getHandlers(org.finos.springbot.workflow.actions.Action)"})
+  @DisplayName(
+      "Test getHandlers(Action); when ErrorAction(Addressable, Object) with a is Addressable and 'Ej'; then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ChatRequestChatHandlerMapping.getHandlers(Action)"})
   void testGetHandlers_whenErrorActionWithAIsAddressableAndEj_thenReturnEmpty() {
     // Arrange, Act and Assert
-    assertTrue(chatRequestChatHandlerMapping.getHandlers(new ErrorAction(mock(Addressable.class), "Ej")).isEmpty());
+    assertTrue(
+        chatRequestChatHandlerMapping
+            .getHandlers(new ErrorAction(mock(Addressable.class), "Ej"))
+            .isEmpty());
   }
 
   /**
    * Test {@link ChatRequestChatHandlerMapping#getHandlers(Action)}.
+   *
    * <ul>
-   *   <li>When {@link Action#NULL_ACTION}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link Action#NULL_ACTION}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#getHandlers(Action)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#getHandlers(Action)}
    */
   @Test
   @DisplayName("Test getHandlers(Action); when NULL_ACTION; then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.getHandlers(org.finos.springbot.workflow.actions.Action)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ChatRequestChatHandlerMapping.getHandlers(Action)"})
   void testGetHandlers_whenNull_action_thenReturnEmpty() {
     // Arrange, Act and Assert
     assertTrue(chatRequestChatHandlerMapping.getHandlers(Action.NULL_ACTION).isEmpty());
@@ -117,52 +126,62 @@ class ChatRequestChatHandlerMappingDiffblueTest {
 
   /**
    * Test {@link ChatRequestChatHandlerMapping#getAllHandlers(Addressable, User)}.
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#getAllHandlers(Addressable, User)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#getAllHandlers(Addressable, User)}
    */
   @Test
   @DisplayName("Test getAllHandlers(Addressable, User)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.getAllHandlers(org.finos.springbot.workflow.content.Addressable, org.finos.springbot.workflow.content.User)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ChatRequestChatHandlerMapping.getAllHandlers(Addressable, User)"})
   void testGetAllHandlers() {
     // Arrange, Act and Assert
-    assertTrue(chatRequestChatHandlerMapping.getAllHandlers(mock(Addressable.class), mock(User.class)).isEmpty());
+    assertTrue(
+        chatRequestChatHandlerMapping
+            .getAllHandlers(mock(Addressable.class), mock(User.class))
+            .isEmpty());
   }
 
   /**
    * Test {@link ChatRequestChatHandlerMapping#getExecutors(Action)}.
+   *
    * <ul>
-   *   <li>When {@link ErrorAction#ErrorAction(Addressable, Object)} with a is {@link Addressable} and {@code Ej}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ErrorAction#ErrorAction(Addressable, Object)} with a is {@link Addressable}
+   *       and {@code Ej}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#getExecutors(Action)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#getExecutors(Action)}
    */
   @Test
-  @DisplayName("Test getExecutors(Action); when ErrorAction(Addressable, Object) with a is Addressable and 'Ej'; then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.getExecutors(org.finos.springbot.workflow.actions.Action)"})
+  @DisplayName(
+      "Test getExecutors(Action); when ErrorAction(Addressable, Object) with a is Addressable and 'Ej'; then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ChatRequestChatHandlerMapping.getExecutors(Action)"})
   void testGetExecutors_whenErrorActionWithAIsAddressableAndEj_thenReturnEmpty() {
     // Arrange, Act and Assert
-    assertTrue(chatRequestChatHandlerMapping.getExecutors(new ErrorAction(mock(Addressable.class), "Ej")).isEmpty());
+    assertTrue(
+        chatRequestChatHandlerMapping
+            .getExecutors(new ErrorAction(mock(Addressable.class), "Ej"))
+            .isEmpty());
   }
 
   /**
    * Test {@link ChatRequestChatHandlerMapping#getExecutors(Action)}.
+   *
    * <ul>
-   *   <li>When {@link Action#NULL_ACTION}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link Action#NULL_ACTION}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#getExecutors(Action)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#getExecutors(Action)}
    */
   @Test
   @DisplayName("Test getExecutors(Action); when NULL_ACTION; then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.getExecutors(org.finos.springbot.workflow.actions.Action)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ChatRequestChatHandlerMapping.getExecutors(Action)"})
   void testGetExecutors_whenNull_action_thenReturnEmpty() {
     // Arrange, Act and Assert
     assertTrue(chatRequestChatHandlerMapping.getExecutors(Action.NULL_ACTION).isEmpty());
@@ -170,25 +189,27 @@ class ChatRequestChatHandlerMappingDiffblueTest {
 
   /**
    * Test {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest, List)}.
+   *
    * <ul>
-   *   <li>Given array of {@link String} with {@code 42}.</li>
+   *   <li>Given array of {@link String} with {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest, List)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest,
+   * List)}
    */
   @Test
   @DisplayName("Test createMessageMatchers(ChatRequest, List); given array of String with '42'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.createMessageMatchers(org.finos.springbot.workflow.annotations.ChatRequest, java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ChatRequestChatHandlerMapping.createMessageMatchers(ChatRequest, List)"})
   void testCreateMessageMatchers_givenArrayOfStringWith42() {
     // Arrange
     ChatRequest mapping = mock(ChatRequest.class);
-    when(mapping.value()).thenReturn(new String[]{"42"});
+    when(mapping.value()).thenReturn(new String[] {"42"});
 
     // Act
-    List<MessageMatcher> actualCreateMessageMatchersResult = chatRequestChatHandlerMapping
-        .createMessageMatchers(mapping, new ArrayList<>());
+    List<MessageMatcher> actualCreateMessageMatchersResult =
+        chatRequestChatHandlerMapping.createMessageMatchers(mapping, new ArrayList<>());
 
     // Assert
     verify(mapping).value();
@@ -205,17 +226,17 @@ class ChatRequestChatHandlerMappingDiffblueTest {
    */
   @Test
   @DisplayName("Test createMessageMatchers(ChatRequest, List); given array of String with '{'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.createMessageMatchers(org.finos.springbot.workflow.annotations.ChatRequest, java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ChatRequestChatHandlerMapping.createMessageMatchers(ChatRequest, List)"})
   void testCreateMessageMatchers_givenArrayOfStringWithLeftCurlyBracket() {
     // Arrange
     ChatRequest mapping = mock(ChatRequest.class);
-    when(mapping.value()).thenReturn(new String[]{"{"});
+    when(mapping.value()).thenReturn(new String[] {"{"});
 
     // Act
-    List<MessageMatcher> actualCreateMessageMatchersResult = chatRequestChatHandlerMapping
-        .createMessageMatchers(mapping, new ArrayList<>());
+    List<MessageMatcher> actualCreateMessageMatchersResult =
+        chatRequestChatHandlerMapping.createMessageMatchers(mapping, new ArrayList<>());
 
     // Assert
     verify(mapping).value();
@@ -224,26 +245,29 @@ class ChatRequestChatHandlerMappingDiffblueTest {
 
   /**
    * Test {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest, List)}.
+   *
    * <ul>
-   *   <li>Given empty array of {@link String}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given empty array of {@link String}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest, List)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest,
+   * List)}
    */
   @Test
-  @DisplayName("Test createMessageMatchers(ChatRequest, List); given empty array of String; then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.createMessageMatchers(org.finos.springbot.workflow.annotations.ChatRequest, java.util.List)"})
+  @DisplayName(
+      "Test createMessageMatchers(ChatRequest, List); given empty array of String; then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ChatRequestChatHandlerMapping.createMessageMatchers(ChatRequest, List)"})
   void testCreateMessageMatchers_givenEmptyArrayOfString_thenReturnEmpty() {
     // Arrange
     ChatRequest mapping = mock(ChatRequest.class);
-    when(mapping.value()).thenReturn(new String[]{});
+    when(mapping.value()).thenReturn(new String[] {});
 
     // Act
-    List<MessageMatcher> actualCreateMessageMatchersResult = chatRequestChatHandlerMapping
-        .createMessageMatchers(mapping, new ArrayList<>());
+    List<MessageMatcher> actualCreateMessageMatchersResult =
+        chatRequestChatHandlerMapping.createMessageMatchers(mapping, new ArrayList<>());
 
     // Assert
     verify(mapping).value();
@@ -252,21 +276,24 @@ class ChatRequestChatHandlerMappingDiffblueTest {
 
   /**
    * Test {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest, List)}.
+   *
    * <ul>
-   *   <li>Given {@code Content}.</li>
+   *   <li>Given {@code Content}.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest, List)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest,
+   * List)}
    */
   @Test
-  @DisplayName("Test createMessageMatchers(ChatRequest, List); given 'org.finos.springbot.workflow.content.Content'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.createMessageMatchers(org.finos.springbot.workflow.annotations.ChatRequest, java.util.List)"})
+  @DisplayName(
+      "Test createMessageMatchers(ChatRequest, List); given 'org.finos.springbot.workflow.content.Content'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ChatRequestChatHandlerMapping.createMessageMatchers(ChatRequest, List)"})
   void testCreateMessageMatchers_givenOrgFinosSpringbotWorkflowContentContent() {
     // Arrange
     ChatRequest mapping = mock(ChatRequest.class);
-    when(mapping.value()).thenReturn(new String[]{"42"});
+    when(mapping.value()).thenReturn(new String[] {"42"});
 
     ArrayList<WildcardContent> chatVariables = new ArrayList<>();
     ChatVariable chatVariable = mock(ChatVariable.class);
@@ -274,8 +301,8 @@ class ChatRequestChatHandlerMappingDiffblueTest {
     chatVariables.add(new WildcardContent(chatVariable, expected, Arity.ONE));
 
     // Act
-    List<MessageMatcher> actualCreateMessageMatchersResult = chatRequestChatHandlerMapping
-        .createMessageMatchers(mapping, chatVariables);
+    List<MessageMatcher> actualCreateMessageMatchersResult =
+        chatRequestChatHandlerMapping.createMessageMatchers(mapping, chatVariables);
 
     // Assert
     verify(mapping).value();
@@ -284,21 +311,24 @@ class ChatRequestChatHandlerMappingDiffblueTest {
 
   /**
    * Test {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest, List)}.
+   *
    * <ul>
-   *   <li>Given {@code Content}.</li>
+   *   <li>Given {@code Content}.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest, List)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest,
+   * List)}
    */
   @Test
-  @DisplayName("Test createMessageMatchers(ChatRequest, List); given 'org.finos.springbot.workflow.content.Content'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.createMessageMatchers(org.finos.springbot.workflow.annotations.ChatRequest, java.util.List)"})
+  @DisplayName(
+      "Test createMessageMatchers(ChatRequest, List); given 'org.finos.springbot.workflow.content.Content'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ChatRequestChatHandlerMapping.createMessageMatchers(ChatRequest, List)"})
   void testCreateMessageMatchers_givenOrgFinosSpringbotWorkflowContentContent2() {
     // Arrange
     ChatRequest mapping = mock(ChatRequest.class);
-    when(mapping.value()).thenReturn(new String[]{"42"});
+    when(mapping.value()).thenReturn(new String[] {"42"});
 
     ArrayList<WildcardContent> chatVariables = new ArrayList<>();
     ChatVariable chatVariable = mock(ChatVariable.class);
@@ -309,8 +339,8 @@ class ChatRequestChatHandlerMappingDiffblueTest {
     chatVariables.add(new WildcardContent(chatVariable2, expected2, Arity.ONE));
 
     // Act
-    List<MessageMatcher> actualCreateMessageMatchersResult = chatRequestChatHandlerMapping
-        .createMessageMatchers(mapping, chatVariables);
+    List<MessageMatcher> actualCreateMessageMatchersResult =
+        chatRequestChatHandlerMapping.createMessageMatchers(mapping, chatVariables);
 
     // Assert
     verify(mapping).value();
@@ -319,25 +349,27 @@ class ChatRequestChatHandlerMappingDiffblueTest {
 
   /**
    * Test {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest, List)}.
+   *
    * <ul>
-   *   <li>Then return size is two.</li>
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest, List)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest,
+   * List)}
    */
   @Test
   @DisplayName("Test createMessageMatchers(ChatRequest, List); then return size is two")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.createMessageMatchers(org.finos.springbot.workflow.annotations.ChatRequest, java.util.List)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ChatRequestChatHandlerMapping.createMessageMatchers(ChatRequest, List)"})
   void testCreateMessageMatchers_thenReturnSizeIsTwo() {
     // Arrange
     ChatRequest mapping = mock(ChatRequest.class);
-    when(mapping.value()).thenReturn(new String[]{"\\s", "{"});
+    when(mapping.value()).thenReturn(new String[] {"\\s", "{"});
 
     // Act
-    List<MessageMatcher> actualCreateMessageMatchersResult = chatRequestChatHandlerMapping
-        .createMessageMatchers(mapping, new ArrayList<>());
+    List<MessageMatcher> actualCreateMessageMatchersResult =
+        chatRequestChatHandlerMapping.createMessageMatchers(mapping, new ArrayList<>());
 
     // Assert
     verify(mapping).value();
@@ -346,38 +378,46 @@ class ChatRequestChatHandlerMappingDiffblueTest {
 
   /**
    * Test {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest, List)}.
+   *
    * <ul>
-   *   <li>Then throw {@link UnsupportedOperationException}.</li>
+   *   <li>Then throw {@link UnsupportedOperationException}.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest, List)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#createMessageMatchers(ChatRequest,
+   * List)}
    */
   @Test
-  @DisplayName("Test createMessageMatchers(ChatRequest, List); then throw UnsupportedOperationException")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.createMessageMatchers(org.finos.springbot.workflow.annotations.ChatRequest, java.util.List)"})
+  @DisplayName(
+      "Test createMessageMatchers(ChatRequest, List); then throw UnsupportedOperationException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List ChatRequestChatHandlerMapping.createMessageMatchers(ChatRequest, List)"})
   void testCreateMessageMatchers_thenThrowUnsupportedOperationException() {
     // Arrange
     ChatRequest mapping = mock(ChatRequest.class);
     when(mapping.value()).thenThrow(new UnsupportedOperationException("foo"));
 
     // Act and Assert
-    assertThrows(UnsupportedOperationException.class,
+    assertThrows(
+        UnsupportedOperationException.class,
         () -> chatRequestChatHandlerMapping.createMessageMatchers(mapping, new ArrayList<>()));
     verify(mapping).value();
   }
 
   /**
-   * Test {@link ChatRequestChatHandlerMapping#createWildcardContent(ChatRequest, ChatHandlerMethod)}.
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#createWildcardContent(ChatRequest, ChatHandlerMethod)}
+   * Test {@link ChatRequestChatHandlerMapping#createWildcardContent(ChatRequest,
+   * ChatHandlerMethod)}.
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#createWildcardContent(ChatRequest,
+   * ChatHandlerMethod)}
    */
   @Test
   @DisplayName("Test createWildcardContent(ChatRequest, ChatHandlerMethod)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.createWildcardContent(org.finos.springbot.workflow.annotations.ChatRequest, org.finos.springbot.workflow.java.mapping.ChatHandlerMethod)"})
+    "List ChatRequestChatHandlerMapping.createWildcardContent(ChatRequest, ChatHandlerMethod)"
+  })
   void testCreateWildcardContent() {
     // Arrange
     ChatRequest mapping = mock(ChatRequest.class);
@@ -386,10 +426,11 @@ class ChatRequestChatHandlerMappingDiffblueTest {
     when(methodParameter.getParameterAnnotation(Mockito.<Class<ChatVariable>>any()))
         .thenReturn(mock(ChatVariable.class));
     ChatHandlerMethod method = mock(ChatHandlerMethod.class);
-    when(method.getMethodParameters()).thenReturn(new MethodParameter[]{methodParameter});
+    when(method.getMethodParameters()).thenReturn(new MethodParameter[] {methodParameter});
 
     // Act and Assert
-    assertThrows(UnsupportedOperationException.class,
+    assertThrows(
+        UnsupportedOperationException.class,
         () -> chatRequestChatHandlerMapping.createWildcardContent(mapping, method));
     verify(method).getMethodParameters();
     verify(methodParameter).getGenericParameterType();
@@ -397,27 +438,33 @@ class ChatRequestChatHandlerMappingDiffblueTest {
   }
 
   /**
-   * Test {@link ChatRequestChatHandlerMapping#createWildcardContent(ChatRequest, ChatHandlerMethod)}.
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#createWildcardContent(ChatRequest, ChatHandlerMethod)}
+   * Test {@link ChatRequestChatHandlerMapping#createWildcardContent(ChatRequest,
+   * ChatHandlerMethod)}.
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#createWildcardContent(ChatRequest,
+   * ChatHandlerMethod)}
    */
   @Test
   @DisplayName("Test createWildcardContent(ChatRequest, ChatHandlerMethod)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.createWildcardContent(org.finos.springbot.workflow.annotations.ChatRequest, org.finos.springbot.workflow.java.mapping.ChatHandlerMethod)"})
+    "List ChatRequestChatHandlerMapping.createWildcardContent(ChatRequest, ChatHandlerMethod)"
+  })
   void testCreateWildcardContent2() {
     // Arrange
     ChatRequest mapping = mock(ChatRequest.class);
     MethodParameter methodParameter = mock(MethodParameter.class);
-    when(methodParameter.getGenericParameterType()).thenThrow(new UnsupportedOperationException("foo"));
+    when(methodParameter.getGenericParameterType())
+        .thenThrow(new UnsupportedOperationException("foo"));
     when(methodParameter.getParameterAnnotation(Mockito.<Class<ChatVariable>>any()))
         .thenReturn(mock(ChatVariable.class));
     ChatHandlerMethod method = mock(ChatHandlerMethod.class);
-    when(method.getMethodParameters()).thenReturn(new MethodParameter[]{methodParameter});
+    when(method.getMethodParameters()).thenReturn(new MethodParameter[] {methodParameter});
 
     // Act and Assert
-    assertThrows(UnsupportedOperationException.class,
+    assertThrows(
+        UnsupportedOperationException.class,
         () -> chatRequestChatHandlerMapping.createWildcardContent(mapping, method));
     verify(method).getMethodParameters();
     verify(methodParameter).getGenericParameterType();
@@ -425,28 +472,34 @@ class ChatRequestChatHandlerMappingDiffblueTest {
   }
 
   /**
-   * Test {@link ChatRequestChatHandlerMapping#createWildcardContent(ChatRequest, ChatHandlerMethod)}.
+   * Test {@link ChatRequestChatHandlerMapping#createWildcardContent(ChatRequest,
+   * ChatHandlerMethod)}.
+   *
    * <ul>
-   *   <li>Given empty array of {@link MethodParameter}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given empty array of {@link MethodParameter}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#createWildcardContent(ChatRequest, ChatHandlerMethod)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#createWildcardContent(ChatRequest,
+   * ChatHandlerMethod)}
    */
   @Test
-  @DisplayName("Test createWildcardContent(ChatRequest, ChatHandlerMethod); given empty array of MethodParameter; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test createWildcardContent(ChatRequest, ChatHandlerMethod); given empty array of MethodParameter; then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "java.util.List org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.createWildcardContent(org.finos.springbot.workflow.annotations.ChatRequest, org.finos.springbot.workflow.java.mapping.ChatHandlerMethod)"})
+    "List ChatRequestChatHandlerMapping.createWildcardContent(ChatRequest, ChatHandlerMethod)"
+  })
   void testCreateWildcardContent_givenEmptyArrayOfMethodParameter_thenReturnEmpty() {
     // Arrange
     ChatRequest mapping = mock(ChatRequest.class);
     ChatHandlerMethod method = mock(ChatHandlerMethod.class);
-    when(method.getMethodParameters()).thenReturn(new MethodParameter[]{});
+    when(method.getMethodParameters()).thenReturn(new MethodParameter[] {});
 
     // Act
-    List<WildcardContent> actualCreateWildcardContentResult = chatRequestChatHandlerMapping
-        .createWildcardContent(mapping, method);
+    List<WildcardContent> actualCreateWildcardContentResult =
+        chatRequestChatHandlerMapping.createWildcardContent(mapping, method);
 
     // Assert
     verify(method).getMethodParameters();
@@ -455,33 +508,91 @@ class ChatRequestChatHandlerMappingDiffblueTest {
 
   /**
    * Test {@link ChatRequestChatHandlerMapping#getContentClassFromType(Type)}.
+   *
    * <ul>
-   *   <li>Then throw {@link UnsupportedOperationException}.</li>
+   *   <li>Then return {@link Content}.
    * </ul>
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#getContentClassFromType(Type)}
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#getContentClassFromType(Type)}
    */
   @Test
-  @DisplayName("Test getContentClassFromType(Type); then throw UnsupportedOperationException")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.lang.Class org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.getContentClassFromType(java.lang.reflect.Type)"})
-  void testGetContentClassFromType_thenThrowUnsupportedOperationException() {
+  @DisplayName("Test getContentClassFromType(Type); then return Content")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Class ChatRequestChatHandlerMapping.getContentClassFromType(Type)"})
+  void testGetContentClassFromType_thenReturnContent() {
+    // Arrange
+    Class<Content> t = Content.class;
+
+    // Act
+    Class<? extends Content> actualContentClassFromType =
+        chatRequestChatHandlerMapping.getContentClassFromType(t);
+
+    // Assert
+    Class<Content> expectedContentClassFromType = Content.class;
+    assertEquals(expectedContentClassFromType, actualContentClassFromType);
+  }
+
+  /**
+   * Test {@link ChatRequestChatHandlerMapping#getContentClassFromType(Type)}.
+   *
+   * <ul>
+   *   <li>When {@code Object}.
+   * </ul>
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#getContentClassFromType(Type)}
+   */
+  @Test
+  @DisplayName("Test getContentClassFromType(Type); when 'java.lang.Object'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Class ChatRequestChatHandlerMapping.getContentClassFromType(Type)"})
+  void testGetContentClassFromType_whenJavaLangObject() {
+    // Arrange
+    Class<Object> t = Object.class;
+
+    // Act and Assert
+    assertThrows(
+        UnsupportedOperationException.class,
+        () -> chatRequestChatHandlerMapping.getContentClassFromType(t));
+  }
+
+  /**
+   * Test {@link ChatRequestChatHandlerMapping#getContentClassFromType(Type)}.
+   *
+   * <ul>
+   *   <li>When {@link TypePlaceHolder#TypePlaceHolder(int)} with ordinal is one.
+   * </ul>
+   *
+   * <p>Method under test: {@link ChatRequestChatHandlerMapping#getContentClassFromType(Type)}
+   */
+  @Test
+  @DisplayName("Test getContentClassFromType(Type); when TypePlaceHolder(int) with ordinal is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Class ChatRequestChatHandlerMapping.getContentClassFromType(Type)"})
+  void testGetContentClassFromType_whenTypePlaceHolderWithOrdinalIsOne() {
     // Arrange, Act and Assert
-    assertThrows(UnsupportedOperationException.class,
+    assertThrows(
+        UnsupportedOperationException.class,
         () -> chatRequestChatHandlerMapping.getContentClassFromType(new TypePlaceHolder(1)));
   }
 
   /**
-   * Test {@link ChatRequestChatHandlerMapping#createMappingRegistration(ChatRequest, ChatHandlerMethod)} with {@code ChatRequest}, {@code ChatHandlerMethod}.
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#createMappingRegistration(ChatRequest, ChatHandlerMethod)}
+   * Test {@link ChatRequestChatHandlerMapping#createMappingRegistration(ChatRequest,
+   * ChatHandlerMethod)} with {@code ChatRequest}, {@code ChatHandlerMethod}.
+   *
+   * <p>Method under test: {@link
+   * ChatRequestChatHandlerMapping#createMappingRegistration(ChatRequest, ChatHandlerMethod)}
    */
   @Test
-  @DisplayName("Test createMappingRegistration(ChatRequest, ChatHandlerMethod) with 'ChatRequest', 'ChatHandlerMethod'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test createMappingRegistration(ChatRequest, ChatHandlerMethod) with 'ChatRequest', 'ChatHandlerMethod'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.java.mapping.AbstractSpringComponentHandlerMapping$MappingRegistration org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.createMappingRegistration(org.finos.springbot.workflow.annotations.ChatRequest, org.finos.springbot.workflow.java.mapping.ChatHandlerMethod)"})
+    "org.finos.springbot.workflow.java.mapping.AbstractSpringComponentHandlerMapping.MappingRegistration ChatRequestChatHandlerMapping.createMappingRegistration(ChatRequest, ChatHandlerMethod)"
+  })
   void testCreateMappingRegistrationWithChatRequestChatHandlerMethod() {
     // Arrange
     ChatRequest mapping = mock(ChatRequest.class);
@@ -490,10 +601,11 @@ class ChatRequestChatHandlerMappingDiffblueTest {
     when(methodParameter.getParameterAnnotation(Mockito.<Class<ChatVariable>>any()))
         .thenReturn(mock(ChatVariable.class));
     ChatHandlerMethod handlerMethod = mock(ChatHandlerMethod.class);
-    when(handlerMethod.getMethodParameters()).thenReturn(new MethodParameter[]{methodParameter});
+    when(handlerMethod.getMethodParameters()).thenReturn(new MethodParameter[] {methodParameter});
 
     // Act and Assert
-    assertThrows(UnsupportedOperationException.class,
+    assertThrows(
+        UnsupportedOperationException.class,
         () -> chatRequestChatHandlerMapping.createMappingRegistration(mapping, handlerMethod));
     verify(handlerMethod).getMethodParameters();
     verify(methodParameter).getGenericParameterType();
@@ -501,27 +613,34 @@ class ChatRequestChatHandlerMappingDiffblueTest {
   }
 
   /**
-   * Test {@link ChatRequestChatHandlerMapping#createMappingRegistration(ChatRequest, ChatHandlerMethod)} with {@code ChatRequest}, {@code ChatHandlerMethod}.
-   * <p>
-   * Method under test: {@link ChatRequestChatHandlerMapping#createMappingRegistration(ChatRequest, ChatHandlerMethod)}
+   * Test {@link ChatRequestChatHandlerMapping#createMappingRegistration(ChatRequest,
+   * ChatHandlerMethod)} with {@code ChatRequest}, {@code ChatHandlerMethod}.
+   *
+   * <p>Method under test: {@link
+   * ChatRequestChatHandlerMapping#createMappingRegistration(ChatRequest, ChatHandlerMethod)}
    */
   @Test
-  @DisplayName("Test createMappingRegistration(ChatRequest, ChatHandlerMethod) with 'ChatRequest', 'ChatHandlerMethod'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test createMappingRegistration(ChatRequest, ChatHandlerMethod) with 'ChatRequest', 'ChatHandlerMethod'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.java.mapping.AbstractSpringComponentHandlerMapping$MappingRegistration org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping.createMappingRegistration(org.finos.springbot.workflow.annotations.ChatRequest, org.finos.springbot.workflow.java.mapping.ChatHandlerMethod)"})
+    "org.finos.springbot.workflow.java.mapping.AbstractSpringComponentHandlerMapping.MappingRegistration ChatRequestChatHandlerMapping.createMappingRegistration(ChatRequest, ChatHandlerMethod)"
+  })
   void testCreateMappingRegistrationWithChatRequestChatHandlerMethod2() {
     // Arrange
     ChatRequest mapping = mock(ChatRequest.class);
     MethodParameter methodParameter = mock(MethodParameter.class);
-    when(methodParameter.getGenericParameterType()).thenThrow(new UnsupportedOperationException("foo"));
+    when(methodParameter.getGenericParameterType())
+        .thenThrow(new UnsupportedOperationException("foo"));
     when(methodParameter.getParameterAnnotation(Mockito.<Class<ChatVariable>>any()))
         .thenReturn(mock(ChatVariable.class));
     ChatHandlerMethod handlerMethod = mock(ChatHandlerMethod.class);
-    when(handlerMethod.getMethodParameters()).thenReturn(new MethodParameter[]{methodParameter});
+    when(handlerMethod.getMethodParameters()).thenReturn(new MethodParameter[] {methodParameter});
 
     // Act and Assert
-    assertThrows(UnsupportedOperationException.class,
+    assertThrows(
+        UnsupportedOperationException.class,
         () -> chatRequestChatHandlerMapping.createMappingRegistration(mapping, handlerMethod));
     verify(handlerMethod).getMethodParameters();
     verify(methodParameter).getGenericParameterType();

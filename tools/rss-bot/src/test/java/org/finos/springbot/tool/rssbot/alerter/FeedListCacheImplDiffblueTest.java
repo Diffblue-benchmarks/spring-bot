@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import org.finos.springbot.tool.rssbot.feed.FeedList;
@@ -19,22 +20,21 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(classes = {FeedListCacheImpl.class})
-@ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
+@ExtendWith(SpringExtension.class)
 class FeedListCacheImplDiffblueTest {
-  @Autowired
-  private FeedListCacheImpl feedListCacheImpl;
+  @Autowired private FeedListCacheImpl feedListCacheImpl;
 
   /**
    * Test {@link FeedListCacheImpl#nextReportTime(FeedList)}.
-   * <p>
-   * Method under test: {@link FeedListCacheImpl#nextReportTime(FeedList)}
+   *
+   * <p>Method under test: {@link FeedListCacheImpl#nextReportTime(FeedList)}
    */
   @Test
   @DisplayName("Test nextReportTime(FeedList)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "java.time.Instant org.finos.springbot.tool.rssbot.alerter.FeedListCacheImpl.nextReportTime(org.finos.springbot.tool.rssbot.feed.FeedList)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.time.Instant FeedListCacheImpl.nextReportTime(FeedList)"})
   void testNextReportTime() {
     // Arrange
     FeedList fl = new FeedList();
@@ -50,14 +50,14 @@ class FeedListCacheImplDiffblueTest {
 
   /**
    * Test {@link FeedListCacheImpl#writeFeedList(Addressable, FeedList)}.
-   * <p>
-   * Method under test: {@link FeedListCacheImpl#writeFeedList(Addressable, FeedList)}
+   *
+   * <p>Method under test: {@link FeedListCacheImpl#writeFeedList(Addressable, FeedList)}
    */
   @Test
   @DisplayName("Test writeFeedList(Addressable, FeedList)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.rssbot.alerter.FeedListCacheImpl.writeFeedList(org.finos.springbot.workflow.content.Addressable, org.finos.springbot.tool.rssbot.feed.FeedList)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void FeedListCacheImpl.writeFeedList(Addressable, FeedList)"})
   void testWriteFeedList() {
     // Arrange
     Addressable a = mock(Addressable.class);
@@ -78,13 +78,14 @@ class FeedListCacheImplDiffblueTest {
 
   /**
    * Test {@link FeedListCacheImpl#getKnownFeeds()}.
-   * <p>
-   * Method under test: {@link FeedListCacheImpl#getKnownFeeds()}
+   *
+   * <p>Method under test: {@link FeedListCacheImpl#getKnownFeeds()}
    */
   @Test
   @DisplayName("Test getKnownFeeds()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.util.Map org.finos.springbot.tool.rssbot.alerter.FeedListCacheImpl.getKnownFeeds()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.util.Map FeedListCacheImpl.getKnownFeeds()"})
   void testGetKnownFeeds() {
     // Arrange, Act and Assert
     assertTrue(feedListCacheImpl.getKnownFeeds().isEmpty());
@@ -92,15 +93,16 @@ class FeedListCacheImplDiffblueTest {
 
   /**
    * Test new {@link FeedListCacheImpl} (default constructor).
-   * <p>
-   * Method under test: default or parameterless constructor of {@link FeedListCacheImpl}
+   *
+   * <p>Method under test: default or parameterless constructor of {@link FeedListCacheImpl}
    */
   @Test
   @DisplayName("Test new FeedListCacheImpl (default constructor)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.rssbot.alerter.FeedListCacheImpl.<init>()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void FeedListCacheImpl.<init>()"})
   void testNewFeedListCacheImpl() {
     // Arrange, Act and Assert
-    assertTrue((new FeedListCacheImpl()).getKnownFeeds().isEmpty());
+    assertTrue(new FeedListCacheImpl().getKnownFeeds().isEmpty());
   }
 }

@@ -1,6 +1,7 @@
 package org.finos.springbot.example.todo;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.symphony.content.SymphonyRoom;
 import org.finos.springbot.workflow.content.Chat;
@@ -11,8 +12,9 @@ import org.junit.jupiter.api.Test;
 class SendToRoomDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link SendToRoom}
    *   <li>{@link SendToRoom#setRoom(Chat)}
@@ -21,10 +23,13 @@ class SendToRoomDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.example.todo.SendToRoom.<init>()",
-      "org.finos.springbot.workflow.content.Chat org.finos.springbot.example.todo.SendToRoom.getRoom()",
-      "void org.finos.springbot.example.todo.SendToRoom.setRoom(org.finos.springbot.workflow.content.Chat)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void SendToRoom.<init>()",
+    "Chat SendToRoom.getRoom()",
+    "void SendToRoom.setRoom(Chat)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     SendToRoom actualSendToRoom = new SendToRoom();

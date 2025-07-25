@@ -3,6 +3,7 @@ package org.finos.springbot.tool.poll.poll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +16,9 @@ import org.junit.jupiter.api.Test;
 class ResultDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Result#Result()}
    *   <li>{@link Result#setCounts(List)}
@@ -33,19 +35,22 @@ class ResultDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.poll.poll.Result.<init>()",
-      "void org.finos.springbot.tool.poll.poll.Result.<init>(java.util.List, java.util.List, java.lang.String, org.finos.springbot.workflow.content.User, java.lang.Integer)",
-      "java.util.List org.finos.springbot.tool.poll.poll.Result.getCounts()",
-      "java.util.List org.finos.springbot.tool.poll.poll.Result.getOptions()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.tool.poll.poll.Result.getPoller()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.Result.getQuestion()",
-      "java.lang.Integer org.finos.springbot.tool.poll.poll.Result.getTotalResponses()",
-      "void org.finos.springbot.tool.poll.poll.Result.setCounts(java.util.List)",
-      "void org.finos.springbot.tool.poll.poll.Result.setOptions(java.util.List)",
-      "void org.finos.springbot.tool.poll.poll.Result.setPoller(org.finos.springbot.workflow.content.User)",
-      "void org.finos.springbot.tool.poll.poll.Result.setQuestion(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.Result.setTotalResponses(java.lang.Integer)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Result.<init>()",
+    "void Result.<init>(List, List, String, User, Integer)",
+    "List Result.getCounts()",
+    "List Result.getOptions()",
+    "User Result.getPoller()",
+    "String Result.getQuestion()",
+    "Integer Result.getTotalResponses()",
+    "void Result.setCounts(List)",
+    "void Result.setOptions(List)",
+    "void Result.setPoller(User)",
+    "void Result.setQuestion(String)",
+    "void Result.setTotalResponses(Integer)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     Result actualResult = new Result();
@@ -74,11 +79,13 @@ class ResultDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Result#Result(List, List, String, User, Integer)}
    *   <li>{@link Result#setCounts(List)}
@@ -95,19 +102,22 @@ class ResultDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when ArrayList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.poll.poll.Result.<init>()",
-      "void org.finos.springbot.tool.poll.poll.Result.<init>(java.util.List, java.util.List, java.lang.String, org.finos.springbot.workflow.content.User, java.lang.Integer)",
-      "java.util.List org.finos.springbot.tool.poll.poll.Result.getCounts()",
-      "java.util.List org.finos.springbot.tool.poll.poll.Result.getOptions()",
-      "org.finos.springbot.workflow.content.User org.finos.springbot.tool.poll.poll.Result.getPoller()",
-      "java.lang.String org.finos.springbot.tool.poll.poll.Result.getQuestion()",
-      "java.lang.Integer org.finos.springbot.tool.poll.poll.Result.getTotalResponses()",
-      "void org.finos.springbot.tool.poll.poll.Result.setCounts(java.util.List)",
-      "void org.finos.springbot.tool.poll.poll.Result.setOptions(java.util.List)",
-      "void org.finos.springbot.tool.poll.poll.Result.setPoller(org.finos.springbot.workflow.content.User)",
-      "void org.finos.springbot.tool.poll.poll.Result.setQuestion(java.lang.String)",
-      "void org.finos.springbot.tool.poll.poll.Result.setTotalResponses(java.lang.Integer)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Result.<init>()",
+    "void Result.<init>(List, List, String, User, Integer)",
+    "List Result.getCounts()",
+    "List Result.getOptions()",
+    "User Result.getPoller()",
+    "String Result.getQuestion()",
+    "Integer Result.getTotalResponses()",
+    "void Result.setCounts(List)",
+    "void Result.setOptions(List)",
+    "void Result.setPoller(User)",
+    "void Result.setQuestion(String)",
+    "void Result.setTotalResponses(Integer)"
+  })
   void testGettersAndSetters_whenArrayList() {
     // Arrange
     ArrayList<Integer> counts = new ArrayList<>();

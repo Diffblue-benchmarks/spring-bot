@@ -1,6 +1,7 @@
 package org.finos.springbot.tests.work;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -9,8 +10,9 @@ import org.junit.jupiter.api.Test;
 class DisplayWorkDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link DisplayWork}
    *   <li>{@link DisplayWork#setInvisible(String)}
@@ -21,12 +23,15 @@ class DisplayWorkDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tests.work.DisplayWork.<init>()",
-      "java.lang.String org.finos.springbot.tests.work.DisplayWork.getInvisible()",
-      "java.lang.String org.finos.springbot.tests.work.DisplayWork.getS()",
-      "void org.finos.springbot.tests.work.DisplayWork.setInvisible(java.lang.String)",
-      "void org.finos.springbot.tests.work.DisplayWork.setS(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void DisplayWork.<init>()",
+    "String DisplayWork.getInvisible()",
+    "String DisplayWork.getS()",
+    "void DisplayWork.setInvisible(String)",
+    "void DisplayWork.setS(String)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     DisplayWork actualDisplayWork = new DisplayWork();

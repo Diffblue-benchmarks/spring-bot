@@ -3,6 +3,7 @@ package org.finos.springbot.tool.rssbot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +14,9 @@ import org.junit.jupiter.api.Test;
 class RSSPropertiesDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link RSSProperties}
    *   <li>{@link RSSProperties#setFailureMessage(String)}
@@ -30,17 +32,20 @@ class RSSPropertiesDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.rssbot.RSSProperties.<init>()",
-      "java.lang.String org.finos.springbot.tool.rssbot.RSSProperties.getFailureMessage()",
-      "java.lang.String org.finos.springbot.tool.rssbot.RSSProperties.getObservationStreamId()",
-      "java.util.List org.finos.springbot.tool.rssbot.RSSProperties.getProxies()",
-      "java.lang.String org.finos.springbot.tool.rssbot.RSSProperties.getSuccessMessage()",
-      "void org.finos.springbot.tool.rssbot.RSSProperties.setFailureMessage(java.lang.String)",
-      "void org.finos.springbot.tool.rssbot.RSSProperties.setObservationStreamId(java.lang.String)",
-      "void org.finos.springbot.tool.rssbot.RSSProperties.setProxies(java.util.List)",
-      "void org.finos.springbot.tool.rssbot.RSSProperties.setProxy(java.util.List)",
-      "void org.finos.springbot.tool.rssbot.RSSProperties.setSuccessMessage(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void RSSProperties.<init>()",
+    "String RSSProperties.getFailureMessage()",
+    "String RSSProperties.getObservationStreamId()",
+    "List RSSProperties.getProxies()",
+    "String RSSProperties.getSuccessMessage()",
+    "void RSSProperties.setFailureMessage(String)",
+    "void RSSProperties.setObservationStreamId(String)",
+    "void RSSProperties.setProxies(List)",
+    "void RSSProperties.setProxy(List)",
+    "void RSSProperties.setSuccessMessage(String)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     RSSProperties actualRssProperties = new RSSProperties();

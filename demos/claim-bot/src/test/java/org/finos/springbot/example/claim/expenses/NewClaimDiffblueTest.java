@@ -2,6 +2,7 @@ package org.finos.springbot.example.claim.expenses;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -10,8 +11,9 @@ import org.junit.jupiter.api.Test;
 class NewClaimDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link NewClaim}
    *   <li>{@link NewClaim#setAmount(Number)}
@@ -22,12 +24,15 @@ class NewClaimDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.example.claim.expenses.NewClaim.<init>()",
-      "java.lang.Number org.finos.springbot.example.claim.expenses.NewClaim.getAmount()",
-      "java.lang.String org.finos.springbot.example.claim.expenses.NewClaim.getDescription()",
-      "void org.finos.springbot.example.claim.expenses.NewClaim.setAmount(java.lang.Number)",
-      "void org.finos.springbot.example.claim.expenses.NewClaim.setDescription(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void NewClaim.<init>()",
+    "Number NewClaim.getAmount()",
+    "String NewClaim.getDescription()",
+    "void NewClaim.setAmount(Number)",
+    "void NewClaim.setDescription(String)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     NewClaim actualNewClaim = new NewClaim();

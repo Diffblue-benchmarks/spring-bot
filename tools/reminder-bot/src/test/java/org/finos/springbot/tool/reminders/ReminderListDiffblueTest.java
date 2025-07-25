@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -16,8 +17,9 @@ import org.junit.jupiter.api.Test;
 class ReminderListDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link ReminderList#ReminderList()}
    *   <li>{@link ReminderList#setReminders(List)}
@@ -28,12 +30,15 @@ class ReminderListDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.reminders.ReminderList.<init>()",
-      "java.util.List org.finos.springbot.tool.reminders.ReminderList.getReminders()",
-      "java.time.ZoneId org.finos.springbot.tool.reminders.ReminderList.getTimeZone()",
-      "void org.finos.springbot.tool.reminders.ReminderList.setReminders(java.util.List)",
-      "void org.finos.springbot.tool.reminders.ReminderList.setTimeZone(java.time.ZoneId)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void ReminderList.<init>()",
+    "List ReminderList.getReminders()",
+    "ZoneId ReminderList.getTimeZone()",
+    "void ReminderList.setReminders(List)",
+    "void ReminderList.setTimeZone(ZoneId)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     ReminderList actualReminderList = new ReminderList();
@@ -53,18 +58,20 @@ class ReminderListDiffblueTest {
 
   /**
    * Test {@link ReminderList#ReminderList(ReminderList)}.
+   *
    * <ul>
-   *   <li>When {@link ReminderList#ReminderList()}.</li>
-   *   <li>Then return {@link ReminderList#remindBefore} is {@code null}.</li>
+   *   <li>When {@link ReminderList#ReminderList()}.
+   *   <li>Then return {@link ReminderList#remindBefore} is {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link ReminderList#ReminderList(ReminderList)}
+   *
+   * <p>Method under test: {@link ReminderList#ReminderList(ReminderList)}
    */
   @Test
-  @DisplayName("Test new ReminderList(ReminderList); when ReminderList(); then return remindBefore is 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "void org.finos.springbot.tool.reminders.ReminderList.<init>(org.finos.springbot.tool.reminders.ReminderList)"})
+  @DisplayName(
+      "Test new ReminderList(ReminderList); when ReminderList(); then return remindBefore is 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void ReminderList.<init>(ReminderList)"})
   void testNewReminderList_whenReminderList_thenReturnRemindBeforeIsNull() {
     // Arrange and Act
     ReminderList actualReminderList = new ReminderList(new ReminderList());
@@ -77,17 +84,19 @@ class ReminderListDiffblueTest {
 
   /**
    * Test {@link ReminderList#getRemindBefore()}.
+   *
    * <ul>
-   *   <li>Given {@link ReminderList#ReminderList()} RemindBefore is one.</li>
-   *   <li>Then return one.</li>
+   *   <li>Given {@link ReminderList#ReminderList()} RemindBefore is one.
+   *   <li>Then return one.
    * </ul>
-   * <p>
-   * Method under test: {@link ReminderList#getRemindBefore()}
+   *
+   * <p>Method under test: {@link ReminderList#getRemindBefore()}
    */
   @Test
   @DisplayName("Test getRemindBefore(); given ReminderList() RemindBefore is one; then return one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"int org.finos.springbot.tool.reminders.ReminderList.getRemindBefore()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"int ReminderList.getRemindBefore()"})
   void testGetRemindBefore_givenReminderListRemindBeforeIsOne_thenReturnOne() {
     // Arrange
     ReminderList reminderList = new ReminderList();
@@ -99,13 +108,14 @@ class ReminderListDiffblueTest {
 
   /**
    * Test {@link ReminderList#setRemindBefore(int)}.
-   * <p>
-   * Method under test: {@link ReminderList#setRemindBefore(int)}
+   *
+   * <p>Method under test: {@link ReminderList#setRemindBefore(int)}
    */
   @Test
   @DisplayName("Test setRemindBefore(int)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tool.reminders.ReminderList.setRemindBefore(int)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void ReminderList.setRemindBefore(int)"})
   void testSetRemindBefore() {
     // Arrange
     ReminderList reminderList = new ReminderList();

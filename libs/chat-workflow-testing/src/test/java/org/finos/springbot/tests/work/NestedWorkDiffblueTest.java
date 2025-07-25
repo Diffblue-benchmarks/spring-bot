@@ -2,6 +2,7 @@ package org.finos.springbot.tests.work;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.tests.work.NestedWork.Inner;
 import org.junit.jupiter.api.DisplayName;
@@ -11,8 +12,9 @@ import org.junit.jupiter.api.Test;
 class NestedWorkDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link NestedWork}
    *   <li>{@link NestedWork#setA(Inner)}
@@ -23,12 +25,15 @@ class NestedWorkDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tests.work.NestedWork.<init>()",
-      "org.finos.springbot.tests.work.NestedWork$Inner org.finos.springbot.tests.work.NestedWork.getA()",
-      "org.finos.springbot.tests.work.NestedWork$Inner org.finos.springbot.tests.work.NestedWork.getB()",
-      "void org.finos.springbot.tests.work.NestedWork.setA(org.finos.springbot.tests.work.NestedWork$Inner)",
-      "void org.finos.springbot.tests.work.NestedWork.setB(org.finos.springbot.tests.work.NestedWork$Inner)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void NestedWork.<init>()",
+    "Inner NestedWork.getA()",
+    "Inner NestedWork.getB()",
+    "void NestedWork.setA(Inner)",
+    "void NestedWork.setB(Inner)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     NestedWork actualNestedWork = new NestedWork();
@@ -50,8 +55,9 @@ class NestedWorkDiffblueTest {
 
   /**
    * Test Inner getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link Inner}
    *   <li>{@link Inner#setS(String)}
@@ -60,10 +66,9 @@ class NestedWorkDiffblueTest {
    */
   @Test
   @DisplayName("Test Inner getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void org.finos.springbot.tests.work.NestedWork$Inner.<init>()",
-      "java.lang.String org.finos.springbot.tests.work.NestedWork$Inner.getS()",
-      "void org.finos.springbot.tests.work.NestedWork$Inner.setS(java.lang.String)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Inner.<init>()", "String Inner.getS()", "void Inner.setS(String)"})
   void testInnerGettersAndSetters() {
     // Arrange and Act
     Inner actualInner = new Inner();

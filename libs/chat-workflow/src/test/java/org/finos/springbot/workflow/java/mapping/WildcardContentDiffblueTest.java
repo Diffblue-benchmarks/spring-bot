@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.workflow.annotations.ChatVariable;
 import org.finos.springbot.workflow.content.Content;
@@ -16,8 +17,9 @@ import org.junit.jupiter.api.Test;
 class WildcardContentDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link WildcardContent#WildcardContent(ChatVariable, Class, Arity)}
    *   <li>{@link WildcardContent#toString()}
@@ -25,10 +27,12 @@ class WildcardContentDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "void org.finos.springbot.workflow.java.mapping.WildcardContent.<init>(org.finos.springbot.workflow.annotations.ChatVariable, java.lang.Class, org.finos.springbot.workflow.java.mapping.WildcardContent$Arity)",
-      "java.lang.String org.finos.springbot.workflow.java.mapping.WildcardContent.toString()"})
+    "void WildcardContent.<init>(ChatVariable, Class, Arity)",
+    "String WildcardContent.toString()"
+  })
   void testGettersAndSetters() {
     // Arrange
     ChatVariable chatVariable = mock(ChatVariable.class);
@@ -47,13 +51,14 @@ class WildcardContentDiffblueTest {
 
   /**
    * Test {@link WildcardContent#getText()}.
-   * <p>
-   * Method under test: {@link WildcardContent#getText()}
+   *
+   * <p>Method under test: {@link WildcardContent#getText()}
    */
   @Test
   @DisplayName("Test getText()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"java.lang.String org.finos.springbot.workflow.java.mapping.WildcardContent.getText()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String WildcardContent.getText()"})
   void testGetText() {
     // Arrange
     ChatVariable chatVariable = mock(ChatVariable.class);
@@ -61,7 +66,7 @@ class WildcardContentDiffblueTest {
     Class<Content> expected = Content.class;
 
     // Act
-    String actualText = (new WildcardContent(chatVariable, expected, Arity.ONE)).getText();
+    String actualText = new WildcardContent(chatVariable, expected, Arity.ONE).getText();
 
     // Assert
     verify(chatVariable).name();
@@ -70,24 +75,26 @@ class WildcardContentDiffblueTest {
 
   /**
    * Test {@link WildcardContent#matches(Content)}.
+   *
    * <ul>
-   *   <li>Given {@code Content}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@code Content}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link WildcardContent#matches(Content)}
+   *
+   * <p>Method under test: {@link WildcardContent#matches(Content)}
    */
   @Test
-  @DisplayName("Test matches(Content); given 'org.finos.springbot.workflow.content.Content'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "boolean org.finos.springbot.workflow.java.mapping.WildcardContent.matches(org.finos.springbot.workflow.content.Content)"})
+  @DisplayName(
+      "Test matches(Content); given 'org.finos.springbot.workflow.content.Content'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean WildcardContent.matches(Content)"})
   void testMatches_givenOrgFinosSpringbotWorkflowContentContent_thenReturnTrue() {
     // Arrange
     ChatVariable chatVariable = mock(ChatVariable.class);
     Class<Content> expected = Content.class;
 
     // Act and Assert
-    assertTrue((new WildcardContent(chatVariable, expected, Arity.ONE)).matches(mock(Content.class)));
+    assertTrue(new WildcardContent(chatVariable, expected, Arity.ONE).matches(mock(Content.class)));
   }
 }

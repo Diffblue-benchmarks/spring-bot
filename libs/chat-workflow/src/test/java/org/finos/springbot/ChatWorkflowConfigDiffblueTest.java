@@ -7,6 +7,7 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.finos.springbot.workflow.actions.consumers.ChatWorkflowErrorHandler;
 import org.finos.springbot.workflow.conversations.AllConversations;
@@ -22,192 +23,212 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.aot.DisabledInAotMode;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.util.ErrorHandler;
 import org.springframework.validation.Validator;
 
 @ContextConfiguration(classes = {ChatWorkflowConfig.class})
-@ExtendWith(SpringExtension.class)
 @DisabledInAotMode
+@ExtendWith(SpringExtension.class)
 class ChatWorkflowConfigDiffblueTest {
-  @Autowired
-  private ChatWorkflowConfig chatWorkflowConfig;
+  @Autowired private ChatWorkflowConfig chatWorkflowConfig;
 
-  @MockBean
-  private Validator validator;
+  @MockitoBean private Validator validator;
 
   /**
    * Test {@link ChatWorkflowConfig#workResponseConverter(ResponseHandlers)}.
-   * <p>
-   * Method under test: {@link ChatWorkflowConfig#workResponseConverter(ResponseHandlers)}
+   *
+   * <p>Method under test: {@link ChatWorkflowConfig#workResponseConverter(ResponseHandlers)}
    */
   @Test
   @DisplayName("Test workResponseConverter(ResponseHandlers)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.java.converters.WorkResponseConverter org.finos.springbot.ChatWorkflowConfig.workResponseConverter(org.finos.springbot.workflow.response.handlers.ResponseHandlers)"})
+    "org.finos.springbot.workflow.java.converters.WorkResponseConverter ChatWorkflowConfig.workResponseConverter(ResponseHandlers)"
+  })
   void testWorkResponseConverter() {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
-
     // Arrange, Act and Assert
-    assertEquals(Integer.MAX_VALUE,
-        (new ChatWorkflowConfig()).workResponseConverter(mock(ResponseHandlers.class)).getOrder());
+    assertEquals(
+        Integer.MAX_VALUE,
+        new ChatWorkflowConfig().workResponseConverter(mock(ResponseHandlers.class)).getOrder());
   }
 
   /**
    * Test {@link ChatWorkflowConfig#contentResponseConverter(ResponseHandlers)}.
-   * <p>
-   * Method under test: {@link ChatWorkflowConfig#contentResponseConverter(ResponseHandlers)}
+   *
+   * <p>Method under test: {@link ChatWorkflowConfig#contentResponseConverter(ResponseHandlers)}
    */
   @Test
   @DisplayName("Test contentResponseConverter(ResponseHandlers)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.java.converters.ContentResponseConverter org.finos.springbot.ChatWorkflowConfig.contentResponseConverter(org.finos.springbot.workflow.response.handlers.ResponseHandlers)"})
+    "org.finos.springbot.workflow.java.converters.ContentResponseConverter ChatWorkflowConfig.contentResponseConverter(ResponseHandlers)"
+  })
   void testContentResponseConverter() {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
-
     // Arrange, Act and Assert
-    assertEquals(Integer.MAX_VALUE,
-        (new ChatWorkflowConfig()).contentResponseConverter(mock(ResponseHandlers.class)).getOrder());
+    assertEquals(
+        Integer.MAX_VALUE,
+        new ChatWorkflowConfig().contentResponseConverter(mock(ResponseHandlers.class)).getOrder());
   }
 
   /**
    * Test {@link ChatWorkflowConfig#collectionResponseConverter(ResponseHandlers)}.
-   * <p>
-   * Method under test: {@link ChatWorkflowConfig#collectionResponseConverter(ResponseHandlers)}
+   *
+   * <p>Method under test: {@link ChatWorkflowConfig#collectionResponseConverter(ResponseHandlers)}
    */
   @Test
   @DisplayName("Test collectionResponseConverter(ResponseHandlers)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.java.converters.CollectionResponseConverter org.finos.springbot.ChatWorkflowConfig.collectionResponseConverter(org.finos.springbot.workflow.response.handlers.ResponseHandlers)"})
+    "org.finos.springbot.workflow.java.converters.CollectionResponseConverter ChatWorkflowConfig.collectionResponseConverter(ResponseHandlers)"
+  })
   void testCollectionResponseConverter() {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
-
     // Arrange, Act and Assert
-    assertEquals(Integer.MAX_VALUE,
-        (new ChatWorkflowConfig()).collectionResponseConverter(mock(ResponseHandlers.class)).getOrder());
+    assertEquals(
+        Integer.MAX_VALUE,
+        new ChatWorkflowConfig()
+            .collectionResponseConverter(mock(ResponseHandlers.class))
+            .getOrder());
   }
 
   /**
    * Test {@link ChatWorkflowConfig#buttonsResponseHandler()}.
-   * <p>
-   * Method under test: {@link ChatWorkflowConfig#buttonsResponseHandler()}
+   *
+   * <p>Method under test: {@link ChatWorkflowConfig#buttonsResponseHandler()}
    */
   @Test
   @DisplayName("Test buttonsResponseHandler()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.response.handlers.ButtonsResponseHandler org.finos.springbot.ChatWorkflowConfig.buttonsResponseHandler()"})
+    "org.finos.springbot.workflow.response.handlers.ButtonsResponseHandler ChatWorkflowConfig.buttonsResponseHandler()"
+  })
   void testButtonsResponseHandler() {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
-
     // Arrange, Act and Assert
-    assertEquals(100, (new ChatWorkflowConfig()).buttonsResponseHandler().getOrder());
+    assertEquals(100, new ChatWorkflowConfig().buttonsResponseHandler().getOrder());
   }
 
   /**
    * Test {@link ChatWorkflowConfig#chatListResponseHandler()}.
-   * <p>
-   * Method under test: {@link ChatWorkflowConfig#chatListResponseHandler()}
+   *
+   * <p>Method under test: {@link ChatWorkflowConfig#chatListResponseHandler()}
    */
   @Test
   @DisplayName("Test chatListResponseHandler()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.response.handlers.ChatListResponseHandler org.finos.springbot.ChatWorkflowConfig.chatListResponseHandler()"})
+    "org.finos.springbot.workflow.response.handlers.ChatListResponseHandler ChatWorkflowConfig.chatListResponseHandler()"
+  })
   void testChatListResponseHandler() {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
-
     // Arrange, Act and Assert
-    assertEquals(100, (new ChatWorkflowConfig()).chatListResponseHandler().getOrder());
+    assertEquals(100, new ChatWorkflowConfig().chatListResponseHandler().getOrder());
   }
 
   /**
    * Test {@link ChatWorkflowConfig#userListResponseHandler()}.
-   * <p>
-   * Method under test: {@link ChatWorkflowConfig#userListResponseHandler()}
+   *
+   * <p>Method under test: {@link ChatWorkflowConfig#userListResponseHandler()}
    */
   @Test
   @DisplayName("Test userListResponseHandler()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.response.handlers.UserListResponseHandler org.finos.springbot.ChatWorkflowConfig.userListResponseHandler()"})
+    "org.finos.springbot.workflow.response.handlers.UserListResponseHandler ChatWorkflowConfig.userListResponseHandler()"
+  })
   void testUserListResponseHandler() {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
-
     // Arrange, Act and Assert
-    assertEquals(100, (new ChatWorkflowConfig()).userListResponseHandler().getOrder());
+    assertEquals(100, new ChatWorkflowConfig().userListResponseHandler().getOrder());
   }
 
   /**
    * Test {@link ChatWorkflowConfig#chatWorkflowErrorHandler(ResponseHandlers)}.
-   * <p>
-   * Method under test: {@link ChatWorkflowConfig#chatWorkflowErrorHandler(ResponseHandlers)}
+   *
+   * <ul>
+   *   <li>Then {@link Throwable#Throwable()} LocalizedMessage is {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link ChatWorkflowConfig#chatWorkflowErrorHandler(ResponseHandlers)}
    */
   @Test
-  @DisplayName("Test chatWorkflowErrorHandler(ResponseHandlers)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.springframework.util.ErrorHandler org.finos.springbot.ChatWorkflowConfig.chatWorkflowErrorHandler(org.finos.springbot.workflow.response.handlers.ResponseHandlers)"})
-  void testChatWorkflowErrorHandler() {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
-
+  @DisplayName(
+      "Test chatWorkflowErrorHandler(ResponseHandlers); then Throwable() LocalizedMessage is 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"ErrorHandler ChatWorkflowConfig.chatWorkflowErrorHandler(ResponseHandlers)"})
+  void testChatWorkflowErrorHandler_thenThrowableLocalizedMessageIsNull() {
     // Arrange
     ChatWorkflowConfig chatWorkflowConfig = new ChatWorkflowConfig();
     ResponseHandlers rh = mock(ResponseHandlers.class);
     doNothing().when(rh).accept(Mockito.<Response>any());
 
     // Act
-    ErrorHandler actualChatWorkflowErrorHandlerResult = chatWorkflowConfig.chatWorkflowErrorHandler(rh);
-    actualChatWorkflowErrorHandlerResult.handleError(new Throwable());
+    ErrorHandler actualChatWorkflowErrorHandlerResult =
+        chatWorkflowConfig.chatWorkflowErrorHandler(rh);
+    Throwable t = new Throwable();
+    actualChatWorkflowErrorHandlerResult.handleError(t);
 
     // Assert
     verify(rh).accept(isA(Response.class));
     assertTrue(actualChatWorkflowErrorHandlerResult instanceof ChatWorkflowErrorHandler);
+    assertNull(t.getLocalizedMessage());
+    assertNull(t.getMessage());
+    assertNull(t.getCause());
+    assertEquals(0, t.getSuppressed().length);
   }
 
   /**
-   * Test {@link ChatWorkflowConfig#buttonHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)}.
-   * <p>
-   * Method under test: {@link ChatWorkflowConfig#buttonHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)}
+   * Test {@link ChatWorkflowConfig#chatWorkflowErrorHandler(ResponseHandlers)}.
+   *
+   * <ul>
+   *   <li>When {@link ResponseHandlers}.
+   * </ul>
+   *
+   * <p>Method under test: {@link ChatWorkflowConfig#chatWorkflowErrorHandler(ResponseHandlers)}
    */
   @Test
-  @DisplayName("Test buttonHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.java.mapping.ChatButtonChatHandlerMapping org.finos.springbot.ChatWorkflowConfig.buttonHandlerMapping(org.finos.springbot.workflow.java.resolvers.WorkflowResolversFactory, org.finos.springbot.workflow.java.converters.ResponseConverters, org.finos.springbot.workflow.conversations.AllConversations)"})
-  void testButtonHandlerMapping() throws IllegalStateException {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
+  @DisplayName("Test chatWorkflowErrorHandler(ResponseHandlers); when ResponseHandlers")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"ErrorHandler ChatWorkflowConfig.chatWorkflowErrorHandler(ResponseHandlers)"})
+  void testChatWorkflowErrorHandler_whenResponseHandlers() {
+    // Arrange, Act and Assert
+    assertTrue(
+        new ChatWorkflowConfig().chatWorkflowErrorHandler(mock(ResponseHandlers.class))
+            instanceof ChatWorkflowErrorHandler);
+  }
 
+  /**
+   * Test {@link ChatWorkflowConfig#buttonHandlerMapping(WorkflowResolversFactory,
+   * ResponseConverters, AllConversations)}.
+   *
+   * <p>Method under test: {@link ChatWorkflowConfig#buttonHandlerMapping(WorkflowResolversFactory,
+   * ResponseConverters, AllConversations)}
+   */
+  @Test
+  @DisplayName(
+      "Test buttonHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "ChatButtonChatHandlerMapping ChatWorkflowConfig.buttonHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)"
+  })
+  void testButtonHandlerMapping() throws IllegalStateException {
     // Arrange
     ChatWorkflowConfig chatWorkflowConfig = new ChatWorkflowConfig();
     WorkflowResolversFactory wrf = new WorkflowResolversFactory();
     ResponseConverters converters = mock(ResponseConverters.class);
 
     // Act
-    ChatButtonChatHandlerMapping actualButtonHandlerMappingResult = chatWorkflowConfig.buttonHandlerMapping(wrf,
-        converters, new AllConversations());
+    ChatButtonChatHandlerMapping actualButtonHandlerMappingResult =
+        chatWorkflowConfig.buttonHandlerMapping(wrf, converters, new AllConversations());
 
     // Assert
     assertNull(actualButtonHandlerMappingResult.getApplicationContext());
@@ -215,28 +236,29 @@ class ChatWorkflowConfigDiffblueTest {
   }
 
   /**
-   * Test {@link ChatWorkflowConfig#chatHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)}.
-   * <p>
-   * Method under test: {@link ChatWorkflowConfig#chatHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)}
+   * Test {@link ChatWorkflowConfig#chatHandlerMapping(WorkflowResolversFactory, ResponseConverters,
+   * AllConversations)}.
+   *
+   * <p>Method under test: {@link ChatWorkflowConfig#chatHandlerMapping(WorkflowResolversFactory,
+   * ResponseConverters, AllConversations)}
    */
   @Test
-  @DisplayName("Test chatHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test chatHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.java.mapping.ChatRequestChatHandlerMapping org.finos.springbot.ChatWorkflowConfig.chatHandlerMapping(org.finos.springbot.workflow.java.resolvers.WorkflowResolversFactory, org.finos.springbot.workflow.java.converters.ResponseConverters, org.finos.springbot.workflow.conversations.AllConversations)"})
+    "ChatRequestChatHandlerMapping ChatWorkflowConfig.chatHandlerMapping(WorkflowResolversFactory, ResponseConverters, AllConversations)"
+  })
   void testChatHandlerMapping() throws IllegalStateException {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
-
     // Arrange
     ChatWorkflowConfig chatWorkflowConfig = new ChatWorkflowConfig();
     WorkflowResolversFactory wrf = new WorkflowResolversFactory();
     ResponseConverters converters = mock(ResponseConverters.class);
 
     // Act
-    ChatRequestChatHandlerMapping actualChatHandlerMappingResult = chatWorkflowConfig.chatHandlerMapping(wrf,
-        converters, new AllConversations());
+    ChatRequestChatHandlerMapping actualChatHandlerMappingResult =
+        chatWorkflowConfig.chatHandlerMapping(wrf, converters, new AllConversations());
 
     // Assert
     assertNull(actualChatHandlerMappingResult.getApplicationContext());
@@ -245,15 +267,19 @@ class ChatWorkflowConfigDiffblueTest {
 
   /**
    * Test {@link ChatWorkflowConfig#allConversations()}.
-   * <p>
-   * Method under test: {@link ChatWorkflowConfig#allConversations()}
+   *
+   * <ul>
+   *   <li>Then return AllAddressables Empty.
+   * </ul>
+   *
+   * <p>Method under test: {@link ChatWorkflowConfig#allConversations()}
    */
   @Test
-  @DisplayName("Test allConversations()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.workflow.conversations.AllConversations org.finos.springbot.ChatWorkflowConfig.allConversations()"})
-  void testAllConversations() {
+  @DisplayName("Test allConversations(); then return AllAddressables Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"AllConversations ChatWorkflowConfig.allConversations()"})
+  void testAllConversations_thenReturnAllAddressablesEmpty() {
     // Arrange and Act
     AllConversations actualAllConversationsResult = chatWorkflowConfig.allConversations();
 
@@ -264,20 +290,18 @@ class ChatWorkflowConfigDiffblueTest {
 
   /**
    * Test {@link ChatWorkflowConfig#headerTagResponsehandler()}.
-   * <p>
-   * Method under test: {@link ChatWorkflowConfig#headerTagResponsehandler()}
+   *
+   * <p>Method under test: {@link ChatWorkflowConfig#headerTagResponsehandler()}
    */
   @Test
   @DisplayName("Test headerTagResponsehandler()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.workflow.tags.HeaderTagResponseHandler org.finos.springbot.ChatWorkflowConfig.headerTagResponsehandler()"})
+    "org.finos.springbot.workflow.tags.HeaderTagResponseHandler ChatWorkflowConfig.headerTagResponsehandler()"
+  })
   void testHeaderTagResponsehandler() {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
-
     // Arrange, Act and Assert
-    assertEquals(100, (new ChatWorkflowConfig()).headerTagResponsehandler().getOrder());
+    assertEquals(100, new ChatWorkflowConfig().headerTagResponsehandler().getOrder());
   }
 }

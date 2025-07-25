@@ -1,13 +1,13 @@
 package org.finos.springbot.symphony;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.MappingJsonFactory;
@@ -25,6 +25,13 @@ import com.symphony.bdk.core.config.model.BdkBotConfig;
 import com.symphony.bdk.core.config.model.BdkCertificateConfig;
 import com.symphony.bdk.core.config.model.BdkConfig;
 import com.symphony.bdk.core.config.model.BdkRsaKeyConfig;
+import com.symphony.bdk.core.retry.RetryWithRecoveryBuilder;
+import com.symphony.bdk.core.service.session.SessionService;
+import com.symphony.bdk.core.service.user.UserService;
+import com.symphony.bdk.gen.api.AuditTrailApi;
+import com.symphony.bdk.gen.api.SessionApi;
+import com.symphony.bdk.gen.api.UserApi;
+import com.symphony.bdk.gen.api.UsersApi;
 import com.symphony.bdk.gen.api.model.V4Initiator;
 import com.symphony.bdk.gen.api.model.V4MessageSent;
 import com.symphony.bdk.spring.events.RealTimeEvent;
@@ -35,7 +42,7 @@ import java.util.function.BiFunction;
 import org.finos.springbot.symphony.content.serialization.SymphonyMarkupWriter;
 import org.finos.springbot.symphony.conversations.StreamResolver;
 import org.finos.springbot.symphony.conversations.SymphonyConversations;
-import org.finos.springbot.symphony.history.SymphonyHistory;
+import org.finos.springbot.symphony.conversations.SymphonyConversationsImpl;
 import org.finos.springbot.symphony.history.SymphonyHistoryImpl;
 import org.finos.springbot.symphony.messages.PresentationMLHandler;
 import org.finos.springbot.symphony.response.templating.SymphonyMarkupTemplateProvider;
@@ -48,19 +55,32 @@ import org.finos.springbot.workflow.templating.TypeConverter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.io.ApplicationResourceLoader;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.core.io.ResourceLoader;
 
+@ExtendWith(MockitoExtension.class)
 class SymphonyWorkflowConfigDiffblueTest {
+  @Mock private ResourceLoader resourceLoader;
+
+  @InjectMocks private SymphonyWorkflowConfig symphonyWorkflowConfig;
+
   /**
-   * Test {@link SymphonyWorkflowConfig#symphonyMarkupTemplater(String, String, String, SymphonyMarkupWriter)}.
-   * <p>
-   * Method under test: {@link SymphonyWorkflowConfig#symphonyMarkupTemplater(String, String, String, SymphonyMarkupWriter)}
+   * Test {@link SymphonyWorkflowConfig#symphonyMarkupTemplater(String, String, String,
+   * SymphonyMarkupWriter)}.
+   *
+   * <p>Method under test: {@link SymphonyWorkflowConfig#symphonyMarkupTemplater(String, String,
+   * String, SymphonyMarkupWriter)}
    */
   @Test
   @DisplayName("Test symphonyMarkupTemplater(String, String, String, SymphonyMarkupWriter)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.symphony.response.templating.SymphonyMarkupTemplateProvider org.finos.springbot.symphony.SymphonyWorkflowConfig.symphonyMarkupTemplater(java.lang.String, java.lang.String, java.lang.String, org.finos.springbot.symphony.content.serialization.SymphonyMarkupWriter)"})
+    "SymphonyMarkupTemplateProvider SymphonyWorkflowConfig.symphonyMarkupTemplater(String, String, String, SymphonyMarkupWriter)"
+  })
   void testSymphonyMarkupTemplater() {
     //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
     //   Run dcover create --keep-partial-tests to gain insights into why
@@ -70,21 +90,27 @@ class SymphonyWorkflowConfigDiffblueTest {
     SymphonyWorkflowConfig symphonyWorkflowConfig = new SymphonyWorkflowConfig();
 
     // Act and Assert
-    assertNull(symphonyWorkflowConfig
-        .symphonyMarkupTemplater("Prefix", "Suffix", "Message Default", new SymphonyMarkupWriter())
-        .getTemplateForName("Name"));
+    assertNull(
+        symphonyWorkflowConfig
+            .symphonyMarkupTemplater(
+                "Prefix", "Suffix", "Message Default", new SymphonyMarkupWriter())
+            .getTemplateForName("Name"));
   }
 
   /**
-   * Test {@link SymphonyWorkflowConfig#symphonyWorkTemplater(String, String, String, FreemarkerWorkTemplater)}.
-   * <p>
-   * Method under test: {@link SymphonyWorkflowConfig#symphonyWorkTemplater(String, String, String, FreemarkerWorkTemplater)}
+   * Test {@link SymphonyWorkflowConfig#symphonyWorkTemplater(String, String, String,
+   * FreemarkerWorkTemplater)}.
+   *
+   * <p>Method under test: {@link SymphonyWorkflowConfig#symphonyWorkTemplater(String, String,
+   * String, FreemarkerWorkTemplater)}
    */
   @Test
   @DisplayName("Test symphonyWorkTemplater(String, String, String, FreemarkerWorkTemplater)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.symphony.templating.SymphonyTemplateProvider org.finos.springbot.symphony.SymphonyWorkflowConfig.symphonyWorkTemplater(java.lang.String, java.lang.String, java.lang.String, org.finos.springbot.symphony.templating.FreemarkerWorkTemplater)"})
+    "SymphonyTemplateProvider SymphonyWorkflowConfig.symphonyWorkTemplater(String, String, String, FreemarkerWorkTemplater)"
+  })
   void testSymphonyWorkTemplater() {
     //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
     //   Run dcover create --keep-partial-tests to gain insights into why
@@ -97,80 +123,144 @@ class SymphonyWorkflowConfigDiffblueTest {
     // Act and Assert
     assertNull(
         symphonyWorkflowConfig
-            .symphonyWorkTemplater("Prefix", "Suffix", "Work Default",
+            .symphonyWorkTemplater(
+                "Prefix",
+                "Suffix",
+                "Work Default",
                 new FreemarkerWorkTemplater(fieldConverters, new FreemarkerRendering()))
             .getTemplateForName("Name"));
   }
 
   /**
-   * Test {@link SymphonyWorkflowConfig#symphonyResponseHandler(AbstractMarkupTemplateProvider, SymphonyTemplateProvider, StreamResolver)}.
-   * <p>
-   * Method under test: {@link SymphonyWorkflowConfig#symphonyResponseHandler(AbstractMarkupTemplateProvider, SymphonyTemplateProvider, StreamResolver)}
+   * Test {@link SymphonyWorkflowConfig#symphonyResponseHandler(AbstractMarkupTemplateProvider,
+   * SymphonyTemplateProvider, StreamResolver)}.
+   *
+   * <p>Method under test: {@link
+   * SymphonyWorkflowConfig#symphonyResponseHandler(AbstractMarkupTemplateProvider,
+   * SymphonyTemplateProvider, StreamResolver)}
    */
   @Test
-  @DisplayName("Test symphonyResponseHandler(AbstractMarkupTemplateProvider, SymphonyTemplateProvider, StreamResolver)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test symphonyResponseHandler(AbstractMarkupTemplateProvider, SymphonyTemplateProvider, StreamResolver)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.symphony.response.handlers.SymphonyResponseHandler org.finos.springbot.symphony.SymphonyWorkflowConfig.symphonyResponseHandler(org.finos.springbot.workflow.response.templating.AbstractMarkupTemplateProvider, org.finos.springbot.symphony.templating.SymphonyTemplateProvider, org.finos.springbot.symphony.conversations.StreamResolver)"})
+    "org.finos.springbot.symphony.response.handlers.SymphonyResponseHandler SymphonyWorkflowConfig.symphonyResponseHandler(AbstractMarkupTemplateProvider, SymphonyTemplateProvider, StreamResolver)"
+  })
   void testSymphonyResponseHandler() {
+    // Arrange
+    SymphonyMarkupTemplateProvider markupTemplater =
+        new SymphonyMarkupTemplateProvider(
+            "Template Prefix",
+            "Template Suffix",
+            "Default Template Name",
+            resourceLoader,
+            mock(BiFunction.class));
+
+    ArrayList<TypeConverter<String>> fieldConverters = new ArrayList<>();
+
+    // Act and Assert
+    assertEquals(
+        Integer.MAX_VALUE,
+        symphonyWorkflowConfig
+            .symphonyResponseHandler(
+                markupTemplater,
+                new SymphonyTemplateProvider(
+                    "Template Prefix",
+                    "Template Suffix",
+                    "Default Template Name",
+                    resourceLoader,
+                    new FreemarkerWorkTemplater(fieldConverters, new FreemarkerRendering())),
+                mock(StreamResolver.class))
+            .getOrder());
+  }
+
+  /**
+   * Test {@link SymphonyWorkflowConfig#symphonyHistory(StreamResolver)}.
+   *
+   * <p>Method under test: {@link SymphonyWorkflowConfig#symphonyHistory(StreamResolver)}
+   */
+  @Test
+  @DisplayName("Test symphonyHistory(StreamResolver)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "org.finos.springbot.symphony.history.SymphonyHistory SymphonyWorkflowConfig.symphonyHistory(StreamResolver)"
+  })
+  void testSymphonyHistory() {
+    // Arrange, Act and Assert
+    assertTrue(
+        symphonyWorkflowConfig.symphonyHistory(mock(StreamResolver.class))
+            instanceof SymphonyHistoryImpl);
+  }
+
+  /**
+   * Test {@link SymphonyWorkflowConfig#symphonyConversations(UserService, SessionService,
+   * boolean)}.
+   *
+   * <ul>
+   *   <li>Then return {@link SymphonyConversationsImpl}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SymphonyWorkflowConfig#symphonyConversations(UserService,
+   * SessionService, boolean)}
+   */
+  @Test
+  @DisplayName(
+      "Test symphonyConversations(UserService, SessionService, boolean); then return SymphonyConversationsImpl")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "SymphonyConversations SymphonyWorkflowConfig.symphonyConversations(UserService, SessionService, boolean)"
+  })
+  void testSymphonyConversations_thenReturnSymphonyConversationsImpl() {
     //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
     //   Run dcover create --keep-partial-tests to gain insights into why
     //   a non-Spring test was created.
 
     // Arrange
     SymphonyWorkflowConfig symphonyWorkflowConfig = new SymphonyWorkflowConfig();
-    SymphonyMarkupTemplateProvider markupTemplater = new SymphonyMarkupTemplateProvider("Template Prefix",
-        "Template Suffix", "Default Template Name", new ApplicationResourceLoader(), mock(BiFunction.class));
+    UserService userService =
+        new UserService(
+            mock(UserApi.class),
+            mock(UsersApi.class),
+            mock(AuditTrailApi.class),
+            mock(RetryWithRecoveryBuilder.class));
 
-    ApplicationResourceLoader rl = new ApplicationResourceLoader();
-    ArrayList<TypeConverter<String>> fieldConverters = new ArrayList<>();
+    SessionApi sessionApi = new SessionApi(null);
 
-    // Act and Assert
-    assertEquals(Integer.MAX_VALUE, symphonyWorkflowConfig
-        .symphonyResponseHandler(markupTemplater,
-            new SymphonyTemplateProvider("Template Prefix", "Template Suffix", "Default Template Name", rl,
-                new FreemarkerWorkTemplater(fieldConverters, new FreemarkerRendering())),
-            mock(StreamResolver.class))
-        .getOrder());
-  }
-
-  /**
-   * Test {@link SymphonyWorkflowConfig#symphonyHistory(StreamResolver)}.
-   * <p>
-   * Method under test: {@link SymphonyWorkflowConfig#symphonyHistory(StreamResolver)}
-   */
-  @Test
-  @DisplayName("Test symphonyHistory(StreamResolver)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({
-      "org.finos.springbot.symphony.history.SymphonyHistory org.finos.springbot.symphony.SymphonyWorkflowConfig.symphonyHistory(org.finos.springbot.symphony.conversations.StreamResolver)"})
-  void testSymphonyHistory() {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
-
-    // Arrange and Act
-    SymphonyHistory actualSymphonyHistoryResult = (new SymphonyWorkflowConfig())
-        .symphonyHistory(mock(StreamResolver.class));
+    // Act
+    SymphonyConversations actualSymphonyConversationsResult =
+        symphonyWorkflowConfig.symphonyConversations(
+            userService, new SessionService(sessionApi, new RetryWithRecoveryBuilder<>()), true);
 
     // Assert
-    assertTrue(actualSymphonyHistoryResult instanceof SymphonyHistoryImpl);
-    assertFalse(actualSymphonyHistoryResult.isSupported(null));
+    assertTrue(actualSymphonyConversationsResult instanceof SymphonyConversationsImpl);
+    assertTrue(
+        ((SymphonyConversationsImpl) actualSymphonyConversationsResult)
+            .getDefaultAdministrators()
+            .isEmpty());
   }
 
   /**
-   * Test {@link SymphonyWorkflowConfig#symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig)}.
+   * Test {@link SymphonyWorkflowConfig#symphonyPresentationMLHandler(List, SymphonyConversations,
+   * BdkConfig)}.
+   *
    * <ul>
-   *   <li>Given {@link ActionConsumer}.</li>
+   *   <li>Given {@link ActionConsumer}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyWorkflowConfig#symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig)}
+   *
+   * <p>Method under test: {@link SymphonyWorkflowConfig#symphonyPresentationMLHandler(List,
+   * SymphonyConversations, BdkConfig)}
    */
   @Test
-  @DisplayName("Test symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig); given ActionConsumer")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig); given ActionConsumer")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.symphony.messages.PresentationMLHandler org.finos.springbot.symphony.SymphonyWorkflowConfig.symphonyPresentationMLHandler(java.util.List, org.finos.springbot.symphony.conversations.SymphonyConversations, com.symphony.bdk.core.config.model.BdkConfig)"})
+    "PresentationMLHandler SymphonyWorkflowConfig.symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig)"
+  })
   void testSymphonyPresentationMLHandler_givenActionConsumer() throws UnsupportedEncodingException {
     //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
     //   Run dcover create --keep-partial-tests to gain insights into why
@@ -200,10 +290,11 @@ class SymphonyWorkflowConfigDiffblueTest {
     when(config.getBot()).thenReturn(bdkBotConfig);
 
     // Act
-    PresentationMLHandler actualSymphonyPresentationMLHandlerResult = symphonyWorkflowConfig
-        .symphonyPresentationMLHandler(messageConsumers, sc, config);
+    PresentationMLHandler actualSymphonyPresentationMLHandlerResult =
+        symphonyWorkflowConfig.symphonyPresentationMLHandler(messageConsumers, sc, config);
     V4Initiator initiator = new V4Initiator();
-    actualSymphonyPresentationMLHandlerResult.onApplicationEvent(new RealTimeEvent<>(initiator, new V4MessageSent()));
+    actualSymphonyPresentationMLHandlerResult.onApplicationEvent(
+        new RealTimeEvent<>(initiator, new V4MessageSent()));
 
     // Assert
     verify(config).getBot();
@@ -211,19 +302,26 @@ class SymphonyWorkflowConfigDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyWorkflowConfig#symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig)}.
+   * Test {@link SymphonyWorkflowConfig#symphonyPresentationMLHandler(List, SymphonyConversations,
+   * BdkConfig)}.
+   *
    * <ul>
-   *   <li>Given {@link ActionConsumer}.</li>
+   *   <li>Given {@link ActionConsumer}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyWorkflowConfig#symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig)}
+   *
+   * <p>Method under test: {@link SymphonyWorkflowConfig#symphonyPresentationMLHandler(List,
+   * SymphonyConversations, BdkConfig)}
    */
   @Test
-  @DisplayName("Test symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig); given ActionConsumer")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig); given ActionConsumer")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.symphony.messages.PresentationMLHandler org.finos.springbot.symphony.SymphonyWorkflowConfig.symphonyPresentationMLHandler(java.util.List, org.finos.springbot.symphony.conversations.SymphonyConversations, com.symphony.bdk.core.config.model.BdkConfig)"})
-  void testSymphonyPresentationMLHandler_givenActionConsumer2() throws UnsupportedEncodingException {
+    "PresentationMLHandler SymphonyWorkflowConfig.symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig)"
+  })
+  void testSymphonyPresentationMLHandler_givenActionConsumer2()
+      throws UnsupportedEncodingException {
     //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
     //   Run dcover create --keep-partial-tests to gain insights into why
     //   a non-Spring test was created.
@@ -253,10 +351,11 @@ class SymphonyWorkflowConfigDiffblueTest {
     when(config.getBot()).thenReturn(bdkBotConfig);
 
     // Act
-    PresentationMLHandler actualSymphonyPresentationMLHandlerResult = symphonyWorkflowConfig
-        .symphonyPresentationMLHandler(messageConsumers, sc, config);
+    PresentationMLHandler actualSymphonyPresentationMLHandlerResult =
+        symphonyWorkflowConfig.symphonyPresentationMLHandler(messageConsumers, sc, config);
     V4Initiator initiator = new V4Initiator();
-    actualSymphonyPresentationMLHandlerResult.onApplicationEvent(new RealTimeEvent<>(initiator, new V4MessageSent()));
+    actualSymphonyPresentationMLHandlerResult.onApplicationEvent(
+        new RealTimeEvent<>(initiator, new V4MessageSent()));
 
     // Assert
     verify(config).getBot();
@@ -264,18 +363,24 @@ class SymphonyWorkflowConfigDiffblueTest {
   }
 
   /**
-   * Test {@link SymphonyWorkflowConfig#symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig)}.
+   * Test {@link SymphonyWorkflowConfig#symphonyPresentationMLHandler(List, SymphonyConversations,
+   * BdkConfig)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SymphonyWorkflowConfig#symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig)}
+   *
+   * <p>Method under test: {@link SymphonyWorkflowConfig#symphonyPresentationMLHandler(List,
+   * SymphonyConversations, BdkConfig)}
    */
   @Test
-  @DisplayName("Test symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig); when ArrayList()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.symphony.messages.PresentationMLHandler org.finos.springbot.symphony.SymphonyWorkflowConfig.symphonyPresentationMLHandler(java.util.List, org.finos.springbot.symphony.conversations.SymphonyConversations, com.symphony.bdk.core.config.model.BdkConfig)"})
+    "PresentationMLHandler SymphonyWorkflowConfig.symphonyPresentationMLHandler(List, SymphonyConversations, BdkConfig)"
+  })
   void testSymphonyPresentationMLHandler_whenArrayList() throws UnsupportedEncodingException {
     //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
     //   Run dcover create --keep-partial-tests to gain insights into why
@@ -303,10 +408,11 @@ class SymphonyWorkflowConfigDiffblueTest {
     when(config.getBot()).thenReturn(bdkBotConfig);
 
     // Act
-    PresentationMLHandler actualSymphonyPresentationMLHandlerResult = symphonyWorkflowConfig
-        .symphonyPresentationMLHandler(messageConsumers, sc, config);
+    PresentationMLHandler actualSymphonyPresentationMLHandlerResult =
+        symphonyWorkflowConfig.symphonyPresentationMLHandler(messageConsumers, sc, config);
     V4Initiator initiator = new V4Initiator();
-    actualSymphonyPresentationMLHandlerResult.onApplicationEvent(new RealTimeEvent<>(initiator, new V4MessageSent()));
+    actualSymphonyPresentationMLHandlerResult.onApplicationEvent(
+        new RealTimeEvent<>(initiator, new V4MessageSent()));
 
     // Assert
     verify(config).getBot();
@@ -315,24 +421,23 @@ class SymphonyWorkflowConfigDiffblueTest {
 
   /**
    * Test {@link SymphonyWorkflowConfig#symphonyFormConverter()}.
-   * <p>
-   * Method under test: {@link SymphonyWorkflowConfig#symphonyFormConverter()}
+   *
+   * <p>Method under test: {@link SymphonyWorkflowConfig#symphonyFormConverter()}
    */
   @Test
   @DisplayName("Test symphonyFormConverter()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "org.finos.springbot.symphony.form.SymphonyFormConverter org.finos.springbot.symphony.SymphonyWorkflowConfig.symphonyFormConverter()"})
+    "org.finos.springbot.symphony.form.SymphonyFormConverter SymphonyWorkflowConfig.symphonyFormConverter()"
+  })
   void testSymphonyFormConverter() {
-    //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
-    //   Run dcover create --keep-partial-tests to gain insights into why
-    //   a non-Spring test was created.
-
     // Arrange, Act and Assert
-    ObjectMapper objectMapper = (new SymphonyWorkflowConfig()).symphonyFormConverter().getObjectMapper();
+    ObjectMapper objectMapper = symphonyWorkflowConfig.symphonyFormConverter().getObjectMapper();
     JsonFactory factory = objectMapper.getFactory();
     assertTrue(factory instanceof MappingJsonFactory);
-    assertTrue(objectMapper.getDeserializationContext() instanceof DefaultDeserializationContext.Impl);
+    assertTrue(
+        objectMapper.getDeserializationContext() instanceof DefaultDeserializationContext.Impl);
     assertTrue(objectMapper.getVisibilityChecker() instanceof Std);
     assertTrue(objectMapper.getPolymorphicTypeValidator() instanceof LaissezFaireSubTypeValidator);
     assertTrue(objectMapper.getSubtypeResolver() instanceof StdSubtypeResolver);
