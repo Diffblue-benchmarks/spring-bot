@@ -34,37 +34,37 @@
 		</dependency>
 		
 		<dependency>
-	        <groupId>com.microsoft.bot</groupId>
-	        <artifactId>bot-azure</artifactId>
-	        <version>${teams.version}</version>
-	        <scope>compile</scope>
-	        <exclusions>
-	        	<!-- this is already included by spring -->
-	        	<exclusion>
-	        		<groupId>org.json</groupId>
-	        		<artifactId>json</artifactId>
-	        	</exclusion>
-	        	<exclusion>
-	        		<groupId>com.azure</groupId>
-	        		<artifactId>azure-storage-blob</artifactId>
-	        	</exclusion>
-	        	<exclusion>
-	        		<groupId>com.google.guava</groupId>
-	        		<artifactId>guava</artifactId>
-	        	</exclusion>
-	        	<exclusion>
-	        		<groupId>org.apache.httpcomponents</groupId>
-	        		<artifactId>httpclient</artifactId>
-	        	</exclusion>
-	        </exclusions>
-      	</dependency>
-      	
-      	<dependency>
+			<groupId>com.microsoft.bot</groupId>
+			<artifactId>bot-azure</artifactId>
+			<version>${teams.version}</version>
+			<scope>compile</scope>
+			<exclusions>
+				<!-- this is already included by spring -->
+				<exclusion>
+					<groupId>org.json</groupId>
+					<artifactId>json</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.azure</groupId>
+					<artifactId>azure-storage-blob</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpclient</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+			
+		<dependency>
 			<groupId>com.microsoft.azure</groupId>
 			<artifactId>msal4j</artifactId>
 			<version>${azure-msal4j.version}</version>
 		</dependency>
-      	
+			
 		<dependency>
 			<groupId>com.microsoft.bot</groupId>
 			<artifactId>bot-builder</artifactId>
@@ -100,32 +100,36 @@
 		
 		<dependency>
 			<groupId>com.azure</groupId>
-	  		<artifactId>azure-storage-blob</artifactId>
-	  		<version>12.25.3</version> <!-- Replace with property -->
-	  		<exclusions>	  			
-	  			<exclusion>
-	  				<groupId>com.azure</groupId>
-	  				<artifactId>azure-core-http-netty</artifactId>
-	  			</exclusion>
-	  		</exclusions>
+			<artifactId>azure-storage-blob</artifactId>
+			<version>12.25.3</version>
+			<!-- Replace with property -->
+			<exclusions>	  			
+				<exclusion>
+					<groupId>com.azure</groupId>
+					<artifactId>azure-core-http-netty</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		
 		<dependency>
 			<groupId>com.azure</groupId>
-	  		<artifactId>azure-core-http-netty</artifactId>	
-	  		<version>1.14.1</version>	<!-- Replace with property -->
+			<artifactId>azure-core-http-netty</artifactId>	
+			<version>1.14.1</version>
+			<!-- Replace with property -->
 		</dependency>
 
 		<dependency>
 			<groupId>com.nimbusds</groupId>
 			<artifactId>nimbus-jose-jwt</artifactId>	
-	  		<version>9.37.2</version>	<!-- Replace with property -->
+			<version>9.37.2</version>
+			<!-- Replace with property -->
 		</dependency>
 		
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
-	    	<artifactId>httpclient</artifactId>
-	    	<version>4.5.13</version> <!-- Replace with property -->
+			<artifactId>httpclient</artifactId>
+			<version>4.5.13</version>
+			<!-- Replace with property -->
 		</dependency>
 					
 		<!-- removed Vulnerability in bot connector(4.14.3) ->
@@ -153,8 +157,19 @@
 		<!-- for templating xml/html @work
 		thymeleaf.spring5 doesn't support in spring 3.x.x' -->
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.diffblue.cover</groupId>
+			<artifactId>cover-annotations</artifactId>
+			<version>1.6.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 		
 		<dependency>

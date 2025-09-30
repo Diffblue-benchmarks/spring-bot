@@ -34,6 +34,12 @@
 			<version>10.0.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
+			<groupId>com.diffblue.cover</groupId>
+			<artifactId>cover-annotations</artifactId>
+			<version>1.6.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
@@ -58,6 +64,11 @@
 			<artifactId>stanford-sutime-models</artifactId>
 			<version>${sutime-models.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>

@@ -20,12 +20,12 @@
 	</properties>
 
 	<dependencies>
-	    <dependency>
+		<dependency>
 			<groupId>org.finos.springbot</groupId>
 			<artifactId>symphony-bdk-chat-workflow-spring-boot-starter</artifactId>
 			<version>10.0.2-SNAPSHOT</version>
 		</dependency>
-	    <dependency>
+		<dependency>
 			<groupId>org.finos.springbot</groupId>
 			<artifactId>teams-chat-workflow-spring-boot-starter</artifactId>
 			<version>10.0.2-SNAPSHOT</version>
@@ -44,6 +44,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.diffblue.cover</groupId>
+			<artifactId>cover-annotations</artifactId>
+			<version>1.6.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
