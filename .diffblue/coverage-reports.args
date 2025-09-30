@@ -1,0 +1,1 @@
+--exclude-modules=org.finos.springbot:chat-workflow-coverage
