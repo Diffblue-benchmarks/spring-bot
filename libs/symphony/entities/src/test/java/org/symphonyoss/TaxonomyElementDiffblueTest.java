@@ -1,0 +1,224 @@
+package org.symphonyoss;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
+import com.symphony.user.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+class TaxonomyElementDiffblueTest {
+  /**
+   * Test {@link TaxonomyElement#getValue()}.
+   *
+   * <p>Method under test: {@link TaxonomyElement#getValue()}
+   */
+  @Test
+  @org.junit.jupiter.api.DisplayName("Test getValue()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.lang.String TaxonomyElement.getValue()"})
+  void testGetValue() {
+    // Arrange, Act and Assert
+    assertEquals("42", new DisplayName("42").getValue());
+  }
+
+  /**
+   * Test {@link TaxonomyElement#equals(Object)}, and {@link TaxonomyElement#hashCode()}.
+   *
+   * <ul>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
+   * </ul>
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>{@link TaxonomyElement#equals(Object)}
+   *   <li>{@link TaxonomyElement#hashCode()}
+   * </ul>
+   */
+  @Test
+  @org.junit.jupiter.api.DisplayName(
+      "Test equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TaxonomyElement.equals(Object)", "int TaxonomyElement.hashCode()"})
+  void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
+    // Arrange
+    DisplayName displayName = new DisplayName("42");
+    DisplayName displayName2 = new DisplayName("42");
+
+    // Act and Assert
+    assertEquals(displayName, displayName2);
+    assertEquals(displayName.hashCode(), displayName2.hashCode());
+  }
+
+  /**
+   * Test {@link TaxonomyElement#equals(Object)}, and {@link TaxonomyElement#hashCode()}.
+   *
+   * <ul>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
+   * </ul>
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>{@link TaxonomyElement#equals(Object)}
+   *   <li>{@link TaxonomyElement#hashCode()}
+   * </ul>
+   */
+  @Test
+  @org.junit.jupiter.api.DisplayName(
+      "Test equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TaxonomyElement.equals(Object)", "int TaxonomyElement.hashCode()"})
+  void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual2() {
+    // Arrange
+    DisplayName displayName = new DisplayName(null);
+    DisplayName displayName2 = new DisplayName(null);
+
+    // Act and Assert
+    assertEquals(displayName, displayName2);
+    assertEquals(displayName.hashCode(), displayName2.hashCode());
+  }
+
+  /**
+   * Test {@link TaxonomyElement#equals(Object)}, and {@link TaxonomyElement#hashCode()}.
+   *
+   * <ul>
+   *   <li>When other is same.
+   *   <li>Then return equal.
+   * </ul>
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>{@link TaxonomyElement#equals(Object)}
+   *   <li>{@link TaxonomyElement#hashCode()}
+   * </ul>
+   */
+  @Test
+  @org.junit.jupiter.api.DisplayName(
+      "Test equals(Object), and hashCode(); when other is same; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TaxonomyElement.equals(Object)", "int TaxonomyElement.hashCode()"})
+  void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
+    // Arrange
+    DisplayName displayName = new DisplayName("42");
+
+    // Act and Assert
+    assertEquals(displayName, displayName);
+    int expectedHashCodeResult = displayName.hashCode();
+    assertEquals(expectedHashCodeResult, displayName.hashCode());
+  }
+
+  /**
+   * Test {@link TaxonomyElement#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link TaxonomyElement#equals(Object)}
+   */
+  @Test
+  @org.junit.jupiter.api.DisplayName(
+      "Test equals(Object); when other is different; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TaxonomyElement.equals(Object)", "int TaxonomyElement.hashCode()"})
+  void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
+    // Arrange
+    DisplayName displayName = new DisplayName("Value");
+
+    // Act and Assert
+    assertNotEquals(displayName, new DisplayName("42"));
+  }
+
+  /**
+   * Test {@link TaxonomyElement#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link TaxonomyElement#equals(Object)}
+   */
+  @Test
+  @org.junit.jupiter.api.DisplayName(
+      "Test equals(Object); when other is different; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TaxonomyElement.equals(Object)", "int TaxonomyElement.hashCode()"})
+  void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
+    // Arrange
+    DisplayName displayName = new DisplayName(null);
+
+    // Act and Assert
+    assertNotEquals(displayName, new DisplayName("42"));
+  }
+
+  /**
+   * Test {@link TaxonomyElement#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link TaxonomyElement#equals(Object)}
+   */
+  @Test
+  @org.junit.jupiter.api.DisplayName(
+      "Test equals(Object); when other is 'null'; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TaxonomyElement.equals(Object)", "int TaxonomyElement.hashCode()"})
+  void testEquals_whenOtherIsNull_thenReturnNotEqual() {
+    // Arrange, Act and Assert
+    assertNotEquals(new DisplayName("42"), null);
+  }
+
+  /**
+   * Test {@link TaxonomyElement#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link TaxonomyElement#equals(Object)}
+   */
+  @Test
+  @org.junit.jupiter.api.DisplayName(
+      "Test equals(Object); when other is wrong type; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean TaxonomyElement.equals(Object)", "int TaxonomyElement.hashCode()"})
+  void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
+    // Arrange, Act and Assert
+    assertNotEquals(new DisplayName("42"), "Different type to TaxonomyElement");
+  }
+
+  /**
+   * Test {@link TaxonomyElement#toString()}.
+   *
+   * <p>Method under test: {@link TaxonomyElement#toString()}
+   */
+  @Test
+  @org.junit.jupiter.api.DisplayName("Test toString()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.lang.String TaxonomyElement.toString()"})
+  void testToString() {
+    // Arrange, Act and Assert
+    assertEquals("TaxonomyElement [value=42, prefix=@]", new DisplayName("42").toString());
+  }
+}

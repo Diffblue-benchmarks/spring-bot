@@ -1,0 +1,3306 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-09-30T12:36:56.905187636Z",
+    "command" : "dcover create --exclude-modules=org.finos.springbot:chat-workflow-coverage --coverage-reports --upload http://localhost:8080 --project-name spring-bot --name with-diffblue-tests",
+    "totalTime" : 120.654,
+    "environmentDetectionTime" : 0.255,
+    "indexingTime" : 0.473,
+    "entryPointsTime" : 0.243,
+    "generationTime" : 1142.565,
+    "timeToFirstTest" : 180.776,
+    "timeToLastTest" : 1271.996,
+    "indexQueryTime" : 5.182,
+    "verificationTime" : 68.645,
+    "validationTime" : 8.443
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R004" : "No meaningful assertions found",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T009" : "No implementation for abstract class",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "T023" : "Testability unknown",
+    "V000" : "Validated successfully"
+  },
+  "summary" : {
+    "classesCount" : 29,
+    "methodsCount" : 225,
+    "cumulativeDiffblueTestCount" : 50,
+    "cumulativeManualTestCount" : 8,
+    "completeTestCount" : 50,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 1231,
+    "perMethodTestability" : {
+      "T000" : 27,
+      "T001" : 43,
+      "T002" : 41,
+      "T003" : 7,
+      "T005" : 29,
+      "T009" : 50,
+      "T010" : 18,
+      "T012" : 6,
+      "T020" : 2,
+      "T023" : 2
+    },
+    "perMethodOutcome" : {
+      "R000" : 134,
+      "R002" : 1,
+      "R004" : 5,
+      "R013" : 1,
+      "T003" : 7,
+      "T005" : 1,
+      "T009" : 50,
+      "T010" : 18,
+      "T012" : 6,
+      "T023" : 2
+    },
+    "perTestOutcome" : {
+      "R000" : 50
+    },
+    "perTestValidation" : {
+      "V000" : 50
+    }
+  },
+  "classes" : {
+    "org.finos.springbot.testing.content.TestRoom" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.content.AbstractContentTest" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 7,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "R004" : 5,
+        "R013" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest" : {
+      "methodsCount" : 30,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T009" : 21,
+        "T010" : 9
+      },
+      "perMethodOutcome" : {
+        "T009" : 21,
+        "T010" : 9
+      }
+    },
+    "org.finos.springbot.tests.controller.Address" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.finos.springbot.tests.controller.OurController" : {
+      "methodsCount" : 21,
+      "completeTestCount" : 22,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 20,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 20,
+        "T005" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 22
+      }
+    },
+    "org.finos.springbot.tests.controller.Person" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T002" : 2,
+        "T005" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 7
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "org.finos.springbot.tests.controller.StartClaim" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T002" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.controller.TestObject" : {
+      "methodsCount" : 15,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 6,
+        "T002" : 6,
+        "T005" : 2,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 15
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.finos.springbot.tests.controller.TestObjects" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 2,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.finos.springbot.tests.form.AbstractFormConverterTest" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T009" : 2,
+        "T010" : 2
+      },
+      "perMethodOutcome" : {
+        "T009" : 2,
+        "T010" : 2
+      }
+    },
+    "org.finos.springbot.tests.form.Collection" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.form.Primitives" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 4,
+        "T002" : 4,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 9
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.form.Primitives$Meal" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 1,
+        "T012" : 3,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T012" : 3,
+        "T023" : 1
+      }
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest" : {
+      "methodsCount" : 39,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 5,
+        "T009" : 27,
+        "T010" : 7
+      },
+      "perMethodOutcome" : {
+        "T003" : 5,
+        "T009" : 27,
+        "T010" : 7
+      }
+    },
+    "org.finos.springbot.tests.work.BooleanWork" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.ChatWork" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.CollectionBeanWork" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.CollectionBeanWork$Inner" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T002" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.CollectionSingleWork" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T002" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.DisplayWork" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T002" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.DropdownWork" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.EnumWork" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.EnumWork$TrafficLights" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 1,
+        "T012" : 3,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T012" : 3,
+        "T023" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.IntegerWork" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.NestedWork" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T002" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.NestedWork$Inner" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.StringWork" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.TimeWork" : {
+      "methodsCount" : 13,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 6,
+        "T002" : 6,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 13
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tests.work.UserWork" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T002" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    }
+  },
+  "methods" : {
+    "org.finos.springbot.testing.content.TestRoom.<init>:(Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "org.finos.springbot.testing.content.TestRoom.getKey:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        17
+      ]
+    },
+    "org.finos.springbot.testing.content.TestRoom.getName:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        22
+      ]
+    },
+    "org.finos.springbot.tests.content.AbstractContentTest.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        20
+      ]
+    },
+    "org.finos.springbot.tests.content.AbstractContentTest.createMessage:()Lorg/finos/springbot/workflow/content/Message;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55,
+        57,
+        58,
+        56,
+        60,
+        61,
+        59,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        69,
+        70,
+        71,
+        68,
+        67,
+        52
+      ]
+    },
+    "org.finos.springbot.tests.content.AbstractContentTest.doAssertsOnContent:(Lorg/finos/springbot/workflow/content/Content;Lorg/finos/springbot/workflow/content/Content;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        37,
+        38,
+        39
+      ]
+    },
+    "org.finos.springbot.tests.content.AbstractContentTest.doAssertsOnObject:(Ljava/lang/Object;Ljava/lang/Object;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        45,
+        46
+      ]
+    },
+    "org.finos.springbot.tests.content.AbstractContentTest.testContentEquals:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    "org.finos.springbot.tests.content.AbstractContentTest.testMatches:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    "org.finos.springbot.tests.content.AbstractContentTest.testRemoveStart:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        103,
+        104,
+        103,
+        106
+      ]
+    },
+    "org.finos.springbot.tests.content.AbstractContentTest.testWithout:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        87,
+        88,
+        87,
+        90
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        35
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.assertHelpResponse:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.assertNoButtons:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.assertThrowsResponse:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.checkHandlerExecutors:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        73,
+        74,
+        75,
+        76,
+        77
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.checkMappings:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        53,
+        54,
+        55
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.checkMethodCall:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        81,
+        82,
+        83,
+        84,
+        85
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.checkMethodCallWithChatVariables:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.checkNoMethodCall1:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        89,
+        90,
+        91
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.checkNoMethodCall2:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        95,
+        96,
+        97
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.checkWildcardMapping:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        67,
+        68,
+        69
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.execute:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.getMappingsFor:(Lorg/finos/springbot/workflow/content/Message;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.getMessageContent:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.getMessageData:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.pressButton:(Ljava/lang/String;Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testAttachmentResponse:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        276,
+        277,
+        278,
+        279,
+        280
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testAuthorChatVariable:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        118,
+        119,
+        120,
+        121
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testButtonPress:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        261,
+        262,
+        263,
+        264,
+        266,
+        267,
+        268,
+        269,
+        270,
+        272
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testCodeblockMapping2:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testCodeblockMapping:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testFormResponse1:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        202,
+        203,
+        204,
+        205
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testFormResponse2:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        209,
+        210,
+        211
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testHelp:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        151,
+        152,
+        153
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testMessageResponse:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        193,
+        194,
+        195,
+        196,
+        197,
+        198
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testOptionalMissing:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        249,
+        250,
+        251,
+        253,
+        255
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testOptionalPresent:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        226,
+        227,
+        228,
+        230,
+        231,
+        233,
+        234,
+        236,
+        237,
+        238
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testTableMapping:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        172,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testThrowsError:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        217,
+        218,
+        219
+      ]
+    },
+    "org.finos.springbot.tests.controller.AbstractHandlerMappingTest.testUserChatVariable:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        132,
+        133,
+        134,
+        135
+      ]
+    },
+    "org.finos.springbot.tests.controller.Address.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        6,
+        7
+      ]
+    },
+    "org.finos.springbot.tests.controller.Address.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        9,
+        10,
+        11
+      ]
+    },
+    "org.finos.springbot.tests.controller.Address.getCity:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        14
+      ]
+    },
+    "org.finos.springbot.tests.controller.Address.setCity:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        18,
+        19
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        31
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.addUserToTopic:(Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/workflow/content/Tag;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        130,
+        131,
+        132
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.attachment:(Lorg/finos/springbot/workflow/content/Addressable;)Lorg/finos/springbot/workflow/response/AttachmentResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        150,
+        151,
+        152,
+        153
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.banWord:(Lorg/finos/springbot/workflow/content/Word;Lorg/finos/springbot/workflow/content/Addressable;)Lorg/finos/springbot/workflow/response/MessageResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        143,
+        144,
+        145
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.callPerson:(Lorg/finos/springbot/tests/controller/Person;)Ljava/util/Collection;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        50,
+        51,
+        52
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.doCommand:(Lorg/finos/springbot/workflow/content/Message;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        77,
+        78,
+        79
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.doList:(Ljava/util/List;Ljava/util/Optional;Lorg/finos/springbot/workflow/content/Word;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        180,
+        181,
+        182
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.dontDoCommand2:(Lorg/finos/springbot/workflow/content/Message;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        91,
+        92,
+        93
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.dontDoCommand:(Lorg/finos/springbot/workflow/content/Message;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        84,
+        85,
+        86
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.form1:(Lorg/finos/springbot/workflow/content/Addressable;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        158,
+        159,
+        160
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.form2:(Lorg/finos/springbot/workflow/content/Addressable;)Lorg/finos/springbot/tests/controller/TestObject;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        165
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.listenToEverything:(Lorg/finos/springbot/workflow/content/Message;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        43,
+        44,
+        45
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.ok:(Lorg/finos/springbot/tests/controller/Person;)Lorg/finos/springbot/tests/controller/TestObject;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        170
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.process1:(Lorg/finos/springbot/workflow/content/Table;Lorg/finos/springbot/workflow/content/User;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        114,
+        115,
+        116
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.process2:(Lorg/finos/springbot/workflow/content/CodeBlock;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        121,
+        122,
+        123
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.processForm:(Lorg/finos/springbot/workflow/form/FormSubmission;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        69,
+        70,
+        71
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.removeUserFromRoom:(Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/workflow/content/Chat;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        137,
+        138,
+        139
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.startNewClaim:(Lorg/finos/springbot/tests/controller/StartClaim;)Lorg/finos/springbot/tests/controller/TestObject;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        59,
+        60,
+        61
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.throwsError:()Lorg/finos/springbot/tests/controller/TestObject;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        175
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.userDetails2:(Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/workflow/content/User;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        107,
+        108,
+        109
+      ]
+    },
+    "org.finos.springbot.tests.controller.OurController.userDetails:(Lorg/finos/springbot/workflow/content/User;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        100,
+        101,
+        102
+      ]
+    },
+    "org.finos.springbot.tests.controller.Person.<init>:()V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        13,
+        14
+      ]
+    },
+    "org.finos.springbot.tests.controller.Person.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        21,
+        22,
+        23
+      ]
+    },
+    "org.finos.springbot.tests.controller.Person.<init>:(Ljava/util/List;Ljava/util/List;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    "org.finos.springbot.tests.controller.Person.getAddresses:()Ljava/util/List;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        34
+      ]
+    },
+    "org.finos.springbot.tests.controller.Person.getNames:()Ljava/util/List;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        26
+      ]
+    },
+    "org.finos.springbot.tests.controller.Person.setAddresses:(Ljava/util/List;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        38,
+        39
+      ]
+    },
+    "org.finos.springbot.tests.controller.Person.setNames:(Ljava/util/List;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        30,
+        31
+      ]
+    },
+    "org.finos.springbot.tests.controller.StartClaim.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        3
+      ]
+    },
+    "org.finos.springbot.tests.controller.StartClaim.getAmount:()F" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        18
+      ]
+    },
+    "org.finos.springbot.tests.controller.StartClaim.getDescription:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        10
+      ]
+    },
+    "org.finos.springbot.tests.controller.StartClaim.setAmount:(F)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        22,
+        23
+      ]
+    },
+    "org.finos.springbot.tests.controller.StartClaim.setDescription:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        14,
+        15
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        22,
+        23
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.<init>:(Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/Number;Ljava/lang/Number;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.getAskQty:()Ljava/lang/Number;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        76
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.getBidQty:()Ljava/lang/Number;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.getCreator:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.getIsin:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.isAskAxed:()Z" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.isBidAxed:()Z" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.setAskAxed:(Z)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        56,
+        57
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.setAskQty:(Ljava/lang/Number;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        80,
+        81
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.setBidAxed:(Z)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        48,
+        49
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.setBidQty:(Ljava/lang/Number;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        72,
+        73
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.setCreator:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        64,
+        65
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.setIsin:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        40,
+        41
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObject.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        85
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObjects.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        17,
+        13,
+        18
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObjects.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        21,
+        13,
+        22,
+        23
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObjects.getItems:()Ljava/util/List;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        26
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObjects.setItems:(Ljava/util/List;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        30,
+        31
+      ]
+    },
+    "org.finos.springbot.tests.controller.TestObjects.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        35
+      ]
+    },
+    "org.finos.springbot.tests.form.AbstractFormConverterTest.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        12
+      ]
+    },
+    "org.finos.springbot.tests.form.AbstractFormConverterTest.before:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.form.AbstractFormConverterTest.testCollection:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ]
+    },
+    "org.finos.springbot.tests.form.AbstractFormConverterTest.testPrimitives:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ]
+    },
+    "org.finos.springbot.tests.form.Collection.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        17,
+        13,
+        18
+      ]
+    },
+    "org.finos.springbot.tests.form.Collection.getItems:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        21
+      ]
+    },
+    "org.finos.springbot.tests.form.Collection.setItems:(Ljava/util/List;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        25,
+        26
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives$Meal.$values:()[Lorg/finos/springbot/tests/form/Primitives$Meal;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        8
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives$Meal.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "org.finos.springbot.tests.form.Primitives$Meal.<init>:(Ljava/lang/String;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        8
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives$Meal.valueOf:(Ljava/lang/String;)Lorg/finos/springbot/tests/form/Primitives$Meal;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        8
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives$Meal.values:()[Lorg/finos/springbot/tests/form/Primitives$Meal;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        8
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        6
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives.getA:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        16
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives.getC:()I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        34
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives.getM:()Lorg/finos/springbot/tests/form/Primitives$Meal;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        28
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives.isB:()Z" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        22
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives.setA:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        19,
+        20
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives.setB:(Z)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        25,
+        26
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives.setC:(I)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        37,
+        38
+      ]
+    },
+    "org.finos.springbot.tests.form.Primitives.setM:(Lorg/finos/springbot/tests/form/Primitives$Meal;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        31,
+        32
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        41
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.createChatWorkResponse:(Lorg/finos/springbot/workflow/annotations/WorkMode;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        64,
+        65,
+        67,
+        69,
+        70,
+        71,
+        72,
+        74
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.createCollectionBean:()Lorg/finos/springbot/tests/work/CollectionBeanWork;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.createCollectionSingle:()Lorg/finos/springbot/tests/work/CollectionSingleWork;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        99,
+        100,
+        101,
+        102
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.createDropdownWork:(Lorg/finos/springbot/workflow/annotations/WorkMode;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.createNestedWork:()Lorg/finos/springbot/tests/work/NestedWork;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.createSomeChats:(I)Lorg/finos/springbot/workflow/form/DropdownList;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.createSomeUsers:(I)Lorg/finos/springbot/workflow/form/DropdownList;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.createTimeWork:()Lorg/finos/springbot/tests/work/TimeWork;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.createUserWorkResponse:(Lorg/finos/springbot/workflow/annotations/WorkMode;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        263,
+        264,
+        266,
+        267,
+        269,
+        270,
+        271,
+        272,
+        273,
+        275
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.getChat:()Lorg/finos/springbot/workflow/content/Chat;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.getTo:()Lorg/finos/springbot/workflow/content/Addressable;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.getUser:()Lorg/finos/springbot/workflow/content/User;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testBooleanWorkEdit:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testBooleanWorkView:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        51,
+        52,
+        53,
+        54
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testChatWorkEdit:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        84,
+        85
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testChatWorkView:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        79,
+        80
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testCollectionBeanWorkEdit:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        113,
+        114,
+        115
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testCollectionBeanWorkView:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        107,
+        108,
+        109
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testCollectionSingleWorkEdit:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        125,
+        126,
+        127
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testCollectionSingleWorkView:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        119,
+        120,
+        121
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testDisplayWorkEdit:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        139,
+        140,
+        141,
+        142,
+        143
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testDisplayWorkView:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        131,
+        132,
+        133,
+        134,
+        135
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testDropdownWorkEdit:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        166,
+        167
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testDropdownWorkView:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        161,
+        162
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testEnumWorkEdit:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        178,
+        179,
+        180,
+        181
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testEnumWorkView:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        171,
+        172,
+        173,
+        174
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testIntegerWorkEdit:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        193,
+        194,
+        195,
+        196
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testIntegerWorkView:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        185,
+        186,
+        187,
+        188
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testNestedWorkEdit:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        206,
+        207,
+        208
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testNestedWorkView:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        200,
+        201,
+        202
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testSomeButtons:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        293,
+        294,
+        296,
+        301,
+        302,
+        303,
+        304,
+        306,
+        307,
+        308
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testStringWorkEdit:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        230,
+        231,
+        232,
+        233
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testStringWorkView:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        223,
+        224,
+        225,
+        226
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testTemplating:(Lorg/finos/springbot/workflow/response/WorkResponse;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testTimeWorkEdit:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        243,
+        244,
+        245
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testTimeWorkView:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        237,
+        238,
+        239
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testUserWorkEdit:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        285,
+        286
+      ]
+    },
+    "org.finos.springbot.tests.templating.AbstractTemplatingTest.testUserWorkView:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        280,
+        281
+      ]
+    },
+    "org.finos.springbot.tests.work.BooleanWork.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        6
+      ]
+    },
+    "org.finos.springbot.tests.work.BooleanWork.getS:()Ljava/lang/Boolean;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        11
+      ]
+    },
+    "org.finos.springbot.tests.work.BooleanWork.setS:(Ljava/lang/Boolean;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        15,
+        16
+      ]
+    },
+    "org.finos.springbot.tests.work.ChatWork.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        7
+      ]
+    },
+    "org.finos.springbot.tests.work.ChatWork.getS:()Lorg/finos/springbot/workflow/content/Chat;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        12
+      ]
+    },
+    "org.finos.springbot.tests.work.ChatWork.setS:(Lorg/finos/springbot/workflow/content/Chat;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        16,
+        17
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionBeanWork$Inner.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        12
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionBeanWork$Inner.getS:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        21
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionBeanWork$Inner.isB:()Z" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        29
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionBeanWork$Inner.setB:(Z)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        33,
+        34
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionBeanWork$Inner.setS:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        25,
+        26
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionBeanWork.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        9
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionBeanWork.getInners:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionBeanWork.setInners:(Ljava/util/List;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        47,
+        48
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionSingleWork.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        8
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionSingleWork.getInts:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        14
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionSingleWork.getStrings:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        22
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionSingleWork.setInts:(Ljava/util/List;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        18,
+        19
+      ]
+    },
+    "org.finos.springbot.tests.work.CollectionSingleWork.setStrings:(Ljava/util/List;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        26,
+        27
+      ]
+    },
+    "org.finos.springbot.tests.work.DisplayWork.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        7
+      ]
+    },
+    "org.finos.springbot.tests.work.DisplayWork.getInvisible:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        24
+      ]
+    },
+    "org.finos.springbot.tests.work.DisplayWork.getS:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        16
+      ]
+    },
+    "org.finos.springbot.tests.work.DisplayWork.setInvisible:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        28,
+        29
+      ]
+    },
+    "org.finos.springbot.tests.work.DisplayWork.setS:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        20,
+        21
+      ]
+    },
+    "org.finos.springbot.tests.work.DropdownWork.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        5
+      ]
+    },
+    "org.finos.springbot.tests.work.DropdownWork.getS:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        12
+      ]
+    },
+    "org.finos.springbot.tests.work.DropdownWork.setS:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        16,
+        17
+      ]
+    },
+    "org.finos.springbot.tests.work.EnumWork$TrafficLights.$values:()[Lorg/finos/springbot/tests/work/EnumWork$TrafficLights;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        8
+      ]
+    },
+    "org.finos.springbot.tests.work.EnumWork$TrafficLights.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "org.finos.springbot.tests.work.EnumWork$TrafficLights.<init>:(Ljava/lang/String;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        8
+      ]
+    },
+    "org.finos.springbot.tests.work.EnumWork$TrafficLights.valueOf:(Ljava/lang/String;)Lorg/finos/springbot/tests/work/EnumWork$TrafficLights;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        8
+      ]
+    },
+    "org.finos.springbot.tests.work.EnumWork$TrafficLights.values:()[Lorg/finos/springbot/tests/work/EnumWork$TrafficLights;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        8
+      ]
+    },
+    "org.finos.springbot.tests.work.EnumWork.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        6
+      ]
+    },
+    "org.finos.springbot.tests.work.EnumWork.getS:()Lorg/finos/springbot/tests/work/EnumWork$TrafficLights;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        13
+      ]
+    },
+    "org.finos.springbot.tests.work.EnumWork.setS:(Lorg/finos/springbot/tests/work/EnumWork$TrafficLights;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        17,
+        18
+      ]
+    },
+    "org.finos.springbot.tests.work.IntegerWork.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        9
+      ]
+    },
+    "org.finos.springbot.tests.work.IntegerWork.getS:()Ljava/lang/Integer;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        16
+      ]
+    },
+    "org.finos.springbot.tests.work.IntegerWork.setS:(Ljava/lang/Integer;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        20,
+        21
+      ]
+    },
+    "org.finos.springbot.tests.work.NestedWork$Inner.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        8
+      ]
+    },
+    "org.finos.springbot.tests.work.NestedWork$Inner.getS:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        13
+      ]
+    },
+    "org.finos.springbot.tests.work.NestedWork$Inner.setS:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        17,
+        18
+      ]
+    },
+    "org.finos.springbot.tests.work.NestedWork.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        6
+      ]
+    },
+    "org.finos.springbot.tests.work.NestedWork.getA:()Lorg/finos/springbot/tests/work/NestedWork$Inner;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        25
+      ]
+    },
+    "org.finos.springbot.tests.work.NestedWork.getB:()Lorg/finos/springbot/tests/work/NestedWork$Inner;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        33
+      ]
+    },
+    "org.finos.springbot.tests.work.NestedWork.setA:(Lorg/finos/springbot/tests/work/NestedWork$Inner;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        29,
+        30
+      ]
+    },
+    "org.finos.springbot.tests.work.NestedWork.setB:(Lorg/finos/springbot/tests/work/NestedWork$Inner;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        37,
+        38
+      ]
+    },
+    "org.finos.springbot.tests.work.StringWork.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        9
+      ]
+    },
+    "org.finos.springbot.tests.work.StringWork.getS:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        16
+      ]
+    },
+    "org.finos.springbot.tests.work.StringWork.setS:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        20,
+        21
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        13
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.getI:()Ljava/time/Instant;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        28
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.getLd:()Ljava/time/LocalDate;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.getLdt:()Ljava/time/LocalDateTime;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.getLt:()Ljava/time/LocalTime;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.getZdt:()Ljava/time/ZonedDateTime;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.getZid:()Ljava/time/ZoneId;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.setI:(Ljava/time/Instant;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        32,
+        33
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.setLd:(Ljava/time/LocalDate;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        56,
+        57
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.setLdt:(Ljava/time/LocalDateTime;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        40,
+        41
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.setLt:(Ljava/time/LocalTime;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        64,
+        65
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.setZdt:(Ljava/time/ZonedDateTime;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        72,
+        73
+      ]
+    },
+    "org.finos.springbot.tests.work.TimeWork.setZid:(Ljava/time/ZoneId;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        48,
+        49
+      ]
+    },
+    "org.finos.springbot.tests.work.UserWork.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        9
+      ]
+    },
+    "org.finos.springbot.tests.work.UserWork.getB:()Lorg/finos/springbot/workflow/content/User;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        18
+      ]
+    },
+    "org.finos.springbot.tests.work.UserWork.getS:()Lorg/finos/springbot/workflow/content/User;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        26
+      ]
+    },
+    "org.finos.springbot.tests.work.UserWork.setB:(Lorg/finos/springbot/workflow/content/User;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        22,
+        23
+      ]
+    },
+    "org.finos.springbot.tests.work.UserWork.setS:(Lorg/finos/springbot/workflow/content/User;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        30,
+        31
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

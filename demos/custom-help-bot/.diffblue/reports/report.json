@@ -1,0 +1,225 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-09-30T12:36:56.905187636Z",
+    "command" : "dcover create --exclude-modules=org.finos.springbot:chat-workflow-coverage --coverage-reports --upload http://localhost:8080 --project-name spring-bot --name with-diffblue-tests",
+    "totalTime" : 103.924,
+    "environmentDetectionTime" : 0.068,
+    "indexingTime" : 0.513,
+    "entryPointsTime" : 0.051,
+    "generationTime" : 5752.571,
+    "timeToFirstTest" : 5839.018,
+    "timeToLastTest" : 6456.874,
+    "indexQueryTime" : 10.102,
+    "verificationTime" : 353.876,
+    "validationTime" : 7.732
+  },
+  "codes" : {
+    "R000" : "Success",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T006" : "Main method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 3,
+    "methodsCount" : 10,
+    "cumulativeDiffblueTestCount" : 8,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 8,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 67,
+    "perMethodTestability" : {
+      "T000" : 5,
+      "T003" : 1,
+      "T005" : 3,
+      "T006" : 1
+    },
+    "perMethodOutcome" : {
+      "R000" : 5,
+      "T003" : 1,
+      "T005" : 3,
+      "T006" : 1
+    },
+    "perTestOutcome" : {
+      "R000" : 8
+    },
+    "perTestValidation" : {
+      "V000" : 8,
+      "V003" : 17
+    }
+  },
+  "classes" : {
+    "org.finos.springbot.example.demo.CustomHelpApplication" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 1,
+        "T006" : 1
+      },
+      "perMethodOutcome" : {
+        "T005" : 1,
+        "T006" : 1
+      }
+    },
+    "org.finos.springbot.example.demo.controller.CustomHelpController" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T003" : 1,
+        "T005" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "org.finos.springbot.example.demo.controller.DemoController" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "T005" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    }
+  },
+  "methods" : {
+    "org.finos.springbot.example.demo.CustomHelpApplication.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        9
+      ]
+    },
+    "org.finos.springbot.example.demo.CustomHelpApplication.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        12,
+        13
+      ]
+    },
+    "org.finos.springbot.example.demo.controller.CustomHelpController.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        21
+      ]
+    },
+    "org.finos.springbot.example.demo.controller.CustomHelpController.formatButtonText:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        43,
+        44,
+        45,
+        43,
+        46,
+        43
+      ]
+    },
+    "org.finos.springbot.example.demo.controller.CustomHelpController.handleHelp:(Lorg/finos/springbot/workflow/content/Addressable;Lorg/finos/springbot/workflow/content/User;)Lorg/finos/springbot/workflow/help/HelpPage;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        34,
+        35,
+        36,
+        37,
+        39
+      ]
+    },
+    "org.finos.springbot.example.demo.controller.DemoController.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        16
+      ]
+    },
+    "org.finos.springbot.example.demo.controller.DemoController.pingTest1:(Lorg/finos/springbot/workflow/content/Addressable;)Lorg/finos/springbot/workflow/response/MessageResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        20
+      ]
+    },
+    "org.finos.springbot.example.demo.controller.DemoController.pingTest2:(Lorg/finos/springbot/workflow/content/Addressable;)Lorg/finos/springbot/workflow/response/MessageResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        25
+      ]
+    },
+    "org.finos.springbot.example.demo.controller.DemoController.pingTest3:(Lorg/finos/springbot/workflow/content/Addressable;)Lorg/finos/springbot/workflow/response/MessageResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        30
+      ]
+    },
+    "org.finos.springbot.example.demo.controller.DemoController.pingTest4:(Lorg/finos/springbot/workflow/content/Addressable;)Lorg/finos/springbot/workflow/response/MessageResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        35
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

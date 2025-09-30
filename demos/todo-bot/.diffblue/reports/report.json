@@ -1,0 +1,839 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-09-30T12:36:56.905187636Z",
+    "command" : "dcover create --exclude-modules=org.finos.springbot:chat-workflow-coverage --coverage-reports --upload http://localhost:8080 --project-name spring-bot --name with-diffblue-tests",
+    "totalTime" : 150.348,
+    "environmentDetectionTime" : 0.059,
+    "indexingTime" : 0.518,
+    "entryPointsTime" : 0.046,
+    "generationTime" : 5838.706,
+    "timeToFirstTest" : 5990.248,
+    "timeToLastTest" : 6585.746,
+    "indexQueryTime" : 7.388,
+    "verificationTime" : 365.64,
+    "validationTime" : 8.825
+  },
+  "codes" : {
+    "R000" : "Success",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T006" : "Main method",
+    "T012" : "Synthetic method",
+    "T023" : "Testability unknown",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 7,
+    "methodsCount" : 53,
+    "cumulativeDiffblueTestCount" : 43,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 43,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 274,
+    "perMethodTestability" : {
+      "T000" : 12,
+      "T001" : 9,
+      "T002" : 9,
+      "T003" : 6,
+      "T005" : 8,
+      "T006" : 1,
+      "T012" : 7,
+      "T023" : 1
+    },
+    "perMethodOutcome" : {
+      "R000" : 36,
+      "T003" : 6,
+      "T005" : 2,
+      "T006" : 1,
+      "T012" : 7,
+      "T023" : 1
+    },
+    "perTestOutcome" : {
+      "R000" : 43
+    },
+    "perTestValidation" : {
+      "V000" : 43,
+      "V003" : 17
+    }
+  },
+  "classes" : {
+    "org.finos.springbot.example.todo.NewItemDetails" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T002" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.example.todo.SendToRoom" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.example.todo.ToDoController" : {
+      "methodsCount" : 21,
+      "completeTestCount" : 36,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 11,
+        "T003" : 5,
+        "T005" : 1,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 11,
+        "T003" : 5,
+        "T005" : 1,
+        "T012" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 36
+      }
+    },
+    "org.finos.springbot.example.todo.ToDoItem" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 5,
+        "T002" : 5,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 12
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.finos.springbot.example.todo.ToDoItem$Status" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 1,
+        "T012" : 3,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T012" : 3,
+        "T023" : 1
+      }
+    },
+    "org.finos.springbot.example.todo.ToDoList" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.finos.springbot.example.todo.ToDoWorkflowApp" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1,
+        "T006" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T005" : 1,
+        "T006" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    }
+  },
+  "methods" : {
+    "org.finos.springbot.example.todo.NewItemDetails.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        23,
+        24
+      ]
+    },
+    "org.finos.springbot.example.todo.NewItemDetails.getAssignTo:()Lorg/finos/springbot/workflow/content/User;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        41
+      ]
+    },
+    "org.finos.springbot.example.todo.NewItemDetails.getDescription:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        29
+      ]
+    },
+    "org.finos.springbot.example.todo.NewItemDetails.setAssignTo:(Lorg/finos/springbot/workflow/content/User;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        47,
+        48
+      ]
+    },
+    "org.finos.springbot.example.todo.NewItemDetails.setDescription:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        35,
+        36
+      ]
+    },
+    "org.finos.springbot.example.todo.SendToRoom.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        9
+      ]
+    },
+    "org.finos.springbot.example.todo.SendToRoom.getRoom:()Lorg/finos/springbot/workflow/content/Chat;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        14
+      ]
+    },
+    "org.finos.springbot.example.todo.SendToRoom.setRoom:(Lorg/finos/springbot/workflow/content/Chat;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        18,
+        19
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        26
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.add1:(Lorg/finos/springbot/workflow/content/User;)Lorg/finos/springbot/example/todo/NewItemDetails;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        45,
+        46,
+        47
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.add:(Lorg/finos/springbot/example/todo/NewItemDetails;Lorg/finos/springbot/workflow/content/User;Ljava/util/Optional;)Lorg/finos/springbot/example/todo/ToDoList;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.assign:(Ljava/util/List;Ljava/util/Optional;Lorg/finos/springbot/workflow/content/User;Ljava/util/Optional;)Lorg/finos/springbot/example/todo/ToDoList;" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        142,
+        143,
+        144,
+        145
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.cancel:(Ljava/util/Optional;)Lorg/finos/springbot/example/todo/ToDoList;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        60,
+        61
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.changeStatus:(Lorg/finos/springbot/example/todo/ToDoList;Ljava/util/List;Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/example/todo/ToDoItem$Status;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        111,
+        112,
+        114,
+        115,
+        116,
+        122,
+        124
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.complete:(Ljava/util/List;Ljava/util/Optional;Lorg/finos/springbot/workflow/content/User;Ljava/util/Optional;Lorg/finos/springbot/workflow/content/Chat;)Ljava/util/List;" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        133,
+        134,
+        135,
+        136,
+        137
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.createNotification:(Lorg/finos/springbot/example/todo/ToDoItem;)Lorg/finos/springbot/workflow/response/Response;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        128
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.delete:(Ljava/util/List;Ljava/util/Optional;)Lorg/finos/springbot/example/todo/ToDoList;" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        105,
+        106,
+        107
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.edit:(Ljava/util/Optional;)Lorg/finos/springbot/example/todo/ToDoList;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        75,
+        76,
+        77
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.init:()Lorg/finos/springbot/example/todo/ToDoList;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        30,
+        31
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.lambda$changeStatus$2:(Ljava/util/Set;Lorg/finos/springbot/example/todo/ToDoItem;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        115
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.lambda$changeStatus$3:(Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/example/todo/ToDoItem$Status;Ljava/util/List;Lorg/finos/springbot/example/todo/ToDoItem;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        117,
+        118,
+        119,
+        120
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.lambda$numbers$0:(Lorg/finos/springbot/workflow/content/Word;)Ljava/lang/Integer;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        91
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.lambda$numbers$1:(Ljava/lang/Integer;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        92
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.numbers:(Ljava/util/List;)Ljava/util/Set;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        90,
+        91,
+        92,
+        93,
+        90
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.parseInt:(Lorg/finos/springbot/workflow/content/Word;)Ljava/lang/Integer;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        83,
+        84,
+        85
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.reNumber:(Lorg/finos/springbot/example/todo/ToDoList;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        35,
+        36,
+        37,
+        38,
+        39
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.sendToRoom:()Lorg/finos/springbot/example/todo/SendToRoom;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        151
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.sendToRoom:(Lorg/finos/springbot/example/todo/SendToRoom;Lorg/finos/springbot/example/todo/ToDoList;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        156
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoController.show:(Ljava/util/Optional;)Lorg/finos/springbot/example/todo/ToDoList;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        67,
+        68,
+        69
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem$Status.$values:()[Lorg/finos/springbot/example/todo/ToDoItem$Status;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        18
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem$Status.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "org.finos.springbot.example.todo.ToDoItem$Status.<init>:(Ljava/lang/String;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        18
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem$Status.valueOf:(Ljava/lang/String;)Lorg/finos/springbot/example/todo/ToDoItem$Status;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        18
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem$Status.values:()[Lorg/finos/springbot/example/todo/ToDoItem$Status;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        18
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        29,
+        30
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem.<init>:(Ljava/lang/String;Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/example/todo/ToDoItem$Status;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem.getAssignTo:()Lorg/finos/springbot/workflow/content/User;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        86
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem.getCreator:()Lorg/finos/springbot/workflow/content/User;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        72
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem.getDescription:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        58
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem.getNumber:()Ljava/lang/Integer;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem.getStatus:()Lorg/finos/springbot/example/todo/ToDoItem$Status;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        100
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem.setAssignTo:(Lorg/finos/springbot/workflow/content/User;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        93,
+        94
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem.setCreator:(Lorg/finos/springbot/workflow/content/User;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        79,
+        80
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem.setDescription:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        65,
+        66
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem.setNumber:(Ljava/lang/Integer;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        51,
+        52
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoItem.setStatus:(Lorg/finos/springbot/example/todo/ToDoItem$Status;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        107,
+        108
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoList.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        26,
+        22,
+        27
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoList.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        30,
+        22,
+        31,
+        32
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoList.getItems:()Ljava/util/List;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        35
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoList.setItems:(Ljava/util/List;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        39,
+        40
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoWorkflowApp.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        10
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoWorkflowApp.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        14,
+        15
+      ]
+    },
+    "org.finos.springbot.example.todo.ToDoWorkflowApp.rwec:(Lorg/finos/springbot/workflow/response/handlers/ResponseHandlers;)Lorg/finos/springbot/workflow/welcome/RoomWelcomeEventConsumer;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        19
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

@@ -1,0 +1,952 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-09-30T12:36:56.905187636Z",
+    "command" : "dcover create --exclude-modules=org.finos.springbot:chat-workflow-coverage --coverage-reports --upload http://localhost:8080 --project-name spring-bot --name with-diffblue-tests",
+    "totalTime" : 73.753,
+    "environmentDetectionTime" : 0.05,
+    "indexingTime" : 0.482,
+    "entryPointsTime" : 0.041,
+    "generationTime" : 1226.377,
+    "timeToFirstTest" : 359.297,
+    "timeToLastTest" : 1416.766,
+    "indexQueryTime" : 2.595,
+    "verificationTime" : 77.422,
+    "validationTime" : 5.585
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R004" : "No meaningful assertions found",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T005" : "Trivial constructor",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully"
+  },
+  "summary" : {
+    "classesCount" : 15,
+    "methodsCount" : 51,
+    "cumulativeDiffblueTestCount" : 60,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 60,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 278,
+    "perMethodTestability" : {
+      "T000" : 11,
+      "T001" : 6,
+      "T002" : 1,
+      "T005" : 25,
+      "T010" : 5,
+      "T012" : 3
+    },
+    "perMethodOutcome" : {
+      "R000" : 41,
+      "R004" : 1,
+      "T005" : 1,
+      "T010" : 5,
+      "T012" : 3
+    },
+    "perTestOutcome" : {
+      "R000" : 60
+    },
+    "perTestValidation" : {
+      "V000" : 60
+    }
+  },
+  "classes" : {
+    "com.symphony.user.DisplayName" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "com.symphony.user.EmailAddress" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "com.symphony.user.Mention" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "com.symphony.user.StreamID" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "com.symphony.user.UserId" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.finos.springbot.entities.VersionSpaceHelp" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T005" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.symphonyoss.Taxonomy" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 27,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T001" : 1,
+        "T002" : 1,
+        "T005" : 2,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 8,
+        "T012" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 27
+      }
+    },
+    "org.symphonyoss.TaxonomyElement" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T010" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "R004" : 1,
+        "T010" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 9
+      }
+    },
+    "org.symphonyoss.fin.Security" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.symphonyoss.fin.security.id.Cusip" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.symphonyoss.fin.security.id.Isin" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.symphonyoss.fin.security.id.Openfigi" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.symphonyoss.fin.security.id.SecId" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T010" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T010" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.symphonyoss.fin.security.id.Ticker" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.symphonyoss.taxonomy.Hashtag" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 1,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    }
+  },
+  "methods" : {
+    "com.symphony.user.DisplayName.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        8,
+        9
+      ]
+    },
+    "com.symphony.user.DisplayName.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        12,
+        13
+      ]
+    },
+    "com.symphony.user.DisplayName.getSymbolPrefix:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        17
+      ]
+    },
+    "com.symphony.user.EmailAddress.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        8,
+        9
+      ]
+    },
+    "com.symphony.user.EmailAddress.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        12,
+        13
+      ]
+    },
+    "com.symphony.user.EmailAddress.getSymbolPrefix:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        17
+      ]
+    },
+    "com.symphony.user.Mention.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        11,
+        12
+      ]
+    },
+    "com.symphony.user.Mention.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        15,
+        16
+      ]
+    },
+    "com.symphony.user.StreamID.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        8,
+        9
+      ]
+    },
+    "com.symphony.user.StreamID.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        12,
+        13
+      ]
+    },
+    "com.symphony.user.StreamID.getSymbolPrefix:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        17
+      ]
+    },
+    "com.symphony.user.UserId.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        8,
+        9
+      ]
+    },
+    "com.symphony.user.UserId.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        12,
+        13
+      ]
+    },
+    "com.symphony.user.UserId.getSymbolPrefix:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        17
+      ]
+    },
+    "org.finos.springbot.entities.VersionSpaceHelp.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        19
+      ]
+    },
+    "org.finos.springbot.entities.VersionSpaceHelp.basicSymphonyVersionSpace:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        26,
+        32,
+        33,
+        34,
+        35,
+        26
+      ]
+    },
+    "org.symphonyoss.Taxonomy.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        15,
+        16
+      ]
+    },
+    "org.symphonyoss.Taxonomy.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        10,
+        11,
+        12
+      ]
+    },
+    "org.symphonyoss.Taxonomy.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 11,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 11
+      },
+      "lineNumbers" : [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "org.symphonyoss.Taxonomy.fromTaxonomy:(Ljava/lang/Class;)Ljava/lang/String;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        64
+      ]
+    },
+    "org.symphonyoss.Taxonomy.getId:()Ljava/util/List;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        19
+      ]
+    },
+    "org.symphonyoss.Taxonomy.hashCode:()I" : {
+      "completeTestCount" : 11,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 11
+      },
+      "lineNumbers" : [
+        28,
+        29,
+        30,
+        31
+      ]
+    },
+    "org.symphonyoss.Taxonomy.lambda$fromTaxonomy$0:(Lorg/symphonyoss/TaxonomyElement;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        65
+      ]
+    },
+    "org.symphonyoss.Taxonomy.lambda$fromTaxonomy$1:(Ljava/lang/Class;Lorg/symphonyoss/TaxonomyElement;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        66
+      ]
+    },
+    "org.symphonyoss.Taxonomy.lambda$fromTaxonomy$2:(Lorg/symphonyoss/TaxonomyElement;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "org.symphonyoss.Taxonomy.setId:(Ljava/util/List;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        23,
+        24
+      ]
+    },
+    "org.symphonyoss.Taxonomy.taxonomyPartMatch:(Ljava/util/List;Ljava/util/List;)Z" : {
+      "completeTestCount" : 10,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 10
+      },
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55,
+        57,
+        58,
+        60
+      ]
+    },
+    "org.symphonyoss.TaxonomyElement.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        13,
+        14
+      ]
+    },
+    "org.symphonyoss.TaxonomyElement.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        17,
+        18,
+        19
+      ]
+    },
+    "org.symphonyoss.TaxonomyElement.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53
+      ]
+    },
+    "org.symphonyoss.TaxonomyElement.getSymbolPrefix:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "org.symphonyoss.TaxonomyElement.getValue:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        24
+      ]
+    },
+    "org.symphonyoss.TaxonomyElement.hashCode:()I" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        33,
+        34,
+        35,
+        36
+      ]
+    },
+    "org.symphonyoss.TaxonomyElement.setValue:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        28,
+        29
+      ]
+    },
+    "org.symphonyoss.TaxonomyElement.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        61
+      ]
+    },
+    "org.symphonyoss.fin.Security.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        11,
+        12
+      ]
+    },
+    "org.symphonyoss.fin.Security.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        15,
+        16
+      ]
+    },
+    "org.symphonyoss.fin.security.id.Cusip.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        6,
+        7
+      ]
+    },
+    "org.symphonyoss.fin.security.id.Cusip.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        10,
+        11
+      ]
+    },
+    "org.symphonyoss.fin.security.id.Isin.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        6,
+        7
+      ]
+    },
+    "org.symphonyoss.fin.security.id.Isin.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        10,
+        11
+      ]
+    },
+    "org.symphonyoss.fin.security.id.Openfigi.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        6,
+        7
+      ]
+    },
+    "org.symphonyoss.fin.security.id.Openfigi.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        10,
+        11
+      ]
+    },
+    "org.symphonyoss.fin.security.id.SecId.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        8,
+        9
+      ]
+    },
+    "org.symphonyoss.fin.security.id.SecId.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        12,
+        13
+      ]
+    },
+    "org.symphonyoss.fin.security.id.SecId.getSymbolPrefix:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        17
+      ]
+    },
+    "org.symphonyoss.fin.security.id.Ticker.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        6,
+        7
+      ]
+    },
+    "org.symphonyoss.fin.security.id.Ticker.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        10,
+        11
+      ]
+    },
+    "org.symphonyoss.taxonomy.Hashtag.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        8,
+        9
+      ]
+    },
+    "org.symphonyoss.taxonomy.Hashtag.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        12,
+        13
+      ]
+    },
+    "org.symphonyoss.taxonomy.Hashtag.getSymbolPrefix:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        17
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}
