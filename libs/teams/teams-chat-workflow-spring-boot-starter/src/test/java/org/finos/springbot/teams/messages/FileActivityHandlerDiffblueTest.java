@@ -355,6 +355,7 @@ class FileActivityHandlerDiffblueTest {
     verify(withAdapter).sendActivities(isA(TurnContext.class), isA(List.class));
     assertNull(actualOnTeamsFileConsentDeclineResult.get());
     assertTrue(turnContext.getResponded());
+    assertTrue(actualOnTeamsFileConsentDeclineResult.isDone());
   }
 
   /**
