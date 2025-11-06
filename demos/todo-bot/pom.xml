@@ -20,15 +20,44 @@
 	</properties>
 
 	<dependencies>
-	    <dependency>
+		<dependency>
+			<groupId>com.diffblue.cover</groupId>
+			<artifactId>cover-annotations</artifactId>
+			<version>1.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.finos.springbot</groupId>
 			<artifactId>symphony-bdk-chat-workflow-spring-boot-starter</artifactId>
 			<version>10.0.2-SNAPSHOT</version>
 		</dependency>
-	    <dependency>
+		<dependency>
 			<groupId>org.finos.springbot</groupId>
 			<artifactId>teams-chat-workflow-spring-boot-starter</artifactId>
 			<version>10.0.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-test</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
