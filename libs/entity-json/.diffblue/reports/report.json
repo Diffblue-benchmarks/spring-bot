@@ -1,0 +1,735 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-11-06T16:39:40.904071294Z",
+    "command" : "dcover create --exclude-modules=org.finos.springbot:chat-workflow-coverage --coverage-reports --upload http://localhost:8080 --project-name spring-bot --name with-diffblue-tests",
+    "totalTime" : 102.633,
+    "environmentDetectionTime" : 0.243,
+    "indexingTime" : 0.27,
+    "entryPointsTime" : 0.24,
+    "generationTime" : 1111.41,
+    "timeToFirstTest" : 272.581,
+    "timeToLastTest" : 1263.661,
+    "indexQueryTime" : 3.073,
+    "verificationTime" : 62.431,
+    "validationTime" : 10.321
+  },
+  "codes" : {
+    "R000" : "Success",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T003" : "Private method",
+    "T004" : "In anonymous inner class",
+    "T005" : "Trivial constructor",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 8,
+    "methodsCount" : 41,
+    "cumulativeDiffblueTestCount" : 52,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 52,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 295,
+    "perMethodTestability" : {
+      "T000" : 16,
+      "T001" : 1,
+      "T003" : 1,
+      "T004" : 11,
+      "T005" : 7,
+      "T012" : 4,
+      "T020" : 1
+    },
+    "perMethodOutcome" : {
+      "R000" : 24,
+      "T003" : 1,
+      "T004" : 11,
+      "T005" : 1,
+      "T012" : 4
+    },
+    "perTestOutcome" : {
+      "R000" : 52
+    },
+    "perTestValidation" : {
+      "V000" : 52,
+      "V003" : 2
+    }
+  },
+  "classes" : {
+    "org.finos.springbot.entityjson.EntityJson" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 5
+      },
+      "perMethodOutcome" : {
+        "R000" : 6
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 21,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5
+      },
+      "perMethodOutcome" : {
+        "R000" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 21
+      }
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$1" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T004" : 4
+      },
+      "perMethodOutcome" : {
+        "T004" : 4
+      }
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$2" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 1,
+        "T004" : 3,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T004" : 3,
+        "T012" : 2
+      }
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$3" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T004" : 2
+      },
+      "perMethodOutcome" : {
+        "T004" : 2
+      }
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$4" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T004" : 2
+      },
+      "perMethodOutcome" : {
+        "T004" : 2
+      }
+    },
+    "org.finos.springbot.entityjson.ObjectMapperFactory" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T005" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.entityjson.VersionSpace" : {
+      "methodsCount" : 14,
+      "completeTestCount" : 24,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 9,
+        "T001" : 1,
+        "T005" : 1,
+        "T012" : 2,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 12,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 24
+      }
+    }
+  },
+  "methods" : {
+    "org.finos.springbot.entityjson.EntityJson.<init>:()V" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        16,
+        17
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJson.<init>:(I)V" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        28,
+        29
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJson.<init>:(IF)V" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        24,
+        25
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJson.<init>:(IFZ)V" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        20,
+        21
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJson.<init>:(Ljava/util/Map;)V" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        32,
+        33
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJson.getEntityJsonTypeName:(Ljava/lang/Class;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        36,
+        37,
+        38,
+        39,
+        40
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$1.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$1.validateBaseType:(Lcom/fasterxml/jackson/databind/cfg/MapperConfig;Lcom/fasterxml/jackson/databind/JavaType;)Lcom/fasterxml/jackson/databind/jsontype/PolymorphicTypeValidator$Validity;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$1.validateSubClassName:(Lcom/fasterxml/jackson/databind/cfg/MapperConfig;Lcom/fasterxml/jackson/databind/JavaType;Ljava/lang/String;)Lcom/fasterxml/jackson/databind/jsontype/PolymorphicTypeValidator$Validity;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        66,
+        67,
+        68,
+        70,
+        72,
+        74,
+        77
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$1.validateSubType:(Lcom/fasterxml/jackson/databind/cfg/MapperConfig;Lcom/fasterxml/jackson/databind/JavaType;Lcom/fasterxml/jackson/databind/JavaType;)Lcom/fasterxml/jackson/databind/jsontype/PolymorphicTypeValidator$Validity;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        83
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$2.<init>:(Lorg/finos/springbot/entityjson/EntityJsonTypeResolverBuilder;Lcom/fasterxml/jackson/databind/JavaType;Lcom/fasterxml/jackson/databind/type/TypeFactory;Lcom/fasterxml/jackson/databind/jsontype/PolymorphicTypeValidator;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        91
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$2.fixJavaName:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        134
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$2.idFromValue:(Ljava/lang/Object;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        95,
+        96,
+        97,
+        98,
+        100,
+        101,
+        103
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$2.lambda$idFromValue$0:(Ljava/lang/Class;Lorg/finos/springbot/entityjson/VersionSpace;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        97
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$2.lambda$typeFromId$1:(Ljava/lang/String;Lorg/finos/springbot/entityjson/VersionSpace;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        110
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$2.typeFromId:(Lcom/fasterxml/jackson/databind/DatabindContext;Ljava/lang/String;)Lcom/fasterxml/jackson/databind/JavaType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        109,
+        110,
+        111,
+        113,
+        114,
+        115,
+        116,
+        120,
+        121,
+        129
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$3.<init>:(Lorg/finos/springbot/entityjson/EntityJsonTypeResolverBuilder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        145
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$3.handleUnknownProperty:(Lcom/fasterxml/jackson/databind/DeserializationContext;Lcom/fasterxml/jackson/core/JsonParser;Lcom/fasterxml/jackson/databind/JsonDeserializer;Ljava/lang/Object;Ljava/lang/String;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        151,
+        152,
+        154,
+        156,
+        157,
+        158,
+        160,
+        162,
+        166,
+        162,
+        169,
+        171,
+        172,
+        175,
+        176,
+        179,
+        180,
+        182
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$4.<init>:(Lorg/finos/springbot/entityjson/EntityJsonTypeResolverBuilder;Lcom/fasterxml/jackson/databind/jsontype/TypeIdResolver;Lcom/fasterxml/jackson/databind/BeanProperty;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        215
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder$4.writeTypePrefix:(Lcom/fasterxml/jackson/core/JsonGenerator;Lcom/fasterxml/jackson/core/type/WritableTypeId;)Lcom/fasterxml/jackson/core/type/WritableTypeId;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        219,
+        220,
+        221,
+        222,
+        223,
+        225,
+        226,
+        228,
+        230,
+        231,
+        232,
+        236,
+        238,
+        240,
+        242,
+        245,
+        246
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder.<init>:(Lcom/fasterxml/jackson/databind/type/TypeFactory;Ljava/util/List;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        56,
+        88,
+        89,
+        91,
+        141,
+        142
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder.addVersionSpace:(Lorg/finos/springbot/entityjson/VersionSpace;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        44,
+        45,
+        46,
+        47,
+        50,
+        52,
+        53
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder.buildTypeSerializer:(Lcom/fasterxml/jackson/databind/SerializationConfig;Lcom/fasterxml/jackson/databind/JavaType;Ljava/util/Collection;)Lcom/fasterxml/jackson/databind/jsontype/TypeSerializer;" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        214,
+        215,
+        250
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder.getVersionHandler:()Lcom/fasterxml/jackson/databind/deser/DeserializationProblemHandler;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        145
+      ]
+    },
+    "org.finos.springbot.entityjson.EntityJsonTypeResolverBuilder.useForType:(Lcom/fasterxml/jackson/databind/JavaType;)Z" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        190,
+        192,
+        193,
+        196,
+        197,
+        200,
+        201,
+        202,
+        203,
+        205,
+        208
+      ]
+    },
+    "org.finos.springbot.entityjson.ObjectMapperFactory.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        5
+      ]
+    },
+    "org.finos.springbot.entityjson.ObjectMapperFactory.noVersion:(Ljava/lang/Class;)Lorg/finos/springbot/entityjson/VersionSpace;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        33
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.<init>:(Ljava/lang/Class;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        41,
+        42
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.<init>:(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        37,
+        38
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.<init>:(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        96
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.getToUse:()Ljava/lang/Class;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        25
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.getVersions:()Ljava/lang/String;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        69
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.hashCode:()I" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        80,
+        81,
+        82,
+        83,
+        84
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.lambda$getVersions$1:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        69
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.lambda$versionMatches$0:(Ljava/lang/String;Ljava/lang/String;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        65
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.toPattern:(Ljava/lang/String;)Ljava/util/function/Predicate;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        74,
+        75,
+        74
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.typeMatches:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        57,
+        58,
+        60
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.typeMatches:(Ljava/lang/String;)Z" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        53
+      ]
+    },
+    "org.finos.springbot.entityjson.VersionSpace.versionMatches:(Ljava/lang/String;)Z" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        65
+      ]
+    }
+  }
+}
