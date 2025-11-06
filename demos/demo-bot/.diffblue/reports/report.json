@@ -1,0 +1,296 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-06T16:07:19.484488061Z",
+    "command" : "dcover create --exclude-modules=org.finos.springbot:chat-workflow-coverage --coverage-reports --upload http://localhost:8080 --project-name spring-bot --name with-diffblue-tests",
+    "totalTime" : 3505.678,
+    "environmentDetectionTime" : 0.256,
+    "indexingTime" : 0.293,
+    "entryPointsTime" : 0.251,
+    "generationTime" : 2547.448,
+    "timeToFirstTest" : 85.414,
+    "timeToLastTest" : 864.751,
+    "indexQueryTime" : 8.762,
+    "verificationTime" : 190.424,
+    "validationTime" : 20.227
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R015" : "Method may be nondeterministic",
+    "T000" : "Method eligible for test creation",
+    "T005" : "Trivial constructor",
+    "T006" : "Main method",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully"
+  },
+  "summary" : {
+    "classesCount" : 5,
+    "methodsCount" : 14,
+    "cumulativeDiffblueTestCount" : 4,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 4,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 114,
+    "perMethodTestability" : {
+      "T000" : 5,
+      "T005" : 5,
+      "T006" : 2,
+      "T012" : 2
+    },
+    "perMethodOutcome" : {
+      "R000" : 3,
+      "R015" : 2,
+      "T005" : 5,
+      "T006" : 2,
+      "T012" : 2
+    },
+    "perTestOutcome" : {
+      "R000" : 4
+    },
+    "perTestValidation" : {
+      "V000" : 4
+    }
+  },
+  "classes" : {
+    "org.finos.springbot.example.demo.DemoApplication" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 1,
+        "T006" : 1
+      },
+      "perMethodOutcome" : {
+        "T005" : 1,
+        "T006" : 1
+      }
+    },
+    "org.finos.springbot.example.demo.DemoController" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R015" : 2,
+        "T005" : 1,
+        "T012" : 1
+      }
+    },
+    "org.finos.springbot.example.demo.EchoConsumer" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.example.demo.StartUpMessageBean" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1,
+        "T006" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T005" : 1,
+        "T006" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.finos.springbot.example.demo.WelcomeMessageConfig" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T005" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    }
+  },
+  "methods" : {
+    "org.finos.springbot.example.demo.DemoApplication.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        9
+      ]
+    },
+    "org.finos.springbot.example.demo.DemoApplication.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        12,
+        13
+      ]
+    },
+    "org.finos.springbot.example.demo.DemoController.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        22
+      ]
+    },
+    "org.finos.springbot.example.demo.DemoController.lambda$missingChatButton$0:(Lorg/finos/springbot/workflow/content/Word;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        27
+      ]
+    },
+    "org.finos.springbot.example.demo.DemoController.missingChatButton:(Ljava/util/List;Lorg/finos/springbot/workflow/content/Addressable;)Lorg/finos/springbot/workflow/response/MessageResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R015",
+      "lineNumbers" : [
+        26,
+        27,
+        28,
+        30,
+        31,
+        34
+      ]
+    },
+    "org.finos.springbot.example.demo.DemoController.withChatButton:(Lorg/finos/springbot/workflow/content/Addressable;)Lorg/finos/springbot/workflow/response/MessageResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R015",
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "org.finos.springbot.example.demo.EchoConsumer.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        21
+      ]
+    },
+    "org.finos.springbot.example.demo.EchoConsumer.accept:(Ljava/lang/Object;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        20
+      ]
+    },
+    "org.finos.springbot.example.demo.EchoConsumer.accept:(Lorg/finos/springbot/workflow/actions/Action;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        28,
+        30,
+        32,
+        33,
+        35,
+        36,
+        37,
+        41
+      ]
+    },
+    "org.finos.springbot.example.demo.StartUpMessageBean.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        22
+      ]
+    },
+    "org.finos.springbot.example.demo.StartUpMessageBean.doSomethingAfterStartup:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        39,
+        40,
+        41,
+        42,
+        44,
+        46
+      ]
+    },
+    "org.finos.springbot.example.demo.StartUpMessageBean.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        34,
+        35
+      ]
+    },
+    "org.finos.springbot.example.demo.WelcomeMessageConfig.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        17
+      ]
+    },
+    "org.finos.springbot.example.demo.WelcomeMessageConfig.welcomeMessages:()Lorg/finos/springbot/workflow/welcome/RoomWelcomeEventConsumer;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        24
+      ]
+    }
+  }
+}

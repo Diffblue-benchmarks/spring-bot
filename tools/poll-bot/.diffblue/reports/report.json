@@ -1,0 +1,1292 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-06T16:07:19.484488061Z",
+    "command" : "dcover create --exclude-modules=org.finos.springbot:chat-workflow-coverage --coverage-reports --upload http://localhost:8080 --project-name spring-bot --name with-diffblue-tests",
+    "totalTime" : 3167.73,
+    "environmentDetectionTime" : 0.42,
+    "indexingTime" : 0.287,
+    "entryPointsTime" : 0.414,
+    "generationTime" : 2346.71,
+    "timeToFirstTest" : 85.414,
+    "timeToLastTest" : 864.751,
+    "indexQueryTime" : 11.752,
+    "verificationTime" : 182.307,
+    "validationTime" : 21.821
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R026" : "Failed to create Spring context",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T006" : "Main method",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "V000" : "Validated successfully"
+  },
+  "summary" : {
+    "classesCount" : 8,
+    "methodsCount" : 87,
+    "cumulativeDiffblueTestCount" : 19,
+    "cumulativeManualTestCount" : 1,
+    "completeTestCount" : 21,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 445,
+    "perMethodTestability" : {
+      "T000" : 12,
+      "T001" : 25,
+      "T002" : 25,
+      "T003" : 5,
+      "T005" : 8,
+      "T006" : 1,
+      "T012" : 10,
+      "T020" : 1
+    },
+    "perMethodOutcome" : {
+      "R000" : 67,
+      "R002" : 1,
+      "R026" : 2,
+      "T003" : 5,
+      "T005" : 1,
+      "T006" : 1,
+      "T012" : 10
+    },
+    "perTestOutcome" : {
+      "R000" : 21
+    },
+    "perTestValidation" : {
+      "V000" : 21
+    }
+  },
+  "classes" : {
+    "org.finos.springbot.tool.poll.PollBot" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1,
+        "T006" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "T006" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "org.finos.springbot.tool.poll.poll.Answer" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 5,
+        "T002" : 5,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 12
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.finos.springbot.tool.poll.poll.PollController" : {
+      "methodsCount" : 19,
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 9,
+        "T003" : 4,
+        "T005" : 1,
+        "T012" : 5
+      },
+      "perMethodOutcome" : {
+        "R000" : 7,
+        "R026" : 2,
+        "T003" : 4,
+        "T005" : 1,
+        "T012" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 8
+      }
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm" : {
+      "methodsCount" : 21,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T001" : 10,
+        "T002" : 10
+      },
+      "perMethodOutcome" : {
+        "R000" : 21
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm$1" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T012" : 1
+      }
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1,
+        "T012" : 4,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "T003" : 1,
+        "T012" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "org.finos.springbot.tool.poll.poll.Question" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 5,
+        "T002" : 5,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 12
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "org.finos.springbot.tool.poll.poll.Result" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 5,
+        "T002" : 5,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 12
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    }
+  },
+  "methods" : {
+    "org.finos.springbot.tool.poll.PollBot.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        10
+      ]
+    },
+    "org.finos.springbot.tool.poll.PollBot.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        14,
+        15
+      ]
+    },
+    "org.finos.springbot.tool.poll.PollBot.taskScheduler:()Lorg/springframework/scheduling/TaskScheduler;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        19
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Answer.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        30,
+        31
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Answer.<init>:(Lorg/finos/springbot/workflow/content/User;Ljava/time/Instant;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Answer.getChoice:()Ljava/lang/Integer;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Answer.getChoiceText:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Answer.getQuestionText:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Answer.getTime:()Ljava/time/Instant;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Answer.getUser:()Lorg/finos/springbot/workflow/content/User;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Answer.setChoice:(Ljava/lang/Integer;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        63,
+        64
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Answer.setChoiceText:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        71,
+        72
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Answer.setQuestionText:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        79,
+        80
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Answer.setTime:(Ljava/time/Instant;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        55,
+        56
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Answer.setUser:(Lorg/finos/springbot/workflow/content/User;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        47,
+        48
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.chooseResponse:(Lorg/finos/springbot/tool/poll/poll/Question;Lorg/finos/springbot/workflow/content/User;ILorg/finos/springbot/workflow/content/Chat;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        157,
+        158,
+        159,
+        160,
+        161
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.createQuestionMessage:(Lorg/finos/springbot/tool/poll/poll/Question;Lorg/finos/springbot/workflow/content/Chat;Lorg/finos/springbot/workflow/content/User;)Lorg/finos/springbot/workflow/response/MessageResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        94,
+        95,
+        97,
+        98
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.createQuestionResponse:(Lorg/finos/springbot/tool/poll/poll/Question;Lorg/finos/springbot/workflow/form/ButtonList;Lorg/finos/springbot/workflow/content/Chat;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        102,
+        103,
+        104,
+        105
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.doScheduling:(Lorg/finos/springbot/tool/poll/poll/Question;Lorg/finos/springbot/tool/poll/poll/PollCreateForm;Lorg/finos/springbot/workflow/content/Chat;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        110,
+        111,
+        112,
+        113,
+        120
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.end:(Lorg/finos/springbot/workflow/content/Word;Lorg/finos/springbot/workflow/content/Chat;Lorg/finos/springbot/workflow/history/AllHistory;)Lorg/finos/springbot/tool/poll/poll/Result;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R026",
+      "lineNumbers" : [
+        125,
+        126,
+        128,
+        131,
+        133,
+        135,
+        136,
+        135,
+        139,
+        146,
+        148
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.lambda$doScheduling$2:(Lorg/finos/springbot/tool/poll/poll/Question;Lorg/finos/springbot/workflow/content/Chat;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        114,
+        115,
+        116,
+        118
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.lambda$end$3:()Ljava/lang/RuntimeException;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        126
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.lambda$end$4:(Ljava/util/Set;Ljava/util/List;Lorg/finos/springbot/tool/poll/poll/Answer;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        140,
+        141,
+        142,
+        144
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.lambda$poll$0:(Ljava/lang/String;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.lambda$poll$1:([ILjava/lang/String;)Lorg/finos/springbot/workflow/form/Button;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        79
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.poll0:(Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/tool/poll/poll/Question;Lorg/finos/springbot/workflow/content/Chat;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        153
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.poll1:(Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/tool/poll/poll/Question;Lorg/finos/springbot/workflow/content/Chat;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        166
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.poll2:(Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/tool/poll/poll/Question;Lorg/finos/springbot/workflow/content/Chat;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        171
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.poll3:(Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/tool/poll/poll/Question;Lorg/finos/springbot/workflow/content/Chat;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        176
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.poll4:(Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/tool/poll/poll/Question;Lorg/finos/springbot/workflow/content/Chat;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        181
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.poll5:(Lorg/finos/springbot/workflow/content/User;Lorg/finos/springbot/tool/poll/poll/Question;Lorg/finos/springbot/workflow/content/Chat;)Lorg/finos/springbot/workflow/response/WorkResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        186
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.poll:(Lorg/finos/springbot/tool/poll/poll/PollCreateForm;Lorg/finos/springbot/workflow/content/Chat;Lorg/finos/springbot/workflow/content/User;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R026",
+      "lineNumbers" : [
+        71,
+        73,
+        74,
+        75,
+        76,
+        78,
+        79,
+        80,
+        82,
+        83,
+        85,
+        86,
+        88,
+        89,
+        90
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollController.pollForm:(Lorg/finos/springbot/workflow/content/Chat;)Lorg/finos/springbot/tool/poll/poll/PollCreateForm;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        60,
+        61,
+        63
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm$1.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        21
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit.$values:()[Lorg/finos/springbot/tool/poll/poll/PollCreateForm$TimeUnit;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        17
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        18,
+        17
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit.<init>:(Ljava/lang/String;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        17
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit.getChronoUnit:()Ljava/time/temporal/ChronoUnit;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        21,
+        23,
+        25,
+        28
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        33
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit.valueOf:(Ljava/lang/String;)Lorg/finos/springbot/tool/poll/poll/PollCreateForm$TimeUnit;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        17
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm$TimeUnit.values:()[Lorg/finos/springbot/tool/poll/poll/PollCreateForm$TimeUnit;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        17
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        15,
+        46,
+        48,
+        49,
+        51
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.getOption1:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        62
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.getOption2:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        70
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.getOption3:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        78
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.getOption4:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        86
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.getOption5:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        94
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.getOption6:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        102
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.getQuestion:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        54
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.getTime:()Ljava/lang/Integer;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        110
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.getTimeUnit:()Lorg/finos/springbot/tool/poll/poll/PollCreateForm$TimeUnit;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        118
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.isEndAutomatically:()Z" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        126
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.setEndAutomatically:(Z)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        130,
+        131
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.setOption1:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        66,
+        67
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.setOption2:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        74,
+        75
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.setOption3:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        82,
+        83
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.setOption4:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        90,
+        91
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.setOption5:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        98,
+        99
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.setOption6:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        106,
+        107
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.setQuestion:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        58,
+        59
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.setTime:(Ljava/lang/Integer;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        114,
+        115
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.PollCreateForm.setTimeUnit:(Lorg/finos/springbot/tool/poll/poll/PollCreateForm$TimeUnit;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        122,
+        123
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Question.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        36,
+        37
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Question.<init>:(Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Lorg/finos/springbot/workflow/content/User;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Question.getEndTime:()Ljava/time/Instant;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        73
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Question.getId:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Question.getOptions:()Ljava/util/List;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        48
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Question.getPoller:()Lorg/finos/springbot/workflow/content/User;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        64
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Question.getQuestion:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Question.setEndTime:(Ljava/time/Instant;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        77,
+        78
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Question.setId:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        60,
+        61
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Question.setOptions:(Ljava/util/List;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        52,
+        53
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Question.setPoller:(Lorg/finos/springbot/workflow/content/User;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        68,
+        69
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Question.setQuestion:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        44,
+        45
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Result.<init>:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        22,
+        19,
+        23
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Result.<init>:(Ljava/util/List;Ljava/util/List;Ljava/lang/String;Lorg/finos/springbot/workflow/content/User;Ljava/lang/Integer;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        27,
+        19,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Result.getCounts:()Ljava/util/List;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Result.getOptions:()Ljava/util/List;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Result.getPoller:()Lorg/finos/springbot/workflow/content/User;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Result.getQuestion:()Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Result.getTotalResponses:()Ljava/lang/Integer;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Result.setCounts:(Ljava/util/List;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        48,
+        49
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Result.setOptions:(Ljava/util/List;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        56,
+        57
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Result.setPoller:(Lorg/finos/springbot/workflow/content/User;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        72,
+        73
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Result.setQuestion:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        64,
+        65
+      ]
+    },
+    "org.finos.springbot.tool.poll.poll.Result.setTotalResponses:(Ljava/lang/Integer;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        40,
+        41
+      ]
+    }
+  }
+}
