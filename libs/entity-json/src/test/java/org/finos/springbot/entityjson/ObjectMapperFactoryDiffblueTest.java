@@ -1,0 +1,41 @@
+package org.finos.springbot.entityjson;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+class ObjectMapperFactoryDiffblueTest {
+  /**
+   * Test {@link ObjectMapperFactory#noVersion(Class)}.
+   *
+   * <ul>
+   *   <li>When {@code Object}.
+   *   <li>Then return {@link VersionSpace#writeVersion} is empty string.
+   * </ul>
+   *
+   * <p>Method under test: {@link ObjectMapperFactory#noVersion(Class)}
+   */
+  @Test
+  @DisplayName(
+      "Test noVersion(Class); when 'java.lang.Object'; then return writeVersion is empty string")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"VersionSpace ObjectMapperFactory.noVersion(Class)"})
+  void testNoVersion_whenJavaLangObject_thenReturnWriteVersionIsEmptyString() {
+    // Arrange
+    Class<Object> class1 = Object.class;
+
+    // Act
+    VersionSpace actualNoVersionResult = ObjectMapperFactory.noVersion(class1);
+
+    // Assert
+    assertEquals("", actualNoVersionResult.writeVersion);
+    assertEquals(", ", actualNoVersionResult.getVersions());
+    assertEquals("java.lang.object", actualNoVersionResult.typeName);
+    Class<Object> expectedToUse = Object.class;
+    assertEquals(expectedToUse, actualNoVersionResult.getToUse());
+  }
+}
