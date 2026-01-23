@@ -9,3 +9,9 @@ pom.xml.versionsBackup
 *.iml
 bin/
 application*.yml
+
+.diffblue/cache
+**.diffblue/cache
+**/.diffblue/cache
+**/**.diffblue/cache
+**/**/.diffblue/cache
