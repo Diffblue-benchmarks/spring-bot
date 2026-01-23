@@ -123,6 +123,43 @@ class InMemoryRetryingActivityHandlerDiffblueTest {
    * Test {@link InMemoryRetryingActivityHandler#handleActivity(Activity, TeamsAddressable)}.
    *
    * <ul>
+   *   <li>Given {@link TeamsConversations} {@link TeamsConversations#handleActivity(Activity,
+   *       TeamsAddressable)} return failed {@link Throwable#Throwable()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link InMemoryRetryingActivityHandler#handleActivity(Activity,
+   * TeamsAddressable)}
+   */
+  @Test
+  @DisplayName(
+      "Test handleActivity(Activity, TeamsAddressable); given TeamsConversations handleActivity(Activity, TeamsAddressable) return failed Throwable()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "CompletableFuture InMemoryRetryingActivityHandler.handleActivity(Activity, TeamsAddressable)"
+  })
+  void testHandleActivity_givenTeamsConversationsHandleActivityReturnFailedThrowable() {
+    // Arrange
+    CompletableFuture<ResourceResponse> failedResult =
+        TeamsHandlerMappingTest.failed(new Throwable());
+    when(teamsConversations.handleActivity(
+            Mockito.<Activity>any(), Mockito.<TeamsAddressable>any()))
+        .thenReturn(failedResult);
+
+    // Act
+    CompletableFuture<ResourceResponse> actualHandleActivityResult =
+        inMemoryRetryingActivityHandler.handleActivity(
+            Activity.createContactRelationUpdateActivity(), mock(TeamsAddressable.class));
+
+    // Assert
+    verify(teamsConversations).handleActivity(isA(Activity.class), isA(TeamsAddressable.class));
+    assertTrue(actualHandleActivityResult.isDone());
+  }
+
+  /**
+   * Test {@link InMemoryRetryingActivityHandler#handleActivity(Activity, TeamsAddressable)}.
+   *
+   * <ul>
    *   <li>Then calls {@link Files#exists(Path, LinkOption[])}.
    * </ul>
    *
@@ -177,41 +214,6 @@ class InMemoryRetryingActivityHandlerDiffblueTest {
    * Test {@link InMemoryRetryingActivityHandler#handleActivity(Activity, TeamsAddressable)}.
    *
    * <ul>
-   *   <li>Then return Done.
-   * </ul>
-   *
-   * <p>Method under test: {@link InMemoryRetryingActivityHandler#handleActivity(Activity,
-   * TeamsAddressable)}
-   */
-  @Test
-  @DisplayName("Test handleActivity(Activity, TeamsAddressable); then return Done")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "CompletableFuture InMemoryRetryingActivityHandler.handleActivity(Activity, TeamsAddressable)"
-  })
-  void testHandleActivity_thenReturnDone() {
-    // Arrange
-    CompletableFuture<ResourceResponse> failedResult =
-        TeamsHandlerMappingTest.failed(new Throwable());
-    when(teamsConversations.handleActivity(
-            Mockito.<Activity>any(), Mockito.<TeamsAddressable>any()))
-        .thenReturn(failedResult);
-
-    // Act
-    CompletableFuture<ResourceResponse> actualHandleActivityResult =
-        inMemoryRetryingActivityHandler.handleActivity(
-            Activity.createContactRelationUpdateActivity(), mock(TeamsAddressable.class));
-
-    // Assert
-    verify(teamsConversations).handleActivity(isA(Activity.class), isA(TeamsAddressable.class));
-    assertTrue(actualHandleActivityResult.isDone());
-  }
-
-  /**
-   * Test {@link InMemoryRetryingActivityHandler#handleActivity(Activity, TeamsAddressable)}.
-   *
-   * <ul>
    *   <li>Then return {@link CompletableFuture#get()} Id is {@code null}.
    * </ul>
    *
@@ -243,6 +245,7 @@ class InMemoryRetryingActivityHandlerDiffblueTest {
     verify(teamsConversations).handleActivity(isA(Activity.class), isA(TeamsAddressable.class));
     ResourceResponse getResult = actualHandleActivityResult.get();
     assertNull(getResult.getId());
+    assertTrue(actualHandleActivityResult.isDone());
     assertSame(resourceResponse, getResult);
   }
 }

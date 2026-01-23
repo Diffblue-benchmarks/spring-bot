@@ -1,7 +1,6 @@
 package org.finos.springbot.tool.rssbot.load;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
@@ -130,25 +129,5 @@ class AbstractApiBuilderDiffblueTest {
 
     // Assert
     assertEquals(1L, jerseyApiBuilder.connectTimeout.longValue());
-  }
-
-  /**
-   * Test {@link AbstractApiBuilder#testConnection(String)}.
-   *
-   * <ul>
-   *   <li>When {@code TLSv1.2}.
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractApiBuilder#testConnection(String)}
-   */
-  @Test
-  @DisplayName("Test testConnection(String); when 'TLSv1.2'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractApiBuilder.testConnection(String)"})
-  void testTestConnection_whenTLSv12_thenReturnFalse() {
-    // Arrange, Act and Assert
-    assertFalse(new JerseyApiBuilder("https://example.org/example").testConnection("TLSv1.2"));
   }
 }

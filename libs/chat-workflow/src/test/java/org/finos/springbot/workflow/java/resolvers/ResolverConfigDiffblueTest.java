@@ -9,18 +9,10 @@ import org.finos.springbot.workflow.java.mapping.ChatHandlerExecutor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ContextConfiguration(classes = {ResolverConfig.class})
-@ExtendWith(SpringExtension.class)
 class ResolverConfigDiffblueTest {
-  @Autowired private ResolverConfig resolverConfig;
-
   /**
    * Test {@link ResolverConfig#springBeanResolver()}.
    *
@@ -131,29 +123,6 @@ class ResolverConfigDiffblueTest {
    * Test {@link ResolverConfig#addressableWorkflowResolverFactory()}.
    *
    * <ul>
-   *   <li>Given {@link ResolverConfig}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ResolverConfig#addressableWorkflowResolverFactory()}
-   */
-  @Test
-  @DisplayName("Test addressableWorkflowResolverFactory(); given ResolverConfig")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "org.finos.springbot.workflow.java.resolvers.AddressableWorkflowResolverFactory ResolverConfig.addressableWorkflowResolverFactory()"
-  })
-  void testAddressableWorkflowResolverFactory_givenResolverConfig() {
-    // Arrange, Act and Assert
-    assertEquals(
-        WorkflowResolverFactory.NORMAL_PRIORITY,
-        resolverConfig.addressableWorkflowResolverFactory().getOrder());
-  }
-
-  /**
-   * Test {@link ResolverConfig#addressableWorkflowResolverFactory()}.
-   *
-   * <ul>
    *   <li>Given {@link ResolverConfig} (default constructor).
    * </ul>
    *
@@ -167,7 +136,7 @@ class ResolverConfigDiffblueTest {
   @MethodsUnderTest({
     "org.finos.springbot.workflow.java.resolvers.AddressableWorkflowResolverFactory ResolverConfig.addressableWorkflowResolverFactory()"
   })
-  void testAddressableWorkflowResolverFactory_givenResolverConfig2() {
+  void testAddressableWorkflowResolverFactory_givenResolverConfig() {
     // Arrange, Act and Assert
     assertEquals(
         WorkflowResolverFactory.NORMAL_PRIORITY,

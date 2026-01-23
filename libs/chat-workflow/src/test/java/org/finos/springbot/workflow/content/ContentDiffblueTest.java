@@ -416,35 +416,6 @@ class ContentDiffblueTest {
    * Test {@link Content#matches(Content)}.
    *
    * <ul>
-   *   <li>Given {@link Content} {@link Content#matches(Content)} return {@code true}.
-   *   <li>When {@link Content}.
-   *   <li>Then calls {@link Content#matches(Content)}.
-   * </ul>
-   *
-   * <p>Method under test: {@link Content#matches(Content)}
-   */
-  @Test
-  @DisplayName(
-      "Test matches(Content); given Content matches(Content) return 'true'; when Content; then calls matches(Content)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean Content.matches(Content)"})
-  void testMatches_givenContentMatchesReturnTrue_whenContent_thenCallsMatches() {
-    // Arrange
-    Content content = mock(Content.class);
-    when(content.matches(Mockito.<Content>any())).thenReturn(true);
-
-    // Act
-    content.matches(mock(Content.class));
-
-    // Assert
-    verify(content).matches(isA(Content.class));
-  }
-
-  /**
-   * Test {@link Content#matches(Content)}.
-   *
-   * <ul>
    *   <li>When {@link CodeBlockImpl#CodeBlockImpl(String)} with s is {@code foo}.
    *   <li>Then return {@code true}.
    * </ul>

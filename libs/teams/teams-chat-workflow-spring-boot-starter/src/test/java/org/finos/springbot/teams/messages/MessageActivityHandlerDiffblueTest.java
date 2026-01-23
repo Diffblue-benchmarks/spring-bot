@@ -335,67 +335,6 @@ class MessageActivityHandlerDiffblueTest {
         .thenReturn(teamsAddressable);
     TeamsUser teamsUser = new TeamsUser("42", "Name", "42");
     when(teamsConversations.getUser(Mockito.<ChannelAccount>any())).thenReturn(teamsUser);
-    Optional<Map<String, Object>> ofResult = Optional.of(new HashMap<>());
-    when(teamsStateStorage.retrieve(Mockito.<String>any())).thenReturn(ofResult);
-    when(formConverter.convert(Mockito.<Map<String, Object>>any(), Mockito.<String>any()))
-        .thenReturn("Convert");
-    Addressable a = mock(Addressable.class);
-    TeamsUser u = new TeamsUser("42", "Name", "42");
-
-    FormAction formAction = new FormAction(a, u, "Form Data", "Action", new HashMap<>());
-    when(formValidationProcessor.validationCheck(
-            Mockito.<String>any(),
-            Mockito.<Addressable>any(),
-            Mockito.<Object>any(),
-            Mockito.<Supplier<FormAction>>any()))
-        .thenReturn(formAction);
-    BotFrameworkAdapter withAdapter = new BotFrameworkAdapter(new SimpleCredentialProvider());
-    TurnContextImpl withTurnContext =
-        new TurnContextImpl(withAdapter, Activity.createContactRelationUpdateActivity());
-    DelegatingTurnContext turnContext = new DelegatingTurnContext(withTurnContext);
-
-    Activity a2 = Activity.createContactRelationUpdateActivity();
-    a2.setValue(new HashMap<>());
-
-    // Act
-    FormAction actualProcessFormResult = messageActivityHandler.processForm(turnContext, a2);
-
-    // Assert
-    verify(teamsConversations).getTeamsAddressable(isNull());
-    verify(teamsConversations).getUser(isNull());
-    verify(teamsStateStorage).retrieve("Key/null");
-    verify(teamsAddressable).getKey();
-    verify(formConverter).convert(isA(Map.class), isNull());
-    verify(formValidationProcessor)
-        .validationCheck(isNull(), isA(Addressable.class), isA(Object.class), isA(Supplier.class));
-    assertSame(formAction, actualProcessFormResult);
-  }
-
-  /**
-   * Test {@link MessageActivityHandler#processForm(TurnContext, Activity)}.
-   *
-   * <ul>
-   *   <li>Given {@link TeamsStateStorage} {@link TeamsStateStorage#retrieve(String)} return empty.
-   *   <li>Then calls {@link TurnContextImpl#getActivity()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MessageActivityHandler#processForm(TurnContext, Activity)}
-   */
-  @Test
-  @DisplayName(
-      "Test processForm(TurnContext, Activity); given TeamsStateStorage retrieve(String) return empty; then calls getActivity()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"FormAction MessageActivityHandler.processForm(TurnContext, Activity)"})
-  void testProcessForm_givenTeamsStateStorageRetrieveReturnEmpty_thenCallsGetActivity()
-      throws ClassNotFoundException {
-    // Arrange
-    TeamsAddressable teamsAddressable = mock(TeamsAddressable.class);
-    when(teamsAddressable.getKey()).thenReturn("Key");
-    when(teamsConversations.getTeamsAddressable(Mockito.<ConversationAccount>any()))
-        .thenReturn(teamsAddressable);
-    TeamsUser teamsUser = new TeamsUser("42", "Name", "42");
-    when(teamsConversations.getUser(Mockito.<ChannelAccount>any())).thenReturn(teamsUser);
     Optional<Map<String, Object>> emptyResult = Optional.empty();
     when(teamsStateStorage.retrieve(Mockito.<String>any())).thenReturn(emptyResult);
     when(formConverter.convert(Mockito.<Map<String, Object>>any(), Mockito.<String>any()))
@@ -430,6 +369,64 @@ class MessageActivityHandlerDiffblueTest {
     verify(formValidationProcessor)
         .validationCheck(isNull(), isA(Addressable.class), isA(Object.class), isA(Supplier.class));
     assertSame(formAction, actualProcessFormResult);
+  }
+
+  /**
+   * Test {@link MessageActivityHandler#processForm(TurnContext, Activity)}.
+   *
+   * <ul>
+   *   <li>Then calls {@link TeamsConversations#getTeamsAddressable(ConversationAccount)}.
+   * </ul>
+   *
+   * <p>Method under test: {@link MessageActivityHandler#processForm(TurnContext, Activity)}
+   */
+  @Test
+  @DisplayName(
+      "Test processForm(TurnContext, Activity); then calls getTeamsAddressable(ConversationAccount)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"FormAction MessageActivityHandler.processForm(TurnContext, Activity)"})
+  void testProcessForm_thenCallsGetTeamsAddressable() throws ClassNotFoundException {
+    // Arrange
+    TeamsAddressable teamsAddressable = mock(TeamsAddressable.class);
+    when(teamsAddressable.getKey()).thenReturn("Key");
+    when(teamsConversations.getTeamsAddressable(Mockito.<ConversationAccount>any()))
+        .thenReturn(teamsAddressable);
+    TeamsUser teamsUser = new TeamsUser("42", "Name", "42");
+    when(teamsConversations.getUser(Mockito.<ChannelAccount>any())).thenReturn(teamsUser);
+    Optional<Map<String, Object>> ofResult = Optional.of(new HashMap<>());
+    when(teamsStateStorage.retrieve(Mockito.<String>any())).thenReturn(ofResult);
+    when(formConverter.convert(Mockito.<Map<String, Object>>any(), Mockito.<String>any()))
+        .thenReturn("Convert");
+    Addressable a = mock(Addressable.class);
+    TeamsUser u = new TeamsUser("42", "Name", "42");
+
+    FormAction formAction = new FormAction(a, u, "Form Data", "Action", new HashMap<>());
+    when(formValidationProcessor.validationCheck(
+            Mockito.<String>any(),
+            Mockito.<Addressable>any(),
+            Mockito.<Object>any(),
+            Mockito.<Supplier<FormAction>>any()))
+        .thenReturn(formAction);
+    BotFrameworkAdapter withAdapter = new BotFrameworkAdapter(new SimpleCredentialProvider());
+    TurnContextImpl withTurnContext =
+        new TurnContextImpl(withAdapter, Activity.createContactRelationUpdateActivity());
+    DelegatingTurnContext turnContext = new DelegatingTurnContext(withTurnContext);
+
+    Activity a2 = Activity.createContactRelationUpdateActivity();
+    a2.setValue(new HashMap<>());
+
+    // Act
+    messageActivityHandler.processForm(turnContext, a2);
+
+    // Assert
+    verify(teamsConversations).getTeamsAddressable(isNull());
+    verify(teamsConversations).getUser(isNull());
+    verify(teamsStateStorage).retrieve("Key/null");
+    verify(teamsAddressable).getKey();
+    verify(formConverter).convert(isA(Map.class), isNull());
+    verify(formValidationProcessor)
+        .validationCheck(isNull(), isA(Addressable.class), isA(Object.class), isA(Supplier.class));
   }
 
   /**

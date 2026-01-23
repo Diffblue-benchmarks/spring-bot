@@ -137,82 +137,7 @@ class FileActivityHandlerDiffblueTest {
   @MethodsUnderTest({
     "CompletableFuture FileActivityHandler.onTeamsFileConsentDecline(TurnContext, FileConsentCardResponse)"
   })
-  void testOnTeamsFileConsentDecline() throws InterruptedException, ExecutionException {
-    // Arrange
-    ArrayList<ActionConsumer> messageConsumers = new ArrayList<>();
-    BotFrameworkAdapter bfa = new BotFrameworkAdapter(new SimpleCredentialProvider());
-    MicrosoftAppCredentials mac = MicrosoftAppCredentials.empty();
-    ChannelAccount botAccount = new ChannelAccount();
-    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
-    EntityJsonConverter ejc = new EntityJsonConverter(om, new ArrayList<>());
-
-    StateStorageBasedTeamsConversations teamsConversations =
-        new StateStorageBasedTeamsConversations(bfa, mac, botAccount, new MemoryStateStorage(ejc));
-    JsonMapper om2 = JsonMapper.builder().findAndAddModules().build();
-    EntityJsonConverter ejc2 = new EntityJsonConverter(om2, new ArrayList<>());
-    MemoryStateStorage teamsStateStorage = new MemoryStateStorage(ejc2);
-    TeamsHTMLParser parser = new TeamsHTMLParser(mock(ApplicationContext.class));
-    JsonMapper om3 = JsonMapper.builder().findAndAddModules().build();
-    FormConverter formConverter = new FormConverter(om3);
-    FormValidationProcessor validationProcessor =
-        new FormValidationProcessor(new CustomValidatorBean(), mock(ResponseHandlers.class));
-
-    FileActivityHandler fileActivityHandler =
-        new FileActivityHandler(
-            messageConsumers,
-            teamsConversations,
-            teamsStateStorage,
-            parser,
-            formConverter,
-            validationProcessor);
-
-    BotAdapter withAdapter = mock(BotAdapter.class);
-    CompletableFuture<ResourceResponse[]> completedFutureResult =
-        CompletableFuture.completedFuture(new ResourceResponse[] {new ResourceResponse()});
-    when(withAdapter.sendActivities(Mockito.<TurnContext>any(), Mockito.<List<Activity>>any()))
-        .thenReturn(completedFutureResult);
-    TurnContextImpl withTurnContext =
-        new TurnContextImpl(withAdapter, Activity.createContactRelationUpdateActivity());
-    DelegatingTurnContext turnContext = new DelegatingTurnContext(withTurnContext);
-
-    FileUploadInfo withUploadInfo = new FileUploadInfo();
-    withUploadInfo.setContentUrl("https://example.org/example");
-    withUploadInfo.setFileType("With File Type");
-    withUploadInfo.setName("With Name");
-    withUploadInfo.setUniqueId("42");
-    withUploadInfo.setUploadUrl("https://example.org/example");
-
-    FileConsentCardResponse fileConsentCardResponse = new FileConsentCardResponse();
-    fileConsentCardResponse.setAction("With Action");
-    fileConsentCardResponse.setUploadInfo(withUploadInfo);
-    fileConsentCardResponse.setContext(new HashMap<>());
-
-    // Act
-    CompletableFuture<Void> actualOnTeamsFileConsentDeclineResult =
-        fileActivityHandler.onTeamsFileConsentDecline(turnContext, fileConsentCardResponse);
-
-    // Assert
-    verify(withAdapter).sendActivities(isA(TurnContext.class), isA(List.class));
-    assertNull(actualOnTeamsFileConsentDeclineResult.get());
-    assertTrue(turnContext.getResponded());
-    assertTrue(actualOnTeamsFileConsentDeclineResult.isDone());
-  }
-
-  /**
-   * Test {@link FileActivityHandler#onTeamsFileConsentDecline(TurnContext,
-   * FileConsentCardResponse)}.
-   *
-   * <p>Method under test: {@link FileActivityHandler#onTeamsFileConsentDecline(TurnContext,
-   * FileConsentCardResponse)}
-   */
-  @Test
-  @DisplayName("Test onTeamsFileConsentDecline(TurnContext, FileConsentCardResponse)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "CompletableFuture FileActivityHandler.onTeamsFileConsentDecline(TurnContext, FileConsentCardResponse)"
-  })
-  void testOnTeamsFileConsentDecline2() {
+  void testOnTeamsFileConsentDecline() {
     // Arrange
     ArrayList<ActionConsumer> messageConsumers = new ArrayList<>();
     BotFrameworkAdapter bfa = new BotFrameworkAdapter(new SimpleCredentialProvider());
@@ -372,7 +297,7 @@ class FileActivityHandlerDiffblueTest {
   @MethodsUnderTest({
     "CompletableFuture FileActivityHandler.onTeamsFileConsentDecline(TurnContext, FileConsentCardResponse)"
   })
-  void testOnTeamsFileConsentDecline_givenEn() throws InterruptedException, ExecutionException {
+  void testOnTeamsFileConsentDecline_givenEn() {
     // Arrange
     ArrayList<ActionConsumer> messageConsumers = new ArrayList<>();
     BotFrameworkAdapter bfa = new BotFrameworkAdapter(new SimpleCredentialProvider());
@@ -426,14 +351,11 @@ class FileActivityHandlerDiffblueTest {
     fileConsentCardResponse.setContext(new HashMap<>());
 
     // Act
-    CompletableFuture<Void> actualOnTeamsFileConsentDeclineResult =
-        fileActivityHandler.onTeamsFileConsentDecline(turnContext, fileConsentCardResponse);
+    fileActivityHandler.onTeamsFileConsentDecline(turnContext, fileConsentCardResponse);
 
     // Assert
     verify(withAdapter).sendActivities(isA(TurnContext.class), isA(List.class));
-    assertNull(actualOnTeamsFileConsentDeclineResult.get());
     assertTrue(turnContext.getResponded());
-    assertTrue(actualOnTeamsFileConsentDeclineResult.isDone());
   }
 
   /**
@@ -626,5 +548,86 @@ class FileActivityHandlerDiffblueTest {
     // Assert
     verify(turnContext).sendActivityBlind(isA(Activity.class));
     assertSame(completedFutureResult, actualOnTeamsFileConsentDeclineResult);
+  }
+
+  /**
+   * Test {@link FileActivityHandler#onTeamsFileConsentDecline(TurnContext,
+   * FileConsentCardResponse)}.
+   *
+   * <ul>
+   *   <li>Then return {@link CompletableFuture#get()} is {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link FileActivityHandler#onTeamsFileConsentDecline(TurnContext,
+   * FileConsentCardResponse)}
+   */
+  @Test
+  @DisplayName(
+      "Test onTeamsFileConsentDecline(TurnContext, FileConsentCardResponse); then return get() is 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "CompletableFuture FileActivityHandler.onTeamsFileConsentDecline(TurnContext, FileConsentCardResponse)"
+  })
+  void testOnTeamsFileConsentDecline_thenReturnGetIsNull()
+      throws InterruptedException, ExecutionException {
+    // Arrange
+    ArrayList<ActionConsumer> messageConsumers = new ArrayList<>();
+    BotFrameworkAdapter bfa = new BotFrameworkAdapter(new SimpleCredentialProvider());
+    MicrosoftAppCredentials mac = MicrosoftAppCredentials.empty();
+    ChannelAccount botAccount = new ChannelAccount();
+    JsonMapper om = JsonMapper.builder().findAndAddModules().build();
+    EntityJsonConverter ejc = new EntityJsonConverter(om, new ArrayList<>());
+
+    StateStorageBasedTeamsConversations teamsConversations =
+        new StateStorageBasedTeamsConversations(bfa, mac, botAccount, new MemoryStateStorage(ejc));
+    JsonMapper om2 = JsonMapper.builder().findAndAddModules().build();
+    EntityJsonConverter ejc2 = new EntityJsonConverter(om2, new ArrayList<>());
+    MemoryStateStorage teamsStateStorage = new MemoryStateStorage(ejc2);
+    TeamsHTMLParser parser = new TeamsHTMLParser(mock(ApplicationContext.class));
+    JsonMapper om3 = JsonMapper.builder().findAndAddModules().build();
+    FormConverter formConverter = new FormConverter(om3);
+    FormValidationProcessor validationProcessor =
+        new FormValidationProcessor(new CustomValidatorBean(), mock(ResponseHandlers.class));
+
+    FileActivityHandler fileActivityHandler =
+        new FileActivityHandler(
+            messageConsumers,
+            teamsConversations,
+            teamsStateStorage,
+            parser,
+            formConverter,
+            validationProcessor);
+
+    BotAdapter withAdapter = mock(BotAdapter.class);
+    CompletableFuture<ResourceResponse[]> completedFutureResult =
+        CompletableFuture.completedFuture(new ResourceResponse[] {new ResourceResponse()});
+    when(withAdapter.sendActivities(Mockito.<TurnContext>any(), Mockito.<List<Activity>>any()))
+        .thenReturn(completedFutureResult);
+    TurnContextImpl withTurnContext =
+        new TurnContextImpl(withAdapter, Activity.createContactRelationUpdateActivity());
+    DelegatingTurnContext turnContext = new DelegatingTurnContext(withTurnContext);
+
+    FileUploadInfo withUploadInfo = new FileUploadInfo();
+    withUploadInfo.setContentUrl("https://example.org/example");
+    withUploadInfo.setFileType("With File Type");
+    withUploadInfo.setName("With Name");
+    withUploadInfo.setUniqueId("42");
+    withUploadInfo.setUploadUrl("https://example.org/example");
+
+    FileConsentCardResponse fileConsentCardResponse = new FileConsentCardResponse();
+    fileConsentCardResponse.setAction("With Action");
+    fileConsentCardResponse.setUploadInfo(withUploadInfo);
+    fileConsentCardResponse.setContext(new HashMap<>());
+
+    // Act
+    CompletableFuture<Void> actualOnTeamsFileConsentDeclineResult =
+        fileActivityHandler.onTeamsFileConsentDecline(turnContext, fileConsentCardResponse);
+
+    // Assert
+    verify(withAdapter).sendActivities(isA(TurnContext.class), isA(List.class));
+    assertNull(actualOnTeamsFileConsentDeclineResult.get());
+    assertTrue(turnContext.getResponded());
+    assertTrue(actualOnTeamsFileConsentDeclineResult.isDone());
   }
 }
